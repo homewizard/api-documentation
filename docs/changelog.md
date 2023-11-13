@@ -1,0 +1,32 @@
+# API Changelog
+
+## 2023-01-24
+**SDM230-wifi** and **SDM630-wifi** now support `api/v1/system`.The Energy meter should run version 3.00 or later, the device will be updated automatically.
+
+See [Identify](/docs/endpoints/api-v1-identify.md) for more information.
+
+## 2023-01-03
+**HWE-P1** has now support for `api/v1/system` and `api/v1/identify`.The P1 meter should run version 4.00 or later, the device will be updated automatically.
+
+See [System](/docs/endpoints/api-v1-system.md) and [Identify](/docs/endpoints/api-v1-identify.md) for more information.
+
+## 2023-01-03
+Added documentation about updated `api/v1/data` endpoint. This adds support for more data points in **HWE-P1**
+
+See [Recent measurement](/docs/endpoints/api-v1-data.md)` for more information.
+
+## 2022-11-25
+Added documentation about the `api/v1/system` endpoint.
+
+See [System](/docs/endpoints/api-v1-system.md) for more information.
+
+## 2022-11-25
+Added documentation about the `api/v1/identify` endpoint.
+
+[Identify](/docs/endpoints/api-v1-identify.md) for more information.
+
+## 2022-10-19
+Data points in ``api/v1/data`` are now optional. This means that the fields in [Recent measurement](/docs/endpoints/api-v1-data.md)` won't be send if the data does not exists at all. 
+This is -for example- possible in the P1 meter; Missing data in the telegram is not send in the API. This allows us to send new additional data more easily.
+
+See [Recent measurement](/docs/endpoints/api-v1-data.md)` for more information.
