@@ -5,35 +5,35 @@ sidebar_position: 2
 # Getting Started
 
 ## Connect your device to Wi-Fi
+
 Connect your device to Wi-Fi with the [HomeWizard Energy app](https://www.homewizard.nl/energy). Make sure to connect your energy device with the same network as the device that makes use of the API.
 
 ## Enabling the API
-To access the data from an Energy device, you have to enable the API. You can do this in the [HomeWizard Energy app](https://www.homewizard.nl/energy). Go to Settings > Meters > *Your meter*, and turn on *Local API*.
+
+To access the data from an Energy device, you have to enable the API. You can do this in the [HomeWizard Energy app](https://www.homewizard.nl/energy). Go to Settings > Meters > _Your meter_, and turn on _Local API_.
 
 ## Getting the data
 
-After [enabling the API](#enabling-the-api), you can try to read some data from your device. 
+After [enabling the API](#enabling-the-api), you can try to read some data from your device.
 
-- Find the IP address of your meter. You can find this in your router or do this programmatically with [mDNS](/docs/discovery.md).
-- In your internet browser, open `http://{IP_ADDRESS}/api/v1/data`.
-- If everything is set up correctly, you should now see some text. This is the most recent measurement formatted as [JSON](https://en.wikipedia.org/wiki/JSON>). You can use a tool such as [JSON Parser Online](http://json.parser.online.fr>) to get a structured version of the result.
+-   Find the IP address of your meter. You can find this in your router or do this programmatically with [mDNS](/docs/discovery.md).
+-   In your internet browser, open `http://{IP_ADDRESS}/api/v1/data`.
+-   If everything is set up correctly, you should now see some text. This is the most recent measurement formatted as [JSON](https://en.wikipedia.org/wiki/JSON>). You can use a tool such as [JSON Parser Online](http://json.parser.online.fr>) to get a structured version of the result.
 
 To understand each value, please read [endpoints](/docs/category/endpoints/).
 
+## Supported devices
 
-Supported devices
------------------
 The supported devices are listed below. The device type is used as identifier within the API.
 
-| Device                                         | Device type |
-|------------------------------------------------|-------------|
-| Wi-Fi P1 meter                                 | HWE-P1      |
-| Wi-Fi Energy Socket                            | HWE-SKT     |
-| Wi-Fi Watermeter (Only when powered over USB)  | HWE-WTR     |
-| Wi-Fi kWh Meter (1 phase)                      | SDM230-wifi |
-| Wi-Fi kWh Meter (3 phase)                      | SDM630-wifi |
+| Device                                        | Device type |
+| --------------------------------------------- | ----------- |
+| Wi-Fi P1 meter                                | HWE-P1      |
+| Wi-Fi Energy Socket                           | HWE-SKT     |
+| Wi-Fi Watermeter (Only when powered over USB) | HWE-WTR     |
+| Wi-Fi kWh Meter (1 phase)                     | SDM230-wifi |
+| Wi-Fi kWh Meter (3 phase)                     | SDM630-wifi |
 
-Data update frequency
----------------------
+## Data update frequency
 
 The API always returns the most recent data. The update frequency depends on the device and, in case of the HWE-P1, the smart meter that it is connected to. With a SMR 5.0 meter, this is every second for power and every 5 minutes for gas. If the smart meter version is lower than SMR 5.0, this is every 10 seconds for power and every 60 minutes for gas. You can find the SMR version of your smart meter on the smart meter itself or via the [Recent measurement endpoint](/docs/endpoints/api-v1-data.md). There is no limit to the time between each request on the local API, however, we advise not to retrieve data more often than every 500ms.

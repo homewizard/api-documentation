@@ -7,10 +7,11 @@ description: Get the most recent, raw telegram from the P1 meter.
 
 The `/api/v1/telegram` endpoint returns the most recent, valid telegram that was given by the P1 meter, therefore this endpoint is **only available for the HWE-P1**.
 
-- The telegram validated with its CRC, but not parsed in any form.
-- Note that this endpoint returns plain text instead of formatted JSON, even when an error occurs (see [Error handling](/docs/error-handling.md))
+-   The telegram validated with its CRC, but not parsed in any form.
+-   Note that this endpoint returns plain text instead of formatted JSON, even when an error occurs (see [Error handling](/docs/error-handling.md))
 
 ## Example
+
 ```
 <Request>
 GET http://{IP address}/api/v1/telegram
@@ -59,4 +60,3 @@ Content-Length: <length>
 0-1:24.2.1(210606140010W)(02569.646*m3)
 !1F28
 ```
-   

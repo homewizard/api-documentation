@@ -5,14 +5,13 @@ description: Identify the device by letting the LED blink.
 
 # Identify (`/api/v1/identify`)
 
-The `/api/v1/identify` endpoint can be used to let the user identify the device. The status light will blink for a few seconds after calling this endpoint. 
+The `/api/v1/identify` endpoint can be used to let the user identify the device. The status light will blink for a few seconds after calling this endpoint.
 
-This feature is currently only available for:
-    - **HWE-P1**
-    - **HWE-SKT**
+This feature is currently only available for: - **HWE-P1** - **HWE-SKT**
 
 ### Example
-```   
+
+```
 <Request>
 PUT http://{IP address}/api/v1/identify HTTP/1.1
 

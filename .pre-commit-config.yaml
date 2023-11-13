@@ -1,0 +1,24 @@
+---
+repos:
+    - repo: local
+      hooks:
+          - id: linter
+            name: Linter
+            pass_filenames: False
+            language: system
+            entry: npm run lint
+
+          - id: formatter
+            name: Formatter
+            pass_filenames: False
+            language: system
+            entry: npm run format
+
+    - repo: https://github.com/pre-commit/pre-commit-hooks
+      rev: v4.1.0
+      hooks:
+          - id: end-of-file-fixer
+          - id: check-json
+          - id: check-yaml
+          - id: check-added-large-files
+          - id: check-case-conflict

@@ -2,15 +2,17 @@
 sidebar_position: 4
 ---
 
-# Error handling 
+# Error handling
+
 When you perform an invalid request or something went wrong, the API will respond with an error message. You have to check if the HTTP status code returns `200 OK` before parsing the result.
 If you use an endpoint that returns JSON, you also will receive an object with some error information.
 
 ## Error codes
+
 The predefined error codes are as follows:
 
 | Code | Description                 |
-|------|-----------------------------|
+| ---- | --------------------------- |
 | 2    | BODY_CONTAINS_INVALID_JSON  |
 | 7    | INVALID_VALUE_FOR_PARAMETER |
 | 8    | PARAMETER_IS_NOT_MODIFIABLE |
@@ -21,6 +23,7 @@ The predefined error codes are as follows:
 ## Examples
 
 ### API was disabled
+
 ```
 <Request>
 GET http://{IP address}/api/v1/data
@@ -39,6 +42,7 @@ Content-Length: <length>
 ```
 
 ### Invalid JSON
+
 ```
 <Request>
 PUT http://{IP address}/api/v1/state HTTP/1.1
@@ -62,6 +66,7 @@ Content-Length: <length>
 ```
 
 ### Invalid value
+
 ```
 <Request>
 PUT http://{IP address}/api/v1/state HTTP/1.1
@@ -85,6 +90,7 @@ Content-Length: <length>
 ```
 
 ### Turn off socket when switch-lock is enabled
+
 ```
 <Request>
 PUT http://{IP address}/api/v1/state HTTP/1.1

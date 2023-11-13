@@ -8,14 +8,16 @@ description: Enable and disable cloud communication.
 The `/api/v1/system` endpoint can be used to configure system settings. Currently the only available option it to turn on and off all cloud communication.
 
 This feature is currently only available for:
-   - HWE-P1 
-   - HWE-SKT
-   - SDM230-wifi / SDM630-wifi
-     
+
+-   HWE-P1
+-   HWE-SKT
+-   SDM230-wifi / SDM630-wifi
+
 See [Firmware updates](/docs/versioning.md#firmware-updates) for more information.
 
 ## Enable cloud
-The HomeWizard Energy devices are designed to work with the HomeWizard Energy app and require communication with the HomeWizard cloud to make them function with the app. 
+
+The HomeWizard Energy devices are designed to work with the HomeWizard Energy app and require communication with the HomeWizard cloud to make them function with the app.
 
 The `Enable cloud` configuration feature can be used to turn off all communication with the HomeWizard cloud, making the device fully local. The device cannot communicate with the app, and the device won't receive any future firmware updates.
 
@@ -26,15 +28,16 @@ If you are implementing this, make sure your user understand what this actions d
 
 You can solve this, for example, by adding clear documentation and/or by showing a confirmation popup before calling this endpoint.
 :::
-   
-This endpoint accepts `GET` and `PUT` requests. 
 
-- With `GET` will send the actual system state.
-- With `PUT` allows to set the system state.
+This endpoint accepts `GET` and `PUT` requests.
+
+-   With `GET` will send the actual system state.
+-   With `PUT` allows to set the system state.
 
 ## Examples
 
 ### Get system state
+
 ```
 <Request>
 GET http://{IP address}/api/v1/system HTTP/1.1
@@ -48,9 +51,10 @@ Content-Length: <length>
    "cloud_enabled": true
 }
 ```
-   
+
 ### Set system state
-```   
+
+```
 <Request>
 PUT http://{IP address}/api/v1/system HTTP/1.1
 {
