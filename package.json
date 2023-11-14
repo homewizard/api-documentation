@@ -1,6 +1,6 @@
 {
     "name": "api-documentation",
-    "version": "0.0.0",
+    "version": "1.0.0",
     "private": true,
     "scripts": {
         "docusaurus": "docusaurus",
@@ -13,7 +13,8 @@
         "write-translations": "docusaurus write-translations",
         "write-heading-ids": "docusaurus write-heading-ids",
         "lint": "eslint . --ext js,ts,tsx --report-unused-disable-directives --max-warnings 0",
-        "format": "prettier . --write . --config ./.prettierrc"
+        "format": "prettier . --write . --config ./.prettierrc",
+        "format-check": "prettier . --check --config ./.prettierrc"
     },
     "dependencies": {
         "@docusaurus/core": "3.0.0",
