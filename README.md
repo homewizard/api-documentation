@@ -5,7 +5,7 @@ Visit [https://api-documentation.homewizard.com](api-documentation.homewizard.co
 
 ## Contributing
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator. Development is tested with Node 20.9.0
 
 ### Installation
 
