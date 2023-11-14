@@ -1,0 +1,46 @@
+---
+name: CI
+
+on:
+    pull_request:
+        types: [opened, reopened, synchronize]
+
+jobs:
+    lint-eslint:
+        name: eslint
+        runs-on: ubuntu-22.04
+
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 20.9.0
+                  cache: 'npm'
+            - run: npm ci
+            - run: npm run lint
+
+    format-prettier:
+        name: prettier
+        runs-on: ubuntu-22.04
+
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 20.9.0
+                  cache: 'npm'
+            - run: npm ci
+            - run: npm run format-check
+
+    dryrun-build:
+        name: build-dryrun
+        runs-on: ubuntu-22.04
+
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 20.9.0
+                  cache: 'npm'
+            - run: npm ci
+            - run: npm run build
