@@ -1,17 +1,22 @@
-# Website
+# HomeWizard Local API Documentation
+
+The HomeWizard Energy devices are equipped with a local API. This API can be used to read out the data from the device and to control the device. This documentation describes the API and how to use it.
+Vist [https://api-documentation.homewizard.com](api-documentation.homewizard.com) to learn everything about the HomeWizard Energy API.
+
+## Contributing
 
 This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 
 ### Installation
 
 ```
-$ yarn
+$ npm install
 ```
 
 ### Local Development
 
 ```
-$ yarn start
+$ npm start
 ```
 
 This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
@@ -19,23 +24,11 @@ This command starts a local development server and opens up a browser window. Mo
 ### Build
 
 ```
-$ yarn build
+$ npm build
 ```
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
-### Deployment
+### Sumbit changes
 
-Using SSH:
-
-```
-$ USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+You are always free to open issues and/or pull requests to improve this documentation.
