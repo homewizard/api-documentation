@@ -14,6 +14,12 @@ repos:
             language: system
             entry: npm run format
 
+          - id: spell-checker
+            name: Spell Checker
+            pass_filenames: False
+            language: system
+            entry: npm run spell-checker
+
     - repo: https://github.com/pre-commit/pre-commit-hooks
       rev: v4.1.0
       hooks:

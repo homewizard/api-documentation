@@ -20,7 +20,7 @@ The device can be found on the `_hwenergy._tcp` domain.
    14:51:03.566  Add      3   7 local.  _hwenergy._tcp.  energysocket-DDEEFF
    14:51:03.566  Add      3   7 local.  _hwenergy._tcp.  energysocket-001122
    14:51:03.566  Add      3   7 local.  _hwenergy._tcp.  p1meter-334455
-   14:51:03.566  Add      3   7 local.  _hwenergy._tcp.  energymeter-667788
+   14:51:03.566  Add      3   7 local.  _hwenergy._tcp.  kwhmeter-667788
    14:51:03.566  Add      3   7 local.  _hwenergy._tcp.  watermeter-ABCDEF
 ```
 

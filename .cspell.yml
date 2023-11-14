@@ -1,0 +1,19 @@
+version: 0.2
+language: en
+words:
+    - Vacatures
+    - Noordwijk
+    - Watermeter
+    - montly # Known typo
+    - hwenergy
+    - energysocket
+    - watermeter
+    - kwhmeter
+    - Zeroconf # Name
+    - DSMR # Name
+    - capaciteitstarief # Belgian word
+    - ISKRA # Name
+    - AABBCC # Example
+    - AABBCCDDEEFF # Example
+    - DDEEFF # Example
+    - YYMMDDhhmmss # Example
