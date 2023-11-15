@@ -37,8 +37,8 @@ const config = {
             /** @type {import('@docusaurus/preset-classic').Options} */
             ({
                 docs: {
-                    sidebarPath: './sidebars.js'
-                    // editUrl: 'https://github.com/homewizard/homewizard-api-documentation/'
+                    sidebarPath: './sidebars.js',
+                    editUrl: 'https://github.com/homewizard/api-documentation/'
                 },
                 theme: {
                     customCss: './src/css/custom.css'
@@ -67,7 +67,7 @@ const config = {
                         href: 'https://www.homewizard.com',
                         label: 'HomeWizard',
                         position: 'right'
-                    }
+                    },
                 ]
             },
             footer: {
@@ -83,6 +83,10 @@ const config = {
                             {
                                 label: 'Changelog',
                                 to: '/docs/changelog'
+                            },
+                            {
+                                label: 'Contribute',
+                                href: 'https://github.com/homewizard/api-documentation/'
                             }
                         ]
                     },
