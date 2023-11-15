@@ -1,8 +1,9 @@
 version: 0.2
 language: en
 words:
-    - Vacatures
-    - Noordwijk
+    - HomeWizard # Brand
+    - Vacatures # Foreign
+    - Noordwijk # Foreign
     - Watermeter
     - montly # Known typo
     - hwenergy
@@ -11,7 +12,7 @@ words:
     - kwhmeter
     - Zeroconf # Name
     - DSMR # Name
-    - capaciteitstarief # Belgian word
+    - capaciteitstarief # Foreign
     - ISKRA # Name
     - AABBCC # Example
     - AABBCCDDEEFF # Example
