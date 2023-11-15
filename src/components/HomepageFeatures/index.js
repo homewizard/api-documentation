@@ -13,7 +13,7 @@ const FeatureList = [
         description: <>The API is easy to use. You can use it with any programming language that supports HTTP requests.</>
     },
     {
-        title: 'Integration',
+        title: 'Intergratable',
         description: (
             <>
                 The API allows to integrate with other smart home solutions, like <Link to='https://www.home-assistant.io/integrations/homewizard/'>Home Assistant</Link>

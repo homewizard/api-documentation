@@ -3,11 +3,25 @@
  * and scoped locally.
  */
 
+h1 {
+    font-family: Poppins, sans-serif !important;
+}
+
 .heroBanner {
     padding: 4rem 0;
-    text-align: center;
+    text-align: left;
     position: relative;
     overflow: hidden;
+}
+
+.heroBanner {
+    background: #e6f5e1;
+    color: #3e3b3b;
+}
+
+[data-theme='dark'] .heroBanner {
+    background: rgb(184, 219, 173);
+    color: #3e3b3b;
 }
 
 @media screen and (max-width: 996px) {
@@ -19,5 +33,10 @@
 .buttons {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
+}
+
+.buttons a {
+    background-color: #3e3b3b;
+    color: #fff;
 }
