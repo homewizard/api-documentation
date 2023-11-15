@@ -18,7 +18,7 @@ To access the data from an Energy device, you have to enable the API. You can do
 
 After [enabling the API](#enabling-the-api), you can try to read some data from your device.
 
--   Find the IP address of your meter. You can find this in your router or do this programmatically with [mDNS](/docs/discovery.md).
+-   Find the IP address of your meter. You can find this in your router or do this programmatically with [mDNS](/docs/discovery).
 -   In your internet browser, open `http://{IP_ADDRESS}/api/v1/data`.
 -   If everything is set up correctly, you should now see some text. This is the most recent measurement formatted as <Link to="https://en.wikipedia.org/wiki/JSON">JSON</Link>. You can use a tool such as <Link to="http://json.parser.online.fr">JSON Parser Online</Link> to get a structured version of the result.
 
@@ -38,4 +38,4 @@ The supported devices are listed below. The device type is used as identifier wi
 
 ## Data update frequency
 
-The API always returns the most recent data. The update frequency depends on the device and, in case of the HWE-P1, the smart meter that it is connected to. With a SMR 5.0 meter, this is every second for power and every 5 minutes for gas. If the smart meter version is lower than SMR 5.0, this is every 10 seconds for power and every 60 minutes for gas. You can find the SMR version of your smart meter on the smart meter itself or via the [Recent measurement endpoint](/docs/endpoints/api-v1-data.md). There is no limit to the time between each request on the local API, however, we advise not to retrieve data more often than every 500ms.
+The API always returns the most recent data. The update frequency depends on the device and, in case of the HWE-P1, the smart meter that it is connected to. With a SMR 5.0 meter, this is every second for power and every 5 minutes for gas. If the smart meter version is lower than SMR 5.0, this is every 10 seconds for power and every 60 minutes for gas. You can find the SMR version of your smart meter on the smart meter itself or via the [Recent measurement endpoint](/docs/endpoints/api-v1-data). There is no limit to the time between each request on the local API, however, we advise not to retrieve data more often than every 500ms.

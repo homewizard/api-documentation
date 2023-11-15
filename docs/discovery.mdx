@@ -40,10 +40,10 @@ The hostname is formatted as `<product-name>-<last 6 characters of serial>`, so 
 
 A discovery response contains some extra data that can be used to improve the setup in your application.
 
-| Data         | Description                                                                                                                                                   |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| api_enabled  | '0' or '1', reflects if the API is enabled (1 means enabled)                                                                                                  |
-| path         | Fixed to '/api/v1'. Can be used to validate that your application supports this device and API version                                                        |
-| serial       | Serial, also the MAC address. Consists of 12 hexadecimal values                                                                                               |
-| product_name | A fixed, user-friendly name. This name is not the same that is set by the user in the app.                                                                    |
-| product_code | The product type, see [Supported devices](/docs/getting-started.md#supported-devices). Make sure your application can handle other values for future products |
+| Data         | Description                                                                                                                                                |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| api_enabled  | '0' or '1', reflects if the API is enabled (1 means enabled)                                                                                               |
+| path         | Fixed to '/api/v1'. Can be used to validate that your application supports this device and API version                                                     |
+| serial       | Serial, also the MAC address. Consists of 12 hexadecimal values                                                                                            |
+| product_name | A fixed, user-friendly name. This name is not the same that is set by the user in the app.                                                                 |
+| product_code | The product type, see [Supported devices](/docs/getting-started#supported-devices). Make sure your application can handle other values for future products |
