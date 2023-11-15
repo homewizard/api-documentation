@@ -12,14 +12,9 @@ const config = {
     favicon: 'img/favicon.ico',
 
     // Set the production url of your site here
-    url: 'https://documentation.homewizard.com',
+    url: 'https://api-documentation.homewizard.com',
     baseUrl: '/',
-
-    // GitHub pages deployment config.
-    // If you aren't using GitHub pages, you don't need these.
-    organizationName: 'homewizard', // Usually your GitHub org/user name.
-    projectName: 'energy-api-documentation', // Usually your repo name.
-
+    
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
 
