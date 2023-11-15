@@ -1,0 +1,49 @@
+---
+sidebar_position: 5
+---
+
+import Link from '@docusaurus/Link'
+
+# Discovery
+
+The energy devices can be automatically discovered on your network, the method used for this is <Link to="https://www.ionos.com/digitalguide/server/know-how/multicast-dns/">Multicast DNS</Link> (also called `mDNS`, `Zeroconf` or `Bonjour`). Your application can use this technology to discover the device(s) without the user having to enter the IP address.
+
+## Example scan
+
+The device can be found on the `_hwenergy._tcp` domain.
+
+```
+   $ dns-sd -B _hwenergy._tcp .
+   Browsing for _hwenergy._tcp
+   DATE: ---Wed 13 Oct 2021---
+   14:51:03.565  ...STARTING...
+   Timestamp     A/R  Flags  if Domain  Service Type     Instance Name
+   14:51:03.566  Add      3   7 local.  _hwenergy._tcp.  energysocket-AABBCC
+   14:51:03.566  Add      3   7 local.  _hwenergy._tcp.  energysocket-DDEEFF
+   14:51:03.566  Add      3   7 local.  _hwenergy._tcp.  energysocket-001122
+   14:51:03.566  Add      3   7 local.  _hwenergy._tcp.  p1meter-334455
+   14:51:03.566  Add      3   7 local.  _hwenergy._tcp.  kwhmeter-667788
+   14:51:03.566  Add      3   7 local.  _hwenergy._tcp.  watermeter-ABCDEF
+```
+
+The hostname is formatted as `<product-name>-<last 6 characters of serial>`, so devices with serial `AABBCCDDEEFF` the hostname is as following:
+
+| Device                   | Example hostname    |
+| ------------------------ | ------------------- |
+| P1 meter                 | p1meter-DDEEFF      |
+| Energy Socket            | energysocket-DDEEFF |
+| Watermeter               | watermeter-DDEEFF   |
+| kWh meter (single phase) | kwhmeter-DDEEFF     |
+| kWh meter (three phase)  | kwhmeter-DDEEFF     |
+
+## TXT records
+
+A discovery response contains some extra data that can be used to improve the setup in your application.
+
+| Data         | Description                                                                                                                                                |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| api_enabled  | '0' or '1', reflects if the API is enabled (1 means enabled)                                                                                               |
+| path         | Fixed to '/api/v1'. Can be used to validate that your application supports this device and API version                                                     |
+| serial       | Serial, also the MAC address. Consists of 12 hexadecimal values                                                                                            |
+| product_name | A fixed, user-friendly name. This name is not the same that is set by the user in the app.                                                                 |
+| product_code | The product type, see [Supported devices](/docs/getting-started#supported-devices). Make sure your application can handle other values for future products |

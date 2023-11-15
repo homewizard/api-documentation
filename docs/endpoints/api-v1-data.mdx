@@ -3,6 +3,8 @@ sidebar_position: 2
 description: Get the most recent measurement from the device.
 ---
 
+import Link from '@docusaurus/Link'
+
 # Recent measurement (`/api/v1/data`)
 
 The `/api/v1/data` endpoint allows you to get the most recent measurement from the device. All data points are "optional"; The API does not send data points that are `null` or not available at all. This mostly depends on the connected smart meter. Make sure your application can handle this.
@@ -70,7 +72,7 @@ The original data points `total_gas_m3`, `gas_timestamp` and `unique_gas_id` use
 
 ## Monthly power peak
 
-Belgium users are started to get charged for the peak usage per month (see [capaciteitstarief](https://www.fluvius.be/nl/thema/factuur-en-tarieven/capaciteitstarief)). The data points `active_power_average_w`, `montly_power_peak_w` and `montly_power_peak_timestamp` can be used to track the maximum demand.
+Belgium users are started to get charged for the peak usage per month (see <Link to="https://www.fluvius.be/nl/thema/factuur-en-tarieven/capaciteitstarief">capaciteitstarief</Link>). The data points `active_power_average_w`, `montly_power_peak_w` and `montly_power_peak_timestamp` can be used to track the maximum demand.
 
 ## HWE-P1 (1-phase, no gas)
 

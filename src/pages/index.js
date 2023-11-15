@@ -15,7 +15,7 @@ function HomepageHeader() {
                 </Heading>
                 <p className='hero__subtitle'>Local API Documentation</p>
                 <div className={styles.buttons}>
-                    <Link className='button button--primary button--lg' to='/docs/intro'>
+                    <Link className='button button--primary button--lg' to='/docs/introduction'>
                         Get Started
                     </Link>
                 </div>
