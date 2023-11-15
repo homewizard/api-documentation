@@ -1,3 +1,4 @@
+import Link from '@docusaurus/Link'
 import clsx from 'clsx'
 import Heading from '@theme/Heading'
 import styles from './styles.module.css'
@@ -15,7 +16,7 @@ const FeatureList = [
         title: 'Integration',
         description: (
             <>
-                The API allows to integrate with other smart home solutions, like <a href='https://www.home-assistant.io/integrations/homewizard/'>Home Assistant</a>
+                The API allows to integrate with other smart home solutions, like <Link to='https://www.home-assistant.io/integrations/homewizard/'>Home Assistant</Link>
             </>
         )
     }
