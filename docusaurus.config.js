@@ -67,7 +67,7 @@ const config = {
                         href: 'https://www.homewizard.com',
                         label: 'HomeWizard',
                         position: 'right'
-                    },
+                    }
                 ]
             },
             footer: {
