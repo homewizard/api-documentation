@@ -12,13 +12,8 @@ const config = {
     favicon: 'img/favicon.ico',
 
     // Set the production url of your site here
-    url: 'https://documentation.homewizard.com',
+    url: 'https://api-documentation.homewizard.com',
     baseUrl: '/',
-
-    // GitHub pages deployment config.
-    // If you aren't using GitHub pages, you don't need these.
-    organizationName: 'homewizard', // Usually your GitHub org/user name.
-    projectName: 'energy-api-documentation', // Usually your repo name.
 
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
@@ -37,8 +32,8 @@ const config = {
             /** @type {import('@docusaurus/preset-classic').Options} */
             ({
                 docs: {
-                    sidebarPath: './sidebars.js'
-                    // editUrl: 'https://github.com/homewizard/homewizard-api-documentation/'
+                    sidebarPath: './sidebars.js',
+                    editUrl: 'https://github.com/homewizard/api-documentation/edit/main'
                 },
                 theme: {
                     customCss: './src/css/custom.css'
@@ -83,6 +78,10 @@ const config = {
                             {
                                 label: 'Changelog',
                                 to: '/docs/changelog'
+                            },
+                            {
+                                label: 'Contribute',
+                                href: 'https://github.com/homewizard/api-documentation/'
                             }
                         ]
                     },
