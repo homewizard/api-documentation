@@ -33,7 +33,7 @@ const config = {
             ({
                 docs: {
                     sidebarPath: './sidebars.js',
-                    editUrl: 'https://github.com/homewizard/api-documentation/'
+                    editUrl: 'https://github.com/homewizard/api-documentation/edit/main'
                 },
                 theme: {
                     customCss: './src/css/custom.css'
