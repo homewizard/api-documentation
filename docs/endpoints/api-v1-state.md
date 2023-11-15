@@ -95,7 +95,7 @@ You can configure multiple parameters at the same time. In this example.
 -   Brightness is set to 127 (50%).
 
 The order of a combined request does not matter: If `switch-lock` was on, the socket will still turn off.
-The complete state has to make sense; It is not possible to set `power_on` to false and `switch_lock` to true. See (see :ref:`Error handling`) for more details.
+The complete state has to make sense; It is not possible to set `power_on` to false and `switch_lock` to true. See (see [Error handling](/docs/error-handling.md)) for more details.
 
 ```
 <Request>
