@@ -1,17 +1,21 @@
-# HomeWizard Local API Documentation
+# HomeWizard Energy - Local API Documentation
 
 The HomeWizard Energy devices are equipped with a local API. This API can be used to read out the data from the device and to control the device. This documentation describes the API and how to use it.
-Visit [https://api-documentation.homewizard.com](api-documentation.homewizard.com) to learn everything about the HomeWizard Energy API.
+
+> Visit [api-documentation.homewizard.com](https://api-documentation.homewizard.com) to learn everything about the HomeWizard Energy API.
 
 ## Contributing
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator. Development is tested with Node 20.9.0
+This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator. This project is developed and tested with **Node 20.9.0**
 
 ### Installation
 
 ```
 $ npm install
+$ pre-commit install
 ```
+
+While not required, we recommend you to check commits using [pre-commit](https://pre-commit.com). This is a tool to make sure all required checks pass before committing your changes.
 
 ### Local Development
 
