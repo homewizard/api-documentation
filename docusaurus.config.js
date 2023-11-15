@@ -14,7 +14,7 @@ const config = {
     // Set the production url of your site here
     url: 'https://api-documentation.homewizard.com',
     baseUrl: '/',
-    
+
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
 
