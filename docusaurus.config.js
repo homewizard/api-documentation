@@ -53,14 +53,8 @@ const config = {
                 },
                 items: [
                     {
-                        type: 'docSidebar',
-                        sidebarId: 'sidebar',
-                        position: 'left',
-                        label: 'Get Started'
-                    },
-                    {
                         href: 'https://www.homewizard.com',
-                        label: 'HomeWizard',
+                        label: 'Go to HomeWizard',
                         position: 'right'
                     }
                 ]
