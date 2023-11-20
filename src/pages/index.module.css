@@ -37,6 +37,9 @@ h1 {
 }
 
 .buttons a {
-    background-color: #3e3b3b;
+    background-color: #111828;
     color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-family: roboto, sans-serif;
 }
