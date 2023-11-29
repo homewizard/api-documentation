@@ -59,6 +59,13 @@ const config = {
                     }
                 ]
             },
+            algolia: {
+                appId: '7BN6NHDFB3',
+                apiKey: '627ac09960f78327bfece9bf65f54d52',
+                indexName: 'api-documentation-homewizard',
+                insights: true,
+                contextualSearch: true
+            },
             footer: {
                 style: 'dark',
                 links: [
