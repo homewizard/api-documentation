@@ -2,6 +2,7 @@
 
 The HomeWizard Energy devices are equipped with a local API. This API can be used to read out the data from the device and to control the device. This documentation describes the API and how to use it.
 
+> [!TIP]
 > Visit [api-documentation.homewizard.com](https://api-documentation.homewizard.com) to learn everything about the HomeWizard Energy API.
 
 ## Contributing
