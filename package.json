@@ -31,7 +31,7 @@
         "@docusaurus/types": "3.1.0",
         "@typescript-eslint/eslint-plugin": "6.0.0",
         "@typescript-eslint/parser": "6.11.0",
-        "cspell": "8.0.0",
+        "cspell": "8.3.2",
         "eslint": "8.53.0",
         "eslint-plugin-react-hooks": "4.6.0",
         "eslint-plugin-react-refresh": "0.4.4",
