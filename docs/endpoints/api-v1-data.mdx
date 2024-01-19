@@ -199,20 +199,55 @@ Content-Length: <length>
 
 ## kWh Meters (SDM230-wifi and SDM630-wifi)
 
+:::info New firmware version
+Firmware version 4.00 is currently in beta and will be available soon for everyone. You meter will automatically update to this version when it is available.
+:::
+
 ### Data points
 
-| Data                      | Type   | Available for            | Description                                         |
-| ------------------------- | ------ | ------------------------ | --------------------------------------------------- |
-| wifi_ssid                 | String | SDM230-wifi, SDM630-wifi | The Wi-Fi network that the meter is connected to    |
-| wifi_strength             | Number | SDM230-wifi, SDM630-wifi | The strength of the Wi-Fi signal in %               |
-| total_power_import_t1_kwh | Number | SDM230-wifi, SDM630-wifi | The power usage meter reading for tariff 1 in kWh   |
-| total_power_export_t1_kwh | Number | SDM230-wifi, SDM630-wifi | The power feed-in meter reading for tariff 1 in kWh |
-| active_power_w            | Number | SDM230-wifi, SDM630-wifi | The total active usage in watt                      |
-| active_power_l1_w         | Number | SDM230-wifi, SDM630-wifi | The active usage for phase 1 in watt                |
-| active_power_l2_w         | Number | SDM630-wifi              | The active usage for phase 2 in watt                |
-| active_power_l3_w         | Number | SDM630-wifi              | The active usage for phase 3 in watt                |
+| Data                         | Type   | Available for            | Description                                                                        | Required firmware version |
+| ---------------------------- | ------ | ------------------------ | ---------------------------------------------------------------------------------- | ------------------------- |
+| wifi_ssid                    | String | SDM230-wifi, SDM630-wifi | The Wi-Fi network that the meter is connected to                                   | 3.06 or later             |
+| wifi_strength                | Number | SDM230-wifi, SDM630-wifi | The strength of the Wi-Fi signal in %                                              | 3.06 or later             |
+| total_power_import_kwh       | Number | SDM230-wifi, SDM630-wifi | The power usage meter reading in kWh                                               | 4.00 or later             |
+| total_power_import_t1_kwh    | Number | SDM230-wifi, SDM630-wifi | Same value as `total_power_import_t1_kwh`, kept for backwards compatibility        | 3.06 or later             |
+| total_power_export_kwh       | Number | SDM230-wifi, SDM630-wifi | The power feed-in meter reading in kWh                                             | 4.00 or later             |
+| total_power_export_t1_kwh    | Number | SDM230-wifi, SDM630-wifi | Same value as `total_power_export_kwh`, kept for backwards compatibility           | 3.06 or later             |
+| active_power_w               | Number | SDM230-wifi, SDM630-wifi | The total active usage in watt                                                     | 3.06 or later             |
+| active_power_l1_w            | Number | SDM230-wifi, SDM630-wifi | The active usage for phase 1 in watt, same as `active_power_w` for SDM230-wifi     | 3.06 or later             |
+| active_power_l2_w            | Number | SDM630-wifi              | The active usage for phase 2 in watt                                               | 3.06 or later             |
+| active_power_l3_w            | Number | SDM630-wifi              | The active usage for phase 3 in watt                                               | 3.06 or later             |
+| active_voltage_v             | Number | SDM230-wifi              | The active voltage in volts                                                        | 4.00 or later             |
+| active_voltage_l1_v          | Number | SDM630-wifi              | The active voltage for phase 1 in volts                                            | 4.00 or later             |
+| active_voltage_l2_v          | Number | SDM630-wifi              | The active voltage for phase 2 in volts                                            | 4.00 or later             |
+| active_voltage_l3_v          | Number | SDM630-wifi              | The active voltage for phase 3 in volts                                            | 4.00 or later             |
+| active_current_a             | Number | SDM230-wifi, SDM630-wifi | The active current in amperes, the sum of all phases for SDM630-wifi               | 4.00 or later             |
+| active_current_l1_a          | Number | SDM630-wifi              | The active current for phase 1 in amperes                                          | 4.00 or later             |
+| active_current_l2_a          | Number | SDM630-wifi              | The active current for phase 2 in amperes                                          | 4.00 or later             |
+| active_current_l3_a          | Number | SDM630-wifi              | The active current for phase 3 in amperes                                          | 4.00 or later             |
+| active_apparent_current_a    | Number | SDM230-wifi, SDM630-wifi | The apparent current in amperes, the sum of all phases for SDM630-wifi             | 4.00 or later             |
+| active_apparent_current_l1_a | Number | SDM630-wifi              | The apparent current for phase 1 in amperes                                        | 4.00 or later             |
+| active_apparent_current_l2_a | Number | SDM630-wifi              | The apparent current for phase 2 in amperes                                        | 4.00 or later             |
+| active_apparent_current_l3_a | Number | SDM630-wifi              | The apparent current for phase 3 in amperes                                        | 4.00 or later             |
+| active_reactive_current_a    | Number | SDM230-wifi, SDM630-wifi | The reactive current in amperes, the sum of all phases for SDM630-wifi             | 4.00 or later             |
+| active_reactive_current_l1_a | Number | SDM630-wifi              | The reactive current for phase 1 in amperes                                        | 4.00 or later             |
+| active_reactive_current_l2_a | Number | SDM630-wifi              | The reactive current for phase 2 in amperes                                        | 4.00 or later             |
+| active_reactive_current_l3_a | Number | SDM630-wifi              | The reactive current for phase 3 in amperes                                        | 4.00 or later             |
+| active_apparent_power_va     | Number | SDM230-wifi, SDM630-wifi | The apparent power in volt-amperes, the sum of all phases for SDM630-wifi          | 4.00 or later             |
+| active_apparent_power_l1_va  | Number | SDM630-wifi              | The apparent power for phase 1 in volt-amperes                                     | 4.00 or later             |
+| active_apparent_power_l2_va  | Number | SDM630-wifi              | The apparent power for phase 2 in volt-amperes                                     | 4.00 or later             |
+| active_apparent_power_l3_va  | Number | SDM630-wifi              | The apparent power for phase 3 in volt-amperes                                     | 4.00 or later             |
+| active_reactive_power_var    | Number | SDM230-wifi, SDM630-wifi | The reactive power in volt-amperes reactive, the sum of all phases for SDM630-wifi | 4.00 or later             |
+| active_reactive_power_l1_var | Number | SDM630-wifi              | The reactive power for phase 1 in volt-amperes reactive                            | 4.00 or later             |
+| active_reactive_power_l2_var | Number | SDM630-wifi              | The reactive power for phase 2 in volt-amperes reactive                            | 4.00 or later             |
+| active_reactive_power_l3_var | Number | SDM630-wifi              | The reactive power for phase 3 in volt-amperes reactive                            | 4.00 or later             |
+| active_power_factor          | Number | SDM230-wifi              | The power factor                                                                   | 4.00 or later             |
+| active_power_factor_l1       | Number | SDM630-wifi              | The power factor for phase 1                                                       | 4.00 or later             |
+| active_power_factor_l2       | Number | SDM630-wifi              | The power factor for phase 2                                                       | 4.00 or later             |
+| active_power_factor_l3       | Number | SDM630-wifi              | The power factor for phase 3                                                       | 4.00 or later             |
+| active_frequency_hz          | Number | SDM230-wifi, SDM630-wifi | The frequency in hertz                                                             | 4.00 or later             |
 
-### Example: SDM230-wifi
+### Example: SDM230-wifi (firmware version 3.06)
 
 ```
 <Request>
@@ -233,7 +268,7 @@ Content-Length: <length>
 }
 ```
 
-### Example: SDM630-wifi
+### Example: SDM630-wifi (firmware version 3.06)
 
 ```
 <Request>
@@ -253,6 +288,89 @@ Content-Length: <length>
    "active_power_l1_w": -676,
    "active_power_l2_w": 133,
    "active_power_l3_w": 0
+}
+```
+
+### Example: SDM230-wifi (firmware version 4.00)
+
+```
+<Request>
+GET http://{IP address}/api/v1/data HTTP/1.1
+
+<Response>
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: <length>
+
+{
+    "wifi_ssid": "My Wi-Fi",
+    "wifi_strength": 74,
+    "total_power_import_kwh": 122.376,
+    "total_power_import_t1_kwh": 122.376,
+    "total_power_export_kwh": 579.813,
+    "total_power_export_t1_kwh": 579.813,
+    "active_power_w": -45.252,
+    "active_power_l1_w": -45.252,
+    "active_voltage_v": 228.472,
+    "active_current_a": 0.273,
+    "active_apparent_current_a": 0.447,
+    "active_reactive_current_a": 0.354,
+    "active_apparent_power_va": 74.052,
+    "active_reactive_power_var": -58.612,
+    "active_power_factor": 0.611,
+    "active_frequency_hz": 50
+}
+```
+
+### Example: SDM630-wifi (firmware version 4.00)
+
+```
+<Request>
+GET http://{IP address}/api/v1/data HTTP/1.1
+
+<Response>
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: <length>
+
+{
+    "wifi_ssid": "HW WiFi",
+    "wifi_strength": 84,
+    "total_power_import_kwh": 2940.101,
+    "total_power_import_t1_kwh": 2940.101,
+    "total_power_export_kwh": 0,
+    "total_power_export_t1_kwh": 0,
+    "active_power_w": 7100.278,
+    "active_power_l1_w": 0,
+    "active_power_l2_w": 3547.015,
+    "active_power_l3_w": 3553.263,
+    "active_voltage_l1_v": 230.751,
+    "active_voltage_l2_v": 228.391,
+    "active_voltage_l3_v": 229.612,
+    "active_current_a": 30.999,
+    "active_current_l1_a": 0,
+    "active_current_l2_a": 15.521,
+    "active_current_l3_a": 15.477,
+    "active_apparent_current_a": 31.058,
+    "active_apparent_current_l1_a": 0,
+    "active_apparent_current_l2_a": 15.539,
+    "active_apparent_current_l3_a": 15.519,
+    "active_reactive_current_a": 1.872,
+    "active_reactive_current_l1_a": 0,
+    "active_reactive_current_l2_a": 0.73,
+    "active_reactive_current_l3_a": 1.143,
+    "active_apparent_power_va": 7112.293,
+    "active_apparent_power_l1_va": 0,
+    "active_apparent_power_l2_va": 3548.879,
+    "active_apparent_power_l3_va": 3563.414,
+    "active_reactive_power_var": -429.025,
+    "active_reactive_power_l1_var": 0,
+    "active_reactive_power_l2_var": -166.675,
+    "active_reactive_power_l3_var": -262.35,
+    "active_power_factor_l1": 1,
+    "active_power_factor_l2": 0.999,
+    "active_power_factor_l3": 0.997,
+    "active_frequency_hz": 49.926
 }
 ```
 
