@@ -15,6 +15,10 @@ const config = {
     url: 'https://api-documentation.homewizard.com',
     baseUrl: '/',
 
+    metadata: [
+      {name: 'keywords', content: 'HomeWizard, Energy, API, P1 Meter, kWh Meter, Water Meter, Energy Socket, REST'},
+    ],
+
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
 
