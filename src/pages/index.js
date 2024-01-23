@@ -26,7 +26,7 @@ function HomepageHeader() {
 
 export default function Home() {
     return (
-        <Layout title={`HomeWizard Energy API Documentation`} description='Learn how to use the HomeWizard Energy Local API.
+        <Layout title={`HomeWizard Energy API Documentation`} description='Learn how to use the HomeWizard Energy Local API.'>
             <HomepageHeader />
             <main>
                 <HomepageFeatures />
