@@ -197,57 +197,62 @@ Content-Length: <length>
 }
 ```
 
-## kWh Meters (SDM230-wifi and SDM630-wifi)
+## kWh Meters (1 and 3 phase)
 
 :::info New firmware version
 Firmware version 4.00 is currently in beta and will be available soon for everyone. You meter will automatically update to this version when it is available.
 :::
 
+Each type of meter is available in two versions. The API and functionality is the same for both types.
+
+-   **1-phase**: HWE-KWH1 and SDM230-wifi
+-   **3-phase**: HWE-KWH3 and SDM630-wifi
+
 ### Data points
 
-| Data                         | Type   | Available for            | Description                                                                        | Required firmware version |
-| ---------------------------- | ------ | ------------------------ | ---------------------------------------------------------------------------------- | ------------------------- |
-| wifi_ssid                    | String | SDM230-wifi, SDM630-wifi | The Wi-Fi network that the meter is connected to                                   | 3.06 or later             |
-| wifi_strength                | Number | SDM230-wifi, SDM630-wifi | The strength of the Wi-Fi signal in %                                              | 3.06 or later             |
-| total_power_import_kwh       | Number | SDM230-wifi, SDM630-wifi | The power usage meter reading in kWh                                               | 4.00 or later             |
-| total_power_import_t1_kwh    | Number | SDM230-wifi, SDM630-wifi | Same value as `total_power_import_t1_kwh`, kept for backwards compatibility        | 3.06 or later             |
-| total_power_export_kwh       | Number | SDM230-wifi, SDM630-wifi | The power feed-in meter reading in kWh                                             | 4.00 or later             |
-| total_power_export_t1_kwh    | Number | SDM230-wifi, SDM630-wifi | Same value as `total_power_export_kwh`, kept for backwards compatibility           | 3.06 or later             |
-| active_power_w               | Number | SDM230-wifi, SDM630-wifi | The total active usage in watt                                                     | 3.06 or later             |
-| active_power_l1_w            | Number | SDM230-wifi, SDM630-wifi | The active usage for phase 1 in watt, same as `active_power_w` for SDM230-wifi     | 3.06 or later             |
-| active_power_l2_w            | Number | SDM630-wifi              | The active usage for phase 2 in watt                                               | 3.06 or later             |
-| active_power_l3_w            | Number | SDM630-wifi              | The active usage for phase 3 in watt                                               | 3.06 or later             |
-| active_voltage_v             | Number | SDM230-wifi              | The active voltage in volts                                                        | 4.00 or later             |
-| active_voltage_l1_v          | Number | SDM630-wifi              | The active voltage for phase 1 in volts                                            | 4.00 or later             |
-| active_voltage_l2_v          | Number | SDM630-wifi              | The active voltage for phase 2 in volts                                            | 4.00 or later             |
-| active_voltage_l3_v          | Number | SDM630-wifi              | The active voltage for phase 3 in volts                                            | 4.00 or later             |
-| active_current_a             | Number | SDM230-wifi, SDM630-wifi | The active current in amperes, the sum of all phases for SDM630-wifi               | 4.00 or later             |
-| active_current_l1_a          | Number | SDM630-wifi              | The active current for phase 1 in amperes                                          | 4.00 or later             |
-| active_current_l2_a          | Number | SDM630-wifi              | The active current for phase 2 in amperes                                          | 4.00 or later             |
-| active_current_l3_a          | Number | SDM630-wifi              | The active current for phase 3 in amperes                                          | 4.00 or later             |
-| active_apparent_current_a    | Number | SDM230-wifi, SDM630-wifi | The apparent current in amperes, the sum of all phases for SDM630-wifi             | 4.00 or later             |
-| active_apparent_current_l1_a | Number | SDM630-wifi              | The apparent current for phase 1 in amperes                                        | 4.00 or later             |
-| active_apparent_current_l2_a | Number | SDM630-wifi              | The apparent current for phase 2 in amperes                                        | 4.00 or later             |
-| active_apparent_current_l3_a | Number | SDM630-wifi              | The apparent current for phase 3 in amperes                                        | 4.00 or later             |
-| active_reactive_current_a    | Number | SDM230-wifi, SDM630-wifi | The reactive current in amperes, the sum of all phases for SDM630-wifi             | 4.00 or later             |
-| active_reactive_current_l1_a | Number | SDM630-wifi              | The reactive current for phase 1 in amperes                                        | 4.00 or later             |
-| active_reactive_current_l2_a | Number | SDM630-wifi              | The reactive current for phase 2 in amperes                                        | 4.00 or later             |
-| active_reactive_current_l3_a | Number | SDM630-wifi              | The reactive current for phase 3 in amperes                                        | 4.00 or later             |
-| active_apparent_power_va     | Number | SDM230-wifi, SDM630-wifi | The apparent power in volt-amperes, the sum of all phases for SDM630-wifi          | 4.00 or later             |
-| active_apparent_power_l1_va  | Number | SDM630-wifi              | The apparent power for phase 1 in volt-amperes                                     | 4.00 or later             |
-| active_apparent_power_l2_va  | Number | SDM630-wifi              | The apparent power for phase 2 in volt-amperes                                     | 4.00 or later             |
-| active_apparent_power_l3_va  | Number | SDM630-wifi              | The apparent power for phase 3 in volt-amperes                                     | 4.00 or later             |
-| active_reactive_power_var    | Number | SDM230-wifi, SDM630-wifi | The reactive power in volt-amperes reactive, the sum of all phases for SDM630-wifi | 4.00 or later             |
-| active_reactive_power_l1_var | Number | SDM630-wifi              | The reactive power for phase 1 in volt-amperes reactive                            | 4.00 or later             |
-| active_reactive_power_l2_var | Number | SDM630-wifi              | The reactive power for phase 2 in volt-amperes reactive                            | 4.00 or later             |
-| active_reactive_power_l3_var | Number | SDM630-wifi              | The reactive power for phase 3 in volt-amperes reactive                            | 4.00 or later             |
-| active_power_factor          | Number | SDM230-wifi              | The power factor                                                                   | 4.00 or later             |
-| active_power_factor_l1       | Number | SDM630-wifi              | The power factor for phase 1                                                       | 4.00 or later             |
-| active_power_factor_l2       | Number | SDM630-wifi              | The power factor for phase 2                                                       | 4.00 or later             |
-| active_power_factor_l3       | Number | SDM630-wifi              | The power factor for phase 3                                                       | 4.00 or later             |
-| active_frequency_hz          | Number | SDM230-wifi, SDM630-wifi | The frequency in hertz                                                             | 4.00 or later             |
+| Data                         | Type   | Available for    | Description                                                                    | Required firmware version |
+| ---------------------------- | ------ | ---------------- | ------------------------------------------------------------------------------ | ------------------------- |
+| wifi_ssid                    | String | 1-phase, 3-phase | The Wi-Fi network that the meter is connected to                               | 3.06 or later             |
+| wifi_strength                | Number | 1-phase, 3-phase | The strength of the Wi-Fi signal in %                                          | 3.06 or later             |
+| total_power_import_kwh       | Number | 1-phase, 3-phase | The power usage meter reading in kWh                                           | 4.00 or later             |
+| total_power_import_t1_kwh    | Number | 1-phase, 3-phase | Same value as `total_power_import_t1_kwh`, kept for backwards compatibility    | 3.06 or later             |
+| total_power_export_kwh       | Number | 1-phase, 3-phase | The power feed-in meter reading in kWh                                         | 4.00 or later             |
+| total_power_export_t1_kwh    | Number | 1-phase, 3-phase | Same value as `total_power_export_kwh`, kept for backwards compatibility       | 3.06 or later             |
+| active_power_w               | Number | 1-phase, 3-phase | The total active usage in watt                                                 | 3.06 or later             |
+| active_power_l1_w            | Number | 1-phase, 3-phase | The active usage for phase 1 in watt, same as `active_power_w` for 1-phase     | 3.06 or later             |
+| active_power_l2_w            | Number | 3-phase          | The active usage for phase 2 in watt                                           | 3.06 or later             |
+| active_power_l3_w            | Number | 3-phase          | The active usage for phase 3 in watt                                           | 3.06 or later             |
+| active_voltage_v             | Number | 1-phase          | The active voltage in volts                                                    | 4.00 or later             |
+| active_voltage_l1_v          | Number | 3-phase          | The active voltage for phase 1 in volts                                        | 4.00 or later             |
+| active_voltage_l2_v          | Number | 3-phase          | The active voltage for phase 2 in volts                                        | 4.00 or later             |
+| active_voltage_l3_v          | Number | 3-phase          | The active voltage for phase 3 in volts                                        | 4.00 or later             |
+| active_current_a             | Number | 1-phase, 3-phase | The active current in amperes, the sum of all phases for 3-phase               | 4.00 or later             |
+| active_current_l1_a          | Number | 3-phase          | The active current for phase 1 in amperes                                      | 4.00 or later             |
+| active_current_l2_a          | Number | 3-phase          | The active current for phase 2 in amperes                                      | 4.00 or later             |
+| active_current_l3_a          | Number | 3-phase          | The active current for phase 3 in amperes                                      | 4.00 or later             |
+| active_apparent_current_a    | Number | 1-phase, 3-phase | The apparent current in amperes, the sum of all phases for 3-phase             | 4.00 or later             |
+| active_apparent_current_l1_a | Number | 3-phase          | The apparent current for phase 1 in amperes                                    | 4.00 or later             |
+| active_apparent_current_l2_a | Number | 3-phase          | The apparent current for phase 2 in amperes                                    | 4.00 or later             |
+| active_apparent_current_l3_a | Number | 3-phase          | The apparent current for phase 3 in amperes                                    | 4.00 or later             |
+| active_reactive_current_a    | Number | 1-phase, 3-phase | The reactive current in amperes, the sum of all phases for 3-phase             | 4.00 or later             |
+| active_reactive_current_l1_a | Number | 3-phase          | The reactive current for phase 1 in amperes                                    | 4.00 or later             |
+| active_reactive_current_l2_a | Number | 3-phase          | The reactive current for phase 2 in amperes                                    | 4.00 or later             |
+| active_reactive_current_l3_a | Number | 3-phase          | The reactive current for phase 3 in amperes                                    | 4.00 or later             |
+| active_apparent_power_va     | Number | 1-phase, 3-phase | The apparent power in volt-amperes, the sum of all phases for 3-phase          | 4.00 or later             |
+| active_apparent_power_l1_va  | Number | 3-phase          | The apparent power for phase 1 in volt-amperes                                 | 4.00 or later             |
+| active_apparent_power_l2_va  | Number | 3-phase          | The apparent power for phase 2 in volt-amperes                                 | 4.00 or later             |
+| active_apparent_power_l3_va  | Number | 3-phase          | The apparent power for phase 3 in volt-amperes                                 | 4.00 or later             |
+| active_reactive_power_var    | Number | 1-phase, 3-phase | The reactive power in volt-amperes reactive, the sum of all phases for 3-phase | 4.00 or later             |
+| active_reactive_power_l1_var | Number | 3-phase          | The reactive power for phase 1 in volt-amperes reactive                        | 4.00 or later             |
+| active_reactive_power_l2_var | Number | 3-phase          | The reactive power for phase 2 in volt-amperes reactive                        | 4.00 or later             |
+| active_reactive_power_l3_var | Number | 3-phase          | The reactive power for phase 3 in volt-amperes reactive                        | 4.00 or later             |
+| active_power_factor          | Number | 1-phase          | The power factor                                                               | 4.00 or later             |
+| active_power_factor_l1       | Number | 3-phase          | The power factor for phase 1                                                   | 4.00 or later             |
+| active_power_factor_l2       | Number | 3-phase          | The power factor for phase 2                                                   | 4.00 or later             |
+| active_power_factor_l3       | Number | 3-phase          | The power factor for phase 3                                                   | 4.00 or later             |
+| active_frequency_hz          | Number | 1-phase, 3-phase | The frequency in hertz                                                         | 4.00 or later             |
 
-### Example: SDM230-wifi (firmware version 3.06)
+### Example: 1-phase (firmware version 3.06)
 
 ```
 <Request>
@@ -268,7 +273,7 @@ Content-Length: <length>
 }
 ```
 
-### Example: SDM630-wifi (firmware version 3.06)
+### Example: 3-phase (firmware version 3.06)
 
 ```
 <Request>
@@ -291,7 +296,7 @@ Content-Length: <length>
 }
 ```
 
-### Example: SDM230-wifi (firmware version 4.00)
+### Example: 1-phase (firmware version 4.00)
 
 ```
 <Request>
@@ -322,7 +327,7 @@ Content-Length: <length>
 }
 ```
 
-### Example: SDM630-wifi (firmware version 4.00)
+### Example: 3-phase (firmware version 4.00)
 
 ```
 <Request>
