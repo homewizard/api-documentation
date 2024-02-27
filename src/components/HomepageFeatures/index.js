@@ -23,7 +23,7 @@ const FeatureList = [
         )
     },
     {
-        title: 'Intergratable',
+        title: 'Integrable',
         description: (
             <>
                 The API allows to integrate with other smart home solutions, like <Link to='https://www.home-assistant.io/integrations/homewizard/'>Home Assistant</Link>.
