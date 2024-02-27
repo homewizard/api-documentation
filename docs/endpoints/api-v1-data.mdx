@@ -18,16 +18,16 @@ The `/api/v1/data` endpoint allows you to get the most recent measurement from t
 | meter_model                 | String | The brand identification the smart meter                                                                                                                                                                 |
 | wifi_ssid                   | String | The Wi-Fi network that the meter is connected to                                                                                                                                                         |
 | wifi_strength               | Number | The strength of the Wi-Fi signal in %                                                                                                                                                                    |
-| total_power_import_kwh      | Number | The power usage meter reading for all tariffs in kWh                                                                                                                                                     |
-| total_power_import_t1_kwh   | Number | The power usage meter reading for tariff 1 in kWh                                                                                                                                                        |
-| total_power_import_t2_kwh   | Number | The power usage meter reading for tariff 2 in kWh                                                                                                                                                        |
-| total_power_import_t3_kwh   | Number | The power usage meter reading for tariff 3 in kWh                                                                                                                                                        |
-| total_power_import_t4_kwh   | Number | The power usage meter reading for tariff 4 in kWh                                                                                                                                                        |
-| total_power_export_kwh      | Number | The power feed-in meter reading for all tariffs in kWh                                                                                                                                                   |
-| total_power_export_t1_kwh   | Number | The power feed-in meter reading for tariff 1 in kWh                                                                                                                                                      |
-| total_power_export_t2_kwh   | Number | The power feed-in meter reading for tariff 2 in kWh                                                                                                                                                      |
-| total_power_export_t3_kwh   | Number | The power feed-in meter reading for tariff 3 in kWh                                                                                                                                                      |
-| total_power_export_t4_kwh   | Number | The power feed-in meter reading for tariff 4 in kWh                                                                                                                                                      |
+| total_power_import_kwh      | Number | The energy usage meter reading for all tariffs in kWh                                                                                                                                                    |
+| total_power_import_t1_kwh   | Number | The energy usage meter reading for tariff 1 in kWh                                                                                                                                                       |
+| total_power_import_t2_kwh   | Number | The energy usage meter reading for tariff 2 in kWh                                                                                                                                                       |
+| total_power_import_t3_kwh   | Number | The energy usage meter reading for tariff 3 in kWh                                                                                                                                                       |
+| total_power_import_t4_kwh   | Number | The energy usage meter reading for tariff 4 in kWh                                                                                                                                                       |
+| total_power_export_kwh      | Number | The energy feed-in meter reading for all tariffs in kWh                                                                                                                                                  |
+| total_power_export_t1_kwh   | Number | The energy feed-in meter reading for tariff 1 in kWh                                                                                                                                                     |
+| total_power_export_t2_kwh   | Number | The energy feed-in meter reading for tariff 2 in kWh                                                                                                                                                     |
+| total_power_export_t3_kwh   | Number | The energy feed-in meter reading for tariff 3 in kWh                                                                                                                                                     |
+| total_power_export_t4_kwh   | Number | The energy feed-in meter reading for tariff 4 in kWh                                                                                                                                                     |
 | active_power_w              | Number | The total active usage in watt                                                                                                                                                                           |
 | active_power_l1_w           | Number | The active usage for phase 1 in watt                                                                                                                                                                     |
 | active_power_l2_w           | Number | The active usage for phase 2 in watt                                                                                                                                                                     |
@@ -167,14 +167,14 @@ Content-Length: <length>
 
 ### Data points
 
-| Data                      | Type   | Description                                         |
-| ------------------------- | ------ | --------------------------------------------------- |
-| wifi_ssid                 | String | The Wi-Fi network that the meter is connected to    |
-| wifi_strength             | Number | The strength of the Wi-Fi signal in %               |
-| total_power_import_t1_kwh | Number | The power usage meter reading for tariff 1 in kWh   |
-| total_power_export_t1_kwh | Number | The power feed-in meter reading for tariff 1 in kWh |
-| active_power_w            | Number | The total active usage in watt                      |
-| active_power_l1_w         | Number | The active usage for phase 1 in watt                |
+| Data                      | Type   | Description                                          |
+| ------------------------- | ------ | ---------------------------------------------------- |
+| wifi_ssid                 | String | The Wi-Fi network that the meter is connected to     |
+| wifi_strength             | Number | The strength of the Wi-Fi signal in %                |
+| total_power_import_t1_kwh | Number | The energy usage meter reading for tariff 1 in kWh   |
+| total_power_export_t1_kwh | Number | The energy feed-in meter reading for tariff 1 in kWh |
+| active_power_w            | Number | The total active usage in watt                       |
+| active_power_l1_w         | Number | The active usage for phase 1 in watt                 |
 
 ### Example
 
@@ -210,9 +210,9 @@ Each type of meter is available in two versions. The API and functionality is th
 | ---------------------------- | ------ | ---------------- | ------------------------------------------------------------------------------ | ------------------------- |
 | wifi_ssid                    | String | 1-phase, 3-phase | The Wi-Fi network that the meter is connected to                               | 3.06 or later             |
 | wifi_strength                | Number | 1-phase, 3-phase | The strength of the Wi-Fi signal in %                                          | 3.06 or later             |
-| total_power_import_kwh       | Number | 1-phase, 3-phase | The power usage meter reading in kWh                                           | 4.00 or later             |
+| total_power_import_kwh       | Number | 1-phase, 3-phase | The energy usage meter reading in kWh                                          | 4.00 or later             |
 | total_power_import_t1_kwh    | Number | 1-phase, 3-phase | Same value as `total_power_import_t1_kwh`, kept for backwards compatibility    | 3.06 or later             |
-| total_power_export_kwh       | Number | 1-phase, 3-phase | The power feed-in meter reading in kWh                                         | 4.00 or later             |
+| total_power_export_kwh       | Number | 1-phase, 3-phase | The energy feed-in meter reading in kWh                                        | 4.00 or later             |
 | total_power_export_t1_kwh    | Number | 1-phase, 3-phase | Same value as `total_power_export_kwh`, kept for backwards compatibility       | 3.06 or later             |
 | active_power_w               | Number | 1-phase, 3-phase | The total active usage in watt                                                 | 3.06 or later             |
 | active_power_l1_w            | Number | 1-phase, 3-phase | The active usage for phase 1 in watt, same as `active_power_w` for 1-phase     | 3.06 or later             |
