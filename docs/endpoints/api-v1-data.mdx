@@ -167,16 +167,28 @@ Content-Length: <length>
 
 ### Data points
 
-| Data                      | Type   | Description                                          |
-| ------------------------- | ------ | ---------------------------------------------------- |
-| wifi_ssid                 | String | The Wi-Fi network that the meter is connected to     |
-| wifi_strength             | Number | The strength of the Wi-Fi signal in %                |
-| total_power_import_t1_kwh | Number | The energy usage meter reading for tariff 1 in kWh   |
-| total_power_export_t1_kwh | Number | The energy feed-in meter reading for tariff 1 in kWh |
-| active_power_w            | Number | The total active usage in watt                       |
-| active_power_l1_w         | Number | The active usage for phase 1 in watt                 |
+:::info Firmware 4.00 is in beta
+The firmware version 4.00 is currently in beta and is tested by a small group of users. The firmware will be released to all users when the beta phase is completed.
+:::
 
-### Example
+| Data                      | Type   | Available for | Description                                                                 | Required firmware version |
+| ------------------------- | ------ | ------------- | --------------------------------------------------------------------------- | ------------------------- |
+| wifi_ssid                 | String | All           | The Wi-Fi network that the meter is connected to                            | 3.03 or later             |
+| wifi_strength             | Number | All           | The strength of the Wi-Fi signal in %                                       | 3.03 or later             |
+| total_power_import_kwh    | Number | All           | The energy usage meter reading in kWh                                       | 4.07 or later             |
+| total_power_import_t1_kwh | Number | All           | Same value as `total_power_import_t1_kwh`, kept for backwards compatibility | 3.03 or later             |
+| total_power_export_kwh    | Number | All           | The energy feed-in meter reading in kWh                                     | 4.07 or later             |
+| total_power_export_t1_kwh | Number | All           | Same value as `total_power_export_kwh`, kept for backwards compatibility    | 3.03 or later             |
+| active_power_w            | Number | All           | The total active usage in watt                                              | 3.03 or later             |
+| active_power_l1_w         | Number | All           | Same value as `active_power_w`, kept for backwards compatibility            | 3.03 or later             |
+| active_voltage_v          | Number | All           | The active voltage in volts                                                 | 4.07 or later             |
+| active_current_a          | Number | All           | The active current in amperes                                               | 4.07 or later             |
+| active_reactive_power_var | Number | HWE-SKT-21    | The reactive power in volt-amperes reactive                                 | 4.07 or later             |
+| active_apparent_power_va  | Number | HWE-SKT-21    | The apparent power in volt-amperes                                          | 4.07 or later             |
+| active_power_factor       | Number | HWE-SKT-21    | The power factor                                                            | 4.07 or later             |
+| active_frequency_hz       | Number | All           | The frequency in hertz                                                      | 4.07 or later             |
+
+### Example (HWE-SKT-11)
 
 ```
 <Request>
@@ -190,10 +202,44 @@ Content-Length: <length>
 {
    "wifi_ssid": "My Wi-Fi",
    "wifi_strength": 100,
+   "total_power_import_kwh": 30.511,
    "total_power_import_t1_kwh": 30.511,
+   "total_power_export_kwh": 85.951,
    "total_power_export_t1_kwh": 85.951,
-   "active_power_w": 543,
-   "active_power_l1_w": 676,
+   "active_power_w": 543.312,
+   "active_power_l1_w": 543.312,
+   "active_voltage_v": 231.539,
+   "active_current_a": 2.346,
+   "active_frequency_hz": 50.005
+}
+```
+
+### Example (HWE-SKT-21)
+
+```
+<Request>
+GET http://{IP address}/api/v1/data HTTP/1.1
+
+<Response>
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: <length>
+
+{
+   "wifi_ssid": "My Wi-Fi",
+   "wifi_strength": 100,
+   "total_power_import_kwh": 30.511,
+   "total_power_import_t1_kwh": 30.511,
+   "total_power_export_kwh": 85.951,
+   "total_power_export_t1_kwh": 85.951,
+   "active_power_w": 543.312,
+   "active_power_l1_w": 543.312,
+   "active_voltage_v": 231.539,
+   "active_current_a": 2.346,
+   "active_reactive_power_var": 123.456,
+   "active_apparent_power_va": 666.768,
+   "active_power_factor": 0.81688,
+   "active_frequency_hz": 50.005
 }
 ```
 
@@ -206,93 +252,49 @@ Each type of meter is available in two versions. The API and functionality is th
 
 ### Data points
 
-| Data                         | Type   | Available for    | Description                                                                    | Required firmware version |
-| ---------------------------- | ------ | ---------------- | ------------------------------------------------------------------------------ | ------------------------- |
-| wifi_ssid                    | String | 1-phase, 3-phase | The Wi-Fi network that the meter is connected to                               | 3.06 or later             |
-| wifi_strength                | Number | 1-phase, 3-phase | The strength of the Wi-Fi signal in %                                          | 3.06 or later             |
-| total_power_import_kwh       | Number | 1-phase, 3-phase | The energy usage meter reading in kWh                                          | 4.00 or later             |
-| total_power_import_t1_kwh    | Number | 1-phase, 3-phase | Same value as `total_power_import_t1_kwh`, kept for backwards compatibility    | 3.06 or later             |
-| total_power_export_kwh       | Number | 1-phase, 3-phase | The energy feed-in meter reading in kWh                                        | 4.00 or later             |
-| total_power_export_t1_kwh    | Number | 1-phase, 3-phase | Same value as `total_power_export_kwh`, kept for backwards compatibility       | 3.06 or later             |
-| active_power_w               | Number | 1-phase, 3-phase | The total active usage in watt                                                 | 3.06 or later             |
-| active_power_l1_w            | Number | 1-phase, 3-phase | The active usage for phase 1 in watt, same as `active_power_w` for 1-phase     | 3.06 or later             |
-| active_power_l2_w            | Number | 3-phase          | The active usage for phase 2 in watt                                           | 3.06 or later             |
-| active_power_l3_w            | Number | 3-phase          | The active usage for phase 3 in watt                                           | 3.06 or later             |
-| active_voltage_v             | Number | 1-phase          | The active voltage in volts                                                    | 4.00 or later             |
-| active_voltage_l1_v          | Number | 3-phase          | The active voltage for phase 1 in volts                                        | 4.00 or later             |
-| active_voltage_l2_v          | Number | 3-phase          | The active voltage for phase 2 in volts                                        | 4.00 or later             |
-| active_voltage_l3_v          | Number | 3-phase          | The active voltage for phase 3 in volts                                        | 4.00 or later             |
-| active_current_a             | Number | 1-phase, 3-phase | The active current in amperes, the sum of all phases for 3-phase               | 4.00 or later             |
-| active_current_l1_a          | Number | 3-phase          | The active current for phase 1 in amperes                                      | 4.00 or later             |
-| active_current_l2_a          | Number | 3-phase          | The active current for phase 2 in amperes                                      | 4.00 or later             |
-| active_current_l3_a          | Number | 3-phase          | The active current for phase 3 in amperes                                      | 4.00 or later             |
-| active_apparent_current_a    | Number | 1-phase, 3-phase | The apparent current in amperes, the sum of all phases for 3-phase             | 4.00 or later             |
-| active_apparent_current_l1_a | Number | 3-phase          | The apparent current for phase 1 in amperes                                    | 4.00 or later             |
-| active_apparent_current_l2_a | Number | 3-phase          | The apparent current for phase 2 in amperes                                    | 4.00 or later             |
-| active_apparent_current_l3_a | Number | 3-phase          | The apparent current for phase 3 in amperes                                    | 4.00 or later             |
-| active_reactive_current_a    | Number | 1-phase, 3-phase | The reactive current in amperes, the sum of all phases for 3-phase             | 4.00 or later             |
-| active_reactive_current_l1_a | Number | 3-phase          | The reactive current for phase 1 in amperes                                    | 4.00 or later             |
-| active_reactive_current_l2_a | Number | 3-phase          | The reactive current for phase 2 in amperes                                    | 4.00 or later             |
-| active_reactive_current_l3_a | Number | 3-phase          | The reactive current for phase 3 in amperes                                    | 4.00 or later             |
-| active_apparent_power_va     | Number | 1-phase, 3-phase | The apparent power in volt-amperes, the sum of all phases for 3-phase          | 4.00 or later             |
-| active_apparent_power_l1_va  | Number | 3-phase          | The apparent power for phase 1 in volt-amperes                                 | 4.00 or later             |
-| active_apparent_power_l2_va  | Number | 3-phase          | The apparent power for phase 2 in volt-amperes                                 | 4.00 or later             |
-| active_apparent_power_l3_va  | Number | 3-phase          | The apparent power for phase 3 in volt-amperes                                 | 4.00 or later             |
-| active_reactive_power_var    | Number | 1-phase, 3-phase | The reactive power in volt-amperes reactive, the sum of all phases for 3-phase | 4.00 or later             |
-| active_reactive_power_l1_var | Number | 3-phase          | The reactive power for phase 1 in volt-amperes reactive                        | 4.00 or later             |
-| active_reactive_power_l2_var | Number | 3-phase          | The reactive power for phase 2 in volt-amperes reactive                        | 4.00 or later             |
-| active_reactive_power_l3_var | Number | 3-phase          | The reactive power for phase 3 in volt-amperes reactive                        | 4.00 or later             |
-| active_power_factor          | Number | 1-phase          | The power factor                                                               | 4.00 or later             |
-| active_power_factor_l1       | Number | 3-phase          | The power factor for phase 1                                                   | 4.00 or later             |
-| active_power_factor_l2       | Number | 3-phase          | The power factor for phase 2                                                   | 4.00 or later             |
-| active_power_factor_l3       | Number | 3-phase          | The power factor for phase 3                                                   | 4.00 or later             |
-| active_frequency_hz          | Number | 1-phase, 3-phase | The frequency in hertz                                                         | 4.00 or later             |
+| Data                         | Type   | Available for    | Description                                                                    |
+| ---------------------------- | ------ | ---------------- | ------------------------------------------------------------------------------ |
+| wifi_ssid                    | String | 1-phase, 3-phase | The Wi-Fi network that the meter is connected to                               |
+| wifi_strength                | Number | 1-phase, 3-phase | The strength of the Wi-Fi signal in %                                          |
+| total_power_import_kwh       | Number | 1-phase, 3-phase | The energy usage meter reading in kWh                                          |
+| total_power_import_t1_kwh    | Number | 1-phase, 3-phase | Same value as `total_power_import_t1_kwh`, kept for backwards compatibility    |
+| total_power_export_kwh       | Number | 1-phase, 3-phase | The energy feed-in meter reading in kWh                                        |
+| total_power_export_t1_kwh    | Number | 1-phase, 3-phase | Same value as `total_power_export_kwh`, kept for backwards compatibility       |
+| active_power_w               | Number | 1-phase, 3-phase | The total active usage in watt                                                 |
+| active_power_l1_w            | Number | 1-phase, 3-phase | The active usage for phase 1 in watt, same as `active_power_w` for 1-phase     |
+| active_power_l2_w            | Number | 3-phase          | The active usage for phase 2 in watt                                           |
+| active_power_l3_w            | Number | 3-phase          | The active usage for phase 3 in watt                                           |
+| active_voltage_v             | Number | 1-phase          | The active voltage in volts                                                    |
+| active_voltage_l1_v          | Number | 3-phase          | The active voltage for phase 1 in volts                                        |
+| active_voltage_l2_v          | Number | 3-phase          | The active voltage for phase 2 in volts                                        |
+| active_voltage_l3_v          | Number | 3-phase          | The active voltage for phase 3 in volts                                        |
+| active_current_a             | Number | 1-phase, 3-phase | The active current in amperes, the sum of all phases for 3-phase               |
+| active_current_l1_a          | Number | 3-phase          | The active current for phase 1 in amperes                                      |
+| active_current_l2_a          | Number | 3-phase          | The active current for phase 2 in amperes                                      |
+| active_current_l3_a          | Number | 3-phase          | The active current for phase 3 in amperes                                      |
+| active_apparent_current_a    | Number | 1-phase, 3-phase | The apparent current in amperes, the sum of all phases for 3-phase             |
+| active_apparent_current_l1_a | Number | 3-phase          | The apparent current for phase 1 in amperes                                    |
+| active_apparent_current_l2_a | Number | 3-phase          | The apparent current for phase 2 in amperes                                    |
+| active_apparent_current_l3_a | Number | 3-phase          | The apparent current for phase 3 in amperes                                    |
+| active_reactive_current_a    | Number | 1-phase, 3-phase | The reactive current in amperes, the sum of all phases for 3-phase             |
+| active_reactive_current_l1_a | Number | 3-phase          | The reactive current for phase 1 in amperes                                    |
+| active_reactive_current_l2_a | Number | 3-phase          | The reactive current for phase 2 in amperes                                    |
+| active_reactive_current_l3_a | Number | 3-phase          | The reactive current for phase 3 in amperes                                    |
+| active_apparent_power_va     | Number | 1-phase, 3-phase | The apparent power in volt-amperes, the sum of all phases for 3-phase          |
+| active_apparent_power_l1_va  | Number | 3-phase          | The apparent power for phase 1 in volt-amperes                                 |
+| active_apparent_power_l2_va  | Number | 3-phase          | The apparent power for phase 2 in volt-amperes                                 |
+| active_apparent_power_l3_va  | Number | 3-phase          | The apparent power for phase 3 in volt-amperes                                 |
+| active_reactive_power_var    | Number | 1-phase, 3-phase | The reactive power in volt-amperes reactive, the sum of all phases for 3-phase |
+| active_reactive_power_l1_var | Number | 3-phase          | The reactive power for phase 1 in volt-amperes reactive                        |
+| active_reactive_power_l2_var | Number | 3-phase          | The reactive power for phase 2 in volt-amperes reactive                        |
+| active_reactive_power_l3_var | Number | 3-phase          | The reactive power for phase 3 in volt-amperes reactive                        |
+| active_power_factor          | Number | 1-phase          | The power factor                                                               |
+| active_power_factor_l1       | Number | 3-phase          | The power factor for phase 1                                                   |
+| active_power_factor_l2       | Number | 3-phase          | The power factor for phase 2                                                   |
+| active_power_factor_l3       | Number | 3-phase          | The power factor for phase 3                                                   |
+| active_frequency_hz          | Number | 1-phase, 3-phase | The frequency in hertz                                                         |
 
-### Example: 1-phase (firmware version 3.06)
-
-```
-<Request>
-GET http://{IP address}/api/v1/data HTTP/1.1
-
-<Response>
-HTTP/1.1 200 OK
-Content-Type: application/json
-Content-Length: <length>
-
-{
-   "wifi_ssid": "My Wi-Fi",
-   "wifi_strength": 100,
-   "total_power_import_t1_kwh": 10830,
-   "total_power_export_t1_kwh": 1285.951,
-   "active_power_w": 640,
-   "active_power_l1_w": 640
-}
-```
-
-### Example: 3-phase (firmware version 3.06)
-
-```
-<Request>
-GET http://{IP address}/api/v1/data HTTP/1.1
-
-<Response>
-HTTP/1.1 200 OK
-Content-Type: application/json
-Content-Length: <length>
-
-{
-   "wifi_ssid": "My Wi-Fi",
-   "wifi_strength": 100,
-   "total_power_import_t1_kwh": 10830.511,
-   "total_power_export_t1_kwh": 1285.951,
-   "active_power_w": -543,
-   "active_power_l1_w": -676,
-   "active_power_l2_w": 133,
-   "active_power_l3_w": 0
-}
-```
-
-### Example: 1-phase (firmware version 4.00)
+### Example: 1-phase
 
 ```
 <Request>
@@ -323,7 +325,7 @@ Content-Length: <length>
 }
 ```
 
-### Example: 3-phase (firmware version 4.00)
+### Example: 3-phase
 
 ```
 <Request>
