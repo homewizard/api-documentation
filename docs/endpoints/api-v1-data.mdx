@@ -9,7 +9,9 @@ import Link from '@docusaurus/Link'
 
 The `/api/v1/data` endpoint allows you to get the most recent measurement from the device. All data points are "optional"; The API does not send data points that are `null` or not available at all. This mostly depends on the connected smart meter. Make sure your application can handle this.
 
-## Data points for **HWE-P1**
+## P1 Meter (HWE-P1)
+
+### Data points
 
 | Data                        | Type   | Description                                                                                                                                                                                              |
 | --------------------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -55,7 +57,7 @@ The `/api/v1/data` endpoint allows you to get the most recent measurement from t
 | unique_gas_id               | Number | The unique identifier for the gas meter, can be used to migrate to the 'external' data point                                                                                                             |
 | external                    | Array  | A list of externally connected utility meters, see [External data point](#external-data-point) for more information                                                                                      |
 
-## `External` data point
+### `External` data point
 
 Some smart meters have more than one external device connected to it. This can be, for example, a gas and a water meter. The `external` data point adds support for these devices.
 Each entry is supplied with a set of data. See [this example](#hwe-p1-3-phase-with-gas).
@@ -70,11 +72,11 @@ Each entry is supplied with a set of data. See [this example](#hwe-p1-3-phase-wi
 
 The original data points `total_gas_m3`, `gas_timestamp` and `unique_gas_id` use the first detected gas meter. These data points will be removed in a future version. You can use `unique_id` to migrate any values if needed.
 
-## Monthly power peak
+### Monthly power peak
 
 Belgium users are started to get charged for the peak usage per month (see <Link to="https://www.fluvius.be/nl/thema/factuur-en-tarieven/capaciteitstarief">capaciteitstarief</Link>). The data points `active_power_average_w`, `montly_power_peak_w` and `montly_power_peak_timestamp` can be used to track the maximum demand.
 
-## HWE-P1 (1-phase, no gas)
+### Example: HWE-P1 (1-phase, no gas)
 
 ```
 <Request>
@@ -99,7 +101,7 @@ Content-Length: <length>
 }
 ```
 
-### HWE-P1 (3-phase, with gas and water meter)
+### Example: HWE-P1 (3-phase, with gas and water meter)
 
 ```
 <Request>
@@ -188,7 +190,7 @@ The firmware version 4.00 is currently in beta and is tested by a small group of
 | active_power_factor       | Number | HWE-SKT-21    | The power factor                                                            | 4.07 or later             |
 | active_frequency_hz       | Number | All           | The frequency in hertz                                                      | 4.07 or later             |
 
-### Example (HWE-SKT-11)
+### Example: HWE-SKT-11
 
 ```
 <Request>
@@ -214,7 +216,7 @@ Content-Length: <length>
 }
 ```
 
-### Example (HWE-SKT-21)
+### Example: HWE-SKT-21
 
 ```
 <Request>
