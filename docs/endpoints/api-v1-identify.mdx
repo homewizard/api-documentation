@@ -7,7 +7,15 @@ description: Identify the device by letting the LED blink.
 
 The `/api/v1/identify` endpoint can be used to let the user identify the device. The status light will blink for a few seconds after calling this endpoint.
 
-This feature is currently only available for: - **HWE-P1** - **HWE-SKT**
+This feature is available for:
+
+-   HWE-P1
+-   HWE-SKT
+-   HWE-WTR (firmware version 3.00 or later required)
+
+:::info Watermeter support
+Support for this endpoint in the Watermeter will be added in version 3.00. This version is currently in beta and is tested by a small group of users. The firmware will be released to all users when the beta phase is completed.
+:::
 
 ### Example
 
