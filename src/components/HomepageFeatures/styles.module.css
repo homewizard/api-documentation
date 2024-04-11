@@ -5,6 +5,10 @@
     width: 100%;
 }
 
+.features a {
+    text-decoration: underline;
+}
+
 .featureSvg {
     height: 200px;
     width: 200px;

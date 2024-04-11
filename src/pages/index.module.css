@@ -12,16 +12,17 @@ h1 {
     text-align: left;
     position: relative;
     overflow: hidden;
+    color: #111828;
 }
 
-.heroBanner {
-    background: #e6f5e1;
-    color: #3e3b3b;
+[data-theme='light'] .heroBanner {
+    background: #effaf1;
+    color: #111828;
 }
 
 [data-theme='dark'] .heroBanner {
-    background: rgb(184, 219, 173);
-    color: #3e3b3b;
+    background: #b8dbad;
+    color: #111828;
 }
 
 @media screen and (max-width: 996px) {
@@ -37,9 +38,11 @@ h1 {
 }
 
 .buttons a {
-    background-color: #111828;
+    background-color: #5f6fff;
     color: #fff;
     border: none;
-    border-radius: 10px;
-    font-family: roboto, sans-serif;
+    border-radius: 999px; /* 999px for a pill shape */
+    font-size: 18px;
+    font-weight: 600;
+    font-family: Poppins, sans-serif;
 }
