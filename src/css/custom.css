@@ -14,6 +14,8 @@
     --ifm-color-primary-lighter: #359962;
     --ifm-color-primary-lightest: #3cad6e;
     --ifm-code-font-size: 95%;
+    --ifm-link-color: #5f6fff;
+    --ifm-font-color-base: #111828;
     --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
@@ -26,5 +28,11 @@
     --ifm-color-primary-light: #29d5b0;
     --ifm-color-primary-lighter: #32d8b4;
     --ifm-color-primary-lightest: #4fddbf;
+    --ifm-link-color: #5f6fff;
+    --ifm-font-color-base: #e3e3e3;
     --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+.theme-doc-markdown a {
+    text-decoration: underline;
 }
