@@ -1,0 +1,23 @@
+name: Report an issue with the documentation
+description: Report an issue with the HomeWizard Energy API documentation
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This issue form is for reporting documentation issues only!
+
+        If you have a feature or enhancement request, please contact us direclty via our [Helpdesk](https://helpdesk.homewizard.com/en/).
+
+  - type: textarea
+    validations:
+      required: true
+    attributes:
+      label: The problem
+      description: >-
+        Describe the issue you are experiencing here. Provide a clear and concise description of what the problem is.
+
+  - type: textarea
+    attributes:
+      label: Additional information
+      description: >
+        If you have any additional information for us, use the field below.
