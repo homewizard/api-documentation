@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Propose a feature request
+    url: https://helpdesk.homewizard.com
+    about: This is the issue tracker for our API documentation. Please pitch your feature requests via HomeWizard Support.
+  - name: Report a vulnerability
+    url: https://github.com/homewizard/.github/security
+    about: Found something we need to know? Please contact us via one of our secure channels.
