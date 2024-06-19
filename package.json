@@ -28,7 +28,7 @@
     },
     "devDependencies": {
         "@docusaurus/module-type-aliases": "3.1.1",
-        "@docusaurus/types": "3.1.1",
+        "@docusaurus/types": "3.4.0",
         "@typescript-eslint/eslint-plugin": "7.0.0",
         "@typescript-eslint/parser": "6.21.0",
         "cspell": "8.3.2",
