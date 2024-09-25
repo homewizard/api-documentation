@@ -127,3 +127,5 @@ const config = {
 }
 
 export default config
+
+// https://api-documentation.homewizard.com/docs/endpoints/api-v1-data

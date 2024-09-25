@@ -1,0 +1,78 @@
+---
+sidebar_position: 5
+description: Enable and disable cloud communication.
+---
+
+# System (/api/v2/system)
+
+The `/api/v2/system` endpoint can be used to configure system settings.
+
+### Data points
+
+| Data                      | Type   | Description                                 |
+| ------------------------- | ------ | ------------------------------------------- |
+| wifi_ssid                 | String | The SSID of the WiFi network                |
+| wifi_rssi_db              | Number | The signal strength of the WiFi network     |
+| cloud_enabled             | Bool   | The state of the cloud communication        |
+| uptime_s                  | Number | The uptime of the device in seconds         |
+| status_led_brightness_pct | Number | The brightness of the status LED in percent |
+
+## Enable cloud
+
+The HomeWizard Energy devices are designed to work with the HomeWizard Energy app and require communication with the HomeWizard cloud to make them function with the app.
+
+The `Enable cloud` configuration feature can be used to turn off all communication with the HomeWizard cloud, making the device fully local. The device cannot communicate with the app, and the device won't receive any future firmware updates.
+
+Cloud communication is restored when the `cloud_enabled` is set to `true`. Cloud communications are also restored after a factory reset, or when the device is put in pairing mode.
+
+:::warning Be clear
+If you are implementing this, make sure your user understand what this actions does. Users may press a button without knowing what they do and forget about it. In this case it seems that the app or device is broken and reach out to our support, and we would like to prevent that.
+
+You can solve this, for example, by adding clear documentation and/or by showing a confirmation popup before calling this endpoint.
+:::
+
+This endpoint accepts `GET` and `PUT` requests.
+
+-   With `GET` will send the actual system state.
+-   With `PUT` allows to set the system state.
+
+## Examples
+
+### Get system state
+
+```
+<Request>
+GET https://{IP address}/api/v2/system https/1.1
+
+<Response>
+https/1.1 200 OK
+Content-Type: application/json
+Content-Length: <length>
+
+{
+   "cloud_enabled": true
+}
+```
+
+### Set system state
+
+```
+<Request>
+PUT https://{IP address}/api/v2/system https/1.1
+{
+   "cloud_enabled": false
+}
+
+<Response>
+https/1.1 200 OK
+Content-Type: application/json
+Content-Length: <length>
+
+{
+   "cloud_enabled": false
+}
+```
+
+## reboot
+
+Call PUT `/api/v2/reboot` with any value to reboot the device
