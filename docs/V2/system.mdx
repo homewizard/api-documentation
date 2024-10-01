@@ -1,0 +1,134 @@
+---
+sidebar_position: 5
+description: Enable and disable cloud communication.
+---
+
+# System
+
+The `/api/v2/system` endpoint can be used to get and set some system information, like the state of the cloud communication and the uptime of the device.
+
+### Data points
+
+| Data                      | Type      | Description                                 |
+| ------------------------- | --------- | ------------------------------------------- |
+| wifi_ssid                 | String    | The SSID of the WiFi network                |
+| wifi_rssi_db              | Number    | The signal strength of the WiFi network     |
+| cloud_enabled             | Boolean   | The state of the cloud communication        |
+| uptime_s                  | Number    | The uptime of the device in seconds         |
+| status_led_brightness_pct | Number    | The brightness of the status LED in percent |
+
+### Actions
+
+| Action | Description |
+| ------ | ----------- |
+| Reboot | Reboot the device |
+| Identify | Let the device identify itself by blinking the status LED |
+
+## Cloud communication
+
+The HomeWizard Energy devices are designed to work with the HomeWizard Energy app and require communication with the HomeWizard cloud to make them function with the app.
+
+The device allows the user to disable cloud communication, making the device fully local. The app won't be able to communicate with the device, and the device won't receive any future firmware updates. 
+
+Cloud communication is restored when the `cloud_enabled` is set to `true`. Cloud communications are also restored after a factory reset, or when the device is put in pairing mode.
+
+:::warning Be clear
+If you are implementing this, make sure your user understand what this actions does. Users may press a button without knowing what they do and forget about it. In this case it seems that the app or device is broken and reach out to our support, and we would like to prevent that.
+
+You can solve this, for example, by adding clear documentation and/or by showing a confirmation popup before calling this endpoint.
+:::
+
+### Examples
+
+#### Disable cloud communication
+
+```http title="Request"
+curl \
+  -X PUT \
+  -H "Authorization: Bearer <TOKEN>" \
+  -H "X-Api-Version: 2.0.0" \
+  https://<IP ADDRESS>/api/v2/system \
+    -d '{"cloud_enabled": false}'
+```
+
+```jsonc title="Response"
+https/1.1 204 No Content
+Content-Length: 0
+```
+
+#### Enable cloud communication
+
+```http title="Request"
+curl \
+  -X PUT \
+  -H "Authorization: Bearer <TOKEN>" \
+  -H "X-Api-Version: 2.0.0" \
+  https://<IP ADDRESS>/api/v2/system \
+  -d '{"cloud_enabled": true}'
+```
+
+```jsonc title="Response"
+https/1.1 204 No Content
+Content-Length: 0
+```
+
+## Status LED brightness
+
+Most devices are equipped with a status LED of which the brightness can be adjusted during normal operation. The brightness can be set between 0 and 100 percent. Error indications are always shown at default brightness.
+
+### Examples
+
+#### Set status LED brightness
+
+```http title="Request"
+curl https://<IP ADDRESS>/api/v2/system \
+  -X PUT \
+  -H "Authorization: Bearer <TOKEN>" \
+  -H "X-Api-Version: 2.0.0" \
+   -d '{"status_led_brightness_pct": 50}'
+```
+
+```jsonc title="Response"
+https/1.1 204 No Content
+Content-Length: 0
+```
+
+## Identify
+
+The `/api/v2/identify` endpoint can be used to let the user identify the device. The status light will blink for a few seconds after calling this endpoint.
+
+
+### Example
+
+```http title="Request"
+curl https://{ip_address}/api/v2/system/identify \
+  -H "Authorization: Bearer <TOKEN>" \
+  -H "X-Api-Version: 2.0.0" \
+  
+```
+
+```http title="Response"
+https/1.1 204 No Content
+Content-Length: 0
+```
+
+
+## Reboot the device
+
+In some situations you would like to reboot the device. This can be done by calling the `/api/v2/system/reboot` endpoint. After a reboot the device will reconnect to WiFi and can be used again.
+
+:::info Note
+A reboot is normally not needed but can help help in some situations. If you issues persist and you need to reboot the device often, please contact our support so we can help solving the real cause of the issue.
+:::
+
+### Examples
+```
+curl https://<IP ADDRESS>/api/v2/system/reboot \
+  -H "Authorization: Bearer <TOKEN>" \
+  -H "X-Api-Version: 2.0.0"
+```
+
+```jsonc title="Response"
+https/1.1 204 No Content
+Content-Length: 0
+```

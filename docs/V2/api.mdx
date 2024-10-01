@@ -1,9 +1,9 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 description: Get information like serial and version number from the device.
 ---
 
-# Basic information (`/api`)
+# Device information
 
 The `/api` endpoint allows you to get basic information from the device.
 
@@ -13,26 +13,28 @@ Your application can use this endpoint to see if your integration is designed to
 | ---------------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | product_type     | string | The product type, see [Supported devices](/docs/getting-started#supported-devices). Make sure your application can handle other values for future products. |
 | product_name     | string | A fixed, user-friendly name. This name is not the same that is set by the user in the app.                                                                  |
-| serial           | string | Serial, also the MAC address. Consists of 12 hexadecimal values.                                                                                            |
+| serial           | string | Serial number, also the MAC address. Consists of 12 hexadecimal values.                                                                                            |
 | firmware_version | string | The current firmware version. Make sure your application can handle other version formats. See [Versioning and updates](/docs/versioning)                   |
-| api_version      | string | The current api version, currently 'v2'                                                                                                                     |
+| api_version      | string | The current api version, currently '2.0.0'                                                                                                                     |
 
-## Examples
+## Example
 
+```http title="Request"
+curl https://{ip_address}/api \
+  -H "Authorization: Bearer <TOKEN>" \
+  -H "X-Api-Version: 2.0.0" \
 ```
-<Request>
-GET https://{IP address}/api https/1.1
 
-<Response>
+```jsonc title="Response"
 https/1.1 200 OK
 Content-Type: application/json
 Content-Length: <length>
 
 {
-      "product_type": "HWE-P1",
-      "product_name": "P1 Meter",
-      "serial": "3c39e7aabbcc",
-      "firmware_version": "2.11",
-      "api_version": "v2"
+    "product_type": "HWE-P1",
+    "product_name": "P1 Meter",
+    "serial": "5c2fafaabbcc",
+    "firmware_version": "6.00",
+    "api_version": "2.0.0"
 }
 ```

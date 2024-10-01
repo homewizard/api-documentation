@@ -1,22 +1,27 @@
 ---
 sidebar_position: 3
 description: Get the most recent, raw telegram from the P1 meter.
+toc_min_heading_level: 3
 ---
 
-# P1 telegram (`/api/v2/telegram`)
+# P1 Telegram
 
-The `/api/v2/telegram` endpoint returns the most recent, valid telegram that was given by the P1 meter, therefore this endpoint is **only available for the P1 Meter (HWE-P1)**.
+The `/api/v2/telegram` endpoint returns the most recent, valid telegram that was given by the P1 meter.
 
--   The telegram validated with its CRC, but not parsed in any form.
--   Note that this endpoint returns plain text instead of formatted JSON, even when an error occurs (see [Error handling](/docs/error-handling))
+- The checksum is validated when present, telegrams with an invalid checksum are rejected.
+- The Telegram is not processed in any other form, and can be used by other systems to process the data.
+- If you need parsed data, use the [measurement](/docs/V2/endpoints/measurement) endpoint.
 
 ## Example
 
-```
-<Request>
-GET https://{IP address}/api/v2/telegram
 
-<Response>
+```http title="Request"
+curl https://{ip_address}/api/v1/telegram \
+  -H "Authorization: Bearer <TOKEN>" \
+  -H "X-Api-Version: 2.0.0" \
+```
+
+```http title="Response"
 https/1.1 200 OK
 Content-Type: text/plain
 Content-Length: <length>
