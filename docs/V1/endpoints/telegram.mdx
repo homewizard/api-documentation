@@ -3,12 +3,21 @@ sidebar_position: 3
 description: Get the most recent, raw telegram from the P1 meter.
 ---
 
+import Badge from '@site/src/components/Badge.js'
+
 # P1 telegram (`/api/v1/telegram`)
 
-The `/api/v1/telegram` endpoint returns the most recent, valid telegram that was given by the P1 meter, therefore this endpoint is **only available for the P1 Meter (HWE-P1)**.
+The `/api/v1/telegram` endpoint returns the most recent, valid telegram that was given by the P1 meter.
 
 -   The telegram validated with its CRC, but not parsed in any form.
 -   Note that this endpoint returns plain text instead of formatted JSON, even when an error occurs (see [Error handling](/docs/error-handling))
+
+<Badge color='hw-green'>✓ P1 Meter</Badge>
+<Badge color='hw-red'>✗ Energy Socket</Badge>
+<Badge color='hw-red'>✗ Energy Display</Badge>
+<Badge color='hw-red'>✗ kWh Meter</Badge>
+<Badge color='hw-red'>✗ Water Meter</Badge>
+<Badge color='hw-red'>✗ Plug-in Battery</Badge>
 
 ## Example
 

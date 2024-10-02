@@ -2,6 +2,21 @@ import Link from '@docusaurus/Link'
 
 # API Changelog
 
+:::danger TODO
+
+-   Add migration guide
+-   Validate ISO 8601 date specification (factcheck)
+-   Proofread
+-   Add all documentation for /system
+-   Move /api/v2/system->reboot to /api/v2/system/reboot (FIRMWARE)
+-   Move /api/v2/identify to /api/v2/system/identify (FIRMWARE)
+-   Specify each error
+-   Determine `X-Api-Version` header naming
+-   Describe the `X-Api-Version` header in the introduction and what it does
+-   Add disable v1 API endpoint
+-   Add redirects
+    :::
+
 The API Changelog is available on GitHub. For every important change in the API or its documentation, we make a new GitHub 'release'.
 
 {/* prettier-ignore */}
@@ -13,11 +28,3 @@ Get notified for changes in the API and its documentation when something has cha
 
 {/* prettier-ignore */}
 <Link className='button button--primary' to='https://github.com/homewizard/api-documentation'>GitHub Repo</Link>
-
-API V2 changes
-TODO: Make 'readable'
-
--   Renamed /data to /measurements and adjusted datapoints to be more consistent and correct
--   /system now has more data points. Wifi details are removed and you can reboot the device form here
--   'identify' is moved from /api/v2/identify to /api/v2/system/identify
--   'reboot' is new

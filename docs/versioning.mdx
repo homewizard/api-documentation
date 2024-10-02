@@ -2,6 +2,8 @@
 sidebar_position: 6
 ---
 
+import Link from '@docusaurus/Link'
+
 # Versioning and updates
 
 ## Firmware updates
@@ -11,25 +13,28 @@ When an update is available, it will be gradually rolled out to the devices. As 
 
 The versioning scheme is `(xx)X.YY` (eg. `2.03` or `12.34`).
 
-:::tip Updates
-Go to Settings > Meters > (Your device) > `...` (top right) and press 'Check for updates' to check for an update.
+:::tip
 
-Do not ask HomeWizard to update your device. Updates are installed automatically and support cannot update the device for you.
+<Link to='https://helpdesk.homewizard.com/en/articles/9167578'>How do I check if I have the latest software on my HomeWizard product?</Link>
 :::
 
 ## API version
 
-The API is currently fixed to version `v1`. The version is updated when the a new version contains (possible) breaking changes. The version will be unchanged when non breaking changes, such as new features, new endpoints or stability improvements are introduced.
+### API v1
+
+The current stable API version is `v1`, this API is available for the P1 Meter, Energy Socket, Watermeter and kWh meter. This version is stable and will not be changed.
+
+### API v2
+
+API V2 is in development and currently available as beta for the P1 Meter. The API is not yet available for other devices. This version has all the features of API V1 and some new features. The API is not yet stable and may be changed without notice.
 
 ## Latest Versions
 
 | Device                           | Latest stable release | Latest beta release |
 | -------------------------------- | --------------------- | ------------------- |
-| Wi-Fi P1 Meter                   | 5.18                  | _Up to date_        |
+| Wi-Fi P1 Meter                   | 5.18                  | 6.00 (V2 support)   |
 | Wi-Fi Energy Socket (HWE-SKT-11) | 4.08                  | _Up to date_        |
 | Wi-Fi Energy Socket (HWE-SKT-21) | 4.07                  | _Up to date_        |
 | Wi-Fi Watermeter                 | 3.01                  | _Up to date_        |
 | Wi-Fi kWh Meter (1 phase)        | 4.06                  | _Up to date_        |
 | Wi-Fi kWh Meter (3 phase)        | 4.06                  | _Up to date_        |
-
-Beta versions are available for a select group of devices. If you are interested in testing, please request beta access via [this form](https://forms.gle/ViUWaBBjjdQunquK9).

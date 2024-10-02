@@ -4,11 +4,20 @@ sidebar_position: 4
 description: Enable and disable cloud communication.
 ---
 
+import Badge from '@site/src/components/Badge.js'
+
 # System `/api/v2/system`
 
 The `/api/v2/system` endpoint can be used to get and set some system information, like the state of the cloud communication and the uptime of the device.
 
-### Data points
+<Badge color='hw-green'>✓ P1 Meter</Badge>
+<Badge color='hw-orange'>~ Energy Socket _(via v1)_</Badge>
+<Badge color='hw-red'>✗ Energy Display</Badge>
+<Badge color='hw-orange'>~ kWh Meter _(via v1)_</Badge>
+<Badge color='hw-orange'>~ Water Meter _(via v1)_</Badge>
+<Badge color='hw-red'>✗ Plug-in Battery</Badge>
+
+## Parameters
 
 | Data                      | Type    | Description                                 |
 | ------------------------- | ------- | ------------------------------------------- |
@@ -17,8 +26,9 @@ The `/api/v2/system` endpoint can be used to get and set some system information
 | cloud_enabled             | Boolean | The state of the cloud communication        |
 | uptime_s                  | Number  | The uptime of the device in seconds         |
 | status_led_brightness_pct | Number  | The brightness of the status LED in percent |
+| v1_api_enabled            | Boolean | The state of the V1 API                     |
 
-### Actions
+## Actions
 
 | Action   | Description                                               |
 | -------- | --------------------------------------------------------- |
@@ -57,6 +67,8 @@ https/1.1 204 No Content
 Content-Length: 0
 ```
 
+_After disabeling the cloud communication, the device will only work locally._
+
 #### Enable cloud communication
 
 ```http title="Request"
@@ -72,6 +84,8 @@ curl \
 https/1.1 204 No Content
 Content-Length: 0
 ```
+
+_Device will now reconnect to the cloud._
 
 ## Status LED brightness
 
@@ -94,9 +108,32 @@ https/1.1 204 No Content
 Content-Length: 0
 ```
 
+## Enable or disable the V1 API
+
+To protect the device from unauthorized access, the V1 API can be disabled. When the V1 API is disabled, the device will only allow authenticated request via the V2 API.
+
+### Example
+
+#### Disable the V1 API
+
+```http title="Request"
+curl https://<IP ADDRESS>/api/v2/system \
+  -X PUT \
+  -H "Authorization: Bearer <TOKEN>" \
+  -H "X-Api-Version: 2.0.0" \
+   -d '{"v1_api_enabled": false}'
+```
+
+```jsonc title="Response"
+https/1.1 204 No Content
+Content-Length: 0
+```
+
+_API V1 is now disabled, as if it was disabled via the HomeWizard Energy App. The API will respond with an [API disabled](/docs/V1/error-handling#api-was-disabled) error when trying to use it._
+
 ## Identify
 
-The `/api/v2/identify` endpoint can be used to let the user identify the device. The status light will blink for a few seconds after calling this endpoint.
+The `/api/v2/system/identify` endpoint can be used to let the user identify the device. The status light will blink for a few seconds after calling this endpoint.
 
 ### Example
 

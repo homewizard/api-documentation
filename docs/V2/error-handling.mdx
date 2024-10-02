@@ -1,0 +1,63 @@
+---
+sidebar_position: 4
+---
+
+# Error handling
+
+When you perform an invalid request or something went wrong, the API will respond with an error message. You have to check if the HTTP status code returns `200 OK` before parsing the result.
+If you use an endpoint that returns JSON, you also will receive an object with some error information.
+
+## Error codes
+
+Each error is represented as a set of 'scope' and 'error' fields. The 'scope' field indicates the part of the request that caused the error, and the 'error' field provides a description of the error. For example `user:name-invalid` if you provide an invalid name for the user during the Authorization flow.
+
+### List of errors
+
+| Code                | Description                  |
+| ------------------- | ---------------------------- |
+| `user:name-invalid` | The name provided is invalid |
+| TODO                | ...                          |
+
+:::warning
+The list of error codes can be extended at any time. Make sure your application can handle new error codes, e.g., by showing a generic error message to the user if an unknown error occurs.
+:::
+
+## Examples
+
+### Not authenticated
+
+```shell title="Request"
+curl https://{ip_address}/api \
+  -H "Authorization: Bearer <INVALID_TOKEN>" \
+  -H "X-Api-Version: 2.0.0" \
+```
+
+```http title="Response"
+https/1.1 401 Unauthorized
+Content-Type: application/json
+Content-Length: <length>
+
+{
+    "error": "user:unauthorized"
+}
+```
+
+### Invalid value
+
+```http title="Request"
+curl https://<IP ADDRESS>/api/v2/system \
+  -X PUT \
+  -H "Authorization: Bearer <TOKEN>" \
+  -H "X-Api-Version: 2.0.0" \
+   -d '{"status_led_brightness_pct": 123}'
+```
+
+```http title="Response"
+https/1.1 401 Unauthorized
+Content-Type: application/json
+Content-Length: <length>
+
+{
+    "error": "user:unauthorized"
+}
+```

@@ -3,15 +3,18 @@ sidebar_position: 4
 description: Identify the device by letting the LED blink.
 ---
 
+import Badge from '@site/src/components/Badge.js'
+
 # Identify (`/api/v1/identify`)
 
 The `/api/v1/identify` endpoint can be used to let the user identify the device. The status light will blink for a few seconds after calling this endpoint.
 
-This feature is available for:
-
--   P1 Meter (HWE-P1)
--   Energy Socket (HWE-SKT)
--   Watermeter (HWE-WTR)
+<Badge color='hw-green'>✓ P1 Meter</Badge>
+<Badge color='hw-green'>✓ Energy Socket</Badge>
+<Badge color='hw-red'>✗ Energy Display</Badge>
+<Badge color='hw-red'>✗ kWh Meter</Badge>
+<Badge color='hw-green'>✓ Water Meter</Badge>
+<Badge color='hw-red'>✗ Plug-in Battery</Badge>
 
 ### Example
 

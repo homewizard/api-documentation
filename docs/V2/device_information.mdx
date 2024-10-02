@@ -2,14 +2,24 @@
 title: Device information
 sidebar_position: 2
 description: Get information like serial and version number from the device.
-toc_min_heading_level: 3
 ---
+
+import Badge from '@site/src/components/Badge.js'
 
 # Device information `/api`
 
 The `/api` endpoint allows you to get basic information from the device.
 
 Your application can use this endpoint to see if your integration is designed to work with this version of the API. You can validate your support based on the combination of `product_type` and `api_version`. Data points in this endpoint that are currently available won't change, but make sure your application can accept new data points for future updates.
+
+<Badge color='hw-green'>✓ P1 Meter</Badge>
+<Badge color='hw-orange'>~ Energy Socket _(via v1)_</Badge>
+<Badge color='hw-red'>✗ Energy Display</Badge>
+<Badge color='hw-orange'>~ kWh Meter _(via v1)_</Badge>
+<Badge color='hw-orange'>~ Water Meter _(via v1)_</Badge>
+<Badge color='hw-red'>✗ Plug-in Battery</Badge>
+
+## Parameters
 
 | Data             | Type   | Description                                                                                                                                                 |
 | ---------------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
