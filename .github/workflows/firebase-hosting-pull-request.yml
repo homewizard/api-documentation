@@ -15,7 +15,17 @@ jobs:
             - run: npm run build
 
             - uses: FirebaseExtended/action-hosting-deploy@v0
+              id: deploy
               with:
                   repoToken: '${{ secrets.GITHUB_TOKEN }}'
                   firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_HW_API_DOCUMENTATION }}'
                   projectId: hw-api-documentation
+
+            - name: Check for broken links
+              id: link-report
+              uses: celinekurpershoek/link-checker@v1.0.2
+              with:
+                  url: ${{ steps.deploy.outputs.urls }}
+                  honorRobotExclusions: false
+                  ignorePatterns: 'github,google'
+                  recursiveLinks: false
