@@ -1,19 +1,19 @@
 ---
-sidebar_position: 3
+title: Telegram
+sidebar_position: 5
 description: Get the most recent, raw telegram from the P1 meter.
 toc_min_heading_level: 3
 ---
 
-# P1 Telegram
+# P1 Telegram `/api/v2/telegram`
 
 The `/api/v2/telegram` endpoint returns the most recent, valid telegram that was given by the P1 meter.
 
-- The checksum is validated when present, telegrams with an invalid checksum are rejected.
-- The Telegram is not processed in any other form, and can be used by other systems to process the data.
-- If you need parsed data, use the [measurement](/docs/V2/endpoints/measurement) endpoint.
+-   The checksum is validated when present, telegrams with an invalid checksum are rejected.
+-   The Telegram is not processed in any other form, and can be used by other systems to process the data.
+-   If you need parsed data, use the [measurement](/docs/V2/endpoints/measurement) endpoint.
 
 ## Example
-
 
 ```http title="Request"
 curl https://{ip_address}/api/v1/telegram \

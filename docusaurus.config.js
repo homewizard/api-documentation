@@ -25,9 +25,9 @@ const config = {
         defaultLocale: 'en',
         locales: ['en']
     },
-    
+
     markdown: {
-        mermaid: true,
+        mermaid: true
     },
     themes: ['@docusaurus/theme-mermaid'],
 
@@ -126,7 +126,8 @@ const config = {
             },
             prism: {
                 theme: prismThemes.github,
-                darkTheme: prismThemes.dracula
+                darkTheme: prismThemes.dracula,
+                additionalLanguages: ['json', 'HTTP'],
             }
         })
 }

@@ -1,11 +1,12 @@
 ---
+title: Recent measurement
 sidebar_position: 2
 description: Get the most recent measurement from the device.
 ---
 
 import Link from '@docusaurus/Link'
 
-# Recent measurement
+# Recent measurement `/api/v2/measurement`
 
 The `/api/v2/measurement` endpoint allows you to get the most recent measurement from the device. All data points are "optional"; The API does not send data points that are `null` or not available at all. This mostly depends on the connected smart meter. Make sure your application can handle this.
 

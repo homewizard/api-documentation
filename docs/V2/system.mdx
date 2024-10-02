@@ -1,34 +1,35 @@
 ---
-sidebar_position: 5
+title: System
+sidebar_position: 4
 description: Enable and disable cloud communication.
 ---
 
-# System
+# System `/api/v2/system`
 
 The `/api/v2/system` endpoint can be used to get and set some system information, like the state of the cloud communication and the uptime of the device.
 
 ### Data points
 
-| Data                      | Type      | Description                                 |
-| ------------------------- | --------- | ------------------------------------------- |
-| wifi_ssid                 | String    | The SSID of the WiFi network                |
-| wifi_rssi_db              | Number    | The signal strength of the WiFi network     |
-| cloud_enabled             | Boolean   | The state of the cloud communication        |
-| uptime_s                  | Number    | The uptime of the device in seconds         |
-| status_led_brightness_pct | Number    | The brightness of the status LED in percent |
+| Data                      | Type    | Description                                 |
+| ------------------------- | ------- | ------------------------------------------- |
+| wifi_ssid                 | String  | The SSID of the WiFi network                |
+| wifi_rssi_db              | Number  | The signal strength of the WiFi network     |
+| cloud_enabled             | Boolean | The state of the cloud communication        |
+| uptime_s                  | Number  | The uptime of the device in seconds         |
+| status_led_brightness_pct | Number  | The brightness of the status LED in percent |
 
 ### Actions
 
-| Action | Description |
-| ------ | ----------- |
-| Reboot | Reboot the device |
+| Action   | Description                                               |
+| -------- | --------------------------------------------------------- |
+| Reboot   | Reboot the device                                         |
 | Identify | Let the device identify itself by blinking the status LED |
 
 ## Cloud communication
 
 The HomeWizard Energy devices are designed to work with the HomeWizard Energy app and require communication with the HomeWizard cloud to make them function with the app.
 
-The device allows the user to disable cloud communication, making the device fully local. The app won't be able to communicate with the device, and the device won't receive any future firmware updates. 
+The device allows the user to disable cloud communication, making the device fully local. The app won't be able to communicate with the device, and the device won't receive any future firmware updates.
 
 Cloud communication is restored when the `cloud_enabled` is set to `true`. Cloud communications are also restored after a factory reset, or when the device is put in pairing mode.
 
@@ -97,21 +98,19 @@ Content-Length: 0
 
 The `/api/v2/identify` endpoint can be used to let the user identify the device. The status light will blink for a few seconds after calling this endpoint.
 
-
 ### Example
 
 ```http title="Request"
 curl https://{ip_address}/api/v2/system/identify \
   -H "Authorization: Bearer <TOKEN>" \
   -H "X-Api-Version: 2.0.0" \
-  
+
 ```
 
 ```http title="Response"
 https/1.1 204 No Content
 Content-Length: 0
 ```
-
 
 ## Reboot the device
 
@@ -122,6 +121,7 @@ A reboot is normally not needed but can help help in some situations. If you iss
 :::
 
 ### Examples
+
 ```
 curl https://<IP ADDRESS>/api/v2/system/reboot \
   -H "Authorization: Bearer <TOKEN>" \
