@@ -63,7 +63,7 @@ curl https://<IP ADDRESS>/api/v2/system \
   -d '{"cloud_enabled": false}'
 ```
 
-```jsonc title="Response"
+```http title="Response"
 https/1.1 204 No Content
 Content-Length: 0
 ```
@@ -80,7 +80,7 @@ curl https://<IP ADDRESS>/api/v2/system \
   -d '{"cloud_enabled": true}'
 ```
 
-```jsonc title="Response"
+```http title="Response"
 https/1.1 204 No Content
 Content-Length: 0
 ```
@@ -100,10 +100,10 @@ curl https://<IP ADDRESS>/api/v2/system \
   -X PUT \
   -H "Authorization: Bearer <TOKEN>" \
   -H "X-Api-Version: 2.0.0" \
-   -d '{"status_led_brightness_pct": 50}'
+  -d '{"status_led_brightness_pct": 50}'
 ```
 
-```jsonc title="Response"
+```http title="Response"
 https/1.1 204 No Content
 Content-Length: 0
 ```
@@ -121,10 +121,10 @@ curl https://<IP ADDRESS>/api/v2/system \
   -X PUT \
   -H "Authorization: Bearer <TOKEN>" \
   -H "X-Api-Version: 2.0.0" \
-   -d '{"v1_api_enabled": false}'
+  -d '{"v1_api_enabled": false}'
 ```
 
-```jsonc title="Response"
+```http title="Response"
 https/1.1 204 No Content
 Content-Length: 0
 ```
@@ -135,14 +135,11 @@ _API V1 is now disabled, as if it was disabled via the HomeWizard Energy App. Th
 
 The `/api/v2/system/identify` endpoint can be used to let the user identify the device. The status light will blink for a few seconds after calling this endpoint.
 
-:::danger TODO
-This feature is not yet implemented, it should be moved from `/api/v2/identify` to `/api/v2/system/identify` to be consistent with the other endpoints.
-:::
-
 ### Example
 
 ```http title="Request"
 curl https://{ip_address}/api/v2/system/identify \
+  -X PUT \
   -H "Authorization: Bearer <TOKEN>" \
   -H "X-Api-Version: 2.0.0" \
 
@@ -161,19 +158,16 @@ In some situations you would like to reboot the device. This can be done by call
 A reboot is normally not needed but can help help in some situations. If you issues persist and you need to reboot the device often, please contact our support so we can help solving the real cause of the issue.
 :::
 
-:::danger TODO
-This feature is not yet implemented, it should be moved from `PUT /api/v2/system {"reboot": true}` to `/api/v2/system/reboot` to be consistent with the other endpoints.
-:::
-
 ### Examples
 
 ```
 curl https://<IP ADDRESS>/api/v2/system/reboot \
+  -X PUT \
   -H "Authorization: Bearer <TOKEN>" \
   -H "X-Api-Version: 2.0.0"
 ```
 
-```jsonc title="Response"
+```http title="Response"
 https/1.1 204 No Content
 Content-Length: 0
 ```
