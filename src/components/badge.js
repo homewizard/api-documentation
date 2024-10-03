@@ -27,6 +27,7 @@ export default function Badge({ children, color }) {
                 borderRadius: '99px',
                 color: '#fff',
                 fontWeight: 'bold',
+                fontSize: '85%',
                 padding: '0.1rem 0.5rem',
                 marginBottom: '1rem'
             }}
