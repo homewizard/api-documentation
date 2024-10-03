@@ -77,8 +77,6 @@ Each entry is supplied with a set of data. See [this example](#hwe-p1-3-phase-wi
 | value     | Number                     | The raw value                                                                                                  |
 | unit      | String                     | The unit of the value, for example: "m3" or "GJ"                                                               |
 
-The original data points `total_gas_m3`, `gas_timestamp` and `unique_gas_id` use the first detected gas meter. These data points will be removed in a future version. You can use `unique_id` to migrate any values if needed.
-
 ### Timestamps
 
 Timestamps are formatted via a ISO 8601 string (`YYYY-MM-DDTHH:mm:ss`). The timestamp is without timezone information as this is not provided by the device. Example: `"2024-06-28T14:12:34"`.
