@@ -2,7 +2,11 @@
 sidebar_position: 6
 ---
 
+import PreliminaryWarning from '@site/src/components/PreliminaryWarning.js'
+
 # Error handling
+
+<PreliminaryWarning />
 
 When you perform an invalid request or something went wrong, the API will respond with an error message. You have to check if the HTTP status code returns `200 OK` before parsing the result.
 If you use an endpoint that returns JSON, you also will receive an object with some error information.
@@ -18,8 +22,8 @@ Each error is represented as a set of 'scope' and 'error' fields. The 'scope' fi
 | `user:name-invalid` | The name provided is invalid |
 | TODO                | ...                          |
 
-:::warning
-The list of error codes can be extended at any time. Make sure your application can handle new error codes, e.g., by showing a generic error message to the user if an unknown error occurs.
+:::tip
+The list of error codes may be extended in the future. We recommend that you prepare for new error codes by having a generic error handling mechanism in place.
 :::
 
 ## Examples

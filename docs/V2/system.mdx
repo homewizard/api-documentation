@@ -6,8 +6,11 @@ description: Enable and disable cloud communication.
 
 import Badge from '@site/src/components/Badge.js'
 import BadgeDetail from '@site/src/components/BadgeDetail.js'
+import PreliminaryWarning from '@site/src/components/PreliminaryWarning.js'
 
 # System `/api/v2/system`
+
+<PreliminaryWarning />
 
 The `/api/v2/system` endpoint can be used to get and set some system information, like the state of the cloud communication and the uptime of the device.
 
@@ -45,10 +48,10 @@ The device allows the user to disable cloud communication, making the device ful
 
 Cloud communication is restored when the `cloud_enabled` is set to `true`. Cloud communications are also restored after a factory reset, or when the device is put in pairing mode.
 
-:::warning Be clear
-If you are implementing this, make sure your user understand what this actions does. Users may press a button without knowing what they do and forget about it. In this case it seems that the app or device is broken and reach out to our support, and we would like to prevent that.
+:::warning Inform the user
+If you're implementing this, ensure your users clearly understand what the action does. Users often click buttons without fully knowing their purpose or later forget they've done so. This can lead them to believe the app or device is malfunctioning, prompting unnecessary support requests, which we want to avoid.
 
-You can solve this, for example, by adding clear documentation and/or by showing a confirmation popup before calling this endpoint.
+To prevent this, consider adding clear documentation or showing a confirmation popup before triggering this action.
 :::
 
 ### Examples
@@ -154,8 +157,8 @@ Content-Length: 0
 
 In some situations you would like to reboot the device. This can be done by calling the `/api/v2/system/reboot` endpoint. After a reboot the device will reconnect to WiFi and can be used again.
 
-:::info Note
-A reboot is normally not needed but can help help in some situations. If you issues persist and you need to reboot the device often, please contact our support so we can help solving the real cause of the issue.
+:::tip
+A reboot is **normally not needed** but can help help in some situations. If you issues persist and you need to reboot the device often, please contact our support so we can help solving the real cause of the issue.
 :::
 
 ### Examples
