@@ -10,27 +10,29 @@ import PreliminaryWarning from '@site/src/components/PreliminaryWarning.js'
 
 :::danger[TODO]
 
--   Add information about the token, like how long it is valid, how to revoke it, etc.
--   Add user parameter requirements
--   Add details about how long a initial request is valid, how long time until uses must press button
--   Tell users cloud can also generate tokens for battery pairing
--   Add GET and DELETE method description
-    :::
+-   Add details about token validity, revocation, etc.
+-   Specify required parameters for users
+-   Explain how long the initial request remains valid and the time window for pressing the button
+-   Inform users that tokens for battery pairing can also be generated via the cloud
+-   Add GET and DELETE method descriptions
+-   Remove the 'ID' field from the response
+
+:::
 
 <PreliminaryWarning />
 
-The HomeWizard Energy API uses a token to authenticate requests. This token is a Bearer token and should be included in the `Authorization` header of each request.
+The HomeWizard Energy API requires a Bearer token to authenticate requests. This token should be included in the `Authorization` header of each request.
 
-## Get a token
+## How to Get a Token
 
-### General flow
+### Steps:
 
-1. Find the IP of the device, for example by using mDNS.
-2. Start sending `POST /api/v2/user` requests to the device with the required parameters.
-3. The device will respond with a `403` status code, indicating that the user should press the button on the device.
-4. Aks the user to press the button on the device, within a minute after the last request. You can keep sending requests to the device while waiting for the user to press the button.
-5. When the user has pressed the button, the device will respond with a `200` status code and a token.
-6. Store the token for future requests.
+1. Find the device's IP address, for example using mDNS.
+2. Send a `POST /api/v2/user` request with the necessary [parameters](#parameters).
+3. The device will initially respond with a `403` status code, meaning the user needs to press the button on the device.
+4. Prompt the user to press the button within 1 minute of the last request. You can keep sending requests while waiting.
+5. Once the button is pressed, the device will respond with a `200` status and a [token](#token).
+6. Save the token for future use.
 
 ```mermaid
 sequenceDiagram
@@ -38,35 +40,61 @@ sequenceDiagram
     opt
     HomeWizard-->>Device: mDNS Broadcast
     end
-    User-->>+Device: 'Please pair'
+    User-->>+Device: 'Request pairing'
     Device->>+HomeWizard: POST /api/v2/user [parameters]
-    HomeWizard-->>-Device: 403
-    Device-->>User: 'Can you press the button?'
-    User-->>HomeWizard: Pressed button
+    HomeWizard-->>-Device: 403 Forbidden
+    Device-->>User: 'Please press the button'
+    User-->>HomeWizard: Button pressed
     Device->>+HomeWizard: POST /api/v2/user [parameters]
-    HomeWizard-->>-Device: 200 + [token]
+    HomeWizard-->>-Device: 200 OK + [token]
     Device->>Device: Store token
-    Device-->>-User: 'Done'
+    Device-->>-User: 'Pairing complete'
     opt
         Device-->>HomeWizard: Disconnect
     end
 ```
 
-## Examples
+## Parameters
 
-### Start requesting for a token
+When sending a `POST /api/v2/user` request, include the `name` parameter in the request body. This is a string that must be unique for each user.
 
-Poll the API while waiting for the user to press the button.
+-   The name must be between 1 and 40 characters long.
+-   Allowed characters: `a-z`, `A-Z`, `0-9`, `-`, `_`, `\`, `/`, `#`, and spaces.
+    -   (Regex: `^[a-zA-Z0-9\-_/\\# ]{1,40}$`)
+-   The name is unique per device. If the same name is used again, a new token will be issued and the old one invalidated.
+
+## Response
+
+### Name
+
+The name provided in [Parameters](#parameters).
+
+### Token
+
+A 32-character token that can be used to authenticate API requests. Include it in the `Authorization` header.
+
+-   Token consists of uppercase letters (`A-Z`) and numbers (`0-9`).
+    -   (Regex: `^[A-Z0-9]{32}$`)
+
+:::danger
+Keep the token secure, as it grants full access to the device, including the ability to generate new tokens.
+:::
+
+## Example Requests
+
+### Step 1: Request a Token
+
+Keep sending requests while waiting for the user to press the button.
 
 ```http title="Request"
 curl https://{ip_address}/api/v2/user \
   -X POST \
   -H "Content-Type: application/json" \
-  -H "X-Api-Version: 2.0.0"
+  -H "X-Api-Version: 2.0.0" \
   -d '{"name": "new_user"}'
 ```
 
-```jsonc title="Response"
+```http title="Response"
 https/1.1 403 Forbidden
 Content-Type: application/json
 Content-Length: <length>
@@ -76,30 +104,28 @@ Content-Length: <length>
 }
 ```
 
-### User pressed the button
+### Step 2: User Presses Button
 
 ```http title="Request"
 curl https://{ip_address}/api/v2/user \
   -X POST \
   -H "Content-Type: application/json" \
-  -H "X-Api-Version: 2.0.0"
+  -H "X-Api-Version: 2.0.0" \
   -d '{"name": "new_user"}'
 ```
 
-```jsonc title="Response"
+```http title="Response"
 https/1.1 200 OK
 Content-Type: application/json
 Content-Length: <length>
 
 {
-    "token": "<TOKEN>"
+    "token": "<TOKEN>",
     "name": "new_user"
 }
 ```
 
-### Access the API
-
-Use the token to access the API.
+### Step 3: Access the API with the Token
 
 ```http title="Request"
 curl https://{ip_address}/api \
@@ -107,7 +133,7 @@ curl https://{ip_address}/api \
   -H "X-Api-Version: 2.0.0"
 ```
 
-```jsonc title="Response"
+```http title="Response"
 https/1.1 200 OK
 Content-Type: application/json
 Content-Length: <length>
