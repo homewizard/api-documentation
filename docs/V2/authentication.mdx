@@ -86,8 +86,18 @@ A 32-character token that can be used to authenticate API requests. Include it i
     -   (Regex: `^[A-Z0-9]{32}$`)
 
 :::danger
-Keep the token secure, as it grants full access to the device, including the ability to generate new tokens.
+Keep the token secure, as it grants full access to the device, including the ability to generate new user.
 :::
+
+## Local and Cloud users
+
+The local API is used by HomeWizard to enable direct communication between HomeWizard devices on a local network. To simplify setup for non-technical users, users can also be generated via the HomeWizard Energy app or background process using the cloud.
+
+-   Cloud-generated users are prefixed with `cloud/`.
+-   These tokens are for local device communication only and do not provide access to the cloud nor can be used by the cloud itself.
+-   All users, including users cloud-generated ones can be viewed with the [`GET /api/v2/user`](#list-users) endpoint.
+-   Users created via the cloud can be revoked at any time, either by the cloud itself or through the [`DELETE /api/v2/user`](#delete-user) endpoint.
+-   Disabling the cloud prevents the generation of cloud-generated users. For more details, see [cloud communication](/docs/v2/system#cloud-communication).
 
 ## Example Requests
 
@@ -155,3 +165,15 @@ Content-Length: <length>
     "api_version": "2.0.0"
 }
 ```
+
+## List users
+
+:::danger TODO
+TODO
+:::
+
+## Delete a user {#delete-user}
+
+:::danger TODO
+TODO
+:::
