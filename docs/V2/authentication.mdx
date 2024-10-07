@@ -4,6 +4,7 @@ sidebar_position: 1
 description: Get a token to authenticate requests to the HomeWizard Energy API.
 ---
 
+import Badge from '@site/src/components/Badge.js'
 import PreliminaryWarning from '@site/src/components/PreliminaryWarning.js'
 
 # Authorization `/api/v2/user`
@@ -22,6 +23,14 @@ import PreliminaryWarning from '@site/src/components/PreliminaryWarning.js'
 <PreliminaryWarning />
 
 The HomeWizard Energy API requires a Bearer token to authenticate requests. This token should be included in the `Authorization` header of each request.
+
+{/* prettier-ignore */}
+<Badge color='hw-green'>✓ P1 Meter</Badge>
+<Badge color='hw-red'>✗ Energy Socket</Badge>
+<Badge color='hw-red'>✗ Energy Display</Badge>
+<Badge color='hw-red'>✗ kWh Meter</Badge>
+<Badge color='hw-red'>✗ Water Meter</Badge>
+<Badge color='hw-red'>✗ Plug-in Battery</Badge>
 
 ## How to Get a Token
 
@@ -67,7 +76,7 @@ When sending a `POST /api/v2/user` request, include the `name` parameter in the 
 
 ### Name
 
-The name provided in [Parameters](#parameters).
+The name provided in [Parameters](#parameters), prefixed with `local/`.
 
 ### Token
 
@@ -121,7 +130,7 @@ Content-Length: <length>
 
 {
     "token": "<TOKEN>",
-    "name": "new_user"
+    "name": "local/new_user"
 }
 ```
 
