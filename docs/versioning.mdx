@@ -1,6 +1,10 @@
 ---
 sidebar_position: 6
+toc_max_heading_level: 4
 ---
+
+import Link from '@docusaurus/Link'
+import Badge from '@site/src/components/Badge.js'
 
 # Versioning and updates
 
@@ -11,25 +15,104 @@ When an update is available, it will be gradually rolled out to the devices. As 
 
 The versioning scheme is `(xx)X.YY` (eg. `2.03` or `12.34`).
 
-:::tip Updates
-Go to Settings > Meters > (Your device) > `...` (top right) and press 'Check for updates' to check for an update.
+:::tip
 
-Do not ask HomeWizard to update your device. Updates are installed automatically and support cannot update the device for you.
+<Link to='https://helpdesk.homewizard.com/en/articles/9167578'>How do I check if I have the latest software on my HomeWizard product?</Link>
 :::
 
-## API version
+## API V1 <Badge color='hw-green'>Stable</Badge>
 
-The API is currently fixed to version `v1`. The version is updated when the a new version contains (possible) breaking changes. The version will be unchanged when non breaking changes, such as new features, new endpoints or stability improvements are introduced.
+The current stable API version is `v1`, this API is available for the P1 Meter, Energy Socket, Watermeter and kWh meter. This version is stable and will not be changed.
+
+## API V2 <Badge color='hw-orange'>Beta</Badge>
+
+API V2 is in development and currently available as beta for the P1 Meter. The API is not yet available for other devices. This version has all the features of API V1 and some new features. The API is not yet stable and may be changed without notice.
+
+### Versioning
+
+The API uses semantic versioning (semver) to specify the version of the API. Each response will include the `X-Api-Version` header which specifies the current version.
+
+:::danger
+TODO
+:::
+
+### Version header
+
+The API accepts a version header to specify the version your client expects. The header is `X-API-Version`. The header is optional, if not provided the API will default to the latest stable version.
+
+-   The header accepts a range of version in semver format, for example `>=2.0.0 <2.1.0`, which means any 2.0 version is accepted, but not 2.1.
+-   The latest available API version specified by the header will be used by the API.
+-   The API will respond with the version it is using, so you can check if your client is using the correct version.
+-   The API will respond with a `406 Not Acceptable` if the version specified is not available, or if the version is not in the correct format.
+
+#### Examples
+
+##### No version specified, the API will default to the latest stable version.
+
+```http title="Request"
+GET /api/v2/system
+```
+
+```http title="Response"
+HTTP/1.1 200 OK
+X-Api-Version: 2.0.0
+
+...
+```
+
+##### Version range specified, the API will use the latest available version in the range.
+
+_(Assuming version `2.0.5` is available on this device.)_
+
+```http title="Request"
+GET /api/v2/system
+X-API-Version: >=2.0.1 <2.1.0
+```
+
+```http title="Response"
+HTTP/1.1 200 OK
+X-Api-Version: 2.0.5
+
+...
+```
+
+##### Unsupported version requested
+
+```http title="Request"
+GET /api/v2/system
+X-API-Version: 2.1.0
+```
+
+```http title="Response"
+HTTP/1.1 406 Not Acceptable
+X-Api-Version: 2.0.0
+
+{"error": "api:version-not-supported"}
+```
+
+##### Unsupported version range requested
+
+_(Assuming version `2.1.0` and higher is latest stable version)_
+
+```http title="Request"
+GET /api/v2/system
+X-API-Version: >=2.0.1 <2.1.0
+```
+
+```http title="Response"
+HTTP/1.1 406 Not Acceptable
+X-Api-Version: 2.2.0
+
+{"error": "api:version-not-supported"}
+```
 
 ## Latest Versions
 
 | Device                           | Latest stable release | Latest beta release |
 | -------------------------------- | --------------------- | ------------------- |
-| Wi-Fi P1 Meter                   | 5.18                  | _Up to date_        |
+| Wi-Fi P1 Meter                   | 5.18                  | 6.00 (V2 support)   |
 | Wi-Fi Energy Socket (HWE-SKT-11) | 4.08                  | _Up to date_        |
 | Wi-Fi Energy Socket (HWE-SKT-21) | 4.07                  | _Up to date_        |
 | Wi-Fi Watermeter                 | 3.01                  | _Up to date_        |
 | Wi-Fi kWh Meter (1 phase)        | 4.06                  | _Up to date_        |
 | Wi-Fi kWh Meter (3 phase)        | 4.06                  | _Up to date_        |
-
-Beta versions are available for a select group of devices. If you are interested in testing, please request beta access via [this form](https://forms.gle/ViUWaBBjjdQunquK9).

@@ -3,14 +3,23 @@ sidebar_position: 3
 description: Control the state of the Energy Socket.
 ---
 
+import Badge from '@site/src/components/Badge.js'
+
 # Control socket state (`/api/v1/state`)
 
-The `/api/v1/state` endpoint returns the actual state of the Energy Socket. This endpoint is **only available for the Energy Socket (HWE-SKT)** as this is the only controllable device.
+The `/api/v1/state` endpoint returns the actual state of the Energy Socket.
 
 This endpoint accepts `GET` and `PUT` requests.
 
 -   With `GET` you will receive the actual state
 -   With `PUT` you can control the state.
+
+<Badge color='hw-red'>✗ P1 Meter</Badge>
+<Badge color='hw-green'>✓ Energy Socket</Badge>
+<Badge color='hw-red'>✗ Energy Display</Badge>
+<Badge color='hw-red'>✗ kWh Meter</Badge>
+<Badge color='hw-red'>✗ Water Meter</Badge>
+<Badge color='hw-red'>✗ Plug-in Battery</Badge>
 
 ## Parameters
 

@@ -4,10 +4,18 @@ description: Get the most recent measurement from the device.
 ---
 
 import Link from '@docusaurus/Link'
+import Badge from '@site/src/components/Badge.js'
 
 # Recent measurement (`/api/v1/data`)
 
 The `/api/v1/data` endpoint allows you to get the most recent measurement from the device. All data points are "optional"; The API does not send data points that are `null` or not available at all. This mostly depends on the connected smart meter. Make sure your application can handle this.
+
+<Badge color='hw-green'>✓ P1 Meter</Badge>
+<Badge color='hw-green'>✓ Energy Socket</Badge>
+<Badge color='hw-red'>✗ Energy Display</Badge>
+<Badge color='hw-green'>✓ kWh Meter</Badge>
+<Badge color='hw-green'>✓ Water Meter</Badge>
+<Badge color='hw-red'>✗ Plug-in Battery</Badge>
 
 ## P1 Meter (HWE-P1)
 
