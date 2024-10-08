@@ -12,6 +12,7 @@ import PreliminaryWarning from '@site/src/components/PreliminaryWarning.js'
 :::danger[TODO]
 
 -   Do not mix and match authenticated/authorized
+-   Add device certificate for HTTPS communication
 
 :::
 
@@ -36,6 +37,12 @@ The local API is used by HomeWizard to enable direct communication between HomeW
 -   All users, including cloud-generated ones can be viewed with the [`GET /api/v2/user`](#list-users) endpoint.
 -   Users created via the cloud can be revoked at any time, either by the cloud itself or through the [`DELETE /api/v2/user`](#delete-user) endpoint.
 -   Disabling the cloud prevents the generation of cloud-generated users. For more details, see [cloud communication](/docs/v2/system#cloud-communication).
+
+## SSL certificate (HTTPS)
+
+:::danger
+TODO
+:::
 
 ## Create user and get token
 
