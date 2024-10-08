@@ -40,18 +40,20 @@ The `/api/v2/system` endpoint can be used to get and set some system information
 | Reboot   | Reboot the device                                         |
 | Identify | Let the device identify itself by blinking the status LED |
 
-## Cloud communication
+Here is the adjusted version:
 
-The HomeWizard Energy devices are designed to work with the HomeWizard Energy app and require communication with the HomeWizard cloud to make them function with the app.
+## Cloud Communication
 
-The device allows the user to disable cloud communication, making the device fully local. The app won't be able to communicate with the device, and the device won't receive any future firmware updates.
+HomeWizard Energy devices are designed to work with the HomeWizard Energy app and rely on communication with the HomeWizard cloud for full functionality.
 
-Cloud communication is restored when the `cloud_enabled` is set to `true`. Cloud communications are also restored after a factory reset, or when the device is put in pairing mode.
+Users can choose to disable cloud communication, making the device operate entirely locally. However, this will prevent the app from interacting with the device, and the device will no longer receive firmware updates.
 
-:::warning Inform the user
-If you're implementing this, ensure your users clearly understand what the action does. Users often click buttons without fully knowing their purpose or later forget they've done so. This can lead them to believe the app or device is malfunctioning, prompting unnecessary support requests, which we want to avoid.
+Cloud communication can be re-enabled by setting `cloud_enabled` to `true`. It is also automatically restored after a factory reset or when the device is put into pairing mode.
 
-To prevent this, consider adding clear documentation or showing a confirmation popup before triggering this action.
+:::warning User Awareness
+If you're implementing this feature, ensure that users clearly understand its implications. Users might disable cloud communication without fully realizing its effect or forget they did so, leading them to believe the app or device is malfunctioning. This can result in unnecessary support requests, which we want to avoid.
+
+To prevent confusion, consider providing clear documentation or displaying a confirmation message before enabling or disabling this setting.
 :::
 
 ### Examples
