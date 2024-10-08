@@ -8,7 +8,7 @@ import PreliminaryWarning from '@site/src/components/PreliminaryWarning.js'
 
 <PreliminaryWarning />
 
-When you perform an invalid request or something went wrong, the API will respond with an error message. You have to check if the HTTP status code returns `200 OK` before parsing the result.
+When you perform an invalid request or something went wrong, the API will respond with an error message. You have to check if the HTTP status code returns `200 OK` before parsing the result or `204 No Content` if you expect no content (actions and set requests).
 If you use an endpoint that returns JSON, you also will receive an object with some error information.
 
 ## Error codes
