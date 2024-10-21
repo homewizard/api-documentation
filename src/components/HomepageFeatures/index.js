@@ -18,7 +18,7 @@ const FeatureList = [
         title: 'Easy to use',
         description: (
             <>
-                The API is easy to use. You can use it with any programming language that supports HTTP requests. Use our official <Link to='https://github.com/homewizard/python-homewizard-energy'>Python library</Link> to get some examples.
+                The API is easy to use. You can use it with any programming language that supports HTTP requests. Use our official <Link to='https://github.com/homewizard/python-homewizard-energy'>Python library</Link> or <Link to='https://github.com/homewizard/swift-homewizard-energy'>Swift package</Link> to get some examples.
             </>
         )
     },
