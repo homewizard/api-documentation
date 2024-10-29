@@ -99,7 +99,7 @@ Keep the token a secret, as it grants full access to the device, including the a
 Keep sending requests while waiting for the user to press the button.
 
 ```http title="Request"
-curl https://{ip_address}/api/v2/user \
+curl https://<IP ADDRESS>/api/v2/user \
   -X POST \
   -H "Content-Type: application/json" \
   -H "X-Api-Version: 2.0.0" \
@@ -119,7 +119,7 @@ Content-Length: <length>
 #### Step 2: User Presses Button and a new request is sent
 
 ```http title="Request"
-curl https://{ip_address}/api/v2/user \
+curl https://<IP ADDRESS>/api/v2/user \
   -X POST \
   -H "Content-Type: application/json" \
   -H "X-Api-Version: 2.0.0" \
@@ -140,7 +140,7 @@ Content-Length: <length>
 #### Step 3: Access the API with the Token
 
 ```http title="Request"
-curl https://{ip_address}/api \
+curl https://<IP ADDRESS>/api \
   -H "Authorization: Bearer <TOKEN>" \
   -H "X-Api-Version: 2.0.0"
 ```
@@ -164,7 +164,7 @@ Content-Length: <length>
 To list all users, send a `GET /api/v2/user` request.
 
 ```http title="Request"
-curl https://{ip_address}/api/v2/user
+curl https://<IP ADDRESS>/api/v2/user
   -H "Authorization: Bearer <TOKEN>" \
   -H "X-Api-Version: 2.0.0"
 ```
@@ -194,7 +194,7 @@ If you delete the user that is currently authenticated, you will lose access to 
 :::
 
 ```http title="Request"
-curl https://{ip_address}/api/v2/user \
+curl https://<IP ADDRESS>/api/v2/user \
   -X DELETE \
   -H "Authorization: Bearer <TOKEN>" \
   -H "X-Api-Version: 2.0.0" \

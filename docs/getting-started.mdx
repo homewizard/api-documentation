@@ -5,8 +5,15 @@ sidebar_position: 2
 import Link from '@docusaurus/Link'
 import Badge from '@site/src/components/Badge.js'
 import BadgeDetail from '@site/src/components/BadgeDetail.js'
+import PreliminaryWarning from '@site/src/components/PreliminaryWarning.js'
 
 # Getting Started
+
+This guide will help you get started with the HomeWizard Energy API.
+
+:::tip API V2
+The HomeWizard Energy API has two versions: V1 and V2. The V1 API is the **stable version and is recommended to be used**. The V2 API is in beta and is subject to change. You can find the documentation for the V2 API [here](/docs/v2).
+:::
 
 ## Connect your device to Wi-Fi
 
@@ -43,3 +50,56 @@ The following table shows which devices are supported by the API and which API v
 ## Data update frequency
 
 The API always returns the most recent data. The update frequency depends on the device and, in case of the HWE-P1, the smart meter that it is connected to. With a SMR 5.0 meter, this is every second for power and every 5 minutes for gas. If the smart meter version is lower than SMR 5.0, this is every 10 seconds for power and every 60 minutes for gas. You can find the SMR version of your smart meter on the smart meter itself or via the [Recent measurement endpoint](/docs/endpoints/api-v1-data). There is no limit to the time between each request on the local API, however, we advise not to retrieve data more often than every 500ms.
+
+## Getting started with V2
+
+<PreliminaryWarning />
+
+The HomeWizard Energy API V2 is an updated version of the API that is currently in beta. This API is based on HTTPS and uses authentication to access the data, so you don't need to enable the local API. You can find the documentation for the V2 API [here](/docs/v2).
+
+The following example will show you can use the API to get basic information from a P1 Meter.
+
+### Get a token
+
+:::danger
+The token allows full access to the data from your P1 Meter and **should be kept secret**. Do not share this token with others. [Remove this token](/docs/V2/authentication#delete-user) when you no longer need it.
+:::
+
+1. Get the IP address of the device.
+2. Send the following request to the device to get a token:
+
+`curl https://<IP ADDRESS>/api/v2/user --insecure -X POST -d '{"name": "cool-new-app"}'`
+
+3. You will get the following message: `{"error":"user:creation-not-enabled"}`. The P1 Meter starts to blink purple.
+4. Press the button on the P1 Meter once.
+5. Send the same request again to get a token:
+
+`curl https://<IP ADDRESS>/api/v2/user --insecure -X POST -d '{"name": "cool-new-app"}'`
+
+6. You will get a response containing a token, store this token somewhere safe:
+
+```json
+{
+    "status": "success",
+    "user": {
+        "id": 1,
+        "name": "local/cool-new-app",
+        "token": "<TOKEN>"
+    }
+}
+```
+
+### Get a measurement
+
+1. Send the following request to the device to get basic information. Replace `<TOKEN>` with the token you received in the previous step: `curl https://<IP ADDRESS>/api/v2/measurement --insecure -H "Authorization: Bearer <TOKEN>"`
+
+2. You should see a response with the the most recent data from your smart meter. Example:
+
+```json
+{
+    "power_w": 1234,
+    ...
+}
+```
+
+3. You can use this data, and many more, to build your own application. For more information, see the [V2 documentation](/docs/v2).
