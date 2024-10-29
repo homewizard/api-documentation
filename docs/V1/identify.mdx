@@ -1,4 +1,5 @@
 ---
+title: Identify
 sidebar_position: 4
 description: Identify the device by letting the LED blink.
 ---
@@ -18,11 +19,11 @@ The `/api/v1/identify` endpoint can be used to let the user identify the device.
 
 ### Example
 
+```http title="Request"
+curl http://<IP ADDRESS>/api/v2/system -X PUT
 ```
-<Request>
-PUT http://{IP address}/api/v1/identify HTTP/1.1
 
-<Response>
+```http title="Response"
 HTTP/1.1 200 OK
 Content-Type: application/json
 Content-Length: <length>

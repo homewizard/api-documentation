@@ -1,5 +1,6 @@
 ---
-sidebar_position: 4
+sidebar_position: 7
+description: Error handling in the API
 ---
 
 # Error handling
@@ -24,11 +25,11 @@ The predefined error codes are as follows:
 
 ### API was disabled
 
+```shell title="Request"
+curl http://{IP address}/api/v1/data
 ```
-<Request>
-GET http://{IP address}/api/v1/data
 
-<Response>
+```http title="Response"
 HTTP/1.1 400 Bad Request
 Content-Type: application/json
 Content-Length: <length>
@@ -43,16 +44,14 @@ Content-Length: <length>
 
 ### Invalid JSON
 
+```shell title="Request"
+curl http://{IP address}/api/v1/state HTTP/1.1 \
+  -X PUT \
+  -H "Content-Type: application/json" \
+  -d '{"power_on": invalid_value}'
 ```
-<Request>
-PUT http://{IP address}/api/v1/state HTTP/1.1
-Content-Type: application/json
-Content-Length: <length>
-{
-   "power_on": invalid_value
-}
 
-<Response>
+```http title="Response"
 HTTP/1.1 400 Bad Request
 Content-Type: application/json
 Content-Length: <length>
@@ -67,16 +66,14 @@ Content-Length: <length>
 
 ### Invalid value
 
+```shell title="Request"
+curl http://{IP address}/api/v1/state HTTP/1.1 \
+  -X PUT \
+  -H "Content-Type: application/json" \
+  -d '{"brightness": 500}'
 ```
-<Request>
-PUT http://{IP address}/api/v1/state HTTP/1.1
-Content-Type: application/json
-Content-Length: <length>
-{
-   "brightness": 500
-}
 
-<Response>
+```http title="Response"
 HTTP/1.1 400 Bad Request
 Content-Type: application/json
 Content-Length: <length>
@@ -91,16 +88,14 @@ Content-Length: <length>
 
 ### Turn off socket when switch-lock is enabled
 
+```shell title="Request"
+curl http://{IP address}/api/v1/state HTTP/1.1 \
+  -X PUT \
+  -H "Content-Type: application/json" \
+  -d '{"power_on": false}'
 ```
-<Request>
-PUT http://{IP address}/api/v1/state HTTP/1.1
-Content-Type: application/json
-Content-Length: <length>
-{
-   "power_on": false
-}
 
-<Response>
+```http title="Response"
 HTTP/1.1 400 Bad Request
 Content-Type: application/json
 Content-Length: <length>

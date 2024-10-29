@@ -1,4 +1,5 @@
 ---
+title: State
 sidebar_position: 3
 description: Control the state of the Energy Socket.
 ---
@@ -35,11 +36,11 @@ This endpoint accepts `GET` and `PUT` requests.
 
 This response tells that the socket is 'on', switch-lock is 'off' and the brightness of the LED ring is set to maximum.
 
+```http title="Request"
+curl http://<IP ADDRESS>/api/v1/state
 ```
-<Request>
-GET http://{IP address}/api/v1/state HTTP/1.1
 
-<Response>
+```http title="Response"
 HTTP/1.1 200 OK
 Content-Type: application/json
 Content-Length: <length>
@@ -53,16 +54,14 @@ Content-Length: <length>
 
 ### Turn on socket
 
+```http title="Request"
+curl http://<IP ADDRESS>/api/v1/state \
+   -X PUT \
+   -H "Content-Type: application/json" \
+   -d '{"power_on": true}'
 ```
-<Request>
-PUT http://{IP address}/api/v1/state HTTP/1.1
-Content-Type: application/json
-Content-Length: <length>
-{
-   "power_on": true
-}
 
-<Response>
+```http title="Response"
 HTTP/1.1 200 OK
 Content-Type: application/json
 Content-Length: <length>
@@ -76,16 +75,14 @@ Content-Length: <length>
 
 After enabling `switch_lock`, the socket is 'on' and cannot be turned off until `switch_lock` is disabled.
 
+```http title="Request"
+curl http://<IP ADDRESS>/api/v1/state \
+   -X PUT \
+   -H "Content-Type: application/json" \
+   -d '{"switch_lock": true}'
 ```
-<Request>
-PUT http://{IP address}/api/v1/state HTTP/1.1
-Content-Type: application/json
-Content-Length: <length>
-{
-   "switch_lock": true
-}
 
-<Response>
+```http title="Response"
 HTTP/1.1 200 OK
 Content-Type: application/json
 Content-Length: <length>
@@ -103,21 +100,17 @@ You can configure multiple parameters at the same time. In this example.
 -   Switch-lock is turned off.
 -   Brightness is set to 127 (50%).
 
-The order of a combined request does not matter: If `switch-lock` was on, the socket will still turn off.
+The order of a combined request does not matter, if `switch-lock` was on, the socket will still turn off.
 The complete state has to make sense; It is not possible to set `power_on` to false and `switch_lock` to true. See (see [Error handling](/docs/error-handling)) for more details.
 
+```http title="Request"
+curl http://<IP ADDRESS>/api/v1/state \
+   -X PUT \
+   -H "Content-Type: application/json" \
+   -d '{"power_on": false, "switch_lock": false, "brightness": 127}'
 ```
-<Request>
-PUT http://{IP address}/api/v1/state HTTP/1.1
-Content-Type: application/json
-Content-Length: <length>
-{
-   "power_on": false,
-   "switch_lock": false,
-   "brightness": 127
-}
 
-<Response>
+```http title="Response"
 HTTP/1.1 200 OK
 Content-Type: application/json
 Content-Length: <length>

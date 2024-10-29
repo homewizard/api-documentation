@@ -1,6 +1,8 @@
 ---
+title: Data
 sidebar_position: 2
 description: Get the most recent measurement from the device.
+toc_max_heading_level: 4
 ---
 
 import Link from '@docusaurus/Link'
@@ -19,53 +21,53 @@ The `/api/v1/data` endpoint allows you to get the most recent measurement from t
 
 ## P1 Meter (HWE-P1)
 
-### Data points
+### Parameters
 
-| Data                        | Type   | Description                                                                                                                                                                                              |
-| --------------------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| unique_id                   | String | The unique identifier from the smart meter                                                                                                                                                               |
-| smr_version                 | Number | The DSMR version of the smart meter                                                                                                                                                                      |
-| meter_model                 | String | The brand identification the smart meter                                                                                                                                                                 |
-| wifi_ssid                   | String | The Wi-Fi network that the meter is connected to                                                                                                                                                         |
-| wifi_strength               | Number | The strength of the Wi-Fi signal in %                                                                                                                                                                    |
-| total_power_import_kwh      | Number | The energy usage meter reading for all tariffs in kWh                                                                                                                                                    |
-| total_power_import_t1_kwh   | Number | The energy usage meter reading for tariff 1 in kWh                                                                                                                                                       |
-| total_power_import_t2_kwh   | Number | The energy usage meter reading for tariff 2 in kWh                                                                                                                                                       |
-| total_power_import_t3_kwh   | Number | The energy usage meter reading for tariff 3 in kWh                                                                                                                                                       |
-| total_power_import_t4_kwh   | Number | The energy usage meter reading for tariff 4 in kWh                                                                                                                                                       |
-| total_power_export_kwh      | Number | The energy feed-in meter reading for all tariffs in kWh                                                                                                                                                  |
-| total_power_export_t1_kwh   | Number | The energy feed-in meter reading for tariff 1 in kWh                                                                                                                                                     |
-| total_power_export_t2_kwh   | Number | The energy feed-in meter reading for tariff 2 in kWh                                                                                                                                                     |
-| total_power_export_t3_kwh   | Number | The energy feed-in meter reading for tariff 3 in kWh                                                                                                                                                     |
-| total_power_export_t4_kwh   | Number | The energy feed-in meter reading for tariff 4 in kWh                                                                                                                                                     |
-| active_power_w              | Number | The total active usage in watt                                                                                                                                                                           |
-| active_power_l1_w           | Number | The active usage for phase 1 in watt                                                                                                                                                                     |
-| active_power_l2_w           | Number | The active usage for phase 2 in watt                                                                                                                                                                     |
-| active_power_l3_w           | Number | The active usage for phase 3 in watt                                                                                                                                                                     |
-| active_voltage_l1_v         | Number | The active voltage for phase 1 in volt                                                                                                                                                                   |
-| active_voltage_l2_v         | Number | The active voltage for phase 2 in volt                                                                                                                                                                   |
-| active_voltage_l3_v         | Number | The active voltage for phase 3 in volt                                                                                                                                                                   |
-| active_current_l1_a         | Number | The active current for phase 1 in ampere                                                                                                                                                                 |
-| active_current_l2_a         | Number | The active current for phase 2 in ampere                                                                                                                                                                 |
-| active_current_l3_a         | Number | The active current for phase 3 in ampere                                                                                                                                                                 |
-| active_frequency_hz         | Number | Line frequency in hertz                                                                                                                                                                                  |
-| voltage_sag_l1_count        | Number | Number of voltage sags detected by meter for phase 1                                                                                                                                                     |
-| voltage_sag_l2_count        | Number | Number of voltage sags detected by meter for phase 2                                                                                                                                                     |
-| voltage_sag_l3_count        | Number | Number of voltage sags detected by meter for phase 3                                                                                                                                                     |
-| voltage_swell_l1_count      | Number | Number of voltage swells detected by meter for phase 1                                                                                                                                                   |
-| voltage_swell_l2_count      | Number | Number of voltage swells detected by meter for phase 2                                                                                                                                                   |
-| voltage_swell_l3_count      | Number | Number of voltage swells detected by meter for phase 3                                                                                                                                                   |
-| any_power_fail_count        | Number | Number of power failures detected by meter                                                                                                                                                               |
-| long_power_fail_count       | Number | Number of 'long' power fails detected by meter                                                                                                                                                           |
-| active_power_average_w      | Number | The active average demand                                                                                                                                                                                |
-| montly_power_peak_w         | Number | The peak average demand of this month. There is a spelling mistake with this data point, see [Monthly power peak](#monthly-power-peak) for more information                                              |
-| montly_power_peak_timestamp | Number | Timestamp when peak demand was registered, formatted as YYMMDDhhmmss                                                                                                                                     |
-| total_gas_m3                | Number | The gas meter reading in m3 for the first detected gas meter. <br/>**Gas data points will be removed in favor of 'external' in a future software version, do not use this field in new implementations** |
-| gas_timestamp               | Number | The most recent gas update time stamp structured as YYMMDDhhmmss.                                                                                                                                        |
-| unique_gas_id               | Number | The unique identifier for the gas meter, can be used to migrate to the 'external' data point                                                                                                             |
-| external                    | Array  | A list of externally connected utility meters, see [External data point](#external-data-point) for more information                                                                                      |
+| Data                        | Type   | Description                                                                                                                                                 |
+| --------------------------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| unique_id                   | String | The unique identifier from the smart meter                                                                                                                  |
+| smr_version                 | Number | The DSMR version of the smart meter                                                                                                                         |
+| meter_model                 | String | The brand identification the smart meter                                                                                                                    |
+| wifi_ssid                   | String | The Wi-Fi network that the meter is connected to                                                                                                            |
+| wifi_strength               | Number | The strength of the Wi-Fi signal in %                                                                                                                       |
+| total_power_import_kwh      | Number | The energy usage meter reading for all tariffs in kWh                                                                                                       |
+| total_power_import_t1_kwh   | Number | The energy usage meter reading for tariff 1 in kWh                                                                                                          |
+| total_power_import_t2_kwh   | Number | The energy usage meter reading for tariff 2 in kWh                                                                                                          |
+| total_power_import_t3_kwh   | Number | The energy usage meter reading for tariff 3 in kWh                                                                                                          |
+| total_power_import_t4_kwh   | Number | The energy usage meter reading for tariff 4 in kWh                                                                                                          |
+| total_power_export_kwh      | Number | The energy feed-in meter reading for all tariffs in kWh                                                                                                     |
+| total_power_export_t1_kwh   | Number | The energy feed-in meter reading for tariff 1 in kWh                                                                                                        |
+| total_power_export_t2_kwh   | Number | The energy feed-in meter reading for tariff 2 in kWh                                                                                                        |
+| total_power_export_t3_kwh   | Number | The energy feed-in meter reading for tariff 3 in kWh                                                                                                        |
+| total_power_export_t4_kwh   | Number | The energy feed-in meter reading for tariff 4 in kWh                                                                                                        |
+| active_power_w              | Number | The total active usage in watt                                                                                                                              |
+| active_power_l1_w           | Number | The active usage for phase 1 in watt                                                                                                                        |
+| active_power_l2_w           | Number | The active usage for phase 2 in watt                                                                                                                        |
+| active_power_l3_w           | Number | The active usage for phase 3 in watt                                                                                                                        |
+| active_voltage_l1_v         | Number | The active voltage for phase 1 in volt                                                                                                                      |
+| active_voltage_l2_v         | Number | The active voltage for phase 2 in volt                                                                                                                      |
+| active_voltage_l3_v         | Number | The active voltage for phase 3 in volt                                                                                                                      |
+| active_current_l1_a         | Number | The active current for phase 1 in ampere                                                                                                                    |
+| active_current_l2_a         | Number | The active current for phase 2 in ampere                                                                                                                    |
+| active_current_l3_a         | Number | The active current for phase 3 in ampere                                                                                                                    |
+| active_frequency_hz         | Number | Line frequency in hertz                                                                                                                                     |
+| voltage_sag_l1_count        | Number | Number of voltage sags detected by meter for phase 1                                                                                                        |
+| voltage_sag_l2_count        | Number | Number of voltage sags detected by meter for phase 2                                                                                                        |
+| voltage_sag_l3_count        | Number | Number of voltage sags detected by meter for phase 3                                                                                                        |
+| voltage_swell_l1_count      | Number | Number of voltage swells detected by meter for phase 1                                                                                                      |
+| voltage_swell_l2_count      | Number | Number of voltage swells detected by meter for phase 2                                                                                                      |
+| voltage_swell_l3_count      | Number | Number of voltage swells detected by meter for phase 3                                                                                                      |
+| any_power_fail_count        | Number | Number of power failures detected by meter                                                                                                                  |
+| long_power_fail_count       | Number | Number of 'long' power fails detected by meter                                                                                                              |
+| active_power_average_w      | Number | The active average demand                                                                                                                                   |
+| montly_power_peak_w         | Number | The peak average demand of this month. There is a spelling mistake with this data point, see [Monthly power peak](#monthly-power-peak) for more information |
+| montly_power_peak_timestamp | Number | Timestamp when peak demand was registered, formatted as YYMMDDhhmmss                                                                                        |
+| total_gas_m3                | Number | The gas meter reading in m3 for the first detected gas meter.                                                                                               |
+| gas_timestamp               | Number | The most recent gas update time stamp structured as YYMMDDhhmmss.                                                                                           |
+| unique_gas_id               | Number | The unique identifier for the gas meter, can be used to migrate to the 'external' data point                                                                |
+| external                    | Array  | A list of externally connected utility meters, see [External data point](#external-devices) for more information                                            |
 
-### `External` data point
+### External devices
 
 Some smart meters have more than one external device connected to it. This can be, for example, a gas and a water meter. The `external` data point adds support for these devices.
 Each entry is supplied with a set of data. See [this example](#hwe-p1-3-phase-with-gas).
@@ -84,13 +86,15 @@ The original data points `total_gas_m3`, `gas_timestamp` and `unique_gas_id` use
 
 Belgium users are started to get charged for the peak usage per month (see <Link to="https://www.fluvius.be/nl/thema/factuur-en-tarieven/capaciteitstarief">capaciteitstarief</Link>). The data points `active_power_average_w`, `montly_power_peak_w` and `montly_power_peak_timestamp` can be used to track the maximum demand.
 
-### Example: HWE-P1 (1-phase, no gas)
+### Examples
 
+#### HWE-P1 (1-phase, no gas)
+
+```http title="Request"
+curl http://<IP ADDRESS>/api/v1/data
 ```
-<Request>
-GET http://{IP address}/api/v1/data HTTP/1.1
 
-<Response>
+```http title="Response"
 HTTP/1.1 200 OK
 Content-Type: application/json
 Content-Length: <length>
@@ -109,13 +113,13 @@ Content-Length: <length>
 }
 ```
 
-### Example: HWE-P1 (3-phase, with gas and water meter)
+#### HWE-P1 (3-phase, with gas and water meter)
 
+```http title="Request"
+curl http://<IP ADDRESS>/api/v1/data
 ```
-<Request>
-GET http://{IP address}/api/v1/data HTTP/1.1
 
-<Response>
+```http title="Response"
 HTTP/1.1 200 OK
 Content-Type: application/json
 Content-Length: <length>
@@ -175,7 +179,7 @@ Content-Length: <length>
 
 ## Energy Socket (HWE-SKT)
 
-### Data points
+### Parameters
 
 | Data                      | Type   | Available for | Description                                                                 |
 | ------------------------- | ------ | ------------- | --------------------------------------------------------------------------- |
@@ -194,13 +198,15 @@ Content-Length: <length>
 | active_power_factor       | Number | HWE-SKT-21    | The power factor                                                            |
 | active_frequency_hz       | Number | All           | The frequency in hertz                                                      |
 
-### Example: HWE-SKT-11
+### Examples
 
+#### HWE-SKT-11
+
+```http title="Request"
+curl http://<IP ADDRESS>/api/v1/data
 ```
-<Request>
-GET http://{IP address}/api/v1/data HTTP/1.1
 
-<Response>
+```http title="Response"
 HTTP/1.1 200 OK
 Content-Type: application/json
 Content-Length: <length>
@@ -220,13 +226,13 @@ Content-Length: <length>
 }
 ```
 
-### Example: HWE-SKT-21
+#### HWE-SKT-21
 
+```http title="Request"
+curl http://<IP ADDRESS>/api/v1/data
 ```
-<Request>
-GET http://{IP address}/api/v1/data HTTP/1.1
 
-<Response>
+```http title="Response"
 HTTP/1.1 200 OK
 Content-Type: application/json
 Content-Length: <length>
@@ -256,7 +262,7 @@ Each type of meter is available in two versions. The API and functionality is th
 -   **1-phase**: HWE-KWH1 and SDM230-wifi
 -   **3-phase**: HWE-KWH3 and SDM630-wifi
 
-### Data points
+### Parameters
 
 | Data                         | Type   | Available for    | Description                                                                    |
 | ---------------------------- | ------ | ---------------- | ------------------------------------------------------------------------------ |
@@ -300,13 +306,15 @@ Each type of meter is available in two versions. The API and functionality is th
 | active_power_factor_l3       | Number | 3-phase          | The power factor for phase 3                                                   |
 | active_frequency_hz          | Number | 1-phase, 3-phase | The frequency in hertz                                                         |
 
-### Example: 1-phase
+### Examples
 
+#### 1-phase
+
+```http title="Request"
+curl http://<IP ADDRESS>/api/v1/data
 ```
-<Request>
-GET http://{IP address}/api/v1/data HTTP/1.1
 
-<Response>
+```http title="Response"
 HTTP/1.1 200 OK
 Content-Type: application/json
 Content-Length: <length>
@@ -331,13 +339,13 @@ Content-Length: <length>
 }
 ```
 
-### Example: 3-phase
+#### 3-phase
 
+```http title="Request"
+curl http://<IP ADDRESS>/api/v1/data
 ```
-<Request>
-GET http://{IP address}/api/v1/data HTTP/1.1
 
-<Response>
+```http title="Response"
 HTTP/1.1 200 OK
 Content-Type: application/json
 Content-Length: <length>
@@ -389,7 +397,7 @@ Content-Length: <length>
 The API for the water meter can only be used when the water meter is powered over USB. To save energy, the water meter only connects to Wi-Fi a couple of times per day when powered with batteries.
 :::
 
-### Data points
+### Parameters
 
 | Data                  | Type   | Description                                                      |
 | --------------------- | ------ | ---------------------------------------------------------------- |
@@ -401,11 +409,11 @@ The API for the water meter can only be used when the water meter is powered ove
 
 ### Example
 
+```http title="Request"
+curl http://<IP ADDRESS>/api/v1/data
 ```
-<Request>
-GET http://{IP address}/api/v1/data HTTP/1.1
 
-<Response>
+```http title="Response"
 HTTP/1.1 200 OK
 Content-Type: application/json
 Content-Length: <length>

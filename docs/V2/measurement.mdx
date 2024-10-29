@@ -25,7 +25,7 @@ The `/api/v2/measurement` endpoint allows you to get the most recent measurement
 
 ## P1 Meter (HWE-P1)
 
-### Data points
+### Parameters
 
 | Data                         | Type                             | Description                                                                                                                      |
 | ---------------------------- | -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
@@ -67,9 +67,9 @@ The `/api/v2/measurement` endpoint allows you to get the most recent measurement
 | average_power_15m_w          | Number                           | The active average demand, available for smart meters with [capacity rate](#capacity-rate)                                       |
 | monthly_power_peak_w         | Number                           | The peak average demand of this month, available for smart meters with [capacity rate](#capacity-rate)                           |
 | monthly_power_peak_timestamp | [Timestamp](#timestamps)         | Timestamp when peak demand was registered, available for smart meters with [capacity rate](#capacity-rate)                       |
-| external                     | Array with [External](#external) | A list of externally connected utility meters, see [External data point](#external-data-point) for more information              |
+| external                     | Array with [External](#external) | A list of externally connected utility meters, see [External data point](#external-devices) for more information                 |
 
-### External devices {#external}
+### External devices
 
 Some smart meters have one or more external devices connected to it. This can be, for example, a gas and a water meter. The `external` data point lists these devices and their measurements.
 Each entry is supplied with a set of data. See [this example](#hwe-p1-full).

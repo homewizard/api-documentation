@@ -1,4 +1,5 @@
 ---
+title: P1 telegram
 sidebar_position: 3
 description: Get the most recent, raw telegram from the P1 meter.
 ---
@@ -9,8 +10,9 @@ import Badge from '@site/src/components/Badge.js'
 
 The `/api/v1/telegram` endpoint returns the most recent, valid telegram that was given by the P1 meter.
 
--   The telegram validated with its CRC, but not parsed in any form.
--   Note that this endpoint returns plain text instead of formatted JSON, even when an error occurs (see [Error handling](/docs/error-handling))
+-   The checksum is validated when present, telegrams with an invalid checksum are rejected.
+-   The Telegram is not processed in any other form, and can be used by other systems to process the data.
+-   If you need parsed data, use the [measurement](/docs/V2/endpoints/measurement) endpoint.
 
 <Badge color='hw-green'>✓ P1 Meter</Badge>
 <Badge color='hw-red'>✗ Energy Socket</Badge>
@@ -21,11 +23,11 @@ The `/api/v1/telegram` endpoint returns the most recent, valid telegram that was
 
 ## Example
 
+```http title="Request"
+curl http://{ip_address}/api/v2/telegram
 ```
-<Request>
-GET http://{IP address}/api/v1/telegram
 
-<Response>
+```http title="Response"
 HTTP/1.1 200 OK
 Content-Type: text/plain
 Content-Length: <length>

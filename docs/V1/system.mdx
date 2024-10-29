@@ -1,11 +1,12 @@
 ---
+title: System
 sidebar_position: 5
 description: Enable and disable cloud communication.
 ---
 
 import Badge from '@site/src/components/Badge.js'
 
-# System (/api/v1/system)
+# System (`/api/v1/system`)
 
 The `/api/v1/system` endpoint can be used to configure system settings. Currently the only available option it to turn on and off all cloud communication.
 
@@ -24,7 +25,7 @@ The `Enable cloud` configuration feature can be used to turn off all communicati
 
 Cloud communication is restored when the `cloud_enabled` is set to `true`. Cloud communications are also restored after a factory reset, or when the device is put in pairing mode.
 
-:::warning Be clear
+:::tip Be clear
 If you are implementing this, make sure your user understand what this actions does. Users may press a button without knowing what they do and forget about it. In this case it seems that the app or device is broken and reach out to our support, and we would like to prevent that.
 
 You can solve this, for example, by adding clear documentation and/or by showing a confirmation popup before calling this endpoint.
@@ -39,11 +40,11 @@ This endpoint accepts `GET` and `PUT` requests.
 
 ### Get system state
 
+```http title="Request"
+curl http://<IP ADDRESS>/api/v2/system
 ```
-<Request>
-GET http://{IP address}/api/v1/system HTTP/1.1
 
-<Response>
+```http title="Response"
 HTTP/1.1 200 OK
 Content-Type: application/json
 Content-Length: <length>
@@ -55,13 +56,13 @@ Content-Length: <length>
 
 ### Set system state
 
+```http title="Request"
+curl http://<IP ADDRESS>/api/v2/system \
+   -X PUT \
+   -d '{"cloud_enabled": false}'
 ```
-<Request>
-PUT http://{IP address}/api/v1/system HTTP/1.1
-{
-   "cloud_enabled": false
-}
 
+```http title="Response"
 <Response>
 HTTP/1.1 200 OK
 Content-Type: application/json
