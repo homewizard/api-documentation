@@ -27,9 +27,11 @@ A user is created by sending a request to `POST /api/v2/user`. When successful a
 
 **Flow**
 
+To get an idea for how an application should acquire a token, we have outlined a flow below.
+
 1. The **user opens your app** which initiates a network scan, discovering a device, such as a P1 Meter.
 2. After selecting the P1 Meter, the **app sends a `POST /api/v2/user` request** with the [necessary parameters](#parameters)
-3. The device responds with a **`403 Forbidden` status**, indicating that the user must physically press the button on the device to continue. The device starts to blink purple.
+3. The device responds with a **`403 Forbidden` status**, indicating that the user must physically press the button on the device to continue.
 4. The app then **prompts the user** to press the button on the P1 Meters.
     - The app can keep sending requests while waiting for the user to press the button, this wil reset the timer
 5. Once the user **presses the button**, the device will respond with a **`200 OK` status**, for the next request, returning a [token](#token).
