@@ -20,3 +20,6 @@ words:
     - YYMMDDhhmmss # Example
     - DDTHH # Chunk of YYYY-MM-DDTHH:mm:ss which is rejected by cspell
     - rssi # Known acronym
+    - aiohttp # Known library
+    - asyncio # Known library
+    - cafile # Known term in python

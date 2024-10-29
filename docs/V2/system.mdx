@@ -59,7 +59,7 @@ To prevent confusion, consider providing clear documentation or displaying a con
 #### Disable cloud communication
 
 ```http title="Request"
-curl https://<IP ADDRESS>/api/v2/system \
+curl https://<IP ADDRESS>/api/v2/system --insecure \
   -X PUT \
   -H "Authorization: Bearer <TOKEN>" \
   -H "X-Api-Version: 2.0.0" \
@@ -76,7 +76,7 @@ _After disabling the cloud communication, the device will only work locally._
 #### Enable cloud communication
 
 ```http title="Request"
-curl https://<IP ADDRESS>/api/v2/system \
+curl https://<IP ADDRESS>/api/v2/system --insecure \
   -X PUT \
   -H "Authorization: Bearer <TOKEN>" \
   -H "X-Api-Version: 2.0.0" \
@@ -99,7 +99,7 @@ Most devices have a status LED, and its brightness can be adjusted between 0% an
 #### Set status LED brightness
 
 ```http title="Request"
-curl https://<IP ADDRESS>/api/v2/system \
+curl https://<IP ADDRESS>/api/v2/system --insecure \
   -X PUT \
   -H "Authorization: Bearer <TOKEN>" \
   -H "X-Api-Version: 2.0.0" \
@@ -120,7 +120,7 @@ To protect the device from unauthorized access, the V1 API can be disabled. When
 #### Disable the V1 API
 
 ```http title="Request"
-curl https://<IP ADDRESS>/api/v2/system \
+curl https://<IP ADDRESS>/api/v2/system --insecure \
   -X PUT \
   -H "Authorization: Bearer <TOKEN>" \
   -H "X-Api-Version: 2.0.0" \
@@ -141,7 +141,7 @@ The `/api/v2/system/identify` endpoint can be used to let the user identify the 
 ### Example
 
 ```http title="Request"
-curl https://<IP ADDRESS>/api/v2/system/identify \
+curl https://<IP ADDRESS>/api/v2/system/identify --insecure \
   -X PUT \
   -H "Authorization: Bearer <TOKEN>" \
   -H "X-Api-Version: 2.0.0" \
@@ -164,7 +164,7 @@ A reboot is **usually not necessary** but can help in certain situations. Make s
 ### Examples
 
 ```
-curl https://<IP ADDRESS>/api/v2/system/reboot \
+curl https://<IP ADDRESS>/api/v2/system/reboot --insecure \
   -X PUT \
   -H "Authorization: Bearer <TOKEN>" \
   -H "X-Api-Version: 2.0.0"

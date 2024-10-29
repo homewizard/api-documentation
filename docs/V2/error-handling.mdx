@@ -31,7 +31,7 @@ The list of error codes may be extended in the future. We recommend that you pre
 ### Not authenticated
 
 ```shell title="Request"
-curl https://<IP ADDRESS>/api \
+curl https://<IP ADDRESS>/api --insecure \
   -H "Authorization: Bearer <INVALID_TOKEN>" \
   -H "X-Api-Version: 2.0.0" \
 ```
@@ -49,7 +49,7 @@ Content-Length: <length>
 ### Invalid value
 
 ```http title="Request"
-curl https://<IP ADDRESS>/api/v2/system \
+curl https://<IP ADDRESS>/api/v2/system --insecure \
   -X PUT \
   -H "Authorization: Bearer <TOKEN>" \
   -H "X-Api-Version: 2.0.0" \
