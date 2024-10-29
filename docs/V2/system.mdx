@@ -24,23 +24,21 @@ The `/api/v2/system` endpoint can be used to get and set some system information
 
 ## Parameters
 
-| Data                      | Type    | Description                                 |
-| ------------------------- | ------- | ------------------------------------------- |
-| wifi_ssid                 | String  | The SSID of the WiFi network                |
-| wifi_rssi_db              | Number  | The signal strength of the WiFi network     |
-| cloud_enabled             | Boolean | The state of the cloud communication        |
-| uptime_s                  | Number  | The uptime of the device in seconds         |
-| status_led_brightness_pct | Number  | The brightness of the status LED in percent |
-| v1_api_enabled            | Boolean | The state of the V1 API                     |
+| Data                                                | Type    | Access     | Description                                 |
+| --------------------------------------------------- | ------- | ---------- | ------------------------------------------- |
+| wifi_ssid                                           | String  | Read-only  | The SSID of the WiFi network                |
+| wifi_rssi_db                                        | Number  | Read-only  | The signal strength of the WiFi network     |
+| uptime_s                                            | Number  | Read-only  | The uptime of the device in seconds         |
+| [cloud_enabled](#cloud-communication)               | Boolean | Read/Write | The state of the cloud communication        |
+| [status_led_brightness_pct](#status-led-brightness) | Number  | Read/Write | The brightness of the status LED in percent |
+| [v1_api_enabled](#enable-or-disable-the-v1-api)     | Boolean | Read/Write | The state of the V1 API                     |
 
 ## Actions
 
-| Action   | Description                                               |
-| -------- | --------------------------------------------------------- |
-| Reboot   | Reboot the device                                         |
-| Identify | Let the device identify itself by blinking the status LED |
-
-Here is the adjusted version:
+| Action                | Description                                               |
+| --------------------- | --------------------------------------------------------- |
+| [Reboot](#reboot)     | Reboot the device                                         |
+| [Identify](#identify) | Let the device identify itself by blinking the status LED |
 
 ## Cloud Communication
 
@@ -50,7 +48,7 @@ Users can choose to disable cloud communication, making the device operate entir
 
 Cloud communication can be re-enabled by setting `cloud_enabled` to `true`. It is also automatically restored after a factory reset or when the device is put into pairing mode.
 
-:::warning User Awareness
+:::tip
 If you're implementing this feature, ensure that users clearly understand its implications. Users might disable cloud communication without fully realizing its effect or forget they did so, leading them to believe the app or device is malfunctioning. This can result in unnecessary support requests, which we want to avoid.
 
 To prevent confusion, consider providing clear documentation or displaying a confirmation message before enabling or disabling this setting.
@@ -155,12 +153,12 @@ https/1.1 204 No Content
 Content-Length: 0
 ```
 
-## Reboot the Device
+## Reboot
 
 If needed, you can reboot the device by calling the `/api/v2/system/reboot` endpoint. After rebooting, the device will reconnect to WiFi and be ready for use again.
 
 :::tip
-A reboot is **usually not necessary** but can help in certain situations. If the issue persists and frequent reboots are required, please contact our support team to help identify and resolve the root cause.
+A reboot is **usually not necessary** but can help in certain situations. Make sure to inform the user that ff the issue persists and frequent reboots are required, they need to contact our support team to help identify and resolve the root cause.
 :::
 
 ### Examples
