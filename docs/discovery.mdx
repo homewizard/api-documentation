@@ -35,7 +35,7 @@ A discovery response contains additional data to enhance the setup in your appli
 | product_name | User-friendly name. This name may change at any time.                                                                                                                      |
 | product_type | The product type; refer to [Supported devices](/docs/getting-started#supported-devices). Your application should support additional values for future products.            |
 
-## API V2 (`_hwenergy-v2._tcp`)
+## API V2
 
 <PreliminaryWarning />
 
@@ -56,7 +56,7 @@ A discovery response includes additional data to enhance the setup in your appli
 | Data         | Description                                                                                                                                                     |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | api_version  | The latest [API version](/docs/versioning).                                                                                                                     |
-| id           | Device identifier used during [validation of the SSL certificate](/docs/v2/authentication#ssl-certificate-https), formatted as `appliance/<type>/<serial>`.     |
+| id           | Device identifier used during [validation of the SSL certificate](/docs/v2/authentication#https), formatted as `appliance/<product_type>/<serial>`.             |
 | serial       | Device serial number, also used as the MAC address. This value is unique per device and consist of 12 hexadecimal characters.                                   |
 | product_name | User-friendly name. This name may change at any time.                                                                                                           |
 | product_type | The product type; refer to [Supported devices](/docs/getting-started#supported-devices). Your application should support additional values for future products. |
