@@ -55,14 +55,14 @@ The API always returns the most recent data. The update frequency depends on the
 
 <PreliminaryWarning />
 
-The HomeWizard Energy API V2 is an updated version of the API that is currently in beta. This API is based on HTTPS and uses authentication to access the data, so you don't need to enable the local API. You can find the documentation for the V2 API [here](/docs/v2).
+The HomeWizard Energy API V2 is an updated version of the API that is currently in beta. This API is based on HTTPS and uses authorization to access the data, so you don't need to enable the local API. You can find the documentation for the V2 API [here](/docs/v2).
 
 The following example will show you can use the API to get basic information from a P1 Meter.
 
 ### Get a token
 
 :::danger
-The token allows full access to the data from your P1 Meter and **should be kept secret**. Do not share this token with others. [Remove this token](/docs/V2/authentication#delete-user) when you no longer need it.
+The token allows full access to the data from your P1 Meter and **should be kept secret**. Do not share this token with others. [Remove this token](/docs/V2/authorization#delete-user) when you no longer need it.
 :::
 
 1. Get the IP address of the device.

@@ -11,7 +11,7 @@ import PreliminaryWarning from '@site/src/components/PreliminaryWarning.js'
 
 <PreliminaryWarning />
 
-The HomeWizard Energy API requires a Bearer token to authenticate requests. This token should be included in the `Authorization` header of each request. To get a token you must create a user on the device.
+The HomeWizard Energy API requires a Bearer token to authorize requests. This token should be included in the `Authorization` header of each request. To get a token you must create a user on the device.
 
 {/* prettier-ignore */}
 <Badge color='hw-green'>✓ P1 Meter</Badge>
@@ -23,7 +23,7 @@ The HomeWizard Energy API requires a Bearer token to authenticate requests. This
 
 ## Create user and get token
 
-A user is created by sending a request to `POST /api/v2/user`. When successful a token is returned that can be used to authenticate further requests.
+A user is created by sending a POST /api/v2/user request when they press the button on the device. This action confirms that the user has possession of the device and that the application is authenticated to generate a token. Once these steps are completed, a token is returned which is used to authorize for future requests.
 
 **Flow**
 
@@ -36,7 +36,7 @@ To get an idea for how an application should acquire a token, we have outlined a
     - The app can keep sending requests while waiting for the user to press the button, this wil reset the timer
 5. Once the user **presses the button**, the device will respond with a **`200 OK` status**, for the next request, returning a [token](#token).
     - The token is available for 30 seconds, after which the device will respond with a `403 Forbidden` status. The user must press the button again.
-6. The app **saves the token** for future authentication purposes.
+6. The app **saves the token** for future requests.
 7. Finally, the app tests the connection and notifies the user that the **pairing process is complete**.
 
 ```mermaid
@@ -69,10 +69,10 @@ sequenceDiagram
 
 The response to a successful request will include the following fields:
 
-| Data  | Type   | Description                                                                                                                                                                                                         |
-| ----- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| name  | String | The name of the user, prefixed with [`/local`](#local-and-cloud-users).                                                                                                                                             |
-| token | String | A token that can be used to authenticate API requests.<br />- The token is 32 characters long.<br />- Token consists of uppercase letters (`A-Z`) and numbers (`0-9`).<br />&nbsp;&nbsp;- (Regex: `^[A-Z0-9]{32}$`) |
+| Data  | Type   | Description                                                                                                                                                                                                      |
+| ----- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| name  | String | The name of the user, prefixed with [`/local`](#local-and-cloud-users).                                                                                                                                          |
+| token | String | A token that can be used to authorize API requests.<br />- The token is 32 characters long.<br />- Token consists of uppercase letters (`A-Z`) and numbers (`0-9`).<br />&nbsp;&nbsp;- (Regex: `^[A-Z0-9]{32}$`) |
 
 :::danger
 Keep the token a secret, as it grants full access to the device, including the ability to generate new user.
@@ -176,7 +176,7 @@ Content-Length: <length>
 To delete a user, send a `DELETE /api/v2/user` request with the user's name including the prefix. Deleting a user will invalidate the token.
 
 :::warning
-If you delete the user that is currently authenticated, you will lose access to the device. Make sure you have another user with access before deleting the current one. Generate a new token if necessary.
+If you delete the token currently associated with your user, you will lose access to the device. Ensure that another user has access before deleting your own token, and generate a new token if needed.
 :::
 
 ```http title="Request"

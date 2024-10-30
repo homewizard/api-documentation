@@ -43,19 +43,19 @@ When no data needs to be sent, the data field can be omitted.
 
 ## Commands
 
-### Connect and Authenticate
+### Connect and Authorize
 
-To connect to the WebSocket, you must obtain an authentication token. Refer to this [page](/docs/v2/authentication#create-user-and-get-token) for instructions.
+To connect to the WebSocket, you must obtain an authorization token. Refer to this [page](/docs/v2/authorization#create-user-and-get-token) for instructions.
 
-The WebSocket is accessible at `wss://<IP ADDRESS>/api/v2/ws`. The connection is secured with the same [certificate as the HTTPS connection](/docs/v2/authentication.mdx#ssl-certificate-validation-https-https). Once connected, you must send the authentication token within 40 seconds, or the connection will close.
+The WebSocket is accessible at `wss://<IP ADDRESS>/api/v2/ws`. The connection is secured with the same [certificate as the HTTPS connection](/docs/v2/authorization#ssl-certificate-validation-https-https). Once connected, you must send the authorization token within 40 seconds, or the connection will close.
 
 ```json title="Example"
 // Connect to the server
-→ {"type": "authentication_requested", "data": {"api_version": "2.0.0"}}
+→ {"type": "authorization_requested", "data": {"api_version": "2.0.0"}}
 
 // Send a token within 40 seconds
-{"type": "authentication", "data": "<TOKEN>"}
-→ {"type": "authentication_accepted"}
+{"type": "authorization", "data": "<TOKEN>"}
+→ {"type": "authorized"}
 ```
 
 ### Subscribe
@@ -63,10 +63,10 @@ The WebSocket is accessible at `wss://<IP ADDRESS>/api/v2/ws`. The connection is
 After authentication, you can subscribe to topics. Topics correspond to available endpoints, with the data matching that returned by the endpoint. Once subscribed, the device sends the latest values and updates when data changes. The `type` field consist of the topic name, and the `data` field contains the data from the endpoint.
 
 -   **`*`** - Subscribe to all topics
--   **`device`** - Subscribe to [device information](http://localhost:3000/docs/V1/device_information) updates
--   **`user`** - Subscribe to [user list](http://localhost:3000/docs/V1/authentication) updates
--   **`measurement`** - Subscribe to [measurement](http://localhost:3000/docs/V1/measurement) updates
--   **`system`** - Subscribe to [system](http://localhost:3000/docs/V1/system) updates. Only `cloud_enabled` and `status_led_brightness_pct` are updated in real time.
+-   **`device`** - Subscribe to [device information](http://localhost:3000/docs/V2/device_information) updates
+-   **`user`** - Subscribe to [user list](http://localhost:3000/docs/V2/authentication) updates
+-   **`measurement`** - Subscribe to [measurement](http://localhost:3000/docs/V2/measurement) updates
+-   **`system`** - Subscribe to [system](http://localhost:3000/docs/V2/system) updates. Only `cloud_enabled` and `status_led_brightness_pct` are updated in real time.
 
 ```json title="Example"
 {"type": "subscribe", "data": "system"}
