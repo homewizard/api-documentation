@@ -67,8 +67,18 @@ curl https://<IP ADDRESS>/api/v2/system --insecure \
 ```
 
 ```http title="Response"
-https/1.1 204 No Content
-Content-Length: 0
+https/1.1 200 OK
+Content-Type: application/json
+Content-Length: <length>
+
+{
+    "wifi_ssid": "My WiFi",
+    "wifi_rssi_db": -77,
+    "cloud_enabled": false,
+    "uptime_s": 356,
+    "status_led_brightness_pct": 100,
+    "api_v1_enabled": true
+}
 ```
 
 _After disabling the cloud communication, the device will only work locally._
@@ -84,8 +94,18 @@ curl https://<IP ADDRESS>/api/v2/system --insecure \
 ```
 
 ```http title="Response"
-https/1.1 204 No Content
-Content-Length: 0
+https/1.1 200 OK
+Content-Type: application/json
+Content-Length: <length>
+
+{
+    "wifi_ssid": "My WiFi",
+    "wifi_rssi_db": -77,
+    "cloud_enabled": true,
+    "uptime_s": 356,
+    "status_led_brightness_pct": 100,
+    "api_v1_enabled": true
+}
 ```
 
 _Device will now reconnect to the cloud._
@@ -107,8 +127,17 @@ curl https://<IP ADDRESS>/api/v2/system --insecure \
 ```
 
 ```http title="Response"
-https/1.1 204 No Content
-Content-Length: 0
+https/1.1 200 OK
+Content-Type: application/json
+Content-Length: <length>
+
+{
+    "wifi_ssid": "My WiFi",
+    "wifi_rssi_db": -77,
+    "cloud_enabled": true,
+    "uptime_s": 356,
+    "status_led_brightness_pct": 50,
+    "api_v1_enabled": true
 ```
 
 ## Enable or disable the V1 API
@@ -129,7 +158,17 @@ curl https://<IP ADDRESS>/api/v2/system --insecure \
 
 ```http title="Response"
 https/1.1 204 No Content
-Content-Length: 0
+https/1.1 200 OK
+Content-Type: application/json
+Content-Length: <length>
+
+{
+    "wifi_ssid": "My WiFi",
+    "wifi_rssi_db": -77,
+    "cloud_enabled": true,
+    "uptime_s": 356,
+    "status_led_brightness_pct": 100,
+    "api_v1_enabled": false
 ```
 
 _API V1 is now disabled, as if it was disabled via the HomeWizard Energy App. The API will respond with an [API disabled](/docs/V1/error-handling#api-was-disabled) error when trying to use it._
@@ -161,7 +200,7 @@ If needed, you can reboot the device by calling the `/api/v2/system/reboot` endp
 A reboot is **usually not necessary** but can help in certain situations. Make sure to inform the user that ff the issue persists and frequent reboots are required, they need to contact our support team to help identify and resolve the root cause.
 :::
 
-### Examples
+### Example
 
 ```
 curl https://<IP ADDRESS>/api/v2/system/reboot --insecure \
