@@ -50,7 +50,7 @@ The API accepts a version header to specify the version your client expects. The
 ##### No version specified, the API will default to the latest stable version.
 
 ```http title="Request"
-GET /api/v2/system
+GET /api/system
 ```
 
 ```http title="Response"
@@ -65,7 +65,7 @@ X-Api-Version: 2.0.0
 _(Assuming version `2.0.5` is available on this device.)_
 
 ```http title="Request"
-GET /api/v2/system
+GET /api/system
 X-API-Version: >=2.0.1 <2.1.0
 ```
 
@@ -79,7 +79,7 @@ X-Api-Version: 2.0.5
 ##### Unsupported version requested
 
 ```http title="Request"
-GET /api/v2/system
+GET /api/system
 X-API-Version: 2.1.0
 ```
 
@@ -95,7 +95,7 @@ X-Api-Version: 2.0.0
 _(Assuming version `2.1.0` and higher is latest stable version)_
 
 ```http title="Request"
-GET /api/v2/system
+GET /api/system
 X-API-Version: >=2.0.1 <2.1.0
 ```
 

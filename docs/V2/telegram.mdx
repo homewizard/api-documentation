@@ -8,11 +8,11 @@ toc_min_heading_level: 3
 import Badge from '@site/src/components/Badge.js'
 import PreliminaryWarning from '@site/src/components/PreliminaryWarning.js'
 
-# P1 Telegram `/api/v2/telegram`
+# P1 Telegram `/api/telegram`
 
 <PreliminaryWarning />
 
-The `/api/v2/telegram` endpoint returns the most recent, valid telegram that was given by the P1 meter.
+The `/api/telegram` endpoint returns the most recent, valid telegram that was given by the P1 meter.
 
 -   The checksum is validated when present, telegrams with an invalid checksum are rejected.
 -   The Telegram is not processed in any other form, and can be used by other systems to process the data.
@@ -28,9 +28,9 @@ The `/api/v2/telegram` endpoint returns the most recent, valid telegram that was
 ## Example
 
 ```http title="Request"
-curl https://<IP ADDRESS>/api/v2/telegram --insecure \
+curl https://<IP ADDRESS>/api/telegram --insecure \
   -H "Authorization: Bearer <TOKEN>" \
-  -H "X-Api-Version: 2.0.0" \
+  -H "X-Api-Version: 2" \
 ```
 
 ```http title="Response"

@@ -9,7 +9,7 @@ import Badge from '@site/src/components/Badge.js'
 import BadgeDetail from '@site/src/components/BadgeDetail.js'
 import PreliminaryWarning from '@site/src/components/PreliminaryWarning.js'
 
-# WebSocket `/api/v2/ws`
+# WebSocket `/api/ws`
 
 <PreliminaryWarning />
 
@@ -47,7 +47,7 @@ When no data needs to be sent, the data field can be omitted.
 
 To connect to the WebSocket, you must obtain an authorization token. Refer to this [page](/docs/v2/authorization#create-user-and-get-token) for instructions.
 
-The WebSocket is accessible at `wss://<IP ADDRESS>/api/v2/ws`. The connection is secured with the same [certificate as the HTTPS connection](/docs/v2/authorization#ssl-certificate-validation-https-https). Once connected, you must send the authorization token within 40 seconds, or the connection will close.
+The WebSocket is accessible at `wss://<IP ADDRESS>/api/ws`. The connection is secured with the same [certificate as the HTTPS connection](/docs/v2/authorization#ssl-certificate-validation-https-https). Once connected, you must send the authorization token within 40 seconds, or the connection will close.
 
 ```json title="Example"
 // Connect to the server

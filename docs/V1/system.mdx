@@ -41,7 +41,7 @@ This endpoint accepts `GET` and `PUT` requests.
 ### Get system state
 
 ```http title="Request"
-curl http://<IP ADDRESS>/api/v2/system
+curl http://<IP ADDRESS>/api/system
 ```
 
 ```http title="Response"
@@ -57,7 +57,7 @@ Content-Length: <length>
 ### Set system state
 
 ```http title="Request"
-curl http://<IP ADDRESS>/api/v2/system \
+curl http://<IP ADDRESS>/api/system \
    -X PUT \
    -d '{"cloud_enabled": false}'
 ```

@@ -7,7 +7,7 @@ description: Get a token to authenticate requests to the HomeWizard Energy API.
 import Badge from '@site/src/components/Badge.js'
 import PreliminaryWarning from '@site/src/components/PreliminaryWarning.js'
 
-# Authorization `/api/v2/user`
+# Authorization `/api/user`
 
 <PreliminaryWarning />
 
@@ -23,14 +23,14 @@ The HomeWizard Energy API requires a Bearer token to authorize requests. This to
 
 ## Create user and get token
 
-A user is created by sending a POST /api/v2/user request when they press the button on the device. This action confirms that the user has possession of the device and that the application is authenticated to generate a token. Once these steps are completed, a token is returned which is used to authorize for future requests.
+A user is created by sending a POST /api/user request when they press the button on the device. This action confirms that the user has possession of the device and that the application is authenticated to generate a token. Once these steps are completed, a token is returned which is used to authorize for future requests.
 
 **Flow**
 
 To get an idea for how an application should acquire a token, we have outlined a flow below.
 
 1. The **user opens your app** which initiates a network scan, discovering a device, such as a P1 Meter.
-2. After selecting the P1 Meter, the **app sends a `POST /api/v2/user` request** with the [necessary parameters](#parameters)
+2. After selecting the P1 Meter, the **app sends a `POST /api/user` request** with the [necessary parameters](#parameters)
 3. The device responds with a **`403 Forbidden` status**, indicating that the user must physically press the button on the device to continue.
 4. The app then **prompts the user** to press the button on the P1 Meters.
     - The app can keep sending requests while waiting for the user to press the button, this wil reset the timer
@@ -46,11 +46,11 @@ sequenceDiagram
     HomeWizard-->>App: mDNS Broadcast
     end
     User-->>+App: 'Request pairing'
-    App->>+HomeWizard: POST /api/v2/user [parameters]
+    App->>+HomeWizard: POST /api/user [parameters]
     HomeWizard-->>-App: 403 Forbidden
     App-->>User: 'Please press the button'
     User-->>HomeWizard: Button pressed
-    App->>+HomeWizard: POST /api/v2/user [parameters]
+    App->>+HomeWizard: POST /api/user [parameters]
     HomeWizard-->>-App: 200 OK + [token]
     App->>App: Store token
     App-->>-User: 'Pairing complete'
@@ -85,10 +85,10 @@ Keep the token a secret, as it grants full access to the device, including the a
 Keep sending requests while waiting for the user to press the button.
 
 ```http title="Request"
-curl https://<IP ADDRESS>/api/v2/user --insecure \
+curl https://<IP ADDRESS>/api/user --insecure \
   -X POST \
   -H "Content-Type: application/json" \
-  -H "X-Api-Version: 2.0.0" \
+  -H "X-Api-Version: 2" \
   -d '{"name": "new_user"}'
 ```
 
@@ -105,10 +105,10 @@ Content-Length: <length>
 #### Step 2: User Presses Button and a new request is sent
 
 ```http title="Request"
-curl https://<IP ADDRESS>/api/v2/user --insecure \
+curl https://<IP ADDRESS>/api/user --insecure \
   -X POST \
   -H "Content-Type: application/json" \
-  -H "X-Api-Version: 2.0.0" \
+  -H "X-Api-Version: 2" \
   -d '{"name": "new_user"}'
 ```
 
@@ -147,10 +147,10 @@ Content-Length: <length>
 
 ## List users {#list-users}
 
-To list all users, send a `GET /api/v2/user` request.
+To list all users, send a `GET /api/user` request.
 
 ```http title="Request"
-curl https://<IP ADDRESS>/api/v2/user --insecure \
+curl https://<IP ADDRESS>/api/user --insecure \
   -H "Authorization: Bearer <TOKEN>" \
   -H "X-Api-Version: 2.0.0"
 ```
@@ -173,17 +173,17 @@ Content-Length: <length>
 
 ## Delete a user {#delete-user}
 
-To delete a user, send a `DELETE /api/v2/user` request with the user's name including the prefix. Deleting a user will invalidate the token.
+To delete a user, send a `DELETE /api/user` request with the user's name including the prefix. Deleting a user will invalidate the token.
 
 :::warning
 If you delete the token currently associated with your user, you will lose access to the device. Ensure that another user has access before deleting your own token, and generate a new token if needed.
 :::
 
 ```http title="Request"
-curl https://<IP ADDRESS>/api/v2/user --insecure \
+curl https://<IP ADDRESS>/api/user --insecure \
   -X DELETE \
   -H "Authorization: Bearer <TOKEN>" \
-  -H "X-Api-Version: 2.0.0" \
+  -H "X-Api-Version: 2" \
   -d '{"name": "cloud/cloud_user"}'
 ```
 
@@ -198,8 +198,8 @@ The local API is used by HomeWizard to enable direct communication between HomeW
 
 -   Cloud-generated users are prefixed with `cloud/`.
 -   These tokens are for local device communication only and do not provide access to the cloud nor can be used by the cloud itself.
--   All users, including cloud-generated ones can be viewed with the [`GET /api/v2/user`](#list-users) endpoint.
--   Users created via the cloud can be revoked at any time, either by the cloud itself or through the [`DELETE /api/v2/user`](#delete-user) endpoint.
+-   All users, including cloud-generated ones can be viewed with the [`GET /api/user`](#list-users) endpoint.
+-   Users created via the cloud can be revoked at any time, either by the cloud itself or through the [`DELETE /api/user`](#delete-user) endpoint.
 -   Disabling the cloud prevents the generation of cloud-generated users. For more details, see [cloud communication](/docs/v2/system#cloud-communication).
 
 ## SSL certificate validation (HTTPS) {#https}

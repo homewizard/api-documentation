@@ -8,11 +8,11 @@ import Badge from '@site/src/components/Badge.js'
 import BadgeDetail from '@site/src/components/BadgeDetail.js'
 import PreliminaryWarning from '@site/src/components/PreliminaryWarning.js'
 
-# System `/api/v2/system`
+# System `/api/system`
 
 <PreliminaryWarning />
 
-The `/api/v2/system` endpoint can be used to get and set some system information, like the state of the cloud communication and the uptime of the device.
+The `/api/system` endpoint can be used to get and set some system information, like the state of the cloud communication and the uptime of the device.
 
 {/* prettier-ignore */}
 <Badge color='hw-green'>✓ P1 Meter</Badge>
@@ -59,10 +59,10 @@ To prevent confusion, consider providing clear documentation or displaying a con
 #### Disable cloud communication
 
 ```http title="Request"
-curl https://<IP ADDRESS>/api/v2/system --insecure \
+curl https://<IP ADDRESS>/api/system --insecure \
   -X PUT \
   -H "Authorization: Bearer <TOKEN>" \
-  -H "X-Api-Version: 2.0.0" \
+  -H "X-Api-Version: 2" \
   -d '{"cloud_enabled": false}'
 ```
 
@@ -86,10 +86,10 @@ _After disabling the cloud communication, the device will only work locally._
 #### Enable cloud communication
 
 ```http title="Request"
-curl https://<IP ADDRESS>/api/v2/system --insecure \
+curl https://<IP ADDRESS>/api/system --insecure \
   -X PUT \
   -H "Authorization: Bearer <TOKEN>" \
-  -H "X-Api-Version: 2.0.0" \
+  -H "X-Api-Version: 2" \
   -d '{"cloud_enabled": true}'
 ```
 
@@ -119,10 +119,10 @@ Most devices have a status LED, and its brightness can be adjusted between 0% an
 #### Set status LED brightness
 
 ```http title="Request"
-curl https://<IP ADDRESS>/api/v2/system --insecure \
+curl https://<IP ADDRESS>/api/system --insecure \
   -X PUT \
   -H "Authorization: Bearer <TOKEN>" \
-  -H "X-Api-Version: 2.0.0" \
+  -H "X-Api-Version: 2" \
   -d '{"status_led_brightness_pct": 50}'
 ```
 
@@ -149,10 +149,10 @@ To protect the device from unauthorized access, the V1 API can be disabled. When
 #### Disable the V1 API
 
 ```http title="Request"
-curl https://<IP ADDRESS>/api/v2/system --insecure \
+curl https://<IP ADDRESS>/api/system --insecure \
   -X PUT \
   -H "Authorization: Bearer <TOKEN>" \
-  -H "X-Api-Version: 2.0.0" \
+  -H "X-Api-Version: 2" \
   -d '{"v1_api_enabled": false}'
 ```
 
@@ -175,15 +175,15 @@ _API V1 is now disabled, as if it was disabled via the HomeWizard Energy App. Th
 
 ## Identify
 
-The `/api/v2/system/identify` endpoint can be used to let the user identify the device. The status light will blink for a few seconds after calling this endpoint.
+The `/api/system/identify` endpoint can be used to let the user identify the device. The status light will blink for a few seconds after calling this endpoint.
 
 ### Example
 
 ```http title="Request"
-curl https://<IP ADDRESS>/api/v2/system/identify --insecure \
+curl https://<IP ADDRESS>/api/system/identify --insecure \
   -X PUT \
   -H "Authorization: Bearer <TOKEN>" \
-  -H "X-Api-Version: 2.0.0" \
+  -H "X-Api-Version: 2" \
 
 ```
 
@@ -194,7 +194,7 @@ Content-Length: 0
 
 ## Reboot
 
-If needed, you can reboot the device by calling the `/api/v2/system/reboot` endpoint. After rebooting, the device will reconnect to WiFi and be ready for use again.
+If needed, you can reboot the device by calling the `/api/system/reboot` endpoint. After rebooting, the device will reconnect to WiFi and be ready for use again.
 
 :::tip
 A reboot is **usually not necessary** but can help in certain situations. Make sure to inform the user that ff the issue persists and frequent reboots are required, they need to contact our support team to help identify and resolve the root cause.
@@ -203,7 +203,7 @@ A reboot is **usually not necessary** but can help in certain situations. Make s
 ### Example
 
 ```
-curl https://<IP ADDRESS>/api/v2/system/reboot --insecure \
+curl https://<IP ADDRESS>/api/system/reboot --insecure \
   -X PUT \
   -H "Authorization: Bearer <TOKEN>" \
   -H "X-Api-Version: 2.0.0"

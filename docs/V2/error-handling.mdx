@@ -33,7 +33,7 @@ The list of error codes may be extended in the future. We recommend that you pre
 ```shell title="Request"
 curl https://<IP ADDRESS>/api --insecure \
   -H "Authorization: Bearer <INVALID_TOKEN>" \
-  -H "X-Api-Version: 2.0.0" \
+  -H "X-Api-Version: 2" \
 ```
 
 ```http title="Response"
@@ -49,10 +49,10 @@ Content-Length: <length>
 ### Invalid value
 
 ```http title="Request"
-curl https://<IP ADDRESS>/api/v2/system --insecure \
+curl https://<IP ADDRESS>/api/system --insecure \
   -X PUT \
   -H "Authorization: Bearer <TOKEN>" \
-  -H "X-Api-Version: 2.0.0" \
+  -H "X-Api-Version: 2" \
    -d '{"status_led_brightness_pct": 123}'
 ```
 
