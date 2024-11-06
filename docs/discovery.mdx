@@ -11,9 +11,16 @@ import PreliminaryWarning from '@site/src/components/PreliminaryWarning.js'
 
 Energy devices can be automatically discovered on your network using <Link to="https://datatracker.ietf.org/doc/html/rfc6762">Multicast DNS</Link> (also known as `mDNS`, `Zeroconf`, or `Bonjour`). This technology enables your application to discover devices without requiring the user to know the IP address.
 
-## API V1
+## Services
 
-Devices with API V1 are available on the `_hwenergy._tcp` service.
+Devices can broadcast one or two services on the network, depending on the available API version(s) of this device:
+
+-   [`_hwenergy._tcp`](#_hwenergy.tcp) - to discover devices that are using API v1 over HTTP
+-   [`_homewizard._tcp`](#_homewizard_tcp) - to discover devices that are using API 2.0.0 and later over HTTPS
+
+## `_hwenergy._tcp`
+
+This service is used to discover devices that are using **API v1**, which uses HTTP (port 80). Devices with API v1 are available on the `_hwenergy._tcp` service.
 
 {/* prettier-ignore */}
 <Badge color='hw-green'>✓ P1 Meter</Badge>
@@ -35,11 +42,9 @@ A discovery response contains additional data to enhance the setup in your appli
 | product_name | User-friendly name. This name may change at any time.                                                                                                                      |
 | product_type | The product type; refer to [Supported devices](/docs/getting-started#supported-devices). Your application should support additional values for future products.            |
 
-## API V2
+## `_homewizard._tcp`
 
-<PreliminaryWarning />
-
-Devices with API V2 can be found on the `_hwenergy-v2._tcp` domain.
+This service is used to discover devices that are using **API 2.0.0 and later**, which uses HTTPS (port 443). Devices with this API version are available on the `_homewizard._tcp` service.
 
 {/* prettier-ignore */}
 <Badge color='hw-green'>✓ P1 Meter</Badge>
