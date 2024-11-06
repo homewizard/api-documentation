@@ -35,7 +35,7 @@ To get an idea for how an application should acquire a token, we have outlined a
 4. The app then **prompts the user** to press the button on the P1 Meters.
     - The app can keep sending requests while waiting for the user to press the button, this wil reset the timer
 5. Once the user **presses the button**, the device will respond with a **`200 OK` status**, for the next request, returning a [token](#token).
-    - The token is available for 30 seconds, after which the device will respond with a `403 Forbidden` status. The user must press the button again.
+    - Once the button is pressed, you have window of 30 seconds to request the token.
 6. The app **saves the token** for future requests.
 7. Finally, the app tests the connection and notifies the user that the **pairing process is complete**.
 
