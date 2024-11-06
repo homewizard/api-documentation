@@ -19,15 +19,15 @@ The `/api/system` endpoint can be used to get and set some system information, l
 <Badge color='hw-orange'>~ Energy Socket <BadgeDetail href="/docs/v1/endpoints/system">V1</BadgeDetail></Badge>
 <Badge color='hw-red'>✗ Energy Display</Badge>
 <Badge color='hw-orange'>~ kWh Meter <BadgeDetail href="/docs/v1/endpoints/system">V1</BadgeDetail></Badge>
-<Badge color='hw-orange'>~ Water Meter <BadgeDetail href="/docs/v1/endpoints/system">V1</BadgeDetail></Badge>
-<Badge color='hw-red'>✗ Plug-in Battery</Badge>
+<Badge color='hw-orange'>~ Watermeter <BadgeDetail href="/docs/v1/endpoints/system">V1</BadgeDetail></Badge>
+<Badge color='hw-red'>✗ Plug-In Battery</Badge>
 
 ## Parameters
 
 | Data                                                | Type             | Access     | Description                                                                                     |
 | --------------------------------------------------- | ---------------- | ---------- | ----------------------------------------------------------------------------------------------- |
-| wifi_ssid                                           | String           | Read-only  | The SSID of the WiFi network                                                                    |
-| wifi_rssi_db                                        | Number           | Read-only  | The signal strength of the WiFi network                                                         |
+| wifi_ssid                                           | String           | Read-only  | The SSID of the Wi-Fi network                                                                   |
+| wifi_rssi_db                                        | Number           | Read-only  | The signal strength of the Wi-Fi network                                                        |
 | uptime_s                                            | Number           | Read-only  | The uptime of the device in seconds                                                             |
 | [cloud_enabled](#cloud-communication)               | Boolean          | Read/Write | The state of the cloud communication                                                            |
 | [status_led_brightness_pct](#status-led-brightness) | Number           | Read/Write | The brightness of the status LED in percent                                                     |
@@ -71,7 +71,7 @@ https/1.1 200 OK
 Content-Type: application/json
 
 {
-    "wifi_ssid": "My WiFi",
+    "wifi_ssid": "My Wi-Fi",
     "wifi_rssi_db": -77,
     "cloud_enabled": false,
     "uptime_s": 356,
@@ -97,7 +97,7 @@ https/1.1 200 OK
 Content-Type: application/json
 
 {
-    "wifi_ssid": "My WiFi",
+    "wifi_ssid": "My Wi-Fi",
     "wifi_rssi_db": -77,
     "cloud_enabled": true,
     "uptime_s": 356,
@@ -129,7 +129,7 @@ https/1.1 200 OK
 Content-Type: application/json
 
 {
-    "wifi_ssid": "My WiFi",
+    "wifi_ssid": "My Wi-Fi",
     "wifi_rssi_db": -77,
     "cloud_enabled": true,
     "uptime_s": 356,
@@ -159,7 +159,7 @@ https/1.1 200 OK
 Content-Type: application/json
 
 {
-    "wifi_ssid": "My WiFi",
+    "wifi_ssid": "My Wi-Fi",
     "wifi_rssi_db": -77,
     "cloud_enabled": true,
     "uptime_s": 356,
@@ -190,7 +190,7 @@ Content-Length: 0
 
 ## Reboot
 
-If needed, you can reboot the device by calling the `/api/system/reboot` endpoint. After rebooting, the device will reconnect to WiFi and be ready for use again.
+If needed, you can reboot the device by calling the `/api/system/reboot` endpoint. After rebooting, the device will reconnect to Wi-Fi and be ready for use again.
 
 :::tip
 A reboot is **usually not necessary** but can help in certain situations. Make sure to inform the user that ff the issue persists and frequent reboots are required, they need to contact our support team to help identify and resolve the root cause.

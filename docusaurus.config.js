@@ -50,7 +50,7 @@ const config = {
     themeConfig:
         /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
         ({
-            metadata: [{ name: 'keywords', content: 'HomeWizard, Energy, API, P1 Meter, kWh Meter, Water Meter, Energy Socket, REST' }],
+            metadata: [{ name: 'keywords', content: 'HomeWizard, Energy, API, P1 Meter, kWh Meter, Watermeter, Energy Socket, REST' }],
             navbar: {
                 title: 'API Documentation',
                 logo: {
@@ -104,7 +104,7 @@ const config = {
                                 href: 'https://twitter.com/HomeWizard_NL'
                             },
                             {
-                                label: 'Linkedin',
+                                label: 'LinkedIn',
                                 href: 'https://www.linkedin.com/company/homewizard'
                             }
                         ]
