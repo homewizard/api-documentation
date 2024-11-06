@@ -56,7 +56,6 @@ curl https://<IP ADDRESS>/api --insecure \
 ```http title="Response"
 https/1.1 401 Unauthorized
 Content-Type: application/json
-Content-Length: <length>
 
 {
     "error": "user:unauthorized"
@@ -76,7 +75,6 @@ curl https://<IP ADDRESS>/api/system --insecure \
 ```http title="Response"
 https/1.1 400 Bad Request
 Content-Type: application/json
-Content-Length: <length>
 
 {
     {"error":"parameter-invalid-type:status_led_brightness_pct"}

@@ -95,7 +95,6 @@ curl https://<IP ADDRESS>/api/user --insecure \
 ```http title="Response"
 https/1.1 403 Forbidden
 Content-Type: application/json
-Content-Length: <length>
 
 {
     "error": "user:creation-not-enabled"
@@ -115,7 +114,6 @@ curl https://<IP ADDRESS>/api/user --insecure \
 ```http title="Response"
 https/1.1 200 OK
 Content-Type: application/json
-Content-Length: <length>
 
 {
     "token": "<TOKEN>",
@@ -134,7 +132,6 @@ curl https://<IP ADDRESS>/api --insecure \
 ```http title="Response"
 https/1.1 200 OK
 Content-Type: application/json
-Content-Length: <length>
 
 {
     "product_type": "HWE-P1",
@@ -150,7 +147,6 @@ When the authorization token is invalid or not provided, the response will be `4
 ```http title="Response when unauthorized"
 https/1.1 401 Unauthorized
 Content-Type: application/json
-Content-Length: <length>
 
 {
     "error": "user:unauthorized"
@@ -170,7 +166,6 @@ curl https://<IP ADDRESS>/api/user --insecure \
 ```http title="Response"
 https/1.1 200 OK
 Content-Type: application/json
-Content-Length: <length>
 
 [
     {
