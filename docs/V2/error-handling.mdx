@@ -17,10 +17,27 @@ Each error is represented as a set of 'scope' and 'error' fields. The 'scope' fi
 
 ### List of errors
 
-| Code                | Description                  |
-| ------------------- | ---------------------------- |
-| `user:name-invalid` | The name provided is invalid |
-| TODO                | ...                          |
+| Code                                      | Description                                                                                                                  |
+| ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `request:invalid-json`                    | Server was unable to parse the JSON data                                                                                     |
+| `json:no-parameters-recognized`           | JSON was correct, but no required parameters were found                                                                      |
+| `json:parameter-invalid-type:<parameter>` | Invalid type for a parameter, e.g. a string where a number is expected                                                       |
+| `json:parameter-missing:<parameter>`      | Required parameter is missing                                                                                                |
+| `json:parameter-not-exclusive`            | Two or more parameters are mutually exclusive                                                                                |
+| `request:api-version-not-supported`       | Requested API version not supported, see [versioning](/docs/v2/versioning)                                                   |
+| `request:internal-server-error`           | Something went wrong on the server side                                                                                      |
+| `request:too-large`                       | Request too large                                                                                                            |
+| `request:unknown-subscription`            | WebSocket subscription topic not recognized, see [Websocket Subscriptions](/docs/v2/websocket#subscribe)                     |
+| `request:unknown-type`                    | WebSocket `type` parameter not recognized [Websocket Structure](/docs/v2/websocket#structure)                                |
+| `telegram:no-telegram-received`           | No telegram received, see [Telegram](/docs/v2/telegram#error-handling)                                                       |
+| `user:creation-not-enabled`               | user creation is not enabled, button press required                                                                          |
+| `user:invalid-prefix`                     | Invalid name prefix provided, see [Create user](/docs/v2/authorization#create-user-and-get-token)                            |
+| `user:name-empty`                         | Upon creating a user, the name was empty                                                                                     |
+| `user:name-invalid`                       | Upon creating a user, the name contained invalid tokens, see [Create user](/docs/v2/authorization#create-user-and-get-token) |
+| `user:name-too-long`                      | Upon creating a user, the name was too long                                                                                  |
+| `user:no-storage`                         | No storage available to store a new user, delete existing users                                                              |
+| `user:not-found`                          | Tried to delete an user which does not exist                                                                                 |
+| `user:unauthorized`                       | User token is invalid or not authorized, see [Authorization](/docs/v2/authorization)                                         |
 
 :::tip
 The list of error codes may be extended in the future. We recommend that you prepare for new error codes by having a generic error handling mechanism in place.
@@ -53,7 +70,7 @@ curl https://<IP ADDRESS>/api/system --insecure \
   -X PUT \
   -H "Authorization: Bearer <TOKEN>" \
   -H "X-Api-Version: 2" \
-   -d '{"status_led_brightness_pct": 123}'
+  -d '{"status_led_brightness_pct": 123}'
 ```
 
 ```http title="Response"

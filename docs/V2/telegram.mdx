@@ -77,3 +77,20 @@ Content-Length: <length>
 0-1:24.2.1(210606140010W)(02569.646*m3)
 !1F28
 ```
+
+## Error handling
+
+When no telegram is received, the response will return a 503 Service Unavailable status code.
+
+```http title="Request"
+curl https://<IP ADDRESS>/api/telegram --insecure \
+  -H "Authorization: Bearer <TOKEN>"
+```
+
+```http title="Response"
+https/1.1 503 Service Unavailable
+Content-Type: text/plain
+Content-Length: <length>
+
+telegram:no-telegram-received
+```

@@ -145,6 +145,18 @@ Content-Length: <length>
 }
 ```
 
+When the authorization token is invalid or not provided, the response will be `401 Unauthorized`.
+
+```http title="Response when unauthorized"
+https/1.1 401 Unauthorized
+Content-Type: application/json
+Content-Length: <length>
+
+{
+    "error": "user:unauthorized"
+}
+```
+
 ## List users {#list-users}
 
 To list all users, send a `GET /api/user` request.
