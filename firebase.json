@@ -1,6 +1,43 @@
 {
     "hosting": {
         "public": "build",
-        "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+        "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+        "redirects": [
+            {
+                "source": "/docs/error-handling",
+                "to": "docs/v1/error-handling",
+                "type": 301
+            },
+            {
+                "source": "/docs/category/endpoints",
+                "to": "docs/category/api-v1",
+                "type": 301
+            },
+            {
+                "source": "/docs/endpoints/api",
+                "to": "docs/v1/api",
+                "type": 301
+            },
+            {
+                "source": "/docs/endpoints/api-v1-data",
+                "to": "docs/v1/state",
+                "type": 301
+            },
+            {
+                "source": "/docs/endpoints/api-v1-telegram",
+                "to": "docs/v1/telegram",
+                "type": 301
+            },
+            {
+                "source": "/docs/endpoints/api-v1-identify",
+                "to": "docs/v1/identify",
+                "type": 301
+            },
+            {
+                "source": "/docs/endpoints/api-v1-system",
+                "to": "docs/v1/system",
+                "type": 301
+            }
+        ]
     }
 }
