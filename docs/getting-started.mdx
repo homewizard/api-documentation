@@ -11,7 +11,7 @@ This guide will help you get started with the HomeWizard Energy API.
 
 ## Choosing the right API version
 
-The HomeWizard Energy API has two versions: V1 and V2. The V1 API is the **stable version and is recommended to be used**. The V2 API is in currently in beta. Skip to [Getting started with V2](#getting-started-with-v2) if you want to use the V2 API.
+The HomeWizard Energy API has two versions: V1 and v2. The V1 API is the **stable version and is recommended to be used**. The v2 API is in currently in beta. Skip to [Getting started with v2](#getting-started-with-v2) if you want to use the v2 API.
 
 ## Getting started with V1
 
@@ -33,11 +33,11 @@ After [enabling the API](#enabling-the-api), you can try to read some data from 
 
 To understand each value, please read [endpoints](/docs/category/endpoints/).
 
-## Getting started with V2
+## Getting started with v2
 
 <PreliminaryWarning />
 
-In contrast to version 1, the V2 API is based on HTTPS and uses authorization to access the data. This means you don't need to enable the local API in the app, but you have to obtain a token.
+In contrast to version 1, the v2 API is based on HTTPS and uses authorization to access the data. This means you don't need to enable the local API in the app, but you have to obtain a token.
 
 The following example will show you can use the API to get basic information from a P1 Meter.
 
@@ -48,7 +48,7 @@ Connect your device to Wi-Fi with the <Link href="https://www.homewizard.nl/ener
 ### 2. Get a token
 
 :::danger
-The token allows full access to the data from your P1 Meter and **should be kept secret**. Do not share this token with others. [Remove this token](/docs/V2/authorization#delete-user) when you no longer need it.
+The token allows full access to the data from your P1 Meter and **should be kept secret**. Do not share this token with others. [Remove this token](/docs/v2/authorization#delete-user) when you no longer need it.
 :::
 
 1. Get the IP address of the device.
@@ -88,7 +88,7 @@ curl https://<IP ADDRESS>/api/user --insecure -X POST -d '{"name": "local/cool-n
 }
 ```
 
-3. You can use this data, and many more, to build your own application. For more information, see the [V2 documentation](/docs/v2).
+3. You can use this data, and many more, to build your own application. For more information, see the [v2 documentation](/docs/v2).
 
 ## Data update frequency
 
