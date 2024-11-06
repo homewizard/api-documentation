@@ -3,27 +3,27 @@ sidebar_position: 2
 ---
 
 import Link from '@docusaurus/Link'
-import Badge from '@site/src/components/Badge.js'
-import BadgeDetail from '@site/src/components/BadgeDetail.js'
 import PreliminaryWarning from '@site/src/components/PreliminaryWarning.js'
 
 # Getting Started
 
 This guide will help you get started with the HomeWizard Energy API.
 
-:::tip API V2
-The HomeWizard Energy API has two versions: V1 and V2. The V1 API is the **stable version and is recommended to be used**. The V2 API is in beta and is subject to change. You can find the documentation for the V2 API [here](/docs/v2).
-:::
+## Choosing the right API version
 
-## Connect your device to Wi-Fi
+The HomeWizard Energy API has two versions: V1 and V2. The V1 API is the **stable version and is recommended to be used**. The V2 API is in currently in beta. Skip to [Getting started with V2](#getting-started-with-v2) if you want to use the V2 API.
+
+## Getting started with V1
+
+### 1. Connect your device to Wi-Fi
 
 Connect your device to Wi-Fi with the <Link href="https://www.homewizard.nl/energy">HomeWizard Energy app</Link>. Make sure to connect your energy device with the same network as the device that makes use of the API.
 
-## Enabling the API
+### 2. Enable the API
 
 To access the data from an Energy device, you have to enable the API. You can do this in the <Link href="https://www.homewizard.nl/energy">HomeWizard Energy app</Link>. Go to Settings > Meters > _Your meter_, and turn on _Local API_.
 
-## Getting the data
+### 3. Get a measurement
 
 After [enabling the API](#enabling-the-api), you can try to read some data from your device.
 
@@ -33,33 +33,19 @@ After [enabling the API](#enabling-the-api), you can try to read some data from 
 
 To understand each value, please read [endpoints](/docs/category/endpoints/).
 
-## HomeWizard devices and API versions {#devices}
-
-The following table shows which devices are supported by the API and which API version they support.
-
-| Device                                        | Device type              | API Version                                                                                                                       |
-| --------------------------------------------- | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------- |
-| Wi-Fi P1 Meter                                | HWE-P1                   | <Badge color='hw-green'>✓ V1</Badge> <Badge color='hw-green'>✓ V2.0.0 <BadgeDetail href="/docs/v2">beta</BadgeDetail></Badge>     |
-| Wi-Fi Energy Socket                           | HWE-SKT                  | <Badge color='hw-green'>✓ V1</Badge> <Badge color='hw-orange'>~ V2.0.0 <BadgeDetail href="/docs/v2">planned</BadgeDetail></Badge> |
-| Wi-Fi Watermeter (Only when powered over USB) | HWE-WTR                  | <Badge color='hw-green'>✓ V1</Badge> <Badge color='hw-orange'>~ V2.0.0 <BadgeDetail href="/docs/v2">planned</BadgeDetail></Badge> |
-| Wi-Fi kWh Meter (1 phase)                     | HWE-KWH1 and SDM230-wifi | <Badge color='hw-green'>✓ V1</Badge> <Badge color='hw-orange'>~ V2.0.0 <BadgeDetail href="/docs/v2">planned</BadgeDetail></Badge> |
-| Wi-Fi kWh Meter (3 phase)                     | HWE-KWH3 and SDM630-wifi | <Badge color='hw-green'>✓ V1</Badge> <Badge color='hw-orange'>~ V2.0.0 <BadgeDetail href="/docs/v2">planned</BadgeDetail></Badge> |
-| Energy Display                                | HWE-DSP                  | <Badge color='hw-red'>✗ V1</Badge> <Badge color='hw-orange'>~ V2.0.0 <BadgeDetail href="/docs/v2">planned</BadgeDetail></Badge>   |
-| Plug-In Battery                               | HWE-BAT                  | <Badge color='hw-red'>✗ V1</Badge> <Badge color='hw-orange'>~ V2.0.0 <BadgeDetail href="/docs/v2">planned</BadgeDetail></Badge>   |
-
-## Data update frequency
-
-The API always returns the most recent data. The update frequency depends on the device and, in case of the HWE-P1, the smart meter that it is connected to. With a SMR 5.0 meter, this is every second for power and every 5 minutes for gas. If the smart meter version is lower than SMR 5.0, this is every 10 seconds for power and every 60 minutes for gas. You can find the SMR version of your smart meter on the smart meter itself or via the [Recent measurement endpoint](/docs/endpoints/api-v1-data). There is no limit to the time between each request on the local API, however, we advise not to retrieve data more often than every 500ms.
-
 ## Getting started with V2
 
 <PreliminaryWarning />
 
-The HomeWizard Energy API V2 is an updated version of the API that is currently in beta. This API is based on HTTPS and uses authorization to access the data, so you don't need to enable the local API. You can find the documentation for the V2 API [here](/docs/v2).
+In contrast to version 1, the V2 API is based on HTTPS and uses authorization to access the data. This means you don't need to enable the local API in the app, but you have to obtain a token.
 
 The following example will show you can use the API to get basic information from a P1 Meter.
 
-### Get a token
+### 1. Connect your device to Wi-Fi
+
+Connect your device to Wi-Fi with the <Link href="https://www.homewizard.nl/energy">HomeWizard Energy app</Link>. Make sure to connect your energy device with the same network as the device that makes use of the API.
+
+### 2. Get a token
 
 :::danger
 The token allows full access to the data from your P1 Meter and **should be kept secret**. Do not share this token with others. [Remove this token](/docs/V2/authorization#delete-user) when you no longer need it.
@@ -68,30 +54,30 @@ The token allows full access to the data from your P1 Meter and **should be kept
 1. Get the IP address of the device.
 2. Send the following request to the device to get a token:
 
-`curl https://<IP ADDRESS>/api/user --insecure -X POST -d '{"name": "cool-new-app"}'`
+```
+curl https://<IP ADDRESS>/api/user --insecure -X POST -d '{"name": "local/cool-new-app"}'
+```
 
 3. You will get the following message: `{"error":"user:creation-not-enabled"}`.
 4. Press the button on the P1 Meter once.
 5. Send the same request again to get a token:
 
-`curl https://<IP ADDRESS>/api/user --insecure -X POST -d '{"name": "cool-new-app"}'`
+```
+curl https://<IP ADDRESS>/api/user --insecure -X POST -d '{"name": "local/cool-new-app"}'
+```
 
-6. You will get a response containing a token, store this token somewhere safe:
+6. If everything went well, you will get a response containing a token. Store this token somewhere safe.
 
 ```json
 {
-    "status": "success",
-    "user": {
-        "id": 1,
-        "name": "local/cool-new-app",
-        "token": "<TOKEN>"
-    }
+    "name": "local/cool-new-app",
+    "token": "EXAMPLE-TOKEN"
 }
 ```
 
-### Get a measurement
+### 3. Get a measurement
 
-1. Send the following request to the device to get basic information. Replace `<TOKEN>` with the token you received in the previous step: `curl https://<IP ADDRESS>/api/measurement --insecure -H "Authorization: Bearer <TOKEN>"`
+1. Send the following request to the device to get basic information. Replace `<TOKEN>` with the token you received in the previous step: `curl https://<IP ADDRESS>/api/measurement --insecure -H "Authorization: Bearer EXAMPLE-TOKEN"`
 
 2. You should see a response with the the most recent data from your smart meter. Example:
 
@@ -103,3 +89,7 @@ The token allows full access to the data from your P1 Meter and **should be kept
 ```
 
 3. You can use this data, and many more, to build your own application. For more information, see the [V2 documentation](/docs/v2).
+
+## Data update frequency
+
+The API always returns the most recent data. The update frequency depends on the device and, in case of the HWE-P1, the smart meter that it is connected to. With a SMR 5.0 meter, this is every second for power and every 5 minutes for gas. If the smart meter version is lower than SMR 5.0, this is every 10 seconds for power and every 60 minutes for gas. You can find the SMR version of your smart meter on the smart meter itself or via the [Recent measurement endpoint](/docs/endpoints/api-v1-data). There is no limit to the time between each request on the local API, however, we advise not to retrieve data more often than every 500ms.
