@@ -35,7 +35,7 @@ To get an idea for how an application should acquire a token, we have outlined a
 4. The app then **prompts the user** to press the button on the P1 Meters.
     - The app can keep sending requests while waiting for the user to press the button, this wil reset the timer
 5. Once the user **presses the button**, the device will respond with a **`200 OK` status**, for the next request, returning a [token](#token).
-    - Once the button is pressed, you have window of 30 seconds to request the token.
+    - Once the button is pressed, you have a window of 30 seconds to request the token.
 6. The app **saves the token** for future requests.
 7. Finally, the app tests the connection and notifies the user that the **pairing process is complete**.
 
@@ -75,7 +75,7 @@ The response to a successful request will include the following fields:
 | token | String | A token that can be used to authorize API requests.<br />- The token is 32 characters long.<br />- Token consists of letters `A-F` and numbers `0-9`.<br />&nbsp;&nbsp;- (Regex: `^[A-F0-9]{32}$`) |
 
 :::danger
-Keep the token a secret, as it grants full access to the device, including the ability to generate new user.
+Keep the token a secret, as it grants full access to the device.
 :::
 
 ### Examples
@@ -89,7 +89,7 @@ curl https://<IP ADDRESS>/api/user --insecure \
   -X POST \
   -H "Content-Type: application/json" \
   -H "X-Api-Version: 2" \
-  -d '{"name": "new_user"}'
+  -d '{"name": "local/new_user"}'
 ```
 
 ```http title="Response"
@@ -108,7 +108,7 @@ curl https://<IP ADDRESS>/api/user --insecure \
   -X POST \
   -H "Content-Type: application/json" \
   -H "X-Api-Version: 2" \
-  -d '{"name": "new_user"}'
+  -d '{"name": "local/new_user"}'
 ```
 
 ```http title="Response"
@@ -134,8 +134,8 @@ https/1.1 200 OK
 Content-Type: application/json
 
 {
-    "product_type": "HWE-P1",
     "product_name": "P1 Meter",
+    "product_type": "HWE-P1",
     "serial": "5c2fafaabbcc",
     "firmware_version": "6.00",
     "api_version": "2.0.0"
