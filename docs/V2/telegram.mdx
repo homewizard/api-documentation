@@ -31,6 +31,7 @@ The `/api/telegram` endpoint returns the most recent, valid telegram that was gi
 curl https://<IP ADDRESS>/api/telegram --insecure \
   -H "Authorization: Bearer <TOKEN>" \
   -H "X-Api-Version: 2" \
+  -h "Accept: text/plain"
 ```
 
 ```http title="Response"
@@ -84,6 +85,8 @@ When no telegram is received, the response will return a 503 Service Unavailable
 ```http title="Request"
 curl https://<IP ADDRESS>/api/telegram --insecure \
   -H "Authorization: Bearer <TOKEN>"
+  -H "X-Api-Version: 2" \
+  -h "Accept: text/plain"
 ```
 
 ```http title="Response"
