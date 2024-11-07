@@ -16,22 +16,22 @@ The `/api/system` endpoint can be used to get and set some system information, l
 
 {/* prettier-ignore */}
 <Badge color='hw-green'>✓ P1 Meter</Badge>
-<Badge color='hw-orange'>~ Energy Socket <BadgeDetail href="/docs/v1/endpoints/system">V1</BadgeDetail></Badge>
+<Badge color='hw-orange'>~ Energy Socket <BadgeDetail href="/docs/v1/endpoints/system">v1</BadgeDetail></Badge>
 <Badge color='hw-red'>✗ Energy Display</Badge>
-<Badge color='hw-orange'>~ kWh Meter <BadgeDetail href="/docs/v1/endpoints/system">V1</BadgeDetail></Badge>
-<Badge color='hw-orange'>~ Watermeter <BadgeDetail href="/docs/v1/endpoints/system">V1</BadgeDetail></Badge>
+<Badge color='hw-orange'>~ kWh Meter <BadgeDetail href="/docs/v1/endpoints/system">v1</BadgeDetail></Badge>
+<Badge color='hw-orange'>~ Watermeter <BadgeDetail href="/docs/v1/endpoints/system">v1</BadgeDetail></Badge>
 <Badge color='hw-red'>✗ Plug-In Battery</Badge>
 
 ## Parameters
 
 | Data                                                | Type             | Access     | Description                                                                                     |
 | --------------------------------------------------- | ---------------- | ---------- | ----------------------------------------------------------------------------------------------- |
-| wifi_ssid                                           | String           | Read-only  | The SSID of the Wi-Fi network                                                                   |
-| wifi_rssi_db                                        | Number           | Read-only  | The signal strength of the Wi-Fi network                                                        |
-| uptime_s                                            | Number           | Read-only  | The uptime of the device in seconds                                                             |
-| [cloud_enabled](#cloud-communication)               | Boolean          | Read/Write | The state of the cloud communication                                                            |
-| [status_led_brightness_pct](#status-led-brightness) | Number           | Read/Write | The brightness of the status LED in percent                                                     |
-| [api_v1_enabled](#enable-or-disable-the-v1-api)     | Optional Boolean | Read/Write | The state of the V1 API, will be removed when API V1 is removed, so this parameter is optional. |
+| wifi_ssid                                           | String           | Read-only  | The SSID of the Wi-Fi network.                                                                  |
+| wifi_rssi_db                                        | Number           | Read-only  | The signal strength of the Wi-Fi network.                                                       |
+| uptime_s                                            | Number           | Read-only  | The uptime of the device in seconds.                                                            |
+| [cloud_enabled](#cloud-communication)               | Boolean          | Read/Write | The state of the cloud communication.                                                           |
+| [status_led_brightness_pct](#status-led-brightness) | Number           | Read/Write | The brightness of the status LED in percent.                                                    |
+| [api_v1_enabled](#enable-or-disable-the-v1-api)     | Optional Boolean | Read/Write | The state of the v1 API, will be removed when API v1 is removed, so this parameter is optional. |
 
 ## Actions
 
@@ -56,7 +56,7 @@ To prevent confusion, consider providing clear documentation or displaying a con
 
 ### Examples
 
-#### Disable cloud communication
+#### Disable Cloud Communication
 
 ```http title="Request"
 curl https://<IP ADDRESS>/api/system --insecure \
@@ -82,7 +82,7 @@ Content-Type: application/json
 
 _After disabling the cloud communication, the device will only work locally._
 
-#### Enable cloud communication
+#### Enable Cloud Communication
 
 ```http title="Request"
 curl https://<IP ADDRESS>/api/system --insecure \
@@ -114,7 +114,7 @@ Most devices have a status LED, and its brightness can be adjusted between 0% an
 
 ### Examples
 
-#### Set status LED brightness
+#### Set Status LED Brightness
 
 ```http title="Request"
 curl https://<IP ADDRESS>/api/system --insecure \
@@ -138,13 +138,13 @@ Content-Type: application/json
 }
 ```
 
-## Enable or disable the V1 API
+## Enable or Disable the v1 API
 
-To protect the device from unauthorized access, the V1 API can be disabled. When the V1 API is disabled, the device will only allow authorized request via the V2 API.
+To protect the device from unauthorized access, the v1 API can be disabled. When the v1 API is disabled, the device will only allow authorized request via the v2 API.
 
 ### Example
 
-#### Disable the V1 API
+#### Disable the v1 API
 
 ```http title="Request"
 curl https://<IP ADDRESS>/api/system --insecure \
@@ -168,7 +168,7 @@ Content-Type: application/json
 }
 ```
 
-_API V1 is now disabled, as if it was disabled via the HomeWizard Energy App. The API will respond with an [API disabled](/docs/V1/error-handling#api-was-disabled) error when trying to use it._
+_API v1 is now disabled, as if it was disabled via the HomeWizard Energy app. The API will respond with an [API disabled](/docs/v1/error-handling#api-was-disabled) error when trying to use it._
 
 ## Identify
 

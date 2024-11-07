@@ -34,6 +34,6 @@ $ npm run build
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
-### Submit changes
+### Submit Changes
 
 You are always free to open issues and/or pull requests to improve this documentation.

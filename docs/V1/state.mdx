@@ -1,12 +1,12 @@
 ---
-title: State
+title: Control Device State
 sidebar_position: 3
 description: Control the state of the Energy Socket.
 ---
 
 import Badge from '@site/src/components/Badge.js'
 
-# Control socket state (`/api/v1/state`)
+# Control Device State (`/api/v1/state`)
 
 The `/api/v1/state` endpoint returns the actual state of the Energy Socket.
 
@@ -24,15 +24,15 @@ This endpoint accepts `GET` and `PUT` requests.
 
 ## Parameters
 
-| Data        | Type   | Description                                                                 |
-| ----------- | ------ | --------------------------------------------------------------------------- |
-| power_on    | bool   | The state of the switch. Returns `true` when the relay is in the 'on' state |
-| switch_lock | bool   | When set to `true`, the socket cannot be turned off.                        |
-| brightness  | number | Brightness of LED ring when socket is 'on'. Value from 0 (0%) to 255 (100%) |
+| Data        | Type   | Description                                                                  |
+| ----------- | ------ | ---------------------------------------------------------------------------- |
+| power_on    | Bool   | The state of the switch. Returns `true` when the relay is in the 'on' state. |
+| switch_lock | Bool   | When set to `true`, the socket cannot be turned off.                         |
+| brightness  | Number | Brightness of LED ring when socket is 'on'. Value from 0 (0%) to 255 (100%). |
 
 ## Examples
 
-### Get actual state
+### Get Actual State
 
 This response tells that the socket is 'on', switch-lock is 'off' and the brightness of the LED ring is set to maximum.
 
@@ -51,7 +51,7 @@ Content-Type: application/json
 }
 ```
 
-### Turn on socket
+### Turn on Socket
 
 ```http title="Request"
 curl http://<IP ADDRESS>/api/v1/state \
@@ -69,7 +69,7 @@ Content-Type: application/json
 }
 ```
 
-### Turn on switch-lock
+### Turn on Switch-lock
 
 After enabling `switch_lock`, the socket is 'on' and cannot be turned off until `switch_lock` is disabled.
 
@@ -89,7 +89,7 @@ Content-Type: application/json
 }
 ```
 
-### Set multiple parameters
+### Set Multiple Parameters
 
 You can configure multiple parameters at the same time. In this example.
 
@@ -98,7 +98,7 @@ You can configure multiple parameters at the same time. In this example.
 -   Brightness is set to 127 (50%).
 
 The order of a combined request does not matter, if `switch-lock` was on, the socket will still turn off.
-The complete state has to make sense; It is not possible to set `power_on` to false and `switch_lock` to true. See (see [Error handling](/docs/error-handling)) for more details.
+The complete state has to make sense; It is not possible to set `power_on` to false and `switch_lock` to true. See [error handling](/docs/error-handling) for more details.
 
 ```http title="Request"
 curl http://<IP ADDRESS>/api/v1/state \

@@ -1,12 +1,12 @@
 ---
-title: Device information
+title: Device Information
 sidebar_position: 1
 description: Get information like serial and version number from the device.
 ---
 
 import Badge from '@site/src/components/Badge.js'
 
-# Basic information (`/api`)
+# Device Information (`/api`)
 
 The `/api` endpoint allows you to get basic information from the device.
 
@@ -23,16 +23,16 @@ Your application can use this endpoint to see if your integration is designed to
 
 | Data             | Type   | Description                                                                                                                                                 |
 | ---------------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| product_type     | string | The type identifier of the product which can be used to customize the user interface. See [devices](/docs/getting-started.mdx#devices) for possible values. |
-| product_name     | string | A fixed, user-friendly name. This name is not the same that is set by the user in the app.                                                                  |
-| serial           | string | Serial number, also the MAC address. Consists of 12 hexadecimal values.                                                                                     |
-| firmware_version | string | The current firmware version. Make sure your application can handle other version formats. See [Versioning and updates](/docs/versioning)                   |
-| api_version      | string | The current API version, set to "v1"                                                                                                                        |
+| product_type     | String | The type identifier of the product which can be used to customize the user interface. See [devices](/docs/getting-started.mdx#devices) for possible values. |
+| product_name     | String | A fixed, user-friendly name that is different from the name set by the user in the app.                                                                     |
+| serial           | String | Serial number, also the MAC address. Consists of 12 hexadecimal values.                                                                                     |
+| firmware_version | String | The current firmware version. Make sure your application can handle other version formats. See [versioning and updates](/docs/versioning).                  |
+| api_version      | String | The current API version, set to "v1".                                                                                                                       |
 
 ## Examples
 
 ```shell title="Request"
-curl http://{ip_address}/api
+curl http://<IP ADDRESS>/api
 ```
 
 ```http title="Response"

@@ -9,7 +9,7 @@ const FeatureList = [
         title: 'Local',
         description: (
             <>
-                The HomeWizard Energy API is available on your local network. This means that you can use it without an internet connection. You can even turn off the connection with the <Link to='/docs/endpoints/api-v1-system'>Cloud</Link>
+                The HomeWizard Energy API is available on your local network. This means that you can use it without an internet connection. You can even turn off the connection with the <Link to='/docs/endpoints/api-v1-system'>cloud</Link>
                 .
             </>
         )

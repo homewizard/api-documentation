@@ -3,12 +3,12 @@ sidebar_position: 7
 description: Error handling in the API
 ---
 
-# Error handling
+# Error Handling
 
 When you perform an invalid request or something went wrong, the API will respond with an error message. You have to check if the HTTP status code returns `200 OK` before parsing the result.
 If you use an endpoint that returns JSON, you also will receive an object with some error information.
 
-## Error codes
+## Error Codes
 
 The predefined error codes are as follows:
 
@@ -17,16 +17,16 @@ The predefined error codes are as follows:
 | 2    | BODY_CONTAINS_INVALID_JSON  |
 | 7    | INVALID_VALUE_FOR_PARAMETER |
 | 8    | PARAMETER_IS_NOT_MODIFIABLE |
-| 201  | REQUEST_TO_LONG             |
+| 201  | REQUEST_TOO_LARGE           |
 | 202  | API_DISABLED                |
 | 901  | INTERNAL_ERROR              |
 
 ## Examples
 
-### API was disabled
+### API was Disabled
 
 ```shell title="Request"
-curl http://{IP address}/api/v1/data
+curl http://<IP ADDRESS>/api/v1/data
 ```
 
 ```http title="Response"
@@ -44,7 +44,7 @@ Content-Type: application/json
 ### Invalid JSON
 
 ```shell title="Request"
-curl http://{IP address}/api/v1/state HTTP/1.1 \
+curl http://<IP ADDRESS>/api/v1/state HTTP/1.1 \
   -X PUT \
   -H "Content-Type: application/json" \
   -d '{"power_on": invalid_value}'
@@ -62,10 +62,10 @@ Content-Type: application/json
 }
 ```
 
-### Invalid value
+### Invalid Value
 
 ```shell title="Request"
-curl http://{IP address}/api/v1/state HTTP/1.1 \
+curl http://<IP ADDRESS>/api/v1/state HTTP/1.1 \
   -X PUT \
   -H "Content-Type: application/json" \
   -d '{"brightness": 500}'
@@ -83,10 +83,10 @@ Content-Type: application/json
 }
 ```
 
-### Turn off socket when switch-lock is enabled
+### Turn off Socket when Switch-lock is Enabled
 
 ```shell title="Request"
-curl http://{IP address}/api/v1/state HTTP/1.1 \
+curl http://<IP ADDRESS>/api/v1/state HTTP/1.1 \
   -X PUT \
   -H "Content-Type: application/json" \
   -d '{"power_on": false}'

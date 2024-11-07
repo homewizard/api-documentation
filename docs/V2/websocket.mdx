@@ -63,10 +63,10 @@ The WebSocket is accessible at `wss://<IP ADDRESS>/api/ws`. The connection is se
 After authentication, you can subscribe to topics. Topics correspond to available endpoints, with the data matching that returned by the endpoint. Once subscribed, the device sends the latest values and updates when data changes. The `type` field consist of the topic name, and the `data` field contains the data from the endpoint.
 
 -   **`*`** - Subscribe to all topics
--   **`device`** - Subscribe to [device information](http://localhost:3000/docs/V2/device_information) updates
--   **`user`** - Subscribe to [user list](http://localhost:3000/docs/V2/authentication) updates
--   **`measurement`** - Subscribe to [measurement](http://localhost:3000/docs/V2/measurement) updates
--   **`system`** - Subscribe to [system](http://localhost:3000/docs/V2/system) updates. Only `cloud_enabled` and `status_led_brightness_pct` are updated in real time.
+-   **`device`** - Subscribe to [device information](http://localhost:3000/docs/v2/device_information) updates
+-   **`user`** - Subscribe to [user list](http://localhost:3000/docs/v2/authentication) updates
+-   **`measurement`** - Subscribe to [measurement](http://localhost:3000/docs/v2/measurement) updates
+-   **`system`** - Subscribe to [system](http://localhost:3000/docs/v2/system) updates. Only `cloud_enabled` and `status_led_brightness_pct` are updated in real time.
 
 ```json title="Example"
 {"type": "subscribe", "data": "system"}
@@ -76,7 +76,7 @@ After authentication, you can subscribe to topics. Topics correspond to availabl
 
 ### Unsubscribe
 
-To unsubscribe from a topic, send an unsubscribe message. The data field should contain the topic name, as described in the [Subscribe](#subscribe) section.
+To unsubscribe from a topic, send an unsubscribe message. The data field should contain the topic name, as described in the [subscribe](#subscribe) section.
 
 ```json title="Example"
 { "type": "unsubscribe", "data": "system" }
@@ -91,7 +91,7 @@ If you only need data once (for example, just a single `system` update), you can
 → {"type":"system", "data": {"wifi_ssid": "My WiFi", "wifi_rssi_db": -70, "cloud_enabled": true, "uptime_s": 42, "status_led_brightness_pct": 70}}
 ```
 
-### Setting data
+### Setting Data
 
 Writable parameters, such as `system/cloud_enabled`, are also controllable via the WebSocket. The device will respond with the new value.
 
@@ -108,7 +108,7 @@ To blink the device LED, send an identify command. The LED will blink for a few 
 { "type": "identify" }
 ```
 
-## Error handling
+## Error Handling
 
 When an error occurs, the device sends an error message. The message contains an `error` field with a description of the error, matching the error structure of the [HTTP API](/docs/v2/error-handling).
 

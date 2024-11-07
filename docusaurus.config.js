@@ -110,7 +110,7 @@ const config = {
                         ]
                     },
                     {
-                        title: 'Us',
+                        title: 'About us',
                         items: [
                             {
                                 label: 'HomeWizard',

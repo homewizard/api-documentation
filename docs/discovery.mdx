@@ -15,8 +15,8 @@ Energy devices can be automatically discovered on your network using <Link to="h
 
 Devices can broadcast one or two services on the network, depending on the available API version(s) of this device:
 
--   [`_hwenergy._tcp`](#_hwenergy.tcp) - to discover devices that are using API v1 over HTTP
--   [`_homewizard._tcp`](#_homewizard_tcp) - to discover devices that are using API 2.0.0 and later over HTTPS
+-   `_hwenergy._tcp` - to discover devices that are using API v1 over HTTP
+-   `_homewizard._tcp` - to discover devices that are using API v2 and later over HTTPS
 
 ## `_hwenergy._tcp`
 
@@ -39,19 +39,19 @@ A discovery response contains additional data to enhance the setup in your appli
 | api_enabled  | Indicates if the API is enabled. The API is disabled when set to `0` and enabled when set to `1`. See [how to enable the API](/docs/getting-started.mdx#enabling-the-api). |
 | path         | Set to `/api/v1`. Can be used to verify that your application supports this device and API version.                                                                        |
 | serial       | Device serial number, also used as the MAC address. This unique value per device consists of 12 hexadecimal characters.                                                    |
-| product_name | User-friendly name. This name may change at any time.                                                                                                                      |
-| product_type | The product type; refer to [Supported devices](/docs/getting-started#supported-devices). Your application should support additional values for future products.            |
+| product_name | A user-friendly name that may change at any time.                                                                                                                          |
+| product_type | The product type; refer to [supported devices](/docs/getting-started#supported-devices). Your application should support additional values for future products.            |
 
 ## `_homewizard._tcp`
 
-This service is used to discover devices that are using **API 2.0.0 and later**, which uses HTTPS (port 443). Devices with this API version are available on the `_homewizard._tcp` service.
+This service is used to discover devices that are using **API v2 and later**, which uses HTTPS (port 443). Devices with this API version are available on the `_homewizard._tcp` service.
 
 {/* prettier-ignore */}
 <Badge color='hw-green'>✓ P1 Meter</Badge>
-<Badge color='hw-orange'>~ Energy Socket <BadgeDetail href="#api-v1-_hwenergy_tcp">V1</BadgeDetail></Badge>
+<Badge color='hw-orange'>~ Energy Socket <BadgeDetail href="#api-v1-_hwenergy_tcp">v1</BadgeDetail></Badge>
 <Badge color='hw-red'>✗ Energy Display</Badge>
-<Badge color='hw-orange'>~ kWh Meter <BadgeDetail href="#api-v1-_hwenergy_tcp">V1</BadgeDetail></Badge>
-<Badge color='hw-orange'>~ Watermeter <BadgeDetail href="#api-v1-_hwenergy_tcp">V1</BadgeDetail></Badge>
+<Badge color='hw-orange'>~ kWh Meter <BadgeDetail href="#api-v1-_hwenergy_tcp">v1</BadgeDetail></Badge>
+<Badge color='hw-orange'>~ Watermeter <BadgeDetail href="#api-v1-_hwenergy_tcp">v1</BadgeDetail></Badge>
 <Badge color='hw-red'>✗ Plug-In Battery</Badge>
 
 ### TXT Records
@@ -63,8 +63,8 @@ A discovery response includes additional data to enhance the setup in your appli
 | api_version  | The latest [API version](/docs/versioning).                                                                                                                     |
 | id           | Device identifier used during [validation of the SSL certificate](/docs/v2/authentication#https), formatted as `appliance/<product_type>/<serial>`.             |
 | serial       | Device serial number, also used as the MAC address. This value is unique per device and consist of 12 hexadecimal characters.                                   |
-| product_name | User-friendly name. This name may change at any time.                                                                                                           |
-| product_type | The product type; refer to [Supported devices](/docs/getting-started#supported-devices). Your application should support additional values for future products. |
+| product_name | A user-friendly name that may change at any time.                                                                                                               |
+| product_type | The product type; refer to [supported devices](/docs/getting-started#supported-devices). Your application should support additional values for future products. |
 
 ## Example
 

@@ -6,7 +6,7 @@ body:
           value: |
               This issue form is for reporting documentation issues only!
 
-              If you have a feature or enhancement request, please contact us direclty via our [Helpdesk](https://helpdesk.homewizard.com/en/).
+              If you have a feature or enhancement request, please contact us directly via our [helpdesk](https://helpdesk.homewizard.com/en/).
 
     - type: textarea
       validations:

@@ -1,8 +1,8 @@
 {
-    "label": "API V2",
+    "label": "API v2",
     "position": 5,
     "link": {
         "type": "generated-index",
-        "description": "The API V2 is an updated version of the API that includes new features and improvements. Read the documentation to learn more."
+        "description": "The API v2 is an updated version of the API that includes new features and improvements. Read the documentation to learn more."
     }
 }
