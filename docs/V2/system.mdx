@@ -135,6 +135,7 @@ Content-Type: application/json
     "uptime_s": 356,
     "status_led_brightness_pct": 50,
     "api_v1_enabled": true
+}
 ```
 
 ## Enable or disable the V1 API
@@ -154,7 +155,6 @@ curl https://<IP ADDRESS>/api/system --insecure \
 ```
 
 ```http title="Response"
-https/1.1 204 No Content
 https/1.1 200 OK
 Content-Type: application/json
 
@@ -165,6 +165,7 @@ Content-Type: application/json
     "uptime_s": 356,
     "status_led_brightness_pct": 100,
     "api_v1_enabled": false
+}
 ```
 
 _API V1 is now disabled, as if it was disabled via the HomeWizard Energy App. The API will respond with an [API disabled](/docs/V1/error-handling#api-was-disabled) error when trying to use it._
@@ -198,7 +199,7 @@ A reboot is **usually not necessary** but can help in certain situations. Make s
 
 ### Example
 
-```
+```http title="Request"
 curl https://<IP ADDRESS>/api/system/reboot --insecure \
   -X PUT \
   -H "Authorization: Bearer <TOKEN>" \
