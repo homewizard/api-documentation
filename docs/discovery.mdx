@@ -34,13 +34,13 @@ This service is used to discover devices that are using **API v1**, which uses H
 
 A discovery response contains additional data to enhance the setup in your application.
 
-| Data         | Description                                                                                                                                                                |
-| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| api_enabled  | Indicates if the API is enabled. The API is disabled when set to `0` and enabled when set to `1`. See [how to enable the API](/docs/getting-started.mdx#enabling-the-api). |
-| path         | Set to `/api/v1`. Can be used to verify that your application supports this device and API version.                                                                        |
-| serial       | Device serial number, also used as the MAC address. This unique value per device consists of 12 hexadecimal characters.                                                    |
-| product_name | A user-friendly name that may change at any time.                                                                                                                          |
-| product_type | The product type; refer to [supported devices](/docs/getting-started#supported-devices). Your application should support additional values for future products.            |
+| Data         | Description                                                                                                                                                            |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| api_enabled  | Indicates if the API is enabled. The API is disabled when set to `0` and enabled when set to `1`. See [how to enable the API](/docs/getting-started#2-enable-the-api). |
+| path         | Set to `/api/v1`. Can be used to verify that your application supports this device and API version.                                                                    |
+| serial       | Device serial number, also used as the MAC address. This unique value per device consists of 12 hexadecimal characters.                                                |
+| product_name | A user-friendly name that may change at any time.                                                                                                                      |
+| product_type | The product type; refer to [supported devices](/docs/introduction#devices). Your application should support additional values for future products.                     |
 
 ## `_homewizard._tcp`
 
@@ -58,13 +58,13 @@ This service is used to discover devices that are using **API v2 and later**, wh
 
 A discovery response includes additional data to enhance the setup in your application.
 
-| Data         | Description                                                                                                                                                     |
-| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| api_version  | The latest [API version](/docs/versioning).                                                                                                                     |
-| id           | Device identifier used during [validation of the SSL certificate](/docs/v2/authentication#https), formatted as `appliance/<product_type>/<serial>`.             |
-| serial       | Device serial number, also used as the MAC address. This value is unique per device and consist of 12 hexadecimal characters.                                   |
-| product_name | A user-friendly name that may change at any time.                                                                                                               |
-| product_type | The product type; refer to [supported devices](/docs/getting-started#supported-devices). Your application should support additional values for future products. |
+| Data         | Description                                                                                                                                        |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| api_version  | The latest [API version](/docs/versioning).                                                                                                        |
+| id           | Device identifier used during [validation of the SSL certificate](/docs/v2/authorization#https), formatted as `appliance/<product_type>/<serial>`. |
+| serial       | Device serial number, also used as the MAC address. This value is unique per device and consist of 12 hexadecimal characters.                      |
+| product_name | A user-friendly name that may change at any time.                                                                                                  |
+| product_type | The product type; refer to [supported devices](/docs/introduction#devices). Your application should support additional values for future products. |
 
 ## Example
 

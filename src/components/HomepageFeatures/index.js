@@ -9,8 +9,7 @@ const FeatureList = [
         title: 'Local',
         description: (
             <>
-                The HomeWizard Energy API is available on your local network. This means that you can use it without an internet connection. You can even turn off the connection with the <Link to='/docs/endpoints/api-v1-system'>cloud</Link>
-                .
+                The HomeWizard Energy API is available on your local network. This means that you can use it without an internet connection. You can even turn off the connection with the <Link to='/docs/v1/system'>cloud</Link>.
             </>
         )
     },
@@ -18,7 +17,8 @@ const FeatureList = [
         title: 'Easy to use',
         description: (
             <>
-                The API is easy to use. You can use it with any programming language that supports HTTP requests. Use our official <Link to='https://github.com/homewizard/python-homewizard-energy'>Python library</Link> to get some examples.
+                The API is easy to use. You can use it with any programming language that supports HTTP requests. Use our official <Link to='https://github.com/homewizard/python-homewizard-energy'>Python</Link> or{' '}
+                <Link to='https://github.com/homewizard/swift-homewizard-energy'>Swift</Link> library to get some examples.
             </>
         )
     },

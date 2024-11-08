@@ -47,7 +47,7 @@ When no data needs to be sent, the data field can be omitted.
 
 To connect to the WebSocket, you must obtain an authorization token. Refer to this [page](/docs/v2/authorization#create-user-and-get-token) for instructions.
 
-The WebSocket is accessible at `wss://<IP ADDRESS>/api/ws`. The connection is secured with the same [certificate as the HTTPS connection](/docs/v2/authorization#ssl-certificate-validation-https-https). Once connected, you must send the authorization token within 40 seconds, or the connection will close.
+The WebSocket is accessible at `wss://<IP ADDRESS>/api/ws`. The connection is secured with the same [certificate as the HTTPS connection](/docs/v2/authorization#https). Once connected, you must send the authorization token within 40 seconds, or the connection will close.
 
 ```json title="Example"
 // Connect to the server
@@ -63,10 +63,10 @@ The WebSocket is accessible at `wss://<IP ADDRESS>/api/ws`. The connection is se
 After authentication, you can subscribe to topics. Topics correspond to available endpoints, with the data matching that returned by the endpoint. Once subscribed, the device sends the latest values and updates when data changes. The `type` field consist of the topic name, and the `data` field contains the data from the endpoint.
 
 -   **`*`** - Subscribe to all topics
--   **`device`** - Subscribe to [device information](http://localhost:3000/docs/v2/device_information) updates
--   **`user`** - Subscribe to [user list](http://localhost:3000/docs/v2/authentication) updates
--   **`measurement`** - Subscribe to [measurement](http://localhost:3000/docs/v2/measurement) updates
--   **`system`** - Subscribe to [system](http://localhost:3000/docs/v2/system) updates. Only `cloud_enabled` and `status_led_brightness_pct` are updated in real time.
+-   **`device`** - Subscribe to [device information](/docs/v2/device_information) updates
+-   **`user`** - Subscribe to [user list](/docs/v2/authorization#list-users) updates
+-   **`measurement`** - Subscribe to [measurement](/docs/v2/measurement) updates
+-   **`system`** - Subscribe to [system](/docs/v2/system) updates. Only `cloud_enabled` and `status_led_brightness_pct` are updated in real time.
 
 ```json title="Example"
 {"type": "subscribe", "data": "system"}
@@ -110,7 +110,7 @@ To blink the device LED, send an identify command. The LED will blink for a few 
 
 ## Error Handling
 
-When an error occurs, the device sends an error message. The message contains an `error` field with a description of the error, matching the error structure of the [HTTP API](/docs/v2/error-handling).
+When an error occurs, the device sends an error message. The message contains an `error` field with a description of the error, matching the error structure of the [v2 API errors](/docs/v2/error-handling).
 
 ```json title="Example"
 {"type": "system", "data": {"status_led_brightness_pct": 200}}

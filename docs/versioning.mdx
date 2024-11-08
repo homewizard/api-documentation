@@ -3,8 +3,6 @@ sidebar_position: 6
 ---
 
 import Link from '@docusaurus/Link'
-import Badge from '@site/src/components/Badge.js'
-import BadgeDetail from '@site/src/components/BadgeDetail.js'
 import PreliminaryWarning from '@site/src/components/PreliminaryWarning.js'
 
 # Versioning and Updates
@@ -23,7 +21,7 @@ The HomeWizard Energy API is designed for backward compatibility, aiming to avoi
 
 ### Deprecation Policy
 
-We support each version for a minimum of one year. After this period, older versions may be deprecated and eventually removed. To stay informed, [subscribe to updates](docs/changelog#subscribe-to-updates).
+We support each version for a minimum of one year. After this period, older versions may be deprecated and eventually removed. To stay informed, [subscribe to updates](/docs/changelog#subscribe-to-updates).
 
 **Exception:** If a security issue arises in an older version that cannot be resolved in a backward-compatible way, we may deprecate and remove the affected version immediately.
 
@@ -119,17 +117,3 @@ X-Api-Version: 3.0.1
 
 {"error": "request:api-version-not-supported"}
 ```
-
-## Devices and API versions {#devices}
-
-The following table shows which devices are supported by the API and which API version they support.
-
-| Device                                        | Device type                  | API version                                                                                                                       |
-| --------------------------------------------- | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| Wi-Fi P1 meter                                | `HWE-P1`                     | <Badge color='hw-green'>✓ v1</Badge> <Badge color='hw-green'>✓ v2.0.0 <BadgeDetail href="/docs/v2">beta</BadgeDetail></Badge>     |
-| Wi-Fi Energy Socket                           | `HWE-SKT`                    | <Badge color='hw-green'>✓ v1</Badge> <Badge color='hw-orange'>~ v2.0.0 <BadgeDetail href="/docs/v2">planned</BadgeDetail></Badge> |
-| Wi-Fi Watermeter (Only when powered over USB) | `HWE-WTR`                    | <Badge color='hw-green'>✓ v1</Badge> <Badge color='hw-orange'>~ v2.0.0 <BadgeDetail href="/docs/v2">planned</BadgeDetail></Badge> |
-| Wi-Fi kWh Meter (1 phase)                     | `HWE-KWH1` and `SDM230-wifi` | <Badge color='hw-green'>✓ v1</Badge> <Badge color='hw-orange'>~ v2.0.0 <BadgeDetail href="/docs/v2">planned</BadgeDetail></Badge> |
-| Wi-Fi kWh Meter (3 phase)                     | `HWE-KWH3` and `SDM630-wifi` | <Badge color='hw-green'>✓ v1</Badge> <Badge color='hw-orange'>~ v2.0.0 <BadgeDetail href="/docs/v2">planned</BadgeDetail></Badge> |
-| Energy Display                                | `HWE-DSP`                    | <Badge color='hw-red'>✗ v1</Badge> <Badge color='hw-orange'>~ v2.0.0 <BadgeDetail href="/docs/v2">planned</BadgeDetail></Badge>   |
-| Plug-In Battery                               | `HWE-BAT`                    | <Badge color='hw-red'>✗ v1</Badge> <Badge color='hw-orange'>~ v2.0.0 <BadgeDetail href="/docs/v2">planned</BadgeDetail></Badge>   |

@@ -100,8 +100,8 @@ const config = {
                                 href: 'https://www.facebook.com/HomeWizardBV/'
                             },
                             {
-                                label: 'X / Twitter',
-                                href: 'https://twitter.com/HomeWizard_NL'
+                                label: 'X',
+                                href: 'https://x.com/HomeWizard_NL'
                             },
                             {
                                 label: 'LinkedIn',

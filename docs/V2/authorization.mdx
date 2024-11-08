@@ -65,17 +65,18 @@ sequenceDiagram
 | ---- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | name | String | The name of the user.<br />- The name must be prefixed with `local/`, see [local and cloud users](#local-and-cloud-users).<br />- The name itself must be between 1 and 40 characters long.<br />- Allowed characters: `a-z`, `A-Z`, `0-9`, `-`, `_`, `\`, `/`, `#`, and spaces.<br />&nbsp;&nbsp;- (Regex: `^local\/[a-zA-Z0-9\-_/\\# ]{1,40}$`)<br />&nbsp;&nbsp;- (Examples: `local/my-app`, `local/40character-name/with#special\characters`)<br />- The name should be unique for this device. If the same name is reused, a new token will be issued, and the previous one will be invalidated. |
 
-### Response
+### Response {#token}
 
 The response to a successful request will include the following fields:
 
 | Data  | Type   | Description                                                                                                                                                                                        |
 | ----- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| name  | String | The name of the user, prefixed with [`local/`](#local-and-cloud-users).                                                                                                                            |
+| name  | String | The name of the user, prefixed with `local/`. See see [local and cloud users](#local-and-cloud-users).                                                                                             |
 | token | String | A token that can be used to authorize API requests.<br />- The token is 32 characters long.<br />- Token consists of letters `A-F` and numbers `0-9`.<br />&nbsp;&nbsp;- (Regex: `^[A-F0-9]{32}$`) |
 
 :::danger
-Keep the token a secret, as it grants full access to the device.
+Keep the token a secret, as it grants full access to the device's data.
+:::
 
 ### Examples
 
