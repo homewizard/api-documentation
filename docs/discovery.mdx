@@ -4,7 +4,6 @@ sidebar_position: 3
 
 import Link from '@docusaurus/Link'
 import Badge from '@site/src/components/Badge.js'
-import BadgeDetail from '@site/src/components/BadgeDetail.js'
 import PreliminaryWarning from '@site/src/components/PreliminaryWarning.js'
 
 # Discovery
@@ -20,15 +19,17 @@ Devices can broadcast one or two services on the network, depending on the avail
 
 ## `_hwenergy._tcp`
 
-This service is used to discover devices that are using **API v1**, which uses HTTP (port 80). Devices with API v1 are available on the `_hwenergy._tcp` service.
-
 {/* prettier-ignore */}
-<Badge color='hw-green'>✓ P1 Meter</Badge>
-<Badge color='hw-green'>✓ Energy Socket</Badge>
-<Badge color='hw-red'>✗ Energy Display</Badge>
-<Badge color='hw-green'>✓ kWh Meter</Badge>
-<Badge color='hw-green'>✓ Watermeter</Badge>
-<Badge color='hw-red'>✗ Plug-In Battery</Badge>
+<Badge color='hw-green' icon="mdi:check" subtext="Supported">P1 Meter</Badge>
+<Badge color='hw-green' icon="mdi:check" subtext="Supported">Energy Socket</Badge>
+<Badge color='hw-grey' icon="mdi:close" subtext="Not supported">Energy Display</Badge>
+<Badge color='hw-green' icon="mdi:check" subtext="Supported">kWh Meter</Badge>
+<Badge color='hw-green' icon="mdi:check" subtext="Supported">Watermeter</Badge>
+<Badge color='hw-grey' icon="mdi:close" subtext="Not supported">Plug-In Battery</Badge>
+
+---
+
+This service is used to discover devices that are using **API v1**, which uses HTTP (port 80). Devices with API v1 are available on the `_hwenergy._tcp` service.
 
 ### TXT Records
 
@@ -44,15 +45,17 @@ A discovery response contains additional data to enhance the setup in your appli
 
 ## `_homewizard._tcp`
 
-This service is used to discover devices that are using **API v2 and later**, which uses HTTPS (port 443). Devices with this API version are available on the `_homewizard._tcp` service.
-
 {/* prettier-ignore */}
-<Badge color='hw-green'>✓ P1 Meter</Badge>
-<Badge color='hw-orange'>~ Energy Socket <BadgeDetail href="#api-v1-_hwenergy_tcp">v1</BadgeDetail></Badge>
-<Badge color='hw-red'>✗ Energy Display</Badge>
-<Badge color='hw-orange'>~ kWh Meter <BadgeDetail href="#api-v1-_hwenergy_tcp">v1</BadgeDetail></Badge>
-<Badge color='hw-orange'>~ Watermeter <BadgeDetail href="#api-v1-_hwenergy_tcp">v1</BadgeDetail></Badge>
-<Badge color='hw-red'>✗ Plug-In Battery</Badge>
+<Badge color='hw-green' icon="mdi:check" subtext="Supported">P1 Meter</Badge>
+<Badge color='hw-purple'  icon="mdi:wrench" subtext="In development">Energy Socket</Badge>
+<Badge color='hw-purple' icon="mdi:wrench" subtext="In development">Energy Display</Badge>
+<Badge color='hw-purple'  icon="mdi:wrench" subtext="In development">kWh Meter</Badge>
+<Badge color='hw-purple'  icon="mdi:wrench" subtext="In development">Watermeter</Badge>
+<Badge color='hw-purple' icon="mdi:wrench" subtext="In development">Plug-In Battery</Badge>
+
+---
+
+This service is used to discover devices that are using **API v2 and later**, which uses HTTPS (port 443). Devices with this API version are available on the `_homewizard._tcp` service.
 
 ### TXT Records
 

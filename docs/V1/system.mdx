@@ -8,14 +8,19 @@ import Badge from '@site/src/components/Badge.js'
 
 # System (`/api/v1/system`)
 
-The `/api/v1/system` endpoint can be used to configure system settings. Currently the only available option is to turn on and off all cloud communication.
+{/* prettier-ignore */}
+<Badge color='hw-green' icon='mdi:check' subtext='Supported'>P1 Meter</Badge>
+<Badge color='hw-green' icon='mdi:check' subtext='Supported'>Energy Socket</Badge>
+<Badge color='hw-grey' icon='mdi:close' subtext='Not supported'>Energy Display</Badge>
+<Badge color='hw-green' icon='mdi:check' subtext='Supported'>kWh Meter</Badge>
+<Badge color='hw-green' icon='mdi:check' subtext='Supported'>Watermeter</Badge>
+<Badge color='hw-grey' icon='mdi:close' subtext='Not supported'>Plug-In Battery</Badge>
+<br />
+<sub>_See [Supported Devices](/docs/introduction#devices) for more information._</sub>
 
-<Badge color='hw-green'>✓ P1 Meter</Badge>
-<Badge color='hw-green'>✓ Energy Socket</Badge>
-<Badge color='hw-red'>✗ Energy Display</Badge>
-<Badge color='hw-green'>✓ kWh Meter</Badge>
-<Badge color='hw-green'>✓ Watermeter</Badge>
-<Badge color='hw-red'>✗ Plug-In Battery</Badge>
+---
+
+The `/api/v1/system` endpoint can be used to configure system settings. Currently the only available option is to turn on and off all cloud communication.
 
 ## Enable Cloud
 

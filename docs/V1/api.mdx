@@ -8,16 +8,21 @@ import Badge from '@site/src/components/Badge.js'
 
 # Device Information (`/api`)
 
+{/* prettier-ignore */}
+<Badge color='hw-green' icon='mdi:check' subtext='Supported'>P1 Meter</Badge>
+<Badge color='hw-green' icon='mdi:check' subtext='Supported'>Energy Socket</Badge>
+<Badge color='hw-grey' icon='mdi:close' subtext='Not supported'>Energy Display</Badge>
+<Badge color='hw-green' icon='mdi:check' subtext='Supported'>kWh Meter</Badge>
+<Badge color='hw-green' icon='mdi:check' subtext='Supported'>Watermeter</Badge>
+<Badge color='hw-grey' icon='mdi:close' subtext='Not supported'>Plug-In Battery</Badge>
+<br />
+<sub>_See [Supported Devices](/docs/introduction#devices) for more information._</sub>
+
+---
+
 The `/api` endpoint allows you to get basic information from the device.
 
 Your application can use this endpoint to see if your integration is designed to work with this version of the API. You can validate your support based on the combination of `product_type` and `api_version`. Data points in this endpoint that are currently available won't change, but make sure your application can accept new data points for future updates.
-
-<Badge color='hw-green'>✓ P1 Meter</Badge>
-<Badge color='hw-green'>✓ Energy Socket</Badge>
-<Badge color='hw-red'>✗ Energy Display</Badge>
-<Badge color='hw-green'>✓ kWh Meter</Badge>
-<Badge color='hw-green'>✓ Watermeter</Badge>
-<Badge color='hw-red'>✗ Plug-In Battery</Badge>
 
 ## Parameters
 

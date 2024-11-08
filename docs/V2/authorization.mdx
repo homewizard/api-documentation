@@ -9,17 +9,21 @@ import PreliminaryWarning from '@site/src/components/PreliminaryWarning.js'
 
 # Authorization `/api/user`
 
+{/* prettier-ignore */}
+<Badge color='hw-green' icon='mdi:check' subtext='Supported'>P1 Meter</Badge>
+<Badge color='hw-purple' icon='mdi:wrench' subtext='In development'>Energy Socket</Badge>
+<Badge color='hw-purple' icon='mdi:wrench' subtext='In development'>Energy Display</Badge>
+<Badge color='hw-purple' icon='mdi:wrench' subtext='In development'>kWh Meter</Badge>
+<Badge color='hw-purple' icon='mdi:wrench' subtext='In development'>Watermeter</Badge>
+<Badge color='hw-purple' icon='mdi:wrench' subtext='In development'>Plug-In Battery</Badge>
+<br />
+<sub>_See [Supported Devices](/docs/introduction#devices) for more information._</sub>
+
+---
+
 <PreliminaryWarning />
 
 The HomeWizard Energy API requires a Bearer token to authorize requests. This token should be included in the `Authorization` header of each request. To get a token you must create a user on the device.
-
-{/* prettier-ignore */}
-<Badge color='hw-green'>✓ P1 Meter</Badge>
-<Badge color='hw-red'>✗ Energy Socket</Badge>
-<Badge color='hw-red'>✗ Energy Display</Badge>
-<Badge color='hw-red'>✗ kWh Meter</Badge>
-<Badge color='hw-red'>✗ Watermeter</Badge>
-<Badge color='hw-red'>✗ Plug-In Battery</Badge>
 
 ## Create User and get Token
 

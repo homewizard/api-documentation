@@ -10,14 +10,19 @@ import Badge from '@site/src/components/Badge.js'
 
 # Recent Measurement (`/api/v1/data`)
 
-The `/api/v1/data` endpoint allows you to get the most recent measurement from the device. All data points are "optional"; The API does not send data points that are `null` or not available at all. This mostly depends on the connected smart meter. Make sure your application can handle this.
+{/* prettier-ignore */}
+<Badge color='hw-green' icon='mdi:check' subtext='Supported'>P1 Meter</Badge>
+<Badge color='hw-green' icon='mdi:check' subtext='Supported'>Energy Socket</Badge>
+<Badge color='hw-grey' icon='mdi:close' subtext='Not supported'>Energy Display</Badge>
+<Badge color='hw-green' icon='mdi:check' subtext='Supported'>kWh Meter</Badge>
+<Badge color='hw-green' icon='mdi:check' subtext='Supported'>Watermeter</Badge>
+<Badge color='hw-grey' icon='mdi:close' subtext='Not supported'>Plug-In Battery</Badge>
+<br />
+<sub>_See [Supported Devices](/docs/introduction#devices) for more information._</sub>
 
-<Badge color='hw-green'>✓ P1 Meter</Badge>
-<Badge color='hw-green'>✓ Energy Socket</Badge>
-<Badge color='hw-red'>✗ Energy Display</Badge>
-<Badge color='hw-green'>✓ kWh Meter</Badge>
-<Badge color='hw-green'>✓ Watermeter</Badge>
-<Badge color='hw-red'>✗ Plug-In Battery</Badge>
+---
+
+The `/api/v1/data` endpoint allows you to get the most recent measurement from the device. All data points are "optional"; The API does not send data points that are `null` or not available at all. This mostly depends on the connected smart meter. Make sure your application can handle this.
 
 ## P1 Meter (HWE-P1)
 

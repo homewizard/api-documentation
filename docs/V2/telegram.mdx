@@ -10,6 +10,34 @@ import PreliminaryWarning from '@site/src/components/PreliminaryWarning.js'
 
 # Telegram `/api/telegram`
 
+<Badge color='hw-green' icon='mdi:check' subtext='Supported'>
+    P1 Meter
+</Badge>
+<Badge color='hw-grey' icon='mdi:close' subtext='Not supported'>
+    {' '}
+    Energy Socket
+</Badge>
+<Badge color='hw-grey' icon='mdi:close' subtext='Not supported'>
+    {' '}
+    Energy Display
+</Badge>
+<Badge color='hw-grey' icon='mdi:close' subtext='Not supported'>
+    {' '}
+    kWh Meter
+</Badge>
+<Badge color='hw-grey' icon='mdi:close' subtext='Not supported'>
+    {' '}
+    Watermeter
+</Badge>
+<Badge color='hw-grey' icon='mdi:close' subtext='Not supported'>
+    {' '}
+    Plug-In Battery
+</Badge>
+<br />
+<sub>_See [Supported Devices](/docs/introduction#devices) for more information._</sub>
+
+---
+
 <PreliminaryWarning />
 
 The `/api/telegram` endpoint returns the most recent, valid telegram that was given by the P1 Meter.
@@ -17,13 +45,6 @@ The `/api/telegram` endpoint returns the most recent, valid telegram that was gi
 -   The checksum is validated when present, telegrams with an invalid checksum are rejected.
 -   The telegram is not processed in any other form, and can be used by other systems to process the data.
 -   If you need parsed data, use the [measurement](/docs/v2/measurement) endpoint.
-
-<Badge color='hw-green'>✓ P1 Meter</Badge>
-<Badge color='hw-red'>✗ Energy Socket</Badge>
-<Badge color='hw-red'>✗ Energy Display</Badge>
-<Badge color='hw-red'>✗ kWh Meter</Badge>
-<Badge color='hw-red'>✗ Watermeter</Badge>
-<Badge color='hw-red'>✗ Plug-In Battery</Badge>
 
 ## Example
 
