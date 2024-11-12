@@ -225,7 +225,7 @@ You can download the certificate [here](/homewizard-ca-cert.pem).
 
 HTTPS is designed that the server certificate is validated against the hostname of the server. Because the local API does not use a domain name, the hostname is set to the product type and serial number of the device, for example `appliance/p1dongle/5c2fafaabbcc`. The example below shows how to validate the hostname in Python, as `cURL` does not support the validation of the hostname used by HomeWizard.
 
-The hostname can be obtained via [mDNS](/docs/discovery#api-v2) or by combining the product type and serial number of the device. Due to legacy reasons, the product type set in the certificate is different from the actual product type.
+The hostname can be obtained via [mDNS](/docs/discovery#_homewizard_tcp) or by combining the product type and serial number of the device. Due to legacy reasons, the product type set in the certificate is different from the actual product type.
 
 | Device          | Product Type   |
 | --------------- | -------------- |
