@@ -1,0 +1,77 @@
+---
+title: System
+sidebar_position: 5
+description: Enable and disable cloud communication.
+---
+
+import Badge from '@site/src/components/Badge.js'
+
+# System (`/api/v1/system`)
+
+{/* prettier-ignore */}
+<Badge color='hw-green' icon='mdi:check' subtext='Supported'>P1 Meter</Badge>
+<Badge color='hw-green' icon='mdi:check' subtext='Supported'>Energy Socket</Badge>
+<Badge color='hw-grey' icon='mdi:close' subtext='Not supported'>Energy Display</Badge>
+<Badge color='hw-green' icon='mdi:check' subtext='Supported'>kWh Meter</Badge>
+<Badge color='hw-green' icon='mdi:check' subtext='Supported'>Watermeter</Badge>
+<Badge color='hw-grey' icon='mdi:close' subtext='Not supported'>Plug-In Battery</Badge>
+<br />
+<sub>_See [Supported Devices](/docs/introduction#devices) for more information._</sub>
+
+---
+
+The `/api/v1/system` endpoint can be used to configure system settings. Currently the only available option is to turn on and off all cloud communication.
+
+## Enable Cloud
+
+The HomeWizard Energy devices are designed to work with the HomeWizard Energy app and require communication with the HomeWizard cloud to make them function with the app.
+
+The `Enable cloud` configuration feature can be used to turn off all communication with the HomeWizard cloud, making the device fully local. The device cannot communicate with the app, and the device won't receive any future firmware updates.
+
+Cloud communication is restored when the `cloud_enabled` is set to `true`. Cloud communication is also restored after a factory reset, or when the device is put in pairing mode.
+
+:::tip Be clear
+If you are implementing this, make sure your user understand what this actions does. Users may press a button without knowing what they do and forget about it. In this case it seems that the app or device is broken and reach out to our support, and we would like to prevent that.
+
+You can solve this, for example, by adding clear documentation and/or by showing a confirmation popup before calling this endpoint.
+:::
+
+This endpoint accepts `GET` and `PUT` requests.
+
+-   With `GET` will send the actual system state.
+-   With `PUT` allows to set the system state.
+
+## Examples
+
+### Get System State
+
+```http title="Request"
+curl http://<IP ADDRESS>/api/system
+```
+
+```http title="Response"
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+   "cloud_enabled": true
+}
+```
+
+### Set System State
+
+```http title="Request"
+curl http://<IP ADDRESS>/api/system \
+   -X PUT \
+   -d '{"cloud_enabled": false}'
+```
+
+```http title="Response"
+<Response>
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+   "cloud_enabled": false
+}
+```

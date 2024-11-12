@@ -1,0 +1,38 @@
+---
+title: Identify
+sidebar_position: 4
+description: Identify the device by letting the LED blink.
+---
+
+import Badge from '@site/src/components/Badge.js'
+
+# Identify (`/api/v1/identify`)
+
+{/* prettier-ignore */}
+<Badge color='hw-green' icon='mdi:check' subtext='Supported'>P1 Meter</Badge>
+<Badge color='hw-green' icon='mdi:check' subtext='Supported'>Energy Socket</Badge>
+<Badge color='hw-grey' icon='mdi:close' subtext='Not supported'>Energy Display</Badge>
+<Badge color='hw-green' icon='mdi:check' subtext='Supported'>kWh Meter</Badge>
+<Badge color='hw-green' icon='mdi:check' subtext='Supported'>Watermeter</Badge>
+<Badge color='hw-grey' icon='mdi:close' subtext='Not supported'>Plug-In Battery</Badge>
+<br />
+<sub>_See [Supported Devices](/docs/introduction#devices) for more information._</sub>
+
+---
+
+The `/api/v1/identify` endpoint can be used to let the user identify the device. The status light will blink for a few seconds after calling this endpoint.
+
+### Example
+
+```http title="Request"
+curl http://<IP ADDRESS>/api/system -X PUT
+```
+
+```http title="Response"
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "identify": "ok",
+}
+```

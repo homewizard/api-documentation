@@ -1,0 +1,215 @@
+---
+title: System
+sidebar_position: 4
+description: Enable and disable cloud communication.
+---
+
+import Badge from '@site/src/components/Badge.js'
+import PreliminaryWarning from '@site/src/components/PreliminaryWarning.js'
+
+# System `/api/system`
+
+{/* prettier-ignore */}
+<Badge color='hw-green' icon='mdi:check' subtext='Supported'>P1 Meter</Badge>
+<Badge color='hw-orange' icon='mdi:check' subtext='Supported in v1'>Energy Socket</Badge>
+<Badge color='hw-purple' icon='mdi:wrench' subtext='In development'>Energy Display</Badge>
+<Badge color='hw-orange' icon='mdi:check' subtext='Supported in v1'>kWh Meter</Badge>
+<Badge color='hw-orange' icon='mdi:check' subtext='Supported in v1'>Watermeter</Badge>
+<Badge color='hw-purple' icon='mdi:wrench' subtext='In development'>Plug-In Battery</Badge>
+<br />
+<sub>_See [Supported Devices](/docs/introduction#devices) for more information._</sub>
+
+---
+
+<PreliminaryWarning />
+
+The `/api/system` endpoint can be used to get and set some system information, like the state of the cloud communication and the uptime of the device.
+
+## Parameters
+
+| Data                                                | Type             | Access     | Description                                                                                     |
+| --------------------------------------------------- | ---------------- | ---------- | ----------------------------------------------------------------------------------------------- |
+| wifi_ssid                                           | String           | Read-only  | The SSID of the Wi-Fi network.                                                                  |
+| wifi_rssi_db                                        | Number           | Read-only  | The signal strength of the Wi-Fi network.                                                       |
+| uptime_s                                            | Number           | Read-only  | The uptime of the device in seconds.                                                            |
+| [cloud_enabled](#cloud-communication)               | Boolean          | Read/Write | The state of the cloud communication.                                                           |
+| [status_led_brightness_pct](#status-led-brightness) | Number           | Read/Write | The brightness of the status LED in percent.                                                    |
+| [api_v1_enabled](#enable-or-disable-the-v1-api)     | Optional Boolean | Read/Write | The state of the v1 API, will be removed when API v1 is removed, so this parameter is optional. |
+
+## Actions
+
+| Action                | Description                                               |
+| --------------------- | --------------------------------------------------------- |
+| [Reboot](#reboot)     | Reboot the device                                         |
+| [Identify](#identify) | Let the device identify itself by blinking the status LED |
+
+## Cloud Communication
+
+HomeWizard Energy devices are designed to work with the HomeWizard Energy app and rely on communication with the HomeWizard cloud for full functionality.
+
+Users can choose to disable cloud communication, making the device operate entirely locally. However, this will prevent the app from interacting with the device, and the device will no longer receive firmware updates.
+
+Cloud communication can be re-enabled by setting `cloud_enabled` to `true`. It is also automatically restored after a factory reset or when the device is put into pairing mode.
+
+:::tip
+If you're implementing this feature, ensure that users clearly understand its implications. Users might disable cloud communication without fully realizing its effect or forget they did so, leading them to believe the app or device is malfunctioning. This can result in unnecessary support requests, which we want to avoid.
+
+To prevent confusion, consider providing clear documentation or displaying a confirmation message before enabling or disabling this setting.
+:::
+
+### Examples
+
+#### Disable Cloud Communication
+
+```http title="Request"
+curl https://<IP ADDRESS>/api/system --insecure \
+  -X PUT \
+  -H "Authorization: Bearer <TOKEN>" \
+  -H "X-Api-Version: 2" \
+  -d '{"cloud_enabled": false}'
+```
+
+```http title="Response"
+https/1.1 200 OK
+Content-Type: application/json
+
+{
+    "wifi_ssid": "My Wi-Fi",
+    "wifi_rssi_db": -77,
+    "cloud_enabled": false,
+    "uptime_s": 356,
+    "status_led_brightness_pct": 100,
+    "api_v1_enabled": true
+}
+```
+
+_After disabling the cloud communication, the device will only work locally._
+
+#### Enable Cloud Communication
+
+```http title="Request"
+curl https://<IP ADDRESS>/api/system --insecure \
+  -X PUT \
+  -H "Authorization: Bearer <TOKEN>" \
+  -H "X-Api-Version: 2" \
+  -d '{"cloud_enabled": true}'
+```
+
+```http title="Response"
+https/1.1 200 OK
+Content-Type: application/json
+
+{
+    "wifi_ssid": "My Wi-Fi",
+    "wifi_rssi_db": -77,
+    "cloud_enabled": true,
+    "uptime_s": 356,
+    "status_led_brightness_pct": 100,
+    "api_v1_enabled": true
+}
+```
+
+_Device will now reconnect to the cloud._
+
+## Status LED Brightness
+
+Most devices have a status LED, and its brightness can be adjusted between 0% and 100%. This adjustment only affects the LED during normal operation. Error indications are always displayed at the default brightness, regardless of the setting.
+
+### Examples
+
+#### Set Status LED Brightness
+
+```http title="Request"
+curl https://<IP ADDRESS>/api/system --insecure \
+  -X PUT \
+  -H "Authorization: Bearer <TOKEN>" \
+  -H "X-Api-Version: 2" \
+  -d '{"status_led_brightness_pct": 50}'
+```
+
+```http title="Response"
+https/1.1 200 OK
+Content-Type: application/json
+
+{
+    "wifi_ssid": "My Wi-Fi",
+    "wifi_rssi_db": -77,
+    "cloud_enabled": true,
+    "uptime_s": 356,
+    "status_led_brightness_pct": 50,
+    "api_v1_enabled": true
+}
+```
+
+## Enable or Disable the v1 API
+
+To protect the device from unauthorized access, the v1 API can be disabled. When the v1 API is disabled, the device will only allow authorized request via the v2 API.
+
+### Example
+
+#### Disable the v1 API
+
+```http title="Request"
+curl https://<IP ADDRESS>/api/system --insecure \
+  -X PUT \
+  -H "Authorization: Bearer <TOKEN>" \
+  -H "X-Api-Version: 2" \
+  -d '{"v1_api_enabled": false}'
+```
+
+```http title="Response"
+https/1.1 200 OK
+Content-Type: application/json
+
+{
+    "wifi_ssid": "My Wi-Fi",
+    "wifi_rssi_db": -77,
+    "cloud_enabled": true,
+    "uptime_s": 356,
+    "status_led_brightness_pct": 100,
+    "api_v1_enabled": false
+}
+```
+
+_The v1 API is now disabled, as if it was disabled via the HomeWizard Energy app. The v1 API will respond with an [API disabled error](/docs/v1/error-handling#api-was-disabled) when trying to use it._
+
+## Identify
+
+The `/api/system/identify` endpoint can be used to let the user identify the device. The status light will blink for a few seconds after calling this endpoint.
+
+### Example
+
+```http title="Request"
+curl https://<IP ADDRESS>/api/system/identify --insecure \
+  -X PUT \
+  -H "Authorization: Bearer <TOKEN>" \
+  -H "X-Api-Version: 2" \
+
+```
+
+```http title="Response"
+https/1.1 204 No Content
+Content-Length: 0
+```
+
+## Reboot
+
+If needed, you can reboot the device by calling the `/api/system/reboot` endpoint. After rebooting, the device will reconnect to Wi-Fi and be ready for use again.
+
+:::tip
+A reboot is **usually not necessary** but can help in certain situations. Make sure to inform the user that ff the issue persists and frequent reboots are required, they need to contact our support team to help identify and resolve the root cause.
+:::
+
+### Example
+
+```http title="Request"
+curl https://<IP ADDRESS>/api/system/reboot --insecure \
+  -X PUT \
+  -H "Authorization: Bearer <TOKEN>" \
+  -H "X-Api-Version: 2"
+```
+
+```http title="Response"
+https/1.1 204 No Content
+Content-Length: 0
+```

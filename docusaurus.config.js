@@ -26,6 +26,11 @@ const config = {
         locales: ['en']
     },
 
+    markdown: {
+        mermaid: true
+    },
+    themes: ['@docusaurus/theme-mermaid'],
+
     presets: [
         [
             'classic',
@@ -45,7 +50,7 @@ const config = {
     themeConfig:
         /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
         ({
-            metadata: [{ name: 'keywords', content: 'HomeWizard, Energy, API, P1 Meter, kWh Meter, Water Meter, Energy Socket, REST' }],
+            metadata: [{ name: 'keywords', content: 'HomeWizard, Energy, API, P1 Meter, kWh Meter, Watermeter, Energy Socket, REST' }],
             navbar: {
                 title: 'API Documentation',
                 logo: {
@@ -95,17 +100,17 @@ const config = {
                                 href: 'https://www.facebook.com/HomeWizardBV/'
                             },
                             {
-                                label: 'X / Twitter',
-                                href: 'https://twitter.com/HomeWizard_NL'
+                                label: 'X',
+                                href: 'https://x.com/HomeWizard_NL'
                             },
                             {
-                                label: 'Linkedin',
+                                label: 'LinkedIn',
                                 href: 'https://www.linkedin.com/company/homewizard'
                             }
                         ]
                     },
                     {
-                        title: 'Us',
+                        title: 'About us',
                         items: [
                             {
                                 label: 'HomeWizard',
@@ -121,9 +126,12 @@ const config = {
             },
             prism: {
                 theme: prismThemes.github,
-                darkTheme: prismThemes.dracula
+                darkTheme: prismThemes.dracula,
+                additionalLanguages: ['json', 'HTTP']
             }
         })
 }
 
 export default config
+
+// https://api-documentation.homewizard.com/docs/endpoints/api-v1-data

@@ -3,32 +3,56 @@ sidebar_position: 1
 ---
 
 import Link from '@docusaurus/Link'
+import Badge from '@site/src/components/Badge.js'
+import PreliminaryWarning from '@site/src/components/PreliminaryWarning.js'
 
 # Introduction
 
-With the HomeWizard Energy platform, you can get insights in your energy usage. Use the HomeWizard <Link to="https://www.homewizard.nl/p1-meter">Wi-Fi P1 meter</Link> to access real-time data directly from your smart meter, the HomeWizard <Link to="https://www.homewizard.nl/energy-socket">Wi-Fi Energy Socket</Link> to get energy insights from all your devices, the HomeWizard <Link to="https://www.homewizard.nl/kwh-meter">Wi-Fi kWh Meter</Link> to measure devices such as solar panels and the HomeWizard <Link to="https://www.homewizard.com/nl/watermeter">Wi-Fi Watermeter</Link> to get insight in your water usage. With the open API you can integrate the data directly into your system of choice.
+With the HomeWizard Energy platform, you can get insights in your energy usage. Use the HomeWizard <Link to="https://www.homewizard.com/p1-meter/">Wi-Fi P1 Meter</Link> to access real-time data directly from your smart meter, the HomeWizard <Link to="https://www.homewizard.com/energy-socket">Wi-Fi Energy Socket</Link> to get energy insights from all your devices, the HomeWizard <Link to="https://www.homewizard.com/kwh-meter">Wi-Fi kWh Meter</Link> to measure devices such as solar panels and the HomeWizard <Link to="https://www.homewizard.com/watermeter">Wi-Fi Watermeter</Link> to get insight in your water usage. With the open API you can integrate the data directly into your system of choice.
 
 ## HomeWizard Energy API
 
-The HomeWizard Wi-Fi P1 meter, Wi-Fi Energy Socket, Wi-Fi kWh meter and Wi-Fi Watermeter ('device') have a local API to retrieve the most recent measurements or control the device. You can access this API as long as you are connected to the same (Wi-Fi) network as the device and the API is enabled in the HomeWizard Energy app. This API is intended to connect your device to your own automation, home automation or graphing system. It is not possible to retrieve data history with the local API, as this is not stored on the device itself.
+The HomeWizard Wi-Fi P1 Meter, Wi-Fi Energy Socket, Wi-Fi kWh Meter, and Wi-Fi Watermeter (referred to as "device") each have a local API that allows you to retrieve the latest measurements or control the device. You can access this API as long as you are connected to the same Wi-Fi network as the device and the API is enabled in the HomeWizard Energy app. This API is designed for integrating your device with personal automation, home automation, or data graphing systems. Note that it is not possible to retrieve historical data through the local API, as this data is not stored on the device itself.
 
-## Terms and conditions
+## Terms and Conditions
 
--   **License**;
-    The HomeWizard Energy API is licensed, not sold. HomeWizard grants the user a non-exclusive license (with no right to sub-license) to the HomeWizard Energy API for personal, non-commercial use.
--   **Usage**;
-    The user may not directly or indirectly use the HomeWizard Energy API to sell, lease, loan or generate a revenue from a product, system or software using the API
--   **Support**;
-    The usage of the HomeWizard Energy API is officially supported by HomeWizard, however HomeWizard can not supply customer service regarding the implementation of the API in your own or third party applications.
+-   **License** - The HomeWizard Energy API is licensed, not sold. HomeWizard grants the user a non-exclusive license (with no right to sub-license) to the HomeWizard Energy API for personal, non-commercial use.
+-   **Usage** - The user may not directly or indirectly use the HomeWizard Energy API to sell, lease, loan or generate a revenue from a product, system or software using the API
+-   **Support** - The usage of the HomeWizard Energy API is officially supported by HomeWizard, however HomeWizard can not supply customer service regarding the implementation of the API in your own or third party applications.
 
-## First steps
+## API v2
 
-To understand the basics of the API, you can read the [getting-started](/docs/getting-started) guide. Read [endpoints](/docs/category/endpoints/) to know all about the data points that are available.
+The HomeWizard Energy API is moving to v2, which is a more secure and feature-rich version of the API. In v2 of the API, we have added the following features:
 
-**More topics:** [error-handling](/docs/error-handling) | [discovery](/docs/discovery) | [versioning](/docs/versioning) | [changelog](/docs/changelog)
+-   **HTTPS** - Your data is securely transmitted.
+-   **Always available** - No need to turn on the API in the app.
+-   **Authorization** - Only the devices you trust can access the API.
+-   **WebSocket support** - Get real-time push based updates.
 
-## We are hiring
+Read more about the [new version of the API here](/docs/category/api-v2).
 
-Do you like technology, sustainability and working in a team? We are looking for enthusiastic cloud engineers, embedded hardware and/or software engineers, marketers, community managers, support staff, graduates and interns to strengthen our Energy team! We would like to welcome you to our fast-growing company in Noordwijk (Leiden region). Sounds fun? Send us an email with your CV and motivation at jobs@homewizard.com or open the conversation with one of the developers on <Link to="https://www.linkedin.com/company/homewizard/people">Linkedin</Link>.
+## First Steps
+
+To understand the basics of the API, you can read the [getting-started](/docs/getting-started) guide, and read [v1](/docs/category/api-v1) or [v2](/docs/category/api-v2) to know all about the available features.
+
+## Devices and API versions {#devices}
+
+<PreliminaryWarning />
+
+The following table shows which devices are supported by the API and which API version they support.
+
+| Device                                        | Device type                  | API v1                                                                 | API v2                                                                    |
+| --------------------------------------------- | ---------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| Wi-Fi P1 meter                                | `HWE-P1`                     | <Badge color='hw-green' icon="mdi:check" detail='v1'>Supported</Badge> | <Badge color='hw-green' icon="mdi:check" detail='2.0.0'>Supported</Badge> |
+| Wi-Fi Energy Socket                           | `HWE-SKT`                    | <Badge color='hw-green' icon="mdi:check" detail='v1'>Supported</Badge> | <Badge color='hw-purple' icon="mdi:wrench">In development</Badge>         |
+| Wi-Fi Watermeter (Only when powered over USB) | `HWE-WTR`                    | <Badge color='hw-green' icon="mdi:check" detail='v1'>Supported</Badge> | <Badge color='hw-purple' icon="mdi:wrench">In development</Badge>         |
+| Wi-Fi kWh Meter (1 phase)                     | `HWE-KWH1` and `SDM230-wifi` | <Badge color='hw-green' icon="mdi:check" detail='v1'>Supported</Badge> | <Badge color='hw-purple' icon="mdi:wrench">In development</Badge>         |
+| Wi-Fi kWh Meter (3 phase)                     | `HWE-KWH3` and `SDM630-wifi` | <Badge color='hw-green' icon="mdi:check" detail='v1'>Supported</Badge> | <Badge color='hw-purple' icon="mdi:wrench">In development</Badge>         |
+| Energy Display                                | `HWE-DSP`                    | <Badge color='hw-grey' icon="mdi:close">Not planned</Badge>            | <Badge color='hw-purple' icon="mdi:wrench">In development</Badge>         |
+| Plug-In Battery                               | `HWE-BAT`                    | <Badge color='hw-grey' icon="mdi:close">Not planned</Badge>            | <Badge color='hw-purple' icon="mdi:wrench">In development</Badge>         |
+
+## We are Hiring
+
+Do you like technology, sustainability and working in a team? We are looking for enthusiastic cloud engineers, embedded hardware and/or software engineers, marketers, community managers, support staff, graduates and interns to strengthen our Energy team! We would like to welcome you to our fast-growing company in Noordwijk (Leiden region). Sounds fun? Send us an email with your CV and motivation at jobs@homewizard.com or open the conversation with one of the developers on <Link to="https://www.linkedin.com/company/homewizard/people">LinkedIn</Link>.
 
 -   <Link to='https://www.homewizard.com/nl/vacatures/'>Vacatures (NL)</Link>

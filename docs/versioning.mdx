@@ -2,34 +2,120 @@
 sidebar_position: 6
 ---
 
-# Versioning and updates
+import Link from '@docusaurus/Link'
+import PreliminaryWarning from '@site/src/components/PreliminaryWarning.js'
 
-## Firmware updates
+# Versioning and Updates
 
-The energy devices are updated automatically when a new version is available.
-When an update is available, it will be gradually rolled out to the devices. As a result, not all devices may have the latest version.
+## Version Scheme
 
-The versioning scheme is `(xx)X.YY` (eg. `2.03` or `12.34`).
+The HomeWizard Energy API follows [semantic versioning](https://semver.org/), with the version number structured as `MAJOR.MINOR.PATCH`. The v1 API only uses the `MAJOR` version, while the v2 API uses both `MAJOR` and `MINOR`.
 
-:::tip Updates
-Go to Settings > Meters > (Your device) > `...` (top right) and press 'Check for updates' to check for an update.
+-   `MAJOR` version updates signal incompatible changes in the API.
+-   `MINOR` version updates add backward-compatible features or enhancements.
+-   `PATCH` version updates provide backward-compatible bug fixes.
 
-Do not ask HomeWizard to update your device. Updates are installed automatically and support cannot update the device for you.
+### Backward Compatibility
+
+The HomeWizard Energy API is designed for backward compatibility, aiming to avoid breaking changes. When a breaking change is necessary, the `MAJOR` version number will increase, while the original API remains accessible. See [Requesting a Specific API Version](#requesting-a-specific-api-version) for more information.
+
+### Deprecation Policy
+
+Each major version is supported for a minimum of one year. After this period, the older version will be marked as deprecated. A deprecated version will remain available as long as feasible, but may be removed at any time. To stay informed, [subscribe to updates](/docs/changelog#subscribe-to-updates).
+
+:::danger Exception
+If a security issue arises in an older version that cannot be resolved in a backward-compatible way, we may deprecate and remove the affected version immediately.
 :::
 
-## API version
+### Example
 
-The API is currently fixed to version `v1`. The version is updated when the a new version contains (possible) breaking changes. The version will be unchanged when non breaking changes, such as new features, new endpoints or stability improvements are introduced.
+1. **Version `1.0.0`** (aka v1) is current version of the v1 API.
+2. At some moment, **version `2.0.0`** is released out of beta. Version `1.0.0` remains available.
+3. **One year post `2.0.0` release**, version `1.0.0` becomes deprecated. It will remain available as long as feasible but may be removed at any time.
 
-## Latest Versions
+:::info
+Version `2.0.0` is still in beta so **no deprecation date** is set yet.
+:::
 
-| Device                           | Latest stable release | Latest beta release |
-| -------------------------------- | --------------------- | ------------------- |
-| Wi-Fi P1 Meter                   | 5.19                  | _Up to date_        |
-| Wi-Fi Energy Socket (HWE-SKT-11) | 4.08                  | _Up to date_        |
-| Wi-Fi Energy Socket (HWE-SKT-21) | 4.07                  | _Up to date_        |
-| Wi-Fi Watermeter                 | 3.01                  | _Up to date_        |
-| Wi-Fi kWh Meter (1 phase)        | 4.06                  | _Up to date_        |
-| Wi-Fi kWh Meter (3 phase)        | 4.06                  | _Up to date_        |
+## Requesting a Specific API Version
 
-Beta versions are available for a select group of devices. If you are interested in testing, please request beta access via [this form](https://forms.gle/ViUWaBBjjdQunquK9).
+To ensure your integration remains stable, you can specify an API version. This allows device updates without affecting your application's functionality. We recommend using this feature only if updating your application to the latest API version is challenging.
+
+### Version `1.0.0`
+
+API Version `1.0.0` (v1) can be accessed **over HTTP** via `/api/v1` endpoints. No additional headers are required for version selection. Only Version 1 is supported over HTTP.
+
+### Version `2.0.0` and higher
+
+<PreliminaryWarning />
+
+API Version `2.0.0` (v2) and above are available **over HTTPS** via `/api` endpoints. To request a specific version, include the `X-Api-Version` header in your request, specifying the desired `MAJOR` version number.
+
+### Examples
+
+The examples below demonstrate how to request specific API versions, assuming the current API version is `3.0.1`.
+
+#### Example 1: Version Not Specified
+
+If no version is specified, the latest version is used by default.
+
+```http title="Request"
+curl https://<IP ADDRESS>/api/measurement --insecure \
+  -H "Authorization: Bearer <TOKEN>"
+```
+
+```http title="Response"
+HTTP/1.1 200 OK
+X-Api-Version: 3.0.1
+
+...
+```
+
+#### Example 2: Specified Version
+
+Requesting an older major version (in this case, Version 2) still available within the supported range.
+
+```http title="Request"
+curl https://<IP ADDRESS>/api/measurement --insecure \
+  -H "Authorization: Bearer <TOKEN>" \
+  -H "X-Api-Version: 2"
+```
+
+```http title="Response"
+HTTP/1.1 200 OK
+X-Api-Version: 2.0.5
+
+...
+```
+
+Requesting the latest major version (Version 3).
+
+```http title="Request"
+curl https://<IP ADDRESS>/api/measurement --insecure \
+  -H "Authorization: Bearer <TOKEN>" \
+  -H "X-Api-Version: 3"
+```
+
+```http title="Response"
+HTTP/1.1 200 OK
+X-Api-Version: 3.0.1
+
+...
+```
+
+#### Example 3: Unsupported Version Requested
+
+In this request, Version 1 is requested over HTTPS, which is unsupported.
+
+```http title="Request"
+curl https://<IP ADDRESS>/api/measurement --insecure \
+  -H "Authorization: Bearer <TOKEN>" \
+  -H "X-Api-Version: 1"
+```
+
+```http title="Response"
+HTTP/1.1 400 Bad Request
+X-Api-Version: 3.0.1
+
+{"error": "request:api-version-not-supported"}
+```

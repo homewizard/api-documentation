@@ -1,0 +1,95 @@
+---
+sidebar_position: 7
+---
+
+import Badge from '@site/src/components/Badge.js'
+import PreliminaryWarning from '@site/src/components/PreliminaryWarning.js'
+
+# Error Handling
+
+{/* prettier-ignore */}
+<Badge color='hw-green' icon='mdi:check' subtext='Supported'>P1 Meter</Badge>
+<Badge color='hw-orange' icon='mdi:check' subtext='Supported in v1'>Energy Socket</Badge>
+<Badge color='hw-purple' icon='mdi:wrench' subtext='In development'>Energy Display</Badge>
+<Badge color='hw-orange' icon='mdi:check' subtext='Supported in v1'>kWh Meter</Badge>
+<Badge color='hw-orange' icon='mdi:check' subtext='Supported in v1'>Watermeter</Badge>
+<Badge color='hw-purple' icon='mdi:wrench' subtext='In development'>Plug-In Battery</Badge>
+<br />
+<sub>_See [Supported Devices](/docs/introduction#devices) for more information._</sub>
+
+---
+
+<PreliminaryWarning />
+
+When you perform an invalid request or something went wrong, the API will respond with an error message. You have to check if the HTTP status code returns `200 OK` before parsing the result or `204 No Content` if you expect no content (actions and set requests).
+If you use an endpoint that returns JSON, you also will receive an object with some error information.
+
+## Error Codes
+
+Each error is represented as a set of 'scope' and 'error' fields. The 'scope' field indicates the part of the request that caused the error, and the 'error' field provides a description of the error. For example `user:name-invalid` if you provide an invalid name for the user during the authorization flow.
+
+### List of Errors
+
+| Code                                      | Description                                                                                                                   |
+| ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `request:invalid-json`                    | Server was unable to parse the JSON data.                                                                                     |
+| `json:no-parameters-recognized`           | JSON was correct, but no required parameters were found.                                                                      |
+| `json:parameter-invalid-type:<parameter>` | Invalid type for a parameter, e.g. a string where a number is expected.                                                       |
+| `json:parameter-missing:<parameter>`      | Required parameter is missing.                                                                                                |
+| `json:parameter-not-exclusive`            | Two or more parameters are mutually exclusive.                                                                                |
+| `request:api-version-not-supported`       | Requested API version not supported, see [versioning](/docs/versioning).                                                      |
+| `request:internal-server-error`           | Something went wrong on the server side.                                                                                      |
+| `request:too-large`                       | Request too large.                                                                                                            |
+| `request:unknown-subscription`            | WebSocket subscription topic not recognized, see [WebSocket subscriptions](/docs/v2/websocket#subscribe).                     |
+| `request:unknown-type`                    | WebSocket `type` parameter not recognized, see [WebSocket structure](/docs/v2/websocket#structure).                           |
+| `telegram:no-telegram-received`           | No telegram received, see [telegram](/docs/v2/telegram#error-handling).                                                       |
+| `user:creation-not-enabled`               | User creation is not enabled, button press required.                                                                          |
+| `user:invalid-prefix`                     | Invalid name prefix provided, see [create user](/docs/v2/authorization#create-user-and-get-token).                            |
+| `user:name-empty`                         | Upon creating a user, the name was empty.                                                                                     |
+| `user:name-invalid`                       | Upon creating a user, the name contained invalid tokens, see [create user](/docs/v2/authorization#create-user-and-get-token). |
+| `user:name-too-long`                      | Upon creating a user, the name was too long.                                                                                  |
+| `user:no-storage`                         | No storage available to store a new user, delete existing users.                                                              |
+| `user:not-found`                          | Tried to delete a user which does not exist.                                                                                  |
+| `user:unauthorized`                       | User token is invalid or not authorized, see [authorization](/docs/v2/authorization).                                         |
+
+:::tip
+The list of error codes may be extended in the future. We recommend that you prepare for new error codes by having a generic error handling mechanism in place.
+:::
+
+## Examples
+
+### Not Authenticated
+
+```shell title="Request"
+curl https://<IP ADDRESS>/api --insecure \
+  -H "Authorization: Bearer <INVALID_TOKEN>" \
+  -H "X-Api-Version: 2" \
+```
+
+```http title="Response"
+https/1.1 401 Unauthorized
+Content-Type: application/json
+
+{
+    "error": "user:unauthorized"
+}
+```
+
+### Invalid Value
+
+```http title="Request"
+curl https://<IP ADDRESS>/api/system --insecure \
+  -X PUT \
+  -H "Authorization: Bearer <TOKEN>" \
+  -H "X-Api-Version: 2" \
+  -d '{"status_led_brightness_pct": 123}'
+```
+
+```http title="Response"
+https/1.1 400 Bad Request
+Content-Type: application/json
+
+{
+    "error":"json:parameter-invalid-type:status_led_brightness_pct"
+}
+```

@@ -1,8 +1,0 @@
-{
-    "label": "Endpoints",
-    "position": 3,
-    "link": {
-        "type": "generated-index",
-        "description": "Use the endpoints to get real-time local data from your device and control the state of the Energy Socket. Select one of the topics below to learn more about these endpoints."
-    }
-}

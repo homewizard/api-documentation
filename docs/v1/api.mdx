@@ -1,0 +1,54 @@
+---
+title: Device Information
+sidebar_position: 1
+description: Get information like serial and version number from the device.
+---
+
+import Badge from '@site/src/components/Badge.js'
+
+# Device Information (`/api`)
+
+{/* prettier-ignore */}
+<Badge color='hw-green' icon='mdi:check' subtext='Supported'>P1 Meter</Badge>
+<Badge color='hw-green' icon='mdi:check' subtext='Supported'>Energy Socket</Badge>
+<Badge color='hw-grey' icon='mdi:close' subtext='Not supported'>Energy Display</Badge>
+<Badge color='hw-green' icon='mdi:check' subtext='Supported'>kWh Meter</Badge>
+<Badge color='hw-green' icon='mdi:check' subtext='Supported'>Watermeter</Badge>
+<Badge color='hw-grey' icon='mdi:close' subtext='Not supported'>Plug-In Battery</Badge>
+<br />
+<sub>_See [Supported Devices](/docs/introduction#devices) for more information._</sub>
+
+---
+
+The `/api` endpoint allows you to get basic information from the device.
+
+Your application can use this endpoint to see if your integration is designed to work with this version of the API. You can validate your support based on the combination of `product_type` and `api_version`. Data points in this endpoint that are currently available won't change, but make sure your application can accept new data points for future updates.
+
+## Parameters
+
+| Data             | Type   | Description                                                                                                                                          |
+| ---------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| product_type     | String | The type identifier of the product which can be used to customize the user interface. See [devices](/docs/introduction#devices) for possible values. |
+| product_name     | String | A fixed, user-friendly name that is different from the name set by the user in the app.                                                              |
+| serial           | String | Serial number, also the MAC address. Consists of 12 hexadecimal values.                                                                              |
+| firmware_version | String | The current firmware version. Make sure your application can handle other version formats. See [versioning and updates](/docs/versioning).           |
+| api_version      | String | The current API version, set to "v1".                                                                                                                |
+
+## Examples
+
+```shell title="Request"
+curl http://<IP ADDRESS>/api
+```
+
+```http title="Response"
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+      "product_type": "HWE-P1",
+      "product_name": "P1 Meter",
+      "serial": "3c39e7aabbcc",
+      "firmware_version": "5.18",
+      "api_version": "v1"
+}
+```

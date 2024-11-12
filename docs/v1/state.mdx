@@ -1,0 +1,124 @@
+---
+title: Control Device State
+sidebar_position: 3
+description: Control the state of the Energy Socket.
+---
+
+import Badge from '@site/src/components/Badge.js'
+
+# Control Device State (`/api/v1/state`)
+
+{/* prettier-ignore */}
+<Badge color='hw-grey' icon='mdi:close' subtext='Not supported'>P1 Meter</Badge>
+<Badge color='hw-green' icon='mdi:check' subtext='Supported'>Energy Socket</Badge>
+<Badge color='hw-grey' icon='mdi:close' subtext='Not supported'>Energy Display</Badge>
+<Badge color='hw-grey' icon='mdi:close' subtext='Not supported'>kWh Meter</Badge>
+<Badge color='hw-grey' icon='mdi:close' subtext='Not supported'>Watermeter</Badge>
+<Badge color='hw-grey' icon='mdi:close' subtext='Not supported'>Plug-In Battery</Badge>
+<br />
+<sub>_See [Supported Devices](/docs/introduction#devices) for more information._</sub>
+
+---
+
+The `/api/v1/state` endpoint returns the actual state of the Energy Socket.
+
+This endpoint accepts `GET` and `PUT` requests.
+
+-   With `GET` you will receive the actual state
+-   With `PUT` you can control the state.
+
+## Parameters
+
+| Data        | Type   | Description                                                                  |
+| ----------- | ------ | ---------------------------------------------------------------------------- |
+| power_on    | Bool   | The state of the switch. Returns `true` when the relay is in the 'on' state. |
+| switch_lock | Bool   | When set to `true`, the socket cannot be turned off.                         |
+| brightness  | Number | Brightness of LED ring when socket is 'on'. Value from 0 (0%) to 255 (100%). |
+
+## Examples
+
+### Get Actual State
+
+This response tells that the socket is 'on', switch-lock is 'off' and the brightness of the LED ring is set to maximum.
+
+```http title="Request"
+curl http://<IP ADDRESS>/api/v1/state
+```
+
+```http title="Response"
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+   "power_on": true,
+   "switch_lock": false,
+   "brightness": 255
+}
+```
+
+### Turn on Socket
+
+```http title="Request"
+curl http://<IP ADDRESS>/api/v1/state \
+   -X PUT \
+   -H "Content-Type: application/json" \
+   -d '{"power_on": true}'
+```
+
+```http title="Response"
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+   "power_on": true
+}
+```
+
+### Turn on Switch-lock
+
+After enabling `switch_lock`, the socket is 'on' and cannot be turned off until `switch_lock` is disabled.
+
+```http title="Request"
+curl http://<IP ADDRESS>/api/v1/state \
+   -X PUT \
+   -H "Content-Type: application/json" \
+   -d '{"switch_lock": true}'
+```
+
+```http title="Response"
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+   "switch_lock": true
+}
+```
+
+### Set Multiple Parameters
+
+You can configure multiple parameters at the same time. In this example.
+
+-   Socket is turned off.
+-   Switch-lock is turned off.
+-   Brightness is set to 127 (50%).
+
+The order of a combined request does not matter, if `switch-lock` was on, the socket will still turn off.
+The complete state has to make sense; It is not possible to set `power_on` to false and `switch_lock` to true. See [error handling](/docs/v1/error-handling) for more details.
+
+```http title="Request"
+curl http://<IP ADDRESS>/api/v1/state \
+   -X PUT \
+   -H "Content-Type: application/json" \
+   -d '{"power_on": false, "switch_lock": false, "brightness": 127}'
+```
+
+```http title="Response"
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+      "switch_lock": false,
+      "power_on": false,
+      "brightness": 127
+}
+```
