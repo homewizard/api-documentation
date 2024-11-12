@@ -17,13 +17,15 @@ The HomeWizard Energy API follows [semantic versioning](https://semver.org/), wi
 
 ### Backward Compatibility
 
-The HomeWizard Energy API is designed for backward compatibility, aiming to avoid breaking changes. When a breaking change is necessary, the `MAJOR` version number will increase, while the original API remains accessible.
+The HomeWizard Energy API is designed for backward compatibility, aiming to avoid breaking changes. When a breaking change is necessary, the `MAJOR` version number will increase, while the original API remains accessible. See [Requesting a Specific API Version](#requesting-a-specific-api-version) for more information.
 
 ### Deprecation Policy
 
-We support each version for a minimum of one year. After this period, older versions may be deprecated and eventually removed. To stay informed, [subscribe to updates](/docs/changelog#subscribe-to-updates).
+Each major version is supported for a minimum of one year. After this period, the older version will be marked as deprecated. A deprecated version will remain available as long as feasible, but may be removed at any time. To stay informed, [subscribe to updates](/docs/changelog#subscribe-to-updates).
 
-**Exception:** If a security issue arises in an older version that cannot be resolved in a backward-compatible way, we may deprecate and remove the affected version immediately.
+:::danger Exception
+If a security issue arises in an older version that cannot be resolved in a backward-compatible way, we may deprecate and remove the affected version immediately.
+:::
 
 ### Example
 
@@ -31,7 +33,7 @@ We support each version for a minimum of one year. After this period, older vers
 2. At some moment, **version `2.0.0`** is released out of beta. Version `1.0.0` remains available.
 3. **One year post `2.0.0` release**, version `1.0.0` becomes deprecated. It will remain available as long as feasible but may be removed at any time.
 
-:::tip
+:::info
 Version `2.0.0` is still in beta so **no deprecation date** is set yet.
 :::
 
