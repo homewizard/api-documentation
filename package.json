@@ -21,7 +21,7 @@
     "dependencies": {
         "@docusaurus/core": "^3.6.1",
         "@docusaurus/preset-classic": "^3.6.1",
-        "@docusaurus/theme-mermaid": "^3.6.1",
+        "@docusaurus/theme-mermaid": "^3.6.3",
         "@iconify/react": "^5.0.2",
         "@mdx-js/react": "3.0.1",
         "clsx": "2.1.0",
