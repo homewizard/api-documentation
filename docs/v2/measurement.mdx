@@ -24,53 +24,55 @@ import PreliminaryWarning from '@site/src/components/PreliminaryWarning.js'
 
 <PreliminaryWarning />
 
-The `/api/measurement` endpoint allows you to get the most recent measurement from the device. All data points are "optional"; The API does not send data points that are `null` or not available at all. This mostly depends on the connected smart meter. Make sure your application can handle this.
+The `/api/measurement` endpoint allows you to get the most recent measurement from the device.
 
 ## P1 Meter (HWE-P1)
 
+All data points are "optional"; The API does not send data points that are `null` or not available at all. This mostly depends on the connected smart meter. Make sure your application can handle this.
+
 ### Parameters
 
-| Data                         | Type                                       | Description                                                                                                                       |
-| ---------------------------- | ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------- |
-| unique_id                    | String                                     | The unique identifier from the smart meter.                                                                                       |
-| protocol_version             | Number                                     | The DSMR version of the smart meter.                                                                                              |
-| meter_model                  | String                                     | The brand identification the smart meter.                                                                                         |
-| timestamp                    | [Timestamp](#timestamps)                   | Timestamp provided by smart meter, indicated at what moment the measurement was send to the P1 Meter.                             |
-| tariff                       | Number                                     | The active tariff, matches one of the totals.                                                                                     |
-| energy_import_kwh            | Number                                     | The energy usage meter reading for all tariffs in kWh.                                                                            |
-| energy_import_t1_kwh         | Number                                     | The energy usage meter reading for tariff 1 in kWh.                                                                               |
-| energy_import_t2_kwh         | Number                                     | The energy usage meter reading for tariff 2 in kWh.                                                                               |
-| energy_import_t3_kwh         | Number                                     | The energy usage meter reading for tariff 3 in kWh.                                                                               |
-| energy_import_t4_kwh         | Number                                     | The energy usage meter reading for tariff 4 in kWh.                                                                               |
-| energy_export_kwh            | Number                                     | The energy feed-in meter reading for all tariffs in kWh.                                                                          |
-| energy_export_t1_kwh         | Number                                     | The energy feed-in meter reading for tariff 1 in kWh.                                                                             |
-| energy_export_t2_kwh         | Number                                     | The energy feed-in meter reading for tariff 2 in kWh.                                                                             |
-| energy_export_t3_kwh         | Number                                     | The energy feed-in meter reading for tariff 3 in kWh.                                                                             |
-| energy_export_t4_kwh         | Number                                     | The energy feed-in meter reading for tariff 4 in kWh.                                                                             |
-| power_w                      | Number                                     | The total active usage in watt, this value is the sum of all phases, so if l1=200, l2=300, l3=-100 then this value is 400.        |
-| power_l1_w                   | Number                                     | The active usage for phase 1 in watt, will be negative when exporting.                                                            |
-| power_l2_w                   | Number                                     | The active usage for phase 2 in watt, will be negative when exporting.                                                            |
-| power_l3_w                   | Number                                     | The active usage for phase 3 in watt, will be negative when exporting.                                                            |
-| voltage_l1_v                 | Number                                     | The active voltage for phase 1 in volt.                                                                                           |
-| voltage_l2_v                 | Number                                     | The active voltage for phase 2 in volt.                                                                                           |
-| voltage_l3_v                 | Number                                     | The active voltage for phase 3 in volt.                                                                                           |
-| current_a                    | Number                                     | The active current for phase 1 in ampere, this value is the sum of absolute values, so if l1=2, l2=3, l3=-1 then this value is 6. |
-| current_l1_a                 | Number                                     | The active current for phase 1 in ampere, will be negative when exporting.                                                        |
-| current_l2_a                 | Number                                     | The active current for phase 2 in ampere, will be negative when exporting.                                                        |
-| current_l3_a                 | Number                                     | The active current for phase 3 in ampere, will be negative when exporting.                                                        |
-| frequency_hz                 | Number                                     | Line frequency in hertz.                                                                                                          |
-| voltage_sag_l1_count         | Number                                     | Number of voltage sags detected by meter for phase 1.                                                                             |
-| voltage_sag_l2_count         | Number                                     | Number of voltage sags detected by meter for phase 2.                                                                             |
-| voltage_sag_l3_count         | Number                                     | Number of voltage sags detected by meter for phase 3.                                                                             |
-| voltage_swell_l1_count       | Number                                     | Number of voltage swells detected by meter for phase 1.                                                                           |
-| voltage_swell_l2_count       | Number                                     | Number of voltage swells detected by meter for phase 2.                                                                           |
-| voltage_swell_l3_count       | Number                                     | Number of voltage swells detected by meter for phase 3.                                                                           |
-| any_power_fail_count         | Number                                     | Number of power failures detected by meter.                                                                                       |
-| long_power_fail_count        | Number                                     | Number of 'long' power fails detected by meter.                                                                                   |
-| average_power_15m_w          | Number                                     | The active average demand, available for smart meters with [capacity rate](#capacity-rate).                                       |
-| monthly_power_peak_w         | Number                                     | The peak average demand of this month, available for smart meters with [capacity rate](#capacity-rate).                           |
-| monthly_power_peak_timestamp | [Timestamp](#timestamps)                   | Timestamp when peak demand was registered, available for smart meters with [capacity rate](#capacity-rate).                       |
-| external                     | Array with [`external`](#external-devices) | A list of externally connected utility meters, see [external data point](#external-devices) for more information.                 |
+| Data                         | Type                                                | Description                                                                                                                       |
+| ---------------------------- | --------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| unique_id                    | Optional String                                     | The unique identifier from the smart meter.                                                                                       |
+| protocol_version             | Optional Number                                     | The DSMR version of the smart meter.                                                                                              |
+| meter_model                  | Optional String                                     | The brand identification the smart meter.                                                                                         |
+| timestamp                    | Optional [Timestamp](#timestamps)                   | Timestamp provided by smart meter, indicated at what moment the measurement was send to the P1 Meter.                             |
+| tariff                       | Optional Number                                     | The active tariff, matches one of the totals.                                                                                     |
+| energy_import_kwh            | Optional Number                                     | The energy usage meter reading for all tariffs in kWh.                                                                            |
+| energy_import_t1_kwh         | Optional Number                                     | The energy usage meter reading for tariff 1 in kWh.                                                                               |
+| energy_import_t2_kwh         | Optional Number                                     | The energy usage meter reading for tariff 2 in kWh.                                                                               |
+| energy_import_t3_kwh         | Optional Number                                     | The energy usage meter reading for tariff 3 in kWh.                                                                               |
+| energy_import_t4_kwh         | Optional Number                                     | The energy usage meter reading for tariff 4 in kWh.                                                                               |
+| energy_export_kwh            | Optional Number                                     | The energy feed-in meter reading for all tariffs in kWh.                                                                          |
+| energy_export_t1_kwh         | Optional Number                                     | The energy feed-in meter reading for tariff 1 in kWh.                                                                             |
+| energy_export_t2_kwh         | Optional Number                                     | The energy feed-in meter reading for tariff 2 in kWh.                                                                             |
+| energy_export_t3_kwh         | Optional Number                                     | The energy feed-in meter reading for tariff 3 in kWh.                                                                             |
+| energy_export_t4_kwh         | Optional Number                                     | The energy feed-in meter reading for tariff 4 in kWh.                                                                             |
+| power_w                      | Optional Number                                     | The total active usage in watt, this value is the sum of all phases, so if l1=200, l2=300, l3=-100 then this value is 400.        |
+| power_l1_w                   | Optional Number                                     | The active usage for phase 1 in watt, will be negative when exporting.                                                            |
+| power_l2_w                   | Optional Number                                     | The active usage for phase 2 in watt, will be negative when exporting.                                                            |
+| power_l3_w                   | Optional Number                                     | The active usage for phase 3 in watt, will be negative when exporting.                                                            |
+| voltage_l1_v                 | Optional Number                                     | The active voltage for phase 1 in volt.                                                                                           |
+| voltage_l2_v                 | Optional Number                                     | The active voltage for phase 2 in volt.                                                                                           |
+| voltage_l3_v                 | Optional Number                                     | The active voltage for phase 3 in volt.                                                                                           |
+| current_a                    | Optional Number                                     | The active current for phase 1 in ampere, this value is the sum of absolute values, so if l1=2, l2=3, l3=-1 then this value is 6. |
+| current_l1_a                 | Optional Number                                     | The active current for phase 1 in ampere, will be negative when exporting.                                                        |
+| current_l2_a                 | Optional Number                                     | The active current for phase 2 in ampere, will be negative when exporting.                                                        |
+| current_l3_a                 | Optional Number                                     | The active current for phase 3 in ampere, will be negative when exporting.                                                        |
+| frequency_hz                 | Optional Number                                     | Line frequency in hertz.                                                                                                          |
+| voltage_sag_l1_count         | Optional Number                                     | Number of voltage sags detected by meter for phase 1.                                                                             |
+| voltage_sag_l2_count         | Optional Number                                     | Number of voltage sags detected by meter for phase 2.                                                                             |
+| voltage_sag_l3_count         | Optional Number                                     | Number of voltage sags detected by meter for phase 3.                                                                             |
+| voltage_swell_l1_count       | Optional Number                                     | Number of voltage swells detected by meter for phase 1.                                                                           |
+| voltage_swell_l2_count       | Optional Number                                     | Number of voltage swells detected by meter for phase 2.                                                                           |
+| voltage_swell_l3_count       | Optional Number                                     | Number of voltage swells detected by meter for phase 3.                                                                           |
+| any_power_fail_count         | Optional Number                                     | Number of power failures detected by meter.                                                                                       |
+| long_power_fail_count        | Optional Number                                     | Number of 'long' power fails detected by meter.                                                                                   |
+| average_power_15m_w          | Optional Number                                     | The active average demand, available for smart meters with [capacity rate](#capacity-rate).                                       |
+| monthly_power_peak_w         | Optional Number                                     | The peak average demand of this month, available for smart meters with [capacity rate](#capacity-rate).                           |
+| monthly_power_peak_timestamp | Optional [Timestamp](#timestamps)                   | Timestamp when peak demand was registered, available for smart meters with [capacity rate](#capacity-rate).                       |
+| external                     | Optional Array with [`external`](#external-devices) | A list of externally connected utility meters, see [external data point](#external-devices) for more information.                 |
 
 ### External Devices
 
