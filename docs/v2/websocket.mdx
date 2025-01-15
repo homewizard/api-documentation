@@ -31,7 +31,7 @@ The HomeWizard Energy WebSocket API allows you to receive real-time updates from
 All data packages, in both directions, are formatted in JSON and contain a `type` field and an optional `data` field. The data type can be any valid JSON format.
 
 ```json title="Example: Authorization request from device"
-{ "type": "authentication_requested", "data": { "api_version": "2.0.0" } }
+{ "type": "authorization_requested", "data": { "api_version": "2.0.0" } }
 ```
 
 ```json title="Example: Subscribe to device information"
