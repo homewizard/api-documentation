@@ -6,12 +6,11 @@ description: Get the most recent measurement from the device.
 
 import Link from '@docusaurus/Link'
 import Badge from '@site/src/components/Badge.js'
-import PreliminaryWarning from '@site/src/components/PreliminaryWarning.js'
 
 # Recent Measurement `/api/measurement`
 
 {/* prettier-ignore */}
-<Badge color='hw-green' icon='mdi:test-tube' subtext='Requires Firmware 6.00, Currently in Beta'>P1 Meter</Badge>
+<Badge color='hw-green' icon='mdi:check' subtext='Requires Firmware 6.00'>P1 Meter</Badge>
 <Badge color='hw-orange' icon='mdi:check' subtext='Supported in v1'>Energy Socket</Badge>
 <Badge color='hw-purple' icon='mdi:wrench' subtext='In development'>Energy Display</Badge>
 <Badge color='hw-orange' icon='mdi:check' subtext='Supported in v1'>kWh Meter</Badge>
@@ -21,8 +20,6 @@ import PreliminaryWarning from '@site/src/components/PreliminaryWarning.js'
 <sub>_See [Supported Devices](/docs/introduction#devices) for more information._</sub>
 
 ---
-
-<PreliminaryWarning />
 
 The `/api/measurement` endpoint allows you to get the most recent measurement from the device.
 

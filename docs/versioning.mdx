@@ -3,7 +3,6 @@ sidebar_position: 6
 ---
 
 import Link from '@docusaurus/Link'
-import PreliminaryWarning from '@site/src/components/PreliminaryWarning.js'
 
 # Versioning and Updates
 
@@ -34,7 +33,7 @@ If a security issue arises in an older version that cannot be resolved in a back
 3. **One year post `2.0.0` release**, version `1.0.0` becomes deprecated. It will remain available as long as feasible but may be removed at any time.
 
 :::info
-Version `2.0.0` is still in beta so **no deprecation date** is set yet.
+Version `2.0.0` is not released for all devices so **no deprecation date** is set yet.
 :::
 
 ## Requesting a Specific API Version
@@ -46,8 +45,6 @@ To ensure your integration remains stable, you can specify an API version. This 
 API Version `1.0.0` (v1) can be accessed **over HTTP** via `/api/v1` endpoints. No additional headers are required for version selection. Only Version 1 is supported over HTTP.
 
 ### Version `2.0.0` and higher
-
-<PreliminaryWarning />
 
 API Version `2.0.0` (v2) and above are available **over HTTPS** via `/api` endpoints. To request a specific version, include the `X-Api-Version` header in your request, specifying the desired `MAJOR` version number.
 

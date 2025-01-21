@@ -6,12 +6,11 @@ description: Get real-time updates from the device.
 
 import Link from '@docusaurus/Link'
 import Badge from '@site/src/components/Badge.js'
-import PreliminaryWarning from '@site/src/components/PreliminaryWarning.js'
 
 # WebSocket `/api/ws`
 
 {/* prettier-ignore */}
-<Badge color='hw-green' icon='mdi:test-tube' subtext='Requires Firmware 6.00, Currently in Beta'>P1 Meter</Badge>
+<Badge color='hw-green' icon='mdi:check' subtext='Requires Firmware 6.00'>P1 Meter</Badge>
 <Badge color='hw-purple' icon='mdi:wrench' subtext='In development'>Energy Socket</Badge>
 <Badge color='hw-purple' icon='mdi:wrench' subtext='In development'>Energy Display</Badge>
 <Badge color='hw-purple' icon='mdi:wrench' subtext='In development'>kWh Meter</Badge>
@@ -21,8 +20,6 @@ import PreliminaryWarning from '@site/src/components/PreliminaryWarning.js'
 <sub>_See [Supported Devices](/docs/introduction#devices) for more information._</sub>
 
 ---
-
-<PreliminaryWarning />
 
 The HomeWizard Energy WebSocket API allows you to receive real-time updates from the device. The WebSocket lets you subscribe to specific topics and receive updates when data changes.
 
