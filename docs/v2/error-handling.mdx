@@ -4,12 +4,11 @@ description: Learn how to handle errors when using the HomeWizard Energy API.
 ---
 
 import Badge from '@site/src/components/Badge.js'
-import PreliminaryWarning from '@site/src/components/PreliminaryWarning.js'
 
 # Error Handling
 
 {/* prettier-ignore */}
-<Badge color='hw-green' icon='mdi:test-tube' subtext='Requires Firmware 6.00, Currently in Beta'>P1 Meter</Badge>
+<Badge color='hw-green' icon='mdi:check' subtext='Requires Firmware 6.00'>P1 Meter</Badge>
 <Badge color='hw-orange' icon='mdi:check' subtext='Supported in v1'>Energy Socket</Badge>
 <Badge color='hw-purple' icon='mdi:wrench' subtext='In development'>Energy Display</Badge>
 <Badge color='hw-orange' icon='mdi:check' subtext='Supported in v1'>kWh Meter</Badge>
@@ -19,8 +18,6 @@ import PreliminaryWarning from '@site/src/components/PreliminaryWarning.js'
 <sub>_See [Supported Devices](/docs/introduction#devices) for more information._</sub>
 
 ---
-
-<PreliminaryWarning />
 
 When you perform an invalid request or something went wrong, the API will respond with an error message. You have to check if the HTTP status code returns `200 OK` before parsing the result or `204 No Content` if you expect no content (actions and set requests).
 If you use an endpoint that returns JSON, you also will receive an object with some error information.
