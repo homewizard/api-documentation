@@ -1,0 +1,89 @@
+---
+title: Batteries
+sidebar_position: 8
+description: Enable and disable cloud communication.
+---
+
+import Badge from '@site/src/components/Badge.js'
+
+# Batteries `/api/batteries`
+
+{/* prettier-ignore */}
+<Badge color='hw-purple' icon='mdi:wrench' subtext='Requires firmware 6.0200 or later (in beta)'>P1 Meter</Badge>
+<Badge color='hw-grey' icon='mdi:close' subtext='Not supported'>Energy Socket</Badge>
+<Badge color='hw-grey' icon='mdi:close' subtext='Not supported'>Energy Display</Badge>
+<Badge color='hw-purple' icon='mdi:wrench' subtext='In development'>kWh Meter</Badge>
+<Badge color='hw-grey' icon='mdi:close' subtext='Not supported'>Water Meter</Badge>
+<Badge color='hw-grey' icon='mdi:close' subtext='Not supported'>Plug-In Battery</Badge>
+<br />
+<sub>_See [Supported Devices](/docs/introduction#devices) for more information._</sub>
+
+---
+
+The `/api/batteries` endpoint can be used to retrieve information about the control system of the Plug-In Battery/batteries and allows you to change the control mode.
+
+## Parameters
+
+| Data              | Type   | Access     | Description                                                                         |
+| ----------------- | ------ | ---------- | ----------------------------------------------------------------------------------- |
+| [mode](#mode)     | String | Read/Write | Control mode of the Plug-In Battery. Can be either `zero`, `to_full`, or `standby`. |
+| power_w           | Number | Read-only  | Current combined power consumption/production of the controlled Plug-In Batteries.  |
+| target_power_w    | Number | Read-only  | Target power consumption/production of the controlled Plug-In Batteries.            |
+| max_consumption_w | Number | Read-only  | Maximum allowed consumption power of the controlled Plug-In Batteries.              |
+| max_production_w  | Number | Read-only  | Maximum allowed production power of the controlled Plug-In Batteries.               |
+
+## Mode
+
+The group of connected batteries can be controlled in three different modes:
+
+-   `zero` - The Plug-In Battery will try to keep the power consumption/production of your home at zero. This means that the Plug-In Battery will charge or discharge to maintain a net-zero power balance. This is the default mode.
+-   `to_full` - All connected Plug-In Batteries will be charged to 100%, regardless of the power consumption/production of your home. When all batteries are fully charged, the Plug-In Battery will switch to the **zero** mode.
+-   `standby` - Batteries will enter standby mode. This means that the Plug-In Battery will neither charge nor discharge.
+
+### Examples
+
+#### Get Battery Group Information
+
+```shell title="Request"
+curl https://<IP ADDRESS>/api/batteries \
+  --insecure \
+  -H "Authorization: Bearer <TOKEN>" \
+  -H "X-Api-Version: 2"
+```
+
+```http title="Response"
+https/1.1 200 OK
+Content-Type: application/json
+
+{
+    "mode": "zero",
+    "power_w": -404,
+    "target_power_w": -400,
+    "max_consumption_w": 1600,
+    "max_production_w": 800
+}
+```
+
+#### Change Control Mode
+
+```shell title="Request"
+curl https://<IP ADDRESS>/api/batteries \
+  --insecure \
+  -X PUT \
+  -H "Authorization: Bearer <TOKEN>" \
+  -H "X-Api-Version: 2" \
+  -d '{"mode": "to_full"}'
+```
+
+```http title="Response"
+https/1.1 200 OK
+Content-Type: application/json
+
+{
+    "mode": "to_full",
+    "power_w": 1599,
+    "target_power_w": 1600,
+    "max_consumption_w": 1600,
+    "max_production_w": 800
+}
+```
