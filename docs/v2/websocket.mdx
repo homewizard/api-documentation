@@ -67,6 +67,7 @@ After authentication, you can subscribe to topics. Topics correspond to availabl
 -   **`user`** - Subscribe to [user list](/docs/v2/authorization#list-users) updates
 -   **`measurement`** - Subscribe to [measurement](/docs/v2/measurement) updates
 -   **`system`** - Subscribe to [system](/docs/v2/system) updates. Only `cloud_enabled` and `status_led_brightness_pct` are updated in real time.
+-   **`batteries`** - Subscribe to [battery group](/docs/v2/batteries) updates. Only `mode` is updated in real time.
 
 ```json title="Example"
 {"type": "subscribe", "data": "system"}
