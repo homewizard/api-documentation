@@ -9,11 +9,11 @@ import Badge from '@site/src/components/Badge.js'
 # Authorization `/api/user`
 
 {/* prettier-ignore */}
-<Badge color='hw-green' icon='mdi:check' subtext='Requires Firmware 6.00'>P1 Meter</Badge>
-<Badge color='hw-purple' icon='mdi:wrench' subtext='In development'>Energy Socket</Badge>
-<Badge color='hw-purple' icon='mdi:wrench' subtext='In development'>Energy Display</Badge>
-<Badge color='hw-purple' icon='mdi:wrench' subtext='In development'>kWh Meter</Badge>
-<Badge color='hw-purple' icon='mdi:wrench' subtext='In development'>Watermeter</Badge>
+<Badge color='hw-green' icon='mdi:check' subtext='Requires Firmware 6.0000 or later'>P1 Meter</Badge>
+<Badge color='hw-grey' icon='mdi:wrench' subtext='In development'>Energy Socket</Badge>
+<Badge color='hw-grey' icon='mdi:wrench' subtext='In development'>Energy Display</Badge>
+<Badge color='hw-purple' icon='mdi:test-tube' subtext='Requires Firmware 5.0000 or later (in beta)'>kWh Meter</Badge>
+<Badge color='hw-grey' icon='mdi:wrench' subtext='In development'>Watermeter</Badge>
 <Badge color='hw-green' icon='mdi:check' subtext='Supported'>Plug-In Battery</Badge>
 <br />
 <sub>_See [Supported Devices](/docs/introduction#devices) for more information._</sub>
@@ -77,6 +77,10 @@ The response to a successful request will include the following fields:
 
 :::danger
 Keep the token a secret, as it grants full access to the device's data.
+:::
+
+:::important
+Due to hardware limitations, you need to press the wifi-pair button of the **kWh Meter** between **1 to 3 seconds** to authorize the request.
 :::
 
 ### Examples

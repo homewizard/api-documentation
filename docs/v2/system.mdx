@@ -9,11 +9,11 @@ import Badge from '@site/src/components/Badge.js'
 # System `/api/system`
 
 {/* prettier-ignore */}
-<Badge color='hw-green' icon='mdi:check' subtext='Requires Firmware 6.00'>P1 Meter</Badge>
-<Badge color='hw-orange' icon='mdi:check' subtext='Supported in v1'>Energy Socket</Badge>
-<Badge color='hw-purple' icon='mdi:wrench' subtext='In development'>Energy Display</Badge>
-<Badge color='hw-orange' icon='mdi:check' subtext='Supported in v1'>kWh Meter</Badge>
-<Badge color='hw-orange' icon='mdi:check' subtext='Supported in v1'>Watermeter</Badge>
+<Badge color='hw-green' icon='mdi:check' subtext='Requires Firmware 6.0000 or later'>P1 Meter</Badge>
+<Badge color='hw-purple' icon='mdi:check' subtext='Supported in v1'>Energy Socket</Badge>
+<Badge color='hw-grey' icon='mdi:wrench' subtext='In development'>Energy Display</Badge>
+<Badge color='hw-purple' icon='mdi:test-tube' subtext='Requires Firmware 5.0000 or later (in beta)'>kWh Meter</Badge>
+<Badge color='hw-purple' icon='mdi:check' subtext='Supported in v1'>Watermeter</Badge>
 <Badge color='hw-green' icon='mdi:check' subtext='Supported'>Plug-In Battery</Badge>
 <br />
 <sub>_See [Supported Devices](/docs/introduction#devices) for more information._</sub>
@@ -24,21 +24,21 @@ The `/api/system` endpoint can be used to get and set some system information, l
 
 ## Parameters
 
-| Data                                                | Type             | Access     | Description                                                                                     | Availability                                                                                                                                  |
-| --------------------------------------------------- | ---------------- | ---------- | ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| wifi_ssid                                           | String           | Read-only  | The SSID of the Wi-Fi network.                                                                  | <Badge color='hw-green' icon="mdi:check">P1 Meter</Badge> <Badge color='hw-green' icon="mdi:check">Plug-In Battery</Badge>                    |
-| wifi_rssi_db                                        | Number           | Read-only  | The signal strength of the Wi-Fi network.                                                       | <Badge color='hw-green' icon="mdi:check">P1 Meter</Badge> <Badge color='hw-green' icon="mdi:check">Plug-In Battery</Badge>                    |
-| uptime_s                                            | Number           | Read-only  | The uptime of the device in seconds.                                                            | <Badge color='hw-green' icon="mdi:check">P1 Meter</Badge> <Badge color='hw-green' icon="mdi:check">Plug-In Battery</Badge>                    |
-| [cloud_enabled](#cloud-communication)               | Boolean          | Read/Write | The state of the cloud communication.                                                           | <Badge color='hw-green' icon="mdi:check">P1 Meter</Badge> <Badge color='hw-green' icon="mdi:check" detail='read-only'>Plug-In Battery</Badge> |
-| [status_led_brightness_pct](#status-led-brightness) | Number           | Read/Write | The brightness of the status LED in percent.                                                    | <Badge color='hw-green' icon="mdi:check">P1 Meter</Badge> <Badge color='hw-green' icon="mdi:check">Plug-In Battery</Badge>                    |
-| [api_v1_enabled](#enable-or-disable-the-v1-api)     | Optional Boolean | Read/Write | The state of the v1 API, will be removed when API v1 is removed, so this parameter is optional. | <Badge color='hw-green' icon="mdi:check">P1 Meter</Badge> <Badge color='hw-grey' icon="mdi:close">Plug-In Battery</Badge>                     |
+| Data                                                | Type             | Access     | Description                                                                                     | Availability                                                                                                                                                                                             |
+| --------------------------------------------------- | ---------------- | ---------- | ----------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| wifi_ssid                                           | String           | Read-only  | The SSID of the Wi-Fi network.                                                                  | <Badge color='hw-green' icon="mdi:check">P1 Meter</Badge> <Badge color='hw-green' icon="mdi:check">kWh Meter</Badge> <Badge color='hw-green' icon="mdi:check">Plug-In Battery</Badge>                    |
+| wifi_rssi_db                                        | Number           | Read-only  | The signal strength of the Wi-Fi network.                                                       | <Badge color='hw-green' icon="mdi:check">P1 Meter</Badge> <Badge color='hw-green' icon="mdi:check">kWh Meter</Badge> <Badge color='hw-green' icon="mdi:check">Plug-In Battery</Badge>                    |
+| uptime_s                                            | Number           | Read-only  | The uptime of the device in seconds.                                                            | <Badge color='hw-green' icon="mdi:check">P1 Meter</Badge> <Badge color='hw-green' icon="mdi:check">kWh Meter</Badge> <Badge color='hw-green' icon="mdi:check">Plug-In Battery</Badge>                    |
+| [cloud_enabled](#cloud-communication)               | Boolean          | Read/Write | The state of the cloud communication.                                                           | <Badge color='hw-green' icon="mdi:check">P1 Meter</Badge> <Badge color='hw-green' icon="mdi:check">kWh Meter</Badge> <Badge color='hw-green' icon="mdi:check" detail='read-only'>Plug-In Battery</Badge> |
+| [status_led_brightness_pct](#status-led-brightness) | Number           | Read/Write | The brightness of the status LED in percent.                                                    | <Badge color='hw-green' icon="mdi:check">P1 Meter</Badge> <Badge color='hw-grey' icon="mdi:close">kWh Meter</Badge> <Badge color='hw-green' icon="mdi:check">Plug-In Battery</Badge>                     |
+| [api_v1_enabled](#enable-or-disable-the-v1-api)     | Optional Boolean | Read/Write | The state of the v1 API, will be removed when API v1 is removed, so this parameter is optional. | <Badge color='hw-green' icon="mdi:check">P1 Meter</Badge> <Badge color='hw-green' icon="mdi:check">kWh Meter</Badge> <Badge color='hw-grey' icon="mdi:close">Plug-In Battery</Badge>                     |
 
 ## Actions
 
-| Action                | Description                                               | Availability                                                                                                               |
-| --------------------- | --------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| [Reboot](#reboot)     | Reboot the device                                         | <Badge color='hw-green' icon="mdi:check">P1 Meter</Badge> <Badge color='hw-grey' icon="mdi:close">Plug-In Battery</Badge>  |
-| [Identify](#identify) | Let the device identify itself by blinking the status LED | <Badge color='hw-green' icon="mdi:check">P1 Meter</Badge> <Badge color='hw-green' icon="mdi:check">Plug-In Battery</Badge> |
+| Action                | Description                                               | Availability                                                                                                                                                                         |
+| --------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [Reboot](#reboot)     | Reboot the device                                         | <Badge color='hw-green' icon="mdi:check">P1 Meter</Badge> <Badge color='hw-green' icon="mdi:check">kWh Meter</Badge> <Badge color='hw-grey' icon="mdi:close">Plug-In Battery</Badge> |
+| [Identify](#identify) | Let the device identify itself by blinking the status LED | <Badge color='hw-green' icon="mdi:check">P1 Meter</Badge> <Badge color='hw-grey' icon="mdi:close">kWh Meter</Badge> <Badge color='hw-green' icon="mdi:check">Plug-In Battery</Badge> |
 
 ## Plug-In Battery exceptions
 

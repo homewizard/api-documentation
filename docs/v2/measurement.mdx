@@ -10,11 +10,11 @@ import Badge from '@site/src/components/Badge.js'
 # Recent Measurement `/api/measurement`
 
 {/* prettier-ignore */}
-<Badge color='hw-green' icon='mdi:check' subtext='Requires Firmware 6.00'>P1 Meter</Badge>
-<Badge color='hw-orange' icon='mdi:check' subtext='Supported in v1'>Energy Socket</Badge>
-<Badge color='hw-purple' icon='mdi:wrench' subtext='In development'>Energy Display</Badge>
-<Badge color='hw-orange' icon='mdi:check' subtext='Supported in v1'>kWh Meter</Badge>
-<Badge color='hw-orange' icon='mdi:check' subtext='Supported in v1'>Watermeter</Badge>
+<Badge color='hw-green' icon='mdi:check' subtext='Requires Firmware 6.0000 or later'>P1 Meter</Badge>
+<Badge color='hw-purple' icon='mdi:check' subtext='Supported in v1'>Energy Socket</Badge>
+<Badge color='hw-grey' icon='mdi:wrench' subtext='In development'>Energy Display</Badge>
+<Badge color='hw-purple' icon='mdi:test-tube' subtext='Requires Firmware 5.0000 or later (in beta)'>kWh Meter</Badge>
+<Badge color='hw-purple' icon='mdi:check' subtext='Supported in v1'>Watermeter</Badge>
 <Badge color='hw-green' icon='mdi:check' subtext='Supported'>Plug-In Battery</Badge>
 <br />
 <sub>_See [Supported Devices](/docs/introduction#devices) for more information._</sub>
@@ -92,6 +92,64 @@ Timestamps are formatted via a ISO 8601 string (`YYYY-MM-DDTHH:mm:ss`). The time
 ### Capacity Rate (capaciteitstarief) {#capacity-rate}
 
 Belgian users may be charged for the peak usage per month (see <Link to="https://www.fluvius.be/nl/thema/factuur-en-tarieven/capaciteitstarief">capaciteitstarief</Link>). The data points `average_power_15m_w`, `monthly_power_peak_w` and `monthly_power_peak_timestamp` can be used to track the maximum demand.
+
+## kWh Meter 1-Phase (HWE-KWH1 and SDM230-wifi)
+
+### Parameters
+
+| Data               | Type   | Description                                        |
+| ------------------ | ------ | -------------------------------------------------- |
+| energy_import_kwh  | Number | The energy usage meter reading in kWh.             |
+| energy_export_kwh  | Number | The energy feed-in meter reading in kWh.           |
+| power_w            | Number | The total active usage in watt.                    |
+| voltage_v          | Number | The active voltage in volt.                        |
+| current_a          | Number | The active current in ampere.                      |
+| apparent_current_a | Number | The active apparent current in ampere.             |
+| reactive_current_a | Number | The active reactive current in ampere.             |
+| apparent_power_va  | Number | The active apparent power in volt-ampere.          |
+| reactive_power_var | Number | The active reactive power in volt-ampere reactive. |
+| power_factor       | Number | The active power factor.                           |
+| frequency_hz       | Number | Line frequency in hertz.                           |
+
+## kWh Meter 3-Phase (HWE-KWH3 and SDM630-wifi)
+
+### Parameters
+
+| Data                  | Type   | Description                                                                                                                |
+| --------------------- | ------ | -------------------------------------------------------------------------------------------------------------------------- |
+| energy_import_kwh     | Number | The energy usage meter reading in kWh.                                                                                     |
+| energy_export_kwh     | Number | The energy feed-in meter reading in kWh.                                                                                   |
+| power_w               | Number | The total active usage in watt, this value is the sum of all phases, so if l1=200, l2=300, l3=-100 then this value is 400. |
+| power_l1_w            | Number | The active usage for phase 1 in watt, will be negative when exporting.                                                     |
+| power_l2_w            | Number | The active usage for phase 2 in watt, will be negative when exporting.                                                     |
+| power_l3_w            | Number | The active usage for phase 3 in watt, will be negative when exporting.                                                     |
+| voltage_l1_v          | Number | The active voltage for phase 1 in volt.                                                                                    |
+| voltage_l2_v          | Number | The active voltage for phase 2 in volt.                                                                                    |
+| voltage_l3_v          | Number | The active voltage for phase 3 in volt.                                                                                    |
+| current_a             | Number | The active current in ampere, this value is the sum of absolute values, so if l1=2, l2=3, l3=-1 then this value is 6.      |
+| current_l1_a          | Number | The active current for phase 1 in ampere, will be negative when exporting.                                                 |
+| current_l2_a          | Number | The active current for phase 2 in ampere, will be negative when exporting.                                                 |
+| current_l3_a          | Number | The active current for phase 3 in ampere, will be negative when exporting.                                                 |
+| apparent_current_a    | Number | The active apparent current in ampere.                                                                                     |
+| apparent_current_l1_a | Number | The active apparent current for phase 1 in ampere.                                                                         |
+| apparent_current_l2_a | Number | The active apparent current for phase 2 in ampere.                                                                         |
+| apparent_current_l3_a | Number | The active apparent current for phase 3 in ampere.                                                                         |
+| reactive_current_a    | Number | The active reactive current in ampere.                                                                                     |
+| reactive_current_l1_a | Number | The active reactive current for phase 1 in ampere.                                                                         |
+| reactive_current_l2_a | Number | The active reactive current for phase 2 in ampere.                                                                         |
+| reactive_current_l3_a | Number | The active reactive current for phase 3 in ampere.                                                                         |
+| apparent_power_va     | Number | The active apparent power in volt-ampere.                                                                                  |
+| apparent_power_l1_va  | Number | The active apparent power for phase 1 in volt-ampere.                                                                      |
+| apparent_power_l2_va  | Number | The active apparent power for phase 2 in volt-ampere.                                                                      |
+| apparent_power_l3_va  | Number | The active apparent power for phase 3 in volt-ampere.                                                                      |
+| reactive_power_var    | Number | The active reactive power in volt-ampere reactive.                                                                         |
+| reactive_power_l1_var | Number | The active reactive power for phase 1 in volt-ampere reactive.                                                             |
+| reactive_power_l2_var | Number | The active reactive power for phase 2 in volt-ampere reactive.                                                             |
+| reactive_power_l3_var | Number | The active reactive power for phase 3 in volt-ampere reactive.                                                             |
+| power_factor_l1       | Number | The active power factor for phase 1.                                                                                       |
+| power_factor_l2       | Number | The active power factor for phase 2.                                                                                       |
+| power_factor_l3       | Number | The active power factor for phase 3.                                                                                       |
+| frequency_hz          | Number | Line frequency in hertz.                                                                                                   |
 
 ## Plug-In Battery (HWE-BAT)
 
@@ -195,6 +253,84 @@ Content-Type: application/json
          "unit": "m3"
       }
    ]
+}
+```
+
+### HWE-KWH1
+
+```http title="Request"
+curl https://<IP ADDRESS>/api/measurement --insecure \
+  -H "Authorization Bearer <TOKEN>" \
+  -H "X-Api-Version: 2"
+```
+
+```http title="Response"
+https/1.1 200 OK
+
+Content-Type: application/json
+
+{
+   "energy_import_kwh": 123.456,
+   "energy_export_kwh": 78.910,
+   "power_w": 123,
+   "voltage_v": 230,
+   "current_a": 1.5,
+   "apparent_current_a": 1.6,
+   "reactive_current_a": 0.5,
+   "apparent_power_va": 345,
+   "reactive_power_var": 67,
+   "power_factor": 0.95,
+   "frequency_hz": 50
+}
+```
+
+### HWE-KWH3
+
+```http title="Request"
+curl https://<IP ADDRESS>/api/measurement --insecure \
+  -H "Authorization Bearer <TOKEN>" \
+  -H "X-Api-Version: 2"
+```
+
+```http title="Response"
+https/1.1 200 OK
+
+Content-Type: application/json
+
+{
+   "energy_import_kwh": 123.456,
+   "energy_export_kwh": 78.910,
+   "power_w": 123,
+   "power_l1_w": 50,
+   "power_l2_w": 40,
+   "power_l3_w": -30,
+   "voltage_l1_v": 230,
+   "voltage_l2_v": 230,
+   "voltage_l3_v": 230,
+   "current_a": 1.5,
+   "current_l1_a": -0.5,
+   "current_l2_a": 0.8,
+   "current_l3_a": 1.2,
+   "apparent_current_a": 1.6,
+   "apparent_current_l1_a": 0.6,
+   "apparent_current_l2_a": 0.9,
+   "apparent_current_l3_a": 1.3,
+   "reactive_current_a": 0.5,
+   "reactive_current_l1_a": -0.2,
+   "reactive_current_l2_a": 0.3,
+   "reactive_current_l3_a": 0.4,
+   "apparent_power_va": 345,
+   "apparent_power_l1_va": 115,
+   "apparent_power_l2_va": 120,
+   "apparent_power_l3_va": 110,
+   "reactive_power_var": 67,
+   "reactive_power_l1_var": -20,
+   "reactive_power_l2_var": 30,
+   "reactive_power_l3_var": 57,
+   "power_factor_l1": 0.95,
+   "power_factor_l2": 0.90,
+   "power_factor_l3": 0.85,
+   "frequency_hz": 50
 }
 ```
 
