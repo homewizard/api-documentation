@@ -23,7 +23,7 @@ const FeatureList = [
         )
     },
     {
-        title: 'Integrable',
+        title: 'Integratable',
         description: (
             <>
                 The API allows to integrate with other smart home solutions, like <Link to='https://www.home-assistant.io/integrations/homewizard/'>Home Assistant</Link>.
@@ -41,7 +41,9 @@ function Feature({ title, description }) {
     return (
         <div className={clsx('col col--4')}>
             <div className='text--center padding-horiz--md'>
-                <Heading as='h3'>{title}</Heading>
+                <Heading as='h3' className='feature-title'>
+                    {title}
+                </Heading>
                 <p>{description}</p>
             </div>
         </div>

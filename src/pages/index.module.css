@@ -9,40 +9,23 @@ h1 {
 
 .heroBanner {
     padding: 4rem 0;
-    text-align: left;
+    text-align: center;
     position: relative;
     overflow: hidden;
-    color: #111828;
 }
 
 [data-theme='light'] .heroBanner {
-    background: #effaf1;
-    color: #111828;
+    background: #29252f;
+    color: #fbf9ff;
 }
 
 [data-theme='dark'] .heroBanner {
-    background: #b8dbad;
-    color: #111828;
+    background: #29252f;
+    color: #fbf9ff;
 }
 
 @media screen and (max-width: 996px) {
     .heroBanner {
         padding: 2rem;
     }
-}
-
-.buttons {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-}
-
-.buttons a {
-    background-color: #5f6fff;
-    color: #fff;
-    border: none;
-    border-radius: 999px; /* 999px for a pill shape */
-    font-size: 18px;
-    font-weight: 600;
-    font-family: Poppins, sans-serif;
 }

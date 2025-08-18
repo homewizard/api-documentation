@@ -11,12 +11,12 @@ function HomepageHeader() {
         <header className={clsx('hero hero--primary', styles.heroBanner)}>
             <div className='container'>
                 <Heading as='h1' className='hero__title'>
-                    HomeWizard Energy
+                    Local API Documentation.
                 </Heading>
-                <p className='hero__subtitle'>Local API Documentation</p>
+                {/* <p className='hero__subtitle'>Local API Documentation</p> */}
                 <div className={styles.buttons}>
                     <Link className='button button--primary button--lg' to='/docs/introduction'>
-                        Get Started
+                        Get started
                     </Link>
                 </div>
             </div>
