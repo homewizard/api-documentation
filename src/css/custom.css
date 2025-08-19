@@ -15,6 +15,12 @@
     --ifm-code-font-size: 95%;
     --ifm-link-color: #3e3849;
     --ifm-font-color-base: #111828;
+
+    --ifm-menu-color: #fbf9ff;
+    --ifm-menu-color-active: #18eca9;
+
+    --ifm-navbar-link-color: #fbf9ff;
+
     --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 
     --hw-button-background: linear-gradient(90deg, #20f29b 0%, #02dace 100%);
@@ -56,6 +62,18 @@
     --hw-button-hover-background: linear-gradient(90deg, #18eca9 0%, #18eca9 100%);
     --hw-button-hover-color: #3e3849;
     --hw-button-secondary-shadow: 0px 2px 5px 0px #ebe6f44d;
+}
+
+.navbar {
+    background-color: #29252f;
+}
+
+.menu__link--active {
+    font-weight: 800;
+}
+
+.theme-doc-sidebar-container {
+    background-color: #29252f;
 }
 
 .footer {
@@ -103,4 +121,9 @@
 .button--secondary:hover {
     background: var(--hw-button-secondary-hover-background);
     color: var(--hw-button-secondary-hover-color) !important;
+}
+
+a:hover {
+    font-weight: 800;
+    /* font-stretch: 77%; */
 }

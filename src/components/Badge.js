@@ -2,25 +2,22 @@ import React from 'react'
 
 import { Icon } from '@iconify/react' // Import the entire Iconify library.
 
-export default function Badge({ children, icon, color, subtext = null, detail = null }) {
-    switch (color) {
-        case 'hw-orange':
-            color = '#ff7100'
-            break
-        case 'hw-blue':
-            color = '#37baff'
+export default function Badge({ children, icon, colorName, subtext = null, detail = null }) {
+    let background, color
+
+    switch (colorName) {
+        // case 'hw-purple':
+        //     background = '#aa00fe'
+        //     color = '#fff'
+        //     break
+        case 'hw-green':
+            background = 'linear-gradient(90deg, #20f29b 0%, #02dace 100%)'
+            color = '#3E3849'
             break
         case 'hw-grey':
-            color = '#7c7c7c'
-            break
-        case 'hw-purple':
-            color = '#aa00fe'
-            break
-        case 'hw-green':
-            color = '#2fc052'
-            break
-        case 'hw-red':
-            color = '#ff0072'
+        default:
+            background = '#7c7c7c'
+            color = '#fff'
             break
     }
 
@@ -32,17 +29,17 @@ export default function Badge({ children, icon, color, subtext = null, detail = 
         >
             <span
                 style={{
-                    // display: 'inline-block',
-                    backgroundColor: color,
-                    borderRadius: '99px',
-                    color: '#fff',
+                    background: background,
+                    borderRadius: '8px',
+                    color: color,
                     padding: '0.1rem 0.5rem',
                     marginBottom: '0.2rem',
                     whiteSpace: 'nowrap',
                     width: 'auto',
                     display: 'flex',
                     justifyContent: 'space-between',
-                    alignItems: 'flex-start'
+                    alignItems: 'flex-start',
+                    fontFamily: 'Poppins, sans-serif'
                 }}
             >
                 {/* Left */}
@@ -91,7 +88,7 @@ export default function Badge({ children, icon, color, subtext = null, detail = 
                 {detail && (
                     <span
                         style={{
-                            backgroundColor: 'rgba(255, 255, 255, 0.9)', // Darker background color
+                            background: 'rgba(255, 255, 255, 0.9)', // Darker background color
                             borderRadius: '99px',
                             color: '#111828',
                             fontWeight: 'bold',
