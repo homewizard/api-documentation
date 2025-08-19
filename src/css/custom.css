@@ -79,6 +79,19 @@
     border: none;
 }
 
+.navbar-sidebar {
+    background-color: #29252f;
+}
+
+.navbar-sidebar__close {
+    background-color: #29252f !important;
+}
+
+.navbar__toggle {
+    background-color: #29252f !important;
+    color: #fbf9ff !important;
+}
+
 .hero__subtitle {
     font-style: italic;
 }
