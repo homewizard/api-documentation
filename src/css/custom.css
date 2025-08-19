@@ -21,6 +21,8 @@
 
     --ifm-navbar-link-color: #fbf9ff;
 
+    --ifm-breadcrumb-color-active: #3e3849;
+
     --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 
     --hw-button-background: linear-gradient(90deg, #20f29b 0%, #02dace 100%);
@@ -52,6 +54,8 @@
     --ifm-footer-background-color: #151318;
     --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 
+    --ifm-breadcrumb-color-active: #fbf9ff;
+
     --hw-button-background: linear-gradient(90deg, #20f29b 0%, #02dace 100%);
     --hw-button-color: #3e3849;
     --hw-button-shadow: 0px 2px 5px 0px rgba(16, 229, 180, 0.3);
@@ -66,12 +70,17 @@
 
 .navbar {
     background-color: #29252f;
+    border-bottom: 1px solid #3e3849;
 }
 
 [data-theme='light'] .navbar button {
     background-color: #fbf9ff;
     color: #29252f;
     border: none;
+}
+
+.hero__subtitle {
+    font-style: italic;
 }
 
 .menu__link--active {
@@ -84,6 +93,7 @@
 
 .footer {
     --ifm-footer-background-color: #151318;
+    border-top: 1px solid #3e3849;
 }
 
 .footer-dark {
@@ -92,6 +102,16 @@
 
 .theme-doc-markdown a {
     text-decoration: underline;
+}
+
+h2,
+h3 {
+    color: #cabbe7;
+}
+
+[data-theme='light'] h2,
+h3 {
+    color: hsl(260, 48%, 78%);
 }
 
 .button {
@@ -129,7 +149,10 @@
     color: var(--hw-button-secondary-hover-color) !important;
 }
 
+a {
+    font-weight: 600;
+}
+
 a:hover {
     font-weight: 800;
-    /* font-stretch: 77%; */
 }

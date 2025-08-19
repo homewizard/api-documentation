@@ -29,3 +29,35 @@ h1 {
         padding: 2rem;
     }
 }
+
+.headerGrid {
+    display: grid;
+    grid-template-areas:
+        'title title'
+        'subtitle button';
+    grid-template-columns: 1fr auto;
+    gap: 0.5rem 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.headerTitle {
+    grid-area: title;
+    padding-bottom: 2rem;
+}
+
+.headerSubtitle {
+    grid-area: subtitle;
+    max-width: 300px;
+    word-wrap: break-word;
+    text-align: left;
+    font-size: large;
+}
+
+.headerButton {
+    grid-area: button;
+    max-width: 300px;
+    justify-self: end;
+    margin-top: 8px;
+}
