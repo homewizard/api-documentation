@@ -68,6 +68,12 @@
     background-color: #29252f;
 }
 
+[data-theme='light'] .navbar button {
+    background-color: #fbf9ff;
+    color: #29252f;
+    border: none;
+}
+
 .menu__link--active {
     font-weight: 800;
 }
