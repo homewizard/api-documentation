@@ -5,7 +5,7 @@
 :root {
     --ifm-background-color: #fbf9ff;
 
-    --ifm-color-primary: #3ea56c;
+    --ifm-color-primary: #3e3849;
     --ifm-color-primary-dark: #29784c;
     --ifm-color-primary-darker: #277148;
     --ifm-color-primary-darkest: #205d3b;
@@ -66,6 +66,26 @@
     --hw-button-hover-background: linear-gradient(90deg, #18eca9 0%, #18eca9 100%);
     --hw-button-hover-color: #3e3849;
     --hw-button-secondary-shadow: 0px 2px 5px 0px #ebe6f44d;
+}
+
+[data-theme='light'] .table-of-contents__link--active {
+    font-weight: 800;
+    color: #3e3849;
+}
+
+[data-theme='dark'] .table-of-contents__link--active {
+    font-weight: 800;
+    color: #fbf9ff;
+}
+
+.table-of-contents__link--active:hover {
+    font-weight: 1000;
+    color: #3e3849;
+}
+
+[data-theme='dark'] .table-of-contents__link:hover {
+    font-weight: 800;
+    color: #fbf9ff;
 }
 
 .navbar {
