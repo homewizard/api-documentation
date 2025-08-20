@@ -1,18 +1,19 @@
 ---
+title: Getting Started
 sidebar_position: 2
 ---
 
 import Link from '@docusaurus/Link'
 
-# Getting Started
+# Getting Started.
 
 This guide will help you get started with the HomeWizard Energy API.
 
-## Choosing the Right API Version
+## Choosing the Right API Version.
 
 The HomeWizard Energy API has two versions: v1 and v2. The v1 API is available as long as feasible, but will be phased out. The v2 API is the stable version and is recommended to be used. Skip to [getting started with v2](#getting-started-with-v2) if you want to use the v2 API.
 
-## Getting Started with v1
+## Getting Started with v1.
 
 ### 1. Connect your Device to Wi-Fi
 
@@ -87,6 +88,6 @@ curl https://<IP ADDRESS>/api/user --insecure -X POST -d '{"name": "local/cool-n
 
 3. You can use this data, and many more, to build your own application. For more information, see the [v2 documentation](/docs/category/api-v2).
 
-## Data Update Frequency
+## Data Update Frequency.
 
 The API always returns the most recent data. The update frequency depends on the device and, in case of the HWE-P1, the smart meter that it is connected to. With a DSMR 5.0 meter, this is every second for power and every 5 minutes for gas. If the smart meter version is lower than DSMR 5.0, this is every 10 seconds for power and every 60 minutes for gas. You can find the DSMR version of your smart meter on the smart meter itself or via the [recent measurement endpoint](/docs/v1/measurement). There is no limit to the time between each request on the local API, however, we advise not to retrieve data more often than every 500ms.

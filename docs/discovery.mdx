@@ -1,30 +1,31 @@
 ---
+title: Discovery
 sidebar_position: 3
 ---
 
 import Link from '@docusaurus/Link'
 import Badge from '@site/src/components/Badge.js'
 
-# Discovery
+# Discovery.
 
 Energy devices can be automatically discovered on your network using <Link to="https://datatracker.ietf.org/doc/html/rfc6762">Multicast DNS</Link> (also known as `mDNS`, `Zeroconf`, or `Bonjour`). This technology enables your application to discover devices without requiring the user to know the IP address.
 
-## Services
+## Services.
 
 Devices can broadcast one or two services on the network, depending on the available API version(s) of this device:
 
 -   `_hwenergy._tcp` - to discover devices that are using API v1 over HTTP
 -   `_homewizard._tcp` - to discover devices that are using API v2 and later over HTTPS
 
-## `_hwenergy._tcp`
+## `_hwenergy._tcp`.
 
 {/* prettier-ignore */}
-<Badge color='hw-green' icon="mdi:check" subtext="Supported">P1 Meter</Badge>
-<Badge color='hw-green' icon="mdi:check" subtext="Supported">Energy Socket</Badge>
-<Badge color='hw-grey' icon="mdi:close" subtext="Not supported">Energy Display</Badge>
-<Badge color='hw-green' icon="mdi:check" subtext="Supported">kWh Meter</Badge>
-<Badge color='hw-green' icon="mdi:check" subtext="Supported">Watermeter</Badge>
-<Badge color='hw-grey' icon="mdi:close" subtext="Not supported">Plug-In Battery</Badge>
+<Badge colorName='hw-green' icon="mdi:check" subtext="Supported">P1 Meter</Badge>
+<Badge colorName='hw-green' icon="mdi:check" subtext="Supported">Energy Socket</Badge>
+<Badge colorName='hw-grey' icon="mdi:close" subtext="Not supported">Energy Display</Badge>
+<Badge colorName='hw-green' icon="mdi:check" subtext="Supported">kWh Meter</Badge>
+<Badge colorName='hw-green' icon="mdi:check" subtext="Supported">Watermeter</Badge>
+<Badge colorName='hw-grey' icon="mdi:close" subtext="Not supported">Plug-In Battery</Badge>
 
 ---
 
@@ -42,15 +43,15 @@ A discovery response contains additional data to enhance the setup in your appli
 | product_name | A user-friendly name that may change at any time.                                                                                                                      |
 | product_type | The product type; refer to [supported devices](/docs/introduction#devices). Your application should support additional values for future products.                     |
 
-## `_homewizard._tcp`
+## `_homewizard._tcp`.
 
 {/* prettier-ignore */}
-<Badge color='hw-green' icon="mdi:check" subtext="Requires Firmware 6.00">P1 Meter</Badge>
-<Badge color='hw-grey'  icon="mdi:wrench" subtext="In development">Energy Socket</Badge>
-<Badge color='hw-grey' icon="mdi:wrench" subtext="In development">Energy Display</Badge>
-<Badge color='hw-purple'  icon="mdi:test-tube" subtext="Requires Firmware 5.0000 or later (in beta)">kWh Meter</Badge>
-<Badge color='hw-grey'  icon="mdi:wrench" subtext="In development">Watermeter</Badge>
-<Badge color='hw-green' icon="mdi:check" subtext="Supported">Plug-In Battery</Badge>
+<Badge colorName='hw-green' icon="mdi:check" subtext="Requires Firmware 6.00">P1 Meter</Badge>
+<Badge colorName='hw-grey'  icon="mdi:wrench" subtext="In development">Energy Socket</Badge>
+<Badge colorName='hw-grey' icon="mdi:wrench" subtext="In development">Energy Display</Badge>
+<Badge colorName='hw-purple'  icon="mdi:test-tube" subtext="Requires Firmware 5.0000 or later (in beta)">kWh Meter</Badge>
+<Badge colorName='hw-grey'  icon="mdi:wrench" subtext="In development">Watermeter</Badge>
+<Badge colorName='hw-green' icon="mdi:check" subtext="Supported">Plug-In Battery</Badge>
 
 ---
 
@@ -68,7 +69,7 @@ A discovery response includes additional data to enhance the setup in your appli
 | product_name | A user-friendly name that may change at any time.                                                                                                  |
 | product_type | The product type; refer to [supported devices](/docs/introduction#devices). Your application should support additional values for future products. |
 
-## Example
+## Example.
 
 Run the following command to discover devices on your network: `dns-sd -B _hwenergy._tcp .`
 

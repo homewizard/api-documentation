@@ -9,20 +9,19 @@ h1 {
 
 .heroBanner {
     padding: 4rem 0;
-    text-align: left;
+    text-align: center;
     position: relative;
     overflow: hidden;
-    color: #111828;
 }
 
 [data-theme='light'] .heroBanner {
-    background: #effaf1;
-    color: #111828;
+    background: #29252f;
+    color: #fbf9ff;
 }
 
 [data-theme='dark'] .heroBanner {
-    background: #b8dbad;
-    color: #111828;
+    background: #29252f;
+    color: #fbf9ff;
 }
 
 @media screen and (max-width: 996px) {
@@ -31,18 +30,34 @@ h1 {
     }
 }
 
-.buttons {
-    display: flex;
-    align-items: center;
-    justify-content: left;
+.headerGrid {
+    display: grid;
+    grid-template-areas:
+        'title title'
+        'subtitle button';
+    grid-template-columns: 1fr auto;
+    gap: 0.5rem 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 1rem;
 }
 
-.buttons a {
-    background-color: #5f6fff;
-    color: #fff;
-    border: none;
-    border-radius: 999px; /* 999px for a pill shape */
-    font-size: 18px;
-    font-weight: 600;
-    font-family: Poppins, sans-serif;
+.headerTitle {
+    grid-area: title;
+    padding-bottom: 2rem;
+}
+
+.headerSubtitle {
+    grid-area: subtitle;
+    max-width: 300px;
+    word-wrap: break-word;
+    text-align: left;
+    font-size: large;
+}
+
+.headerButton {
+    grid-area: button;
+    max-width: 300px;
+    justify-self: end;
+    margin-top: 8px;
 }

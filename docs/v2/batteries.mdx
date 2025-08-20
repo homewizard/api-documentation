@@ -6,15 +6,15 @@ description: Enable and disable cloud communication.
 
 import Badge from '@site/src/components/Badge.js'
 
-# Batteries `/api/batteries`
+# Batteries `/api/batteries`.
 
 {/* prettier-ignore */}
-<Badge color='hw-purple' icon='mdi:test-tube' subtext='Requires Firmware 6.0200 or later (in beta)'>P1 Meter</Badge>
-<Badge color='hw-grey' icon='mdi:close' subtext='Not supported'>Energy Socket</Badge>
-<Badge color='hw-grey' icon='mdi:close' subtext='Not supported'>Energy Display</Badge>
-<Badge color='hw-purple' icon='mdi:test-tube' subtext='Requires Firmware 5.0000 or later (in beta)'>kWh Meter</Badge>
-<Badge color='hw-grey' icon='mdi:close' subtext='Not supported'>Water Meter</Badge>
-<Badge color='hw-grey' icon='mdi:close' subtext='Not supported'>Plug-In Battery</Badge>
+<Badge colorName='hw-purple' icon='mdi:test-tube' subtext='Requires Firmware 6.0200 or later (in beta)'>P1 Meter</Badge>
+<Badge colorName='hw-grey' icon='mdi:close' subtext='Not supported'>Energy Socket</Badge>
+<Badge colorName='hw-grey' icon='mdi:close' subtext='Not supported'>Energy Display</Badge>
+<Badge colorName='hw-purple' icon='mdi:test-tube' subtext='Requires Firmware 5.0000 or later (in beta)'>kWh Meter</Badge>
+<Badge colorName='hw-grey' icon='mdi:close' subtext='Not supported'>Water Meter</Badge>
+<Badge colorName='hw-grey' icon='mdi:close' subtext='Not supported'>Plug-In Battery</Badge>
 <br />
 <sub>_See [Supported Devices](/docs/introduction#devices) for more information._</sub>
 
@@ -32,7 +32,7 @@ The `/api/batteries` endpoint can be used to retrieve information about the cont
 | max_consumption_w | Number | Read-only  | Maximum allowed consumption power of the controlled Plug-In Batteries.              |
 | max_production_w  | Number | Read-only  | Maximum allowed production power of the controlled Plug-In Batteries.               |
 
-## Mode
+## Mode.
 
 The group of connected batteries can be controlled in three different modes:
 

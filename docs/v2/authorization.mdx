@@ -6,15 +6,15 @@ description: Get a token to authenticate requests to the HomeWizard Energy API.
 
 import Badge from '@site/src/components/Badge.js'
 
-# Authorization `/api/user`
+# Authorization `/api/user`.
 
 {/* prettier-ignore */}
-<Badge color='hw-green' icon='mdi:check' subtext='Requires Firmware 6.0000 or later'>P1 Meter</Badge>
-<Badge color='hw-grey' icon='mdi:wrench' subtext='In development'>Energy Socket</Badge>
-<Badge color='hw-grey' icon='mdi:wrench' subtext='In development'>Energy Display</Badge>
-<Badge color='hw-purple' icon='mdi:test-tube' subtext='Requires Firmware 5.0000 or later (in beta)'>kWh Meter</Badge>
-<Badge color='hw-grey' icon='mdi:wrench' subtext='In development'>Watermeter</Badge>
-<Badge color='hw-green' icon='mdi:check' subtext='Supported'>Plug-In Battery</Badge>
+<Badge colorName='hw-green' icon='mdi:check' subtext='Requires Firmware 6.0000 or later'>P1 Meter</Badge>
+<Badge colorName='hw-grey' icon='mdi:wrench' subtext='In development'>Energy Socket</Badge>
+<Badge colorName='hw-grey' icon='mdi:wrench' subtext='In development'>Energy Display</Badge>
+<Badge colorName='hw-purple' icon='mdi:test-tube' subtext='Requires Firmware 5.0000 or later (in beta)'>kWh Meter</Badge>
+<Badge colorName='hw-grey' icon='mdi:wrench' subtext='In development'>Watermeter</Badge>
+<Badge colorName='hw-green' icon='mdi:check' subtext='Supported'>Plug-In Battery</Badge>
 <br />
 <sub>_See [Supported Devices](/docs/introduction#devices) for more information._</sub>
 
@@ -22,7 +22,7 @@ import Badge from '@site/src/components/Badge.js'
 
 The HomeWizard Energy API requires a Bearer token to authorize requests. This token should be included in the `Authorization` header of each request. To get a token you must create a user on the device.
 
-## Create User and get Token
+## Create User and get Token.
 
 A user is created by sending a POST /api/user request when they press the button on the device. This action confirms that the user has possession of the device and that the application is authenticated to generate a token. Once these steps are completed, a token is returned which is used to authorize for future requests.
 
@@ -158,7 +158,7 @@ Content-Type: application/json
 }
 ```
 
-## List Users {#list-users}
+## List Users {#list-users}.
 
 To list all users, send a `GET /api/user` request.
 
@@ -183,7 +183,7 @@ Content-Type: application/json
 ]
 ```
 
-## Delete a User {#delete-user}
+## Delete a User {#delete-user}.
 
 To delete a user, send a `DELETE /api/user` request with the user's name including the prefix. Deleting a user will invalidate the token.
 
@@ -204,7 +204,7 @@ https/1.1 204 No Content
 Content-Length: 0
 ```
 
-## Local and Cloud Users
+## Local and Cloud Users.
 
 The local API is used by HomeWizard to enable direct communication between HomeWizard devices on a local network. To simplify setup for non-technical users, tokens can also be generated via the HomeWizard Energy app or background process using the cloud.
 
@@ -214,7 +214,7 @@ The local API is used by HomeWizard to enable direct communication between HomeW
 -   Users created via the cloud can be revoked at any time, either by the cloud itself or through the [`DELETE /api/user`](#delete-user) endpoint.
 -   Disabling the cloud prevents the generation of cloud-generated users. For more details, see [cloud communication](/docs/v2/system#cloud-communication).
 
-## SSL Certificate Validation (HTTPS) {#https}
+## SSL Certificate Validation (HTTPS) {#https}.
 
 ### Certificate
 

@@ -6,15 +6,15 @@ description: Get the most recent, raw telegram from the P1 Meter.
 
 import Badge from '@site/src/components/Badge.js'
 
-# Telegram (`/api/v1/telegram`)
+# Telegram (`/api/v1/telegram`).
 
 {/* prettier-ignore */}
-<Badge color='hw-green' icon='mdi:check' subtext='Supported'>P1 Meter</Badge>
-<Badge color='hw-grey' icon='mdi:close' subtext='Not supported'> Energy Socket</Badge>
-<Badge color='hw-grey' icon='mdi:close' subtext='Not supported'> Energy Display</Badge>
-<Badge color='hw-grey' icon='mdi:close' subtext='Not supported'> kWh Meter</Badge>
-<Badge color='hw-grey' icon='mdi:close' subtext='Not supported'> Watermeter</Badge>
-<Badge color='hw-grey' icon='mdi:close' subtext='Not supported'> Plug-In Battery</Badge>
+<Badge colorName='hw-green' icon='mdi:check' subtext='Supported'>P1 Meter</Badge>
+<Badge colorName='hw-grey' icon='mdi:close' subtext='Not supported'> Energy Socket</Badge>
+<Badge colorName='hw-grey' icon='mdi:close' subtext='Not supported'> Energy Display</Badge>
+<Badge colorName='hw-grey' icon='mdi:close' subtext='Not supported'> kWh Meter</Badge>
+<Badge colorName='hw-grey' icon='mdi:close' subtext='Not supported'> Watermeter</Badge>
+<Badge colorName='hw-grey' icon='mdi:close' subtext='Not supported'> Plug-In Battery</Badge>
 <br />
 <sub>_See [Supported Devices](/docs/introduction#devices) for more information._</sub>
 
@@ -26,7 +26,7 @@ The `/api/v1/telegram` endpoint returns the most recent, valid telegram that was
 -   The telegram is not processed in any other form, and can be used by other systems to process the data.
 -   If you need parsed data, use the [measurement](/docs/v1/measurement) endpoint.
 
-## Example
+## Example.
 
 ```http title="Request"
 curl http://<IP ADDRESS>/api/v1/telegram

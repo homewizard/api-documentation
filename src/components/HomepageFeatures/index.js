@@ -6,7 +6,7 @@ import WWHA from '@site/static/img/wwha-badge.png'
 
 const FeatureList = [
     {
-        title: 'Local',
+        title: 'Local.',
         description: (
             <>
                 The HomeWizard Energy API is available on your local network. This means that you can use it without an internet connection. You can even turn off the connection with the <Link to='/docs/v1/system'>cloud</Link>.
@@ -14,7 +14,7 @@ const FeatureList = [
         )
     },
     {
-        title: 'Easy to use',
+        title: 'Easy to use.',
         description: (
             <>
                 The API is easy to use. You can use it with any programming language that supports HTTP requests. Use our official <Link to='https://github.com/homewizard/python-homewizard-energy'>Python library</Link> or{' '}
@@ -23,7 +23,7 @@ const FeatureList = [
         )
     },
     {
-        title: 'Integrable',
+        title: 'Integratable.',
         description: (
             <>
                 The API allows to integrate with other smart home solutions, like <Link to='https://www.home-assistant.io/integrations/homewizard/'>Home Assistant</Link>.
@@ -41,7 +41,9 @@ function Feature({ title, description }) {
     return (
         <div className={clsx('col col--4')}>
             <div className='text--center padding-horiz--md'>
-                <Heading as='h3'>{title}</Heading>
+                <Heading as='h3' className='feature-title'>
+                    {title}
+                </Heading>
                 <p>{description}</p>
             </div>
         </div>

@@ -7,15 +7,15 @@ description: Get real-time updates from the device.
 import Link from '@docusaurus/Link'
 import Badge from '@site/src/components/Badge.js'
 
-# WebSocket `/api/ws`
+# WebSocket `/api/ws`.
 
 {/* prettier-ignore */}
-<Badge color='hw-green' icon='mdi:check' subtext='Requires Firmware 6.0000 or later'>P1 Meter</Badge>
-<Badge color='hw-grey' icon='mdi:wrench' subtext='In development'>Energy Socket</Badge>
-<Badge color='hw-grey' icon='mdi:wrench' subtext='In development'>Energy Display</Badge>
-<Badge color='hw-purple' icon='mdi:test-tube' subtext='Requires Firmware 5.0000 or later (in beta)'>kWh Meter</Badge>
-<Badge color='hw-grey' icon='mdi:wrench' subtext='In development'>Watermeter</Badge>
-<Badge color='hw-green' icon='mdi:check' subtext='Supported'>Plug-In Battery</Badge>
+<Badge colorName='hw-green' icon='mdi:check' subtext='Requires Firmware 6.0000 or later'>P1 Meter</Badge>
+<Badge colorName='hw-grey' icon='mdi:wrench' subtext='In development'>Energy Socket</Badge>
+<Badge colorName='hw-grey' icon='mdi:wrench' subtext='In development'>Energy Display</Badge>
+<Badge colorName='hw-purple' icon='mdi:test-tube' subtext='Requires Firmware 5.0000 or later (in beta)'>kWh Meter</Badge>
+<Badge colorName='hw-grey' icon='mdi:wrench' subtext='In development'>Watermeter</Badge>
+<Badge colorName='hw-green' icon='mdi:check' subtext='Supported'>Plug-In Battery</Badge>
 <br />
 <sub>_See [Supported Devices](/docs/introduction#devices) for more information._</sub>
 
@@ -23,7 +23,7 @@ import Badge from '@site/src/components/Badge.js'
 
 The HomeWizard Energy WebSocket API allows you to receive real-time updates from the device. The WebSocket lets you subscribe to specific topics and receive updates when data changes.
 
-## Structure
+## Structure.
 
 All data packages, in both directions, are formatted in JSON and contain a `type` field and an optional `data` field. The data type can be any valid JSON format.
 
@@ -41,7 +41,7 @@ When no data needs to be sent, the data field can be omitted.
 { "type": "identify" }
 ```
 
-## Commands
+## Commands.
 
 ### Connect and Authorize
 
@@ -109,7 +109,7 @@ To blink the device LED, send an identify command. The LED will blink for a few 
 { "type": "identify" }
 ```
 
-## Error Handling
+## Error Handling.
 
 When an error occurs, the device sends an error message. The message contains an `error` field with a description of the error, matching the error structure of the [v2 API errors](/docs/v2/error-handling).
 

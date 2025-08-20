@@ -9,14 +9,14 @@ import styles from './index.module.css'
 function HomepageHeader() {
     return (
         <header className={clsx('hero hero--primary', styles.heroBanner)}>
-            <div className='container'>
-                <Heading as='h1' className='hero__title'>
-                    HomeWizard Energy
+            <div className={styles.headerGrid}>
+                <Heading as='h1' className={styles.headerTitle}>
+                    Local API Documentation
                 </Heading>
-                <p className='hero__subtitle'>Local API Documentation</p>
-                <div className={styles.buttons}>
+                <p className={styles.headerSubtitle}>Control your HomeWizard Energy devices with the Local API.</p>
+                <div className={styles.headerButton}>
                     <Link className='button button--primary button--lg' to='/docs/introduction'>
-                        Get Started
+                        Get started
                     </Link>
                 </div>
             </div>

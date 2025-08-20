@@ -1,19 +1,20 @@
 ---
+title: Error Handling
 sidebar_position: 7
 description: Learn how to handle errors when using the HomeWizard Energy API.
 ---
 
 import Badge from '@site/src/components/Badge.js'
 
-# Error Handling
+# Error Handling.
 
 {/* prettier-ignore */}
-<Badge color='hw-green' icon='mdi:check' subtext='Requires Firmware 6.0000 or later'>P1 Meter</Badge>
-<Badge color='hw-purple' icon='mdi:check' subtext='Supported in v1'>Energy Socket</Badge>
-<Badge color='hw-grey' icon='mdi:wrench' subtext='In development'>Energy Display</Badge>
-<Badge color='hw-purple' icon='mdi:test-tube' subtext='Requires Firmware 5.0000 or later (in beta)'>kWh Meter</Badge>
-<Badge color='hw-purple' icon='mdi:check' subtext='Supported in v1'>Watermeter</Badge>
-<Badge color='hw-green' icon='mdi:check' subtext='Supported'>Plug-In Battery</Badge>
+<Badge colorName='hw-green' icon='mdi:check' subtext='Requires Firmware 6.0000 or later'>P1 Meter</Badge>
+<Badge colorName='hw-purple' icon='mdi:check' subtext='Supported in v1'>Energy Socket</Badge>
+<Badge colorName='hw-grey' icon='mdi:wrench' subtext='In development'>Energy Display</Badge>
+<Badge colorName='hw-purple' icon='mdi:test-tube' subtext='Requires Firmware 5.0000 or later (in beta)'>kWh Meter</Badge>
+<Badge colorName='hw-purple' icon='mdi:check' subtext='Supported in v1'>Watermeter</Badge>
+<Badge colorName='hw-green' icon='mdi:check' subtext='Supported'>Plug-In Battery</Badge>
 <br />
 <sub>_See [Supported Devices](/docs/introduction#devices) for more information._</sub>
 
@@ -22,7 +23,7 @@ import Badge from '@site/src/components/Badge.js'
 When you perform an invalid request or something went wrong, the API will respond with an error message. You have to check if the HTTP status code returns `200 OK` before parsing the result or `204 No Content` if you expect no content (actions and set requests).
 If you use an endpoint that returns JSON, you also will receive an object with some error information.
 
-## Error Codes
+## Error Codes.
 
 Each error is represented as a set of 'scope' and 'error' fields. The 'scope' field indicates the part of the request that caused the error, and the 'error' field provides a description of the error. For example `user:name-invalid` if you provide an invalid name for the user during the authorization flow.
 
@@ -54,7 +55,7 @@ Each error is represented as a set of 'scope' and 'error' fields. The 'scope' fi
 The list of error codes may be extended in the future. We recommend that you prepare for new error codes by having a generic error handling mechanism in place.
 :::
 
-## Examples
+## Examples.
 
 ### Not Authenticated
 

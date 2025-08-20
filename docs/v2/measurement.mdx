@@ -7,15 +7,15 @@ description: Get the most recent measurement from the device.
 import Link from '@docusaurus/Link'
 import Badge from '@site/src/components/Badge.js'
 
-# Recent Measurement `/api/measurement`
+# Recent Measurement `/api/measurement`.
 
 {/* prettier-ignore */}
-<Badge color='hw-green' icon='mdi:check' subtext='Requires Firmware 6.0000 or later'>P1 Meter</Badge>
-<Badge color='hw-purple' icon='mdi:check' subtext='Supported in v1'>Energy Socket</Badge>
-<Badge color='hw-grey' icon='mdi:wrench' subtext='In development'>Energy Display</Badge>
-<Badge color='hw-purple' icon='mdi:test-tube' subtext='Requires Firmware 5.0000 or later (in beta)'>kWh Meter</Badge>
-<Badge color='hw-purple' icon='mdi:check' subtext='Supported in v1'>Watermeter</Badge>
-<Badge color='hw-green' icon='mdi:check' subtext='Supported'>Plug-In Battery</Badge>
+<Badge colorName='hw-green' icon='mdi:check' subtext='Requires Firmware 6.0000 or later'>P1 Meter</Badge>
+<Badge colorName='hw-purple' icon='mdi:check' subtext='Supported in v1'>Energy Socket</Badge>
+<Badge colorName='hw-grey' icon='mdi:wrench' subtext='In development'>Energy Display</Badge>
+<Badge colorName='hw-purple' icon='mdi:test-tube' subtext='Requires Firmware 5.0000 or later (in beta)'>kWh Meter</Badge>
+<Badge colorName='hw-purple' icon='mdi:check' subtext='Supported in v1'>Watermeter</Badge>
+<Badge colorName='hw-green' icon='mdi:check' subtext='Supported'>Plug-In Battery</Badge>
 <br />
 <sub>_See [Supported Devices](/docs/introduction#devices) for more information._</sub>
 
@@ -23,7 +23,7 @@ import Badge from '@site/src/components/Badge.js'
 
 The `/api/measurement` endpoint allows you to get the most recent measurement from the device.
 
-## P1 Meter (HWE-P1)
+## P1 Meter (HWE-P1).
 
 All data points are "optional"; The API does not send data points that are `null` or not available at all. This mostly depends on the connected smart meter. Make sure your application can handle this.
 
@@ -111,7 +111,7 @@ Belgian users may be charged for the peak usage per month (see <Link to="https:/
 | power_factor       | Number | The active power factor.                           |
 | frequency_hz       | Number | Line frequency in hertz.                           |
 
-## kWh Meter 3-Phase (HWE-KWH3 and SDM630-wifi)
+## kWh Meter 3-Phase (HWE-KWH3 and SDM630-wifi).
 
 ### Parameters
 
@@ -151,7 +151,7 @@ Belgian users may be charged for the peak usage per month (see <Link to="https:/
 | power_factor_l3       | Number | The active power factor for phase 3.                                                                                       |
 | frequency_hz          | Number | Line frequency in hertz.                                                                                                   |
 
-## Plug-In Battery (HWE-BAT)
+## Plug-In Battery (HWE-BAT).
 
 ### Parameters
 

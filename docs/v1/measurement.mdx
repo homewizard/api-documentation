@@ -8,15 +8,15 @@ toc_max_heading_level: 4
 import Link from '@docusaurus/Link'
 import Badge from '@site/src/components/Badge.js'
 
-# Recent Measurement (`/api/v1/data`)
+# Recent Measurement (`/api/v1/data`).
 
 {/* prettier-ignore */}
-<Badge color='hw-green' icon='mdi:check' subtext='Supported'>P1 Meter</Badge>
-<Badge color='hw-green' icon='mdi:check' subtext='Supported'>Energy Socket</Badge>
-<Badge color='hw-grey' icon='mdi:close' subtext='Not supported'>Energy Display</Badge>
-<Badge color='hw-green' icon='mdi:check' subtext='Supported'>kWh Meter</Badge>
-<Badge color='hw-green' icon='mdi:check' subtext='Supported'>Watermeter</Badge>
-<Badge color='hw-purple' icon='mdi:check' subtext='Supported in v2'>Plug-In Battery</Badge>
+<Badge colorName='hw-green' icon='mdi:check' subtext='Supported'>P1 Meter</Badge>
+<Badge colorName='hw-green' icon='mdi:check' subtext='Supported'>Energy Socket</Badge>
+<Badge colorName='hw-grey' icon='mdi:close' subtext='Not supported'>Energy Display</Badge>
+<Badge colorName='hw-green' icon='mdi:check' subtext='Supported'>kWh Meter</Badge>
+<Badge colorName='hw-green' icon='mdi:check' subtext='Supported'>Watermeter</Badge>
+<Badge colorName='hw-purple' icon='mdi:check' subtext='Supported in v2'>Plug-In Battery</Badge>
 <br />
 <sub>_See [Supported Devices](/docs/introduction#devices) for more information._</sub>
 
@@ -24,7 +24,7 @@ import Badge from '@site/src/components/Badge.js'
 
 The `/api/v1/data` endpoint allows you to get the most recent measurement from the device. All data points are "optional"; The API does not send data points that are `null` or not available at all. This mostly depends on the connected smart meter. Make sure your application can handle this.
 
-## P1 Meter (HWE-P1)
+## P1 Meter (HWE-P1).
 
 ### Parameters
 
@@ -180,7 +180,7 @@ Content-Type: application/json
 }
 ```
 
-## Energy Socket (HWE-SKT)
+## Energy Socket (HWE-SKT).
 
 ### Parameters
 
@@ -256,7 +256,7 @@ Content-Type: application/json
 }
 ```
 
-## kWh Meters (1 and 3 phase)
+## kWh Meters (1 and 3 phase).
 
 Each type of meter is available in two versions. The API and functionality is the same for both types.
 
@@ -390,7 +390,7 @@ Content-Type: application/json
 }
 ```
 
-## Watermeter (HWE-WTR)
+## Watermeter (HWE-WTR).
 
 :::warning API is not available when using batteries
 The API for the Watermeter can only be used when the Watermeter is powered over USB. To save energy, the Watermeter only connects to Wi-Fi a couple of times per day when powered by batteries.

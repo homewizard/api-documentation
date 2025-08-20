@@ -50,7 +50,7 @@ const config = {
     themeConfig:
         /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
         ({
-            metadata: [{ name: 'keywords', content: 'HomeWizard, Energy, API, P1 Meter, kWh Meter, Watermeter, Energy Socket, REST' }],
+            metadata: [{ name: 'keywords', content: 'HomeWizard, Energy, API, P1 Meter, kWh Meter, Plug-In Battery, Watermeter, Energy Socket, REST' }],
             navbar: {
                 title: 'API Documentation',
                 logo: {

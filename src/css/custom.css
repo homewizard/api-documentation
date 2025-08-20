@@ -1,12 +1,11 @@
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
+/* Fonts importeren */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Roboto:wght@400&display=swap');
 
 /* You can override the default Infima variables here. */
 :root {
-    --ifm-color-primary: #3ea56c;
+    --ifm-background-color: #fbf9ff;
+
+    --ifm-color-primary: #3e3849;
     --ifm-color-primary-dark: #29784c;
     --ifm-color-primary-darker: #277148;
     --ifm-color-primary-darkest: #205d3b;
@@ -14,13 +13,35 @@
     --ifm-color-primary-lighter: #359962;
     --ifm-color-primary-lightest: #3cad6e;
     --ifm-code-font-size: 95%;
-    --ifm-link-color: #5f6fff;
+    --ifm-link-color: #3e3849;
     --ifm-font-color-base: #111828;
+
+    --ifm-menu-color: #fbf9ff;
+    --ifm-menu-color-active: #18eca9;
+
+    --ifm-navbar-link-color: #fbf9ff;
+
+    --ifm-breadcrumb-color-active: #3e3849;
+
     --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+    --hw-button-background: linear-gradient(90deg, #20f29b 0%, #02dace 100%);
+    --hw-button-color: #3e3849;
+    --hw-button-shadow: 0px 2px 5px 0px rgba(16, 229, 180, 0.3);
+    --hw-button-secondary-background: #151318;
+    --hw-button-secondary-color: #fbf9ff;
+    --hw-button-secondary-hover-background: #3e3849;
+    --hw-button-secondary-hover-color: #fbf9ff;
+    --hw-button-hover-background: linear-gradient(90deg, #18eca9 0%, #18eca9 100%);
+    --hw-button-hover-color: #3e3849;
+    --hw-button-secondary-shadow: 0px 2px 5px 0px #3e38494d;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
+    --ifm-background-color: #29252f;
+
+    --ifm-color: #fbf9ff;
     --ifm-color-primary: #25c2a0;
     --ifm-color-primary-dark: #21af90;
     --ifm-color-primary-darker: #1fa588;
@@ -28,11 +49,143 @@
     --ifm-color-primary-light: #29d5b0;
     --ifm-color-primary-lighter: #32d8b4;
     --ifm-color-primary-lightest: #4fddbf;
-    --ifm-link-color: #5f6fff;
+    --ifm-link-color: #e3e3e3;
     --ifm-font-color-base: #e3e3e3;
+    --ifm-footer-background-color: #151318;
     --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+
+    --ifm-breadcrumb-color-active: #fbf9ff;
+
+    --hw-button-background: linear-gradient(90deg, #20f29b 0%, #02dace 100%);
+    --hw-button-color: #3e3849;
+    --hw-button-shadow: 0px 2px 5px 0px rgba(16, 229, 180, 0.3);
+    --hw-button-secondary-background: #fbf9ff;
+    --hw-button-secondary-color: #3e3849;
+    --hw-button-secondary-hover-background: #3e3849;
+    --hw-button-secondary-hover-color: #fbf9ff;
+    --hw-button-hover-background: linear-gradient(90deg, #18eca9 0%, #18eca9 100%);
+    --hw-button-hover-color: #3e3849;
+    --hw-button-secondary-shadow: 0px 2px 5px 0px #ebe6f44d;
+}
+
+[data-theme='light'] .table-of-contents__link--active {
+    font-weight: 800;
+    color: #3e3849;
+}
+
+[data-theme='dark'] .table-of-contents__link--active {
+    font-weight: 800;
+    color: #fbf9ff;
+}
+
+.table-of-contents__link--active:hover {
+    font-weight: 1000;
+    color: #3e3849;
+}
+
+[data-theme='dark'] .table-of-contents__link:hover {
+    font-weight: 800;
+    color: #fbf9ff;
+}
+
+.navbar {
+    background-color: #29252f;
+    border-bottom: 1px solid #3e3849;
+}
+
+[data-theme='light'] .navbar button {
+    background-color: #fbf9ff;
+    color: #29252f;
+    border: none;
+}
+
+.navbar-sidebar {
+    background-color: #29252f;
+}
+
+.navbar-sidebar__close {
+    background-color: #29252f !important;
+}
+
+.navbar__toggle {
+    background-color: #29252f !important;
+    color: #fbf9ff !important;
+}
+
+.hero__subtitle {
+    font-style: italic;
+}
+
+.menu__link--active {
+    font-weight: 800;
+}
+
+.theme-doc-sidebar-container {
+    background-color: #29252f;
+}
+
+.footer {
+    --ifm-footer-background-color: #151318;
+    border-top: 1px solid #3e3849;
+}
+
+.footer-dark {
+    --ifm-footer-background-color: #151318;
 }
 
 .theme-doc-markdown a {
     text-decoration: underline;
+}
+
+/* h2,
+h3 {
+    color: #cabbe7;
+}
+
+[data-theme='light'] h2,
+h3 {
+    color: hsl(260, 48%, 78%);
+} */
+
+.button {
+    background: var(--hw-button-background);
+    color: var(--hw-button-color);
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 500; /* Medium */
+    font-family: Poppins, sans-serif;
+    box-shadow: var(--hw-button-shadow);
+    text-decoration: none !important;
+    transition-duration: 1s;
+}
+
+.button:hover {
+    background: var(--hw-button-hover-background);
+    color: var(--hw-button-hover-color);
+}
+
+/* Secondary button style */
+.button--secondary {
+    background: var(--hw-button-secondary-background);
+    color: var(--hw-button-secondary-color) !important;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500; /* Medium */
+    font-size: 18px;
+    border-radius: 8px;
+    box-shadow: var(--hw-button-secondary-shadow);
+    border: none;
+}
+
+.button--secondary:hover {
+    background: var(--hw-button-secondary-hover-background);
+    color: var(--hw-button-secondary-hover-color) !important;
+}
+
+a {
+    font-weight: 600;
+}
+
+a:hover {
+    font-weight: 800;
 }
