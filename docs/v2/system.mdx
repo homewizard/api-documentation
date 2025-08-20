@@ -22,7 +22,7 @@ import Badge from '@site/src/components/Badge.js'
 
 The `/api/system` endpoint can be used to get and set some system information, like the state of the cloud communication and the uptime of the device.
 
-## Parameters
+## Parameters.
 
 | Data                                                | Type             | Access     | Description                                                                                     | Availability                                                                                                                                                                                                         |
 | --------------------------------------------------- | ---------------- | ---------- | ----------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -33,14 +33,14 @@ The `/api/system` endpoint can be used to get and set some system information, l
 | [status_led_brightness_pct](#status-led-brightness) | Number           | Read/Write | The brightness of the status LED in percent.                                                    | <Badge colorName='hw-green' icon="mdi:check">P1 Meter</Badge> <Badge colorName='hw-grey' icon="mdi:close">kWh Meter</Badge> <Badge colorName='hw-green' icon="mdi:check">Plug-In Battery</Badge>                     |
 | [api_v1_enabled](#enable-or-disable-the-v1-api)     | Optional Boolean | Read/Write | The state of the v1 API, will be removed when API v1 is removed, so this parameter is optional. | <Badge colorName='hw-green' icon="mdi:check">P1 Meter</Badge> <Badge colorName='hw-green' icon="mdi:check">kWh Meter</Badge> <Badge colorName='hw-grey' icon="mdi:close">Plug-In Battery</Badge>                     |
 
-## Actions
+## Actions.
 
 | Action                | Description                                               | Availability                                                                                                                                                                                     |
 | --------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | [Reboot](#reboot)     | Reboot the device                                         | <Badge colorName='hw-green' icon="mdi:check">P1 Meter</Badge> <Badge colorName='hw-green' icon="mdi:check">kWh Meter</Badge> <Badge colorName='hw-grey' icon="mdi:close">Plug-In Battery</Badge> |
 | [Identify](#identify) | Let the device identify itself by blinking the status LED | <Badge colorName='hw-green' icon="mdi:check">P1 Meter</Badge> <Badge colorName='hw-grey' icon="mdi:close">kWh Meter</Badge> <Badge colorName='hw-green' icon="mdi:check">Plug-In Battery</Badge> |
 
-## Plug-In Battery exceptions
+## Plug-In Battery exceptions.
 
 The Plug-In Battery has some exceptions compared to the P1 Meter:
 
@@ -52,7 +52,7 @@ The Plug-In Battery has some exceptions compared to the P1 Meter:
 The battery is fully controlled locally by the P1 Meter, ensuring fast operation and continued functionality even if the internet connection is lost.
 :::
 
-## Cloud Communication
+## Cloud Communication.
 
 HomeWizard Energy devices are designed to work with the HomeWizard Energy app and rely on communication with the HomeWizard cloud for full functionality.
 
@@ -120,7 +120,7 @@ Content-Type: application/json
 
 _Device will now reconnect to the cloud._
 
-## Status LED Brightness
+## Status LED Brightness.
 
 Most devices have a status LED, and its brightness can be adjusted between 0% and 100%. This adjustment only affects the LED during normal operation. Error indications are always displayed at the default brightness, regardless of the setting.
 
@@ -150,7 +150,7 @@ Content-Type: application/json
 }
 ```
 
-## Enable or Disable the v1 API
+## Enable or Disable the v1 API.
 
 To protect the device from unauthorized access, the v1 API can be disabled. When the v1 API is disabled, the device will only allow authorized request via the v2 API.
 
@@ -182,7 +182,7 @@ Content-Type: application/json
 
 _The v1 API is now disabled, as if it was disabled via the HomeWizard Energy app. The v1 API will respond with an [API disabled error](/docs/v1/error-handling#api-was-disabled) when trying to use it._
 
-## Identify
+## Identify.
 
 The `/api/system/identify` endpoint can be used to let the user identify the device. The status light will blink for a few seconds after calling this endpoint.
 
@@ -201,7 +201,7 @@ https/1.1 204 No Content
 Content-Length: 0
 ```
 
-## Reboot
+## Reboot.
 
 If needed, you can reboot the device by calling the `/api/system/reboot` endpoint. After rebooting, the device will reconnect to Wi-Fi and be ready for use again.
 

@@ -117,7 +117,7 @@
     text-decoration: underline;
 }
 
-h2,
+/* h2,
 h3 {
     color: #cabbe7;
 }
@@ -125,7 +125,7 @@ h3 {
 [data-theme='light'] h2,
 h3 {
     color: hsl(260, 48%, 78%);
-}
+} */
 
 .button {
     background: var(--hw-button-background);

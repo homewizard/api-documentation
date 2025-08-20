@@ -24,7 +24,7 @@ The `/api` endpoint allows you to get basic information from the device.
 
 Your application can use this endpoint to see if your integration is designed to work with this version of the API. You can validate your support based on the combination of `product_type` and `api_version`. Data points in this endpoint that are currently available won't change, but make sure your application can accept new data points for future updates.
 
-## Parameters
+## Parameters.
 
 | Data             | Type   | Description                                                                                                                                          |
 | ---------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -34,7 +34,7 @@ Your application can use this endpoint to see if your integration is designed to
 | firmware_version | String | The current firmware version. Make sure your application can handle other version formats. See [versioning and updates](/docs/versioning).           |
 | api_version      | String | The current API version, set to "v1".                                                                                                                |
 
-## Examples
+## Examples.
 
 ```shell title="Request"
 curl http://<IP ADDRESS>/api

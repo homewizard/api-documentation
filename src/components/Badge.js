@@ -6,10 +6,10 @@ export default function Badge({ children, icon, colorName, subtext = null, detai
     let background, color
 
     switch (colorName) {
-        // case 'hw-purple':
-        //     background = '#aa00fe'
-        //     color = '#fff'
-        //     break
+        case 'hw-purple':
+            background = '#CABBE7'
+            color = '#3E3849'
+            break
         case 'hw-green':
             background = 'linear-gradient(90deg, #20f29b 0%, #02dace 100%)'
             color = '#3E3849'
@@ -89,7 +89,7 @@ export default function Badge({ children, icon, colorName, subtext = null, detai
                     <span
                         style={{
                             background: 'rgba(255, 255, 255, 0.9)', // Darker background color
-                            borderRadius: '99px',
+                            borderRadius: '6px',
                             color: '#111828',
                             fontWeight: 'bold',
                             fontSize: '75%',

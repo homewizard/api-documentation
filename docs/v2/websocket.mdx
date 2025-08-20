@@ -23,7 +23,7 @@ import Badge from '@site/src/components/Badge.js'
 
 The HomeWizard Energy WebSocket API allows you to receive real-time updates from the device. The WebSocket lets you subscribe to specific topics and receive updates when data changes.
 
-## Structure
+## Structure.
 
 All data packages, in both directions, are formatted in JSON and contain a `type` field and an optional `data` field. The data type can be any valid JSON format.
 
@@ -41,7 +41,7 @@ When no data needs to be sent, the data field can be omitted.
 { "type": "identify" }
 ```
 
-## Commands
+## Commands.
 
 ### Connect and Authorize
 
@@ -109,7 +109,7 @@ To blink the device LED, send an identify command. The LED will blink for a few 
 { "type": "identify" }
 ```
 
-## Error Handling
+## Error Handling.
 
 When an error occurs, the device sends an error message. The message contains an `error` field with a description of the error, matching the error structure of the [v2 API errors](/docs/v2/error-handling).
 

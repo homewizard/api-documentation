@@ -11,7 +11,7 @@ function HomepageHeader() {
         <header className={clsx('hero hero--primary', styles.heroBanner)}>
             <div className={styles.headerGrid}>
                 <Heading as='h1' className={styles.headerTitle}>
-                    Local API Documentation.
+                    Local API Documentation
                 </Heading>
                 <p className={styles.headerSubtitle}>Control your HomeWizard Energy devices with the Local API.</p>
                 <div className={styles.headerButton}>
