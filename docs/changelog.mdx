@@ -21,9 +21,23 @@ Feature development of the v1 API has been stopped. No new features will be adde
 
 ### v2
 
--   **2.0.0** - 21-01-2025 - Initial release of the v2 API.
--   **2.0.1** - 30-01-2025 - An issue has been resolved where `energy_import_kwh` and `energy_export_kwh` values in the Plug-In Battery [Measurement API](/docs/v2/measurement#plug-in-battery-hwe-bat) were returning invalid values. The values are now the same as those in the HomeWizard Energy app.
--   **2.1.0** - 01-05-2025 - Support has been added to the P1 Meter to control the Plug-In Battery group mode. See [Plug-In Battery API](/docs/v2/batteries) for more information. This feature is currently in beta.
+#### 2.0.0 - 21-01-2025
+
+-   Initial release of the v2 API.
+
+#### 2.0.1 - 30-01-2025
+
+-   An issue has been resolved where `energy_import_kwh` and `energy_export_kwh` values in the Plug-In Battery [Measurement API](/docs/v2/measurement#plug-in-battery-hwe-bat) were returning invalid values. The values are now the same as those in the HomeWizard Energy app.
+
+#### 2.1.0 - 01-05-2025
+
+-   Support has been added to the P1 Meter to control the Plug-In Battery group mode. See [Plug-In Battery API](/docs/v2/batteries) for more information.
+
+#### 2.2.0 - 01-12-2025 (in bèta)
+
+-   You can now set charge and discharge permissions for the Plug-In Battery group via the `permissions` field in the [Plug-In Battery API](/docs/v2/batteries). See the documentation for more information.
+-   A new field has been added to `api/batteries`: `battery_count`, which indicates the number of connected Plug-In Batteries.
+-   When `target_power_w` field in `api/batteries` is updated, it is now pushed over WebSocket connections as well.
 
 ## Subscribe to Updates.
 
