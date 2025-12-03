@@ -59,9 +59,9 @@ Mode `standby` is exactly the same as mode `zero` with both charging and dischar
 -   When adding a permission to the `permissions` field while in `standby` mode, the mode will automatically switch to `zero`.
 -   `zero` mode with both permissions allowed is the same as the default `zero` mode.
 
-### Examples
+## Examples
 
-#### Get Battery Group Information
+### Get Battery Group Information
 
 ```shell title="Request"
 curl https://<IP ADDRESS>/api/batteries \
@@ -85,7 +85,7 @@ Content-Type: application/json
 }
 ```
 
-#### Change Control Mode
+### Change Control Mode
 
 ```shell title="Request"
 curl https://<IP ADDRESS>/api/batteries \
@@ -111,7 +111,7 @@ Content-Type: application/json
 }
 ```
 
-#### Change permissions
+### Change permissions
 
 ```shell title="Request"
 curl https://<IP ADDRESS>/api/batteries \
@@ -136,7 +136,7 @@ Content-Type: application/json
 }
 ```
 
-#### Change permissions and mode
+### Change permissions and mode
 
 You can set mode and permissions in one request. You cannot set `mode` to `to_full` and change `permissions` at the same time, as `permissions` is read-only in `to_full` mode.
 
