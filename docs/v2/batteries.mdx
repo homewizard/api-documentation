@@ -24,21 +24,42 @@ The `/api/batteries` endpoint can be used to retrieve information about the cont
 
 ## Parameters
 
-| Data              | Type   | Access     | Description                                                                         |
-| ----------------- | ------ | ---------- | ----------------------------------------------------------------------------------- |
-| [mode](#mode)     | String | Read/Write | Control mode of the Plug-In Battery. Can be either `zero`, `to_full`, or `standby`. |
-| power_w           | Number | Read-only  | Current combined power consumption/production of the controlled Plug-In Batteries.  |
-| target_power_w    | Number | Read-only  | Target power consumption/production of the controlled Plug-In Batteries.            |
-| max_consumption_w | Number | Read-only  | Maximum allowed consumption power of the controlled Plug-In Batteries.              |
-| max_production_w  | Number | Read-only  | Maximum allowed production power of the controlled Plug-In Batteries.               |
+| Data                        | Type          | Access       | Description                                                                         |
+| --------------------------- | ------------- | ------------ | ----------------------------------------------------------------------------------- |
+| [mode](#mode)               | String        | Read/Write   | Control mode of the Plug-In Battery. Can be either `zero`, `to_full`, or `standby`. |
+| [permissions](#permissions) | Array[String] | Read/Write\* | Permissions to allow charging, discharging, both, or neither.                       |
+| battery_count               | Number        | Read-only    | Number of connected Plug-In Batteries.                                              |
+| power_w                     | Number        | Read-only    | Current combined power consumption/production of the controlled Plug-In Batteries.  |
+| target_power_w              | Number        | Read-only    | Target power consumption/production of the controlled Plug-In Batteries.            |
+| max_consumption_w           | Number        | Read-only    | Maximum allowed consumption power of the controlled Plug-In Batteries.              |
+| max_production_w            | Number        | Read-only    | Maximum allowed production power of the controlled Plug-In Batteries.               |
 
-## Mode.
+## Mode
 
 The group of connected batteries can be controlled in three different modes:
 
 -   `zero` - The Plug-In Battery will try to keep the power consumption/production of your home at zero. This means that the Plug-In Battery will charge or discharge to maintain a net-zero power balance. This is the default mode.
 -   `to_full` - All connected Plug-In Batteries will be charged to 100%, regardless of the power consumption/production of your home. When all batteries are fully charged, the Plug-In Battery will switch to the **zero** mode.
--   `standby` - Batteries will enter standby mode. This means that the Plug-In Battery will neither charge nor discharge.
+-   `standby` - Batteries will enter standby mode. This means that the Plug-In Battery will neither charge nor discharge. _For new implementations we recommend to use the `permissions` field to disallow both charging and discharging instead of using this mode._
+
+## Permissions
+
+The `permissions` field can be used to set specific permissions for charging and discharging the connected Plug-In Batteries. The possible values are:
+
+-   `charge_allowed` - Allow the Plug-In Battery to charge.
+-   `discharge_allowed` - Allow the Plug-In Battery to discharge.
+
+Provide these via an array when updating the `permissions` field. For example, to allow both charging and discharging, set `permissions` to `["charge_allowed", "discharge_allowed"]`. To disallow both, set it to an empty array `[]`.
+
+Permissions is read-only in `to_full` mode.
+
+### Backwards compatibility with `standby` mode
+
+Mode `standby` is exactly the same as mode `zero` with both charging and discharging disallowed, therefore the following rules apply for backwards compatibility:
+
+-   When switching to `standby` mode, the `permissions` field will be set to an empty array `[]`.
+-   When adding a permission to the `permissions` field while in `standby` mode, the mode will automatically switch to `zero`.
+-   `zero` mode with both permissions allowed is the same as the default `zero` mode.
 
 ### Examples
 
@@ -57,6 +78,8 @@ Content-Type: application/json
 
 {
     "mode": "zero",
+    "permissions" : ["charge_allowed", "discharge_allowed"],
+    "battery_count": 2,
     "power_w": -404,
     "target_power_w": -400,
     "max_consumption_w": 1600,
@@ -81,8 +104,64 @@ Content-Type: application/json
 
 {
     "mode": "to_full",
+    "permissions" : ["charge_allowed"],
+    "battery_count": 2,
     "power_w": 1599,
     "target_power_w": 1600,
+    "max_consumption_w": 1600,
+    "max_production_w": 800
+}
+```
+
+#### Change permissions
+
+```shell title="Request"
+curl https://<IP ADDRESS>/api/batteries \
+  --insecure \
+  -H "Authorization: Bearer <TOKEN>" \
+  -H "X-Api-Version: 2"
+  -d '{"permissions": ["charge_allowed"]}'
+```
+
+```http title="Response"
+https/1.1 200 OK
+Content-Type: application/json
+
+{
+    "mode": "zero",
+    "permissions" : ["charge_allowed"],
+    "battery_count": 2,
+    "power_w": 404,
+    "target_power_w": 400,
+    "max_consumption_w": 1600,
+    "max_production_w": 800
+}
+```
+
+#### Change permissions and mode
+
+You can set mode and permissions in one request. You cannot set `mode` to `to_full` and change `permissions` at the same time, as `permissions` is read-only in `to_full` mode.
+
+Mode will change to standby or zero depending on the provided permissions.
+
+```shell title="Request"
+curl https://<IP ADDRESS>/api/batteries \
+  --insecure \
+  -H "Authorization: Bearer <TOKEN>" \
+  -H "X-Api-Version: 2"
+  -d '{"permissions": ["discharge_allowed"], "mode": "zero"}'
+```
+
+```http title="Response"
+https/1.1 200 OK
+Content-Type: application/json
+
+{
+    "mode": "zero",
+    "permissions" : ["discharge_allowed"],
+    "battery_count": 2,
+    "power_w": -404,
+    "target_power_w": -400,
     "max_consumption_w": 1600,
     "max_production_w": 800
 }
