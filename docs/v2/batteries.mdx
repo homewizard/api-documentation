@@ -146,7 +146,7 @@ Mode will change to standby or zero depending on the provided permissions.
 curl https://<IP ADDRESS>/api/batteries \
   --insecure \
   -H "Authorization: Bearer <TOKEN>" \
-  -H "X-Api-Version: 2"
+  -H "X-Api-Version: 2" \
   -d '{"permissions": ["discharge_allowed"], "mode": "zero"}'
 ```
 
