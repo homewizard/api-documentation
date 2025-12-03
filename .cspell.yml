@@ -24,3 +24,4 @@ words:
     - aiohttp # Known library
     - asyncio # Known library
     - cafile # Known term in python
+    - bèta # Somehow understood as a typo
