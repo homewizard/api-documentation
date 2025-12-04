@@ -208,11 +208,11 @@ Content-Length: 0
 
 The local API is used by HomeWizard to enable direct communication between HomeWizard devices on a local network. To simplify setup for non-technical users, tokens can also be generated via the HomeWizard Energy app or background process using the cloud.
 
--   Cloud-generated users are prefixed with `cloud/`, local users are prefixed with `local/`.
--   These tokens are for local device communication only and do not provide access to the cloud nor can be used by the cloud itself.
--   All users, including cloud-generated ones can be viewed with the [`GET /api/user`](#list-users) endpoint.
--   Users created via the cloud can be revoked at any time, either by the cloud itself or through the [`DELETE /api/user`](#delete-user) endpoint.
--   Disabling the cloud prevents the generation of cloud-generated users. For more details, see [cloud communication](/docs/v2/system#cloud-communication).
+- Cloud-generated users are prefixed with `cloud/`, local users are prefixed with `local/`.
+- These tokens are for local device communication only and do not provide access to the cloud nor can be used by the cloud itself.
+- All users, including cloud-generated ones can be viewed with the [`GET /api/user`](#list-users) endpoint.
+- Users created via the cloud can be revoked at any time, either by the cloud itself or through the [`DELETE /api/user`](#delete-user) endpoint.
+- Disabling the cloud prevents the generation of cloud-generated users. For more details, see [cloud communication](/docs/v2/system#cloud-communication).
 
 ## SSL Certificate Validation (HTTPS) {#https}.
 

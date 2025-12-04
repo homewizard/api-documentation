@@ -38,16 +38,16 @@ The `/api/batteries` endpoint can be used to retrieve information about the cont
 
 The group of connected batteries can be controlled in three different modes:
 
--   `zero` - The Plug-In Battery will try to keep the power consumption/production of your home at zero. This means that the Plug-In Battery will charge or discharge to maintain a net-zero power balance. This is the default mode.
--   `to_full` - All connected Plug-In Batteries will be charged to 100%, regardless of the power consumption/production of your home. When all batteries are fully charged, the Plug-In Battery will switch to the **zero** mode.
--   `standby` - Batteries will enter standby mode. This means that the Plug-In Battery will neither charge nor discharge. _For new implementations we recommend to use the `permissions` field to disallow both charging and discharging instead of using this mode._
+- `zero` - The Plug-In Battery will try to keep the power consumption/production of your home at zero. This means that the Plug-In Battery will charge or discharge to maintain a net-zero power balance. This is the default mode.
+- `to_full` - All connected Plug-In Batteries will be charged to 100%, regardless of the power consumption/production of your home. When all batteries are fully charged, the Plug-In Battery will switch to the **zero** mode.
+- `standby` - Batteries will enter standby mode. This means that the Plug-In Battery will neither charge nor discharge. _For new implementations we recommend to use the `permissions` field to disallow both charging and discharging instead of using this mode._
 
 ## Permissions
 
 The `permissions` field can be used to set specific permissions for charging and discharging the connected Plug-In Batteries. The possible values are:
 
--   `charge_allowed` - Allow the Plug-In Battery to charge.
--   `discharge_allowed` - Allow the Plug-In Battery to discharge.
+- `charge_allowed` - Allow the Plug-In Battery to charge.
+- `discharge_allowed` - Allow the Plug-In Battery to discharge.
 
 Provide these via an array when updating the `permissions` field. For example, to allow both charging and discharging, set `permissions` to `["charge_allowed", "discharge_allowed"]`. To disallow both, set it to an empty array `[]`.
 
@@ -55,9 +55,9 @@ Provide these via an array when updating the `permissions` field. For example, t
 
 Mode `standby` is exactly the same as mode `zero` with both charging and discharging disallowed, therefore the following rules apply for backwards compatibility:
 
--   When switching to `standby` mode, the `permissions` field will be set to an empty array `[]`.
--   When adding a permission to the `permissions` field while in `standby` mode, the mode will automatically switch to `zero`.
--   `zero` mode with both permissions allowed is the same as the default `zero` mode.
+- When switching to `standby` mode, the `permissions` field will be set to an empty array `[]`.
+- When adding a permission to the `permissions` field while in `standby` mode, the mode will automatically switch to `zero`.
+- `zero` mode with both permissions allowed is the same as the default `zero` mode.
 
 ## Examples
 
