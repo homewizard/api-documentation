@@ -24,8 +24,8 @@ The `/api/v1/state` endpoint returns the actual state of the Energy Socket.
 
 This endpoint accepts `GET` and `PUT` requests.
 
--   With `GET` you will receive the actual state
--   With `PUT` you can control the state.
+- With `GET` you will receive the actual state
+- With `PUT` you can control the state.
 
 ## Parameters.
 
@@ -98,9 +98,9 @@ Content-Type: application/json
 
 You can configure multiple parameters at the same time. In this example.
 
--   Socket is turned off.
--   Switch-lock is turned off.
--   Brightness is set to 127 (50%).
+- Socket is turned off.
+- Switch-lock is turned off.
+- Brightness is set to 127 (50%).
 
 The order of a combined request does not matter, if `switch-lock` was on, the socket will still turn off.
 The complete state has to make sense; It is not possible to set `power_on` to false and `switch_lock` to true. See [error handling](/docs/v1/error-handling) for more details.

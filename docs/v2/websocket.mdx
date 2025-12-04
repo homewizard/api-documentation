@@ -62,12 +62,12 @@ The WebSocket is accessible at `wss://<IP ADDRESS>/api/ws`. The connection is se
 
 After authentication, you can subscribe to topics. Topics correspond to available endpoints, with the data matching that returned by the endpoint. Once subscribed, the device sends the latest values and updates when data changes. The `type` field consist of the topic name, and the `data` field contains the data from the endpoint.
 
--   **`*`** - Subscribe to all topics
--   **`device`** - Subscribe to [device information](/docs/v2/device_information) updates
--   **`user`** - Subscribe to [user list](/docs/v2/authorization#list-users) updates
--   **`measurement`** - Subscribe to [measurement](/docs/v2/measurement) updates
--   **`system`** - Subscribe to [system](/docs/v2/system) updates. Only `cloud_enabled` and `status_led_brightness_pct` are updated in real time.
--   **`batteries`** - Subscribe to [battery group](/docs/v2/batteries) updates. Only `mode`, `permissions` and `target_power_w` are updated in real time.
+- **`*`** - Subscribe to all topics
+- **`device`** - Subscribe to [device information](/docs/v2/device_information) updates
+- **`user`** - Subscribe to [user list](/docs/v2/authorization#list-users) updates
+- **`measurement`** - Subscribe to [measurement](/docs/v2/measurement) updates
+- **`system`** - Subscribe to [system](/docs/v2/system) updates. Only `cloud_enabled` and `status_led_brightness_pct` are updated in real time.
+- **`batteries`** - Subscribe to [battery group](/docs/v2/batteries) updates. Only `mode`, `permissions` and `target_power_w` are updated in real time.
 
 ```json title="Example"
 {"type": "subscribe", "data": "system"}
