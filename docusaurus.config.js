@@ -8,7 +8,7 @@ import { themes as prismThemes } from 'prism-react-renderer'
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-    title: 'HomeWizard Energy API Documentation',
+    title: 'HomeWizard API Documentation',
     favicon: 'img/favicon.ico',
 
     // Set the production url of your site here
@@ -54,7 +54,7 @@ const config = {
             navbar: {
                 title: 'API Documentation',
                 logo: {
-                    alt: 'HomeWizard Energy Logo',
+                    alt: 'HomeWizard Logo',
                     src: 'img/logo.svg'
                 },
                 items: [

@@ -1,7 +1,7 @@
 ---
 title: Authorization
 sidebar_position: 1
-description: Get a token to authenticate requests to the HomeWizard Energy API.
+description: Get a token to authenticate requests to the HomeWizard API.
 ---
 
 import Badge from '@site/src/components/Badge.js'
@@ -20,7 +20,7 @@ import Badge from '@site/src/components/Badge.js'
 
 ---
 
-The HomeWizard Energy API requires a Bearer token to authorize requests. This token should be included in the `Authorization` header of each request. To get a token you must create a user on the device.
+The HomeWizard API requires a Bearer token to authorize requests. This token should be included in the `Authorization` header of each request. To get a token you must create a user on the device.
 
 ## Create User and get Token.
 
@@ -206,7 +206,7 @@ Content-Length: 0
 
 ## Local and Cloud Users.
 
-The local API is used by HomeWizard to enable direct communication between HomeWizard devices on a local network. To simplify setup for non-technical users, tokens can also be generated via the HomeWizard Energy app or background process using the cloud.
+The local API is used by HomeWizard to enable direct communication between HomeWizard devices on a local network. To simplify setup for non-technical users, tokens can also be generated via the HomeWizard app or background process using the cloud.
 
 - Cloud-generated users are prefixed with `cloud/`, local users are prefixed with `local/`.
 - These tokens are for local device communication only and do not provide access to the cloud nor can be used by the cloud itself.
