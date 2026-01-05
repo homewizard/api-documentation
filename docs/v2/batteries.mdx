@@ -117,6 +117,7 @@ Content-Type: application/json
 ```shell title="Request"
 curl https://<IP ADDRESS>/api/batteries \
   --insecure \
+  -X PUT \
   -H "Authorization: Bearer <TOKEN>" \
   -H "X-Api-Version: 2" \
   -d '{"permissions": ["charge_allowed"]}'
@@ -146,6 +147,7 @@ Mode will change to standby or zero depending on the provided permissions.
 ```shell title="Request"
 curl https://<IP ADDRESS>/api/batteries \
   --insecure \
+  -X PUT \
   -H "Authorization: Bearer <TOKEN>" \
   -H "X-Api-Version: 2" \
   -d '{"permissions": ["discharge_allowed"], "mode": "zero"}'
