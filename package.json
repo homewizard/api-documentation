@@ -2,6 +2,7 @@
     "name": "api-documentation",
     "version": "1.0.0",
     "private": true,
+    "type": "module",
     "scripts": {
         "docusaurus": "docusaurus",
         "start": "docusaurus start",
@@ -13,7 +14,7 @@
         "serve": "docusaurus serve",
         "write-translations": "docusaurus write-translations",
         "write-heading-ids": "docusaurus write-heading-ids",
-        "lint": "eslint . --ext js,ts,tsx --report-unused-disable-directives --max-warnings 0",
+        "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
         "format": "prettier . --write . --config ./.prettierrc",
         "format-check": "prettier . --check --config ./.prettierrc",
         "spell-checker": "cspell --config .cspell.yml \"**/*.{md,mdx}\""
