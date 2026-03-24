@@ -7,7 +7,7 @@ The HomeWizard devices are equipped with a local API. This API can be used to re
 
 ## Contributing
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator. This project is developed and tested with **Node 20.9.0**
+This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator. This project is developed and tested with **Node 20.20.1**
 
 ### Installation
 
