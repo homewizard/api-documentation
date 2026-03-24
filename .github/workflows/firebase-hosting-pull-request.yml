@@ -1,4 +1,6 @@
 name: Deploy preview on pull request
+permissions:
+    contents: read
 on: pull_request
 jobs:
     build_and_preview:
