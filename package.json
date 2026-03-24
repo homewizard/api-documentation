@@ -2,7 +2,6 @@
     "name": "api-documentation",
     "version": "1.0.0",
     "private": true,
-    "type": "module",
     "scripts": {
         "docusaurus": "docusaurus",
         "start": "docusaurus start",
