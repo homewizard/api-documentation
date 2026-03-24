@@ -21,7 +21,7 @@ jobs:
             - uses: actions/checkout@v6
             - uses: actions/setup-node@v6
               with:
-                  node-version: 20.9.0
+                  node-version: 20.20.1
                   cache: 'npm'
             - run: npm ci
             - run: npm run lint
@@ -34,7 +34,7 @@ jobs:
             - uses: actions/checkout@v6
             - uses: actions/setup-node@v6
               with:
-                  node-version: 20.9.0
+                  node-version: 20.20.1
                   cache: 'npm'
             - run: npm ci
             - run: npm run format-check
@@ -47,7 +47,7 @@ jobs:
             - uses: actions/checkout@v6
             - uses: actions/setup-node@v6
               with:
-                  node-version: 20.9.0
+                  node-version: 20.20.1
                   cache: 'npm'
             - run: npm ci
             - run: npm run build
@@ -60,7 +60,7 @@ jobs:
             - uses: actions/checkout@v6
             - uses: actions/setup-node@v6
               with:
-                  node-version: 20.9.0
+                  node-version: 20.20.1
                   cache: 'npm'
             - run: npm ci
             - run: npm run spell-checker
