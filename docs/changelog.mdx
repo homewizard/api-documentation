@@ -39,6 +39,11 @@ Feature development of the v1 API has been stopped. No new features will be adde
 - A new field has been added to `api/batteries`: `battery_count`, which indicates the number of connected Plug-In Batteries.
 - When `target_power_w` field in `api/batteries` is updated, it is now pushed over WebSocket connections as well.
 
+#### 2.3.0 - 09-04-2025
+
+- The `mode` field in the [Plug-In Battery API](/docs/v2/batteries) now supports a new mode: `predictive`. In this mode, the control system will automatically select between `charge_allowed`, `discharge_allowed`, both or neither based on the current and predicted power consumption/production of your home and the current energy prices.
+- A new field is added to the [Plug-In Battery API](/docs/v2/batteries): `to_full`. This field can be set to `true` to charge all connected Plug-In Batteries to 100% and can be set to `false` to disable this behavior.
+
 ## Subscribe to Updates.
 
 Get notified for changes in the API and its documentation when something has changed. Subscribe to changes at GitHub. Click the "Watch" button in the top-right to select your notifications type. We recommend you to select "Watch → "Custom" → "Releases".
