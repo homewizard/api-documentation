@@ -61,11 +61,12 @@ The Energy Socket can be controlled with the `power_on` and `switch_lock` parame
 - `power_on` returns `true` when the relay is in the 'on' state. Set it to `true` or `false` to turn the socket on or off.
 - `switch_lock` keeps the socket turned on. When `switch_lock` is enabled, the socket is turned on and cannot be turned off until `switch_lock` is disabled again.
 
-The complete state has to make sense; It is not possible to set `power_on` to `false` while `switch_lock` is `true`. Such a request is rejected, see [error handling](/docs/v2/error-handling) for more details.
+While `switch_lock` is enabled, a request that sets `power_on` without also setting `switch_lock` is refused with `400 Bad Request` and the error `request:switch-lock-enabled`, see [error handling](/docs/v2/error-handling). This applies to both `true` and `false`.
 
-{/* TODO: Confirm with firmware which HTTP status and error code are returned when `power_on` is set to `false` while `switch_lock` is `true` (in a single request, or while the lock is already enabled), and add that error code to /docs/v2/error-handling. */}
+When a request contains both parameters, `switch_lock` is always applied before `power_on`, so the order of the parameters does not matter:
 
-The order of a combined request does not matter. If `switch_lock` was enabled, sending `{"power_on": false, "switch_lock": false}` will still turn the socket off.
+- If `switch_lock` was enabled, sending `{"power_on": false, "switch_lock": false}` disables the switch lock and turns the socket off.
+- Sending `{"power_on": false, "switch_lock": true}` is accepted, but the switch lock takes precedence: the socket is turned on.
 
 ### Examples
 
@@ -146,6 +147,25 @@ Content-Type: application/json
     "api_v1_enabled": true,
     "switch_lock": true,
     "power_on": true
+}
+```
+
+#### Turn off Socket when Switch Lock is Enabled
+
+```http title="Request"
+curl https://<IP ADDRESS>/api/system --insecure \
+  -X PUT \
+  -H "Authorization: Bearer <TOKEN>" \
+  -H "X-Api-Version: 2" \
+  -d '{"power_on": false}'
+```
+
+```http title="Response"
+https/1.1 400 Bad Request
+Content-Type: application/json
+
+{
+    "error": "request:switch-lock-enabled"
 }
 ```
 
