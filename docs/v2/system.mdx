@@ -10,7 +10,7 @@ import Badge from '@site/src/components/Badge.js'
 
 {/* prettier-ignore */}
 <Badge colorName='hw-green' icon='mdi:check' subtext='Supported'>P1 Meter</Badge>
-<Badge colorName='hw-purple' icon='mdi:check' subtext='Supported in v1'>Energy Socket</Badge>
+<Badge colorName='hw-green' icon='mdi:check' subtext='Supported' detail="In beta">Energy Socket</Badge>
 <Badge colorName='hw-grey' icon='mdi:wrench' subtext='In development'>Energy Display</Badge>
 <Badge colorName='hw-green' icon='mdi:check' subtext='Supported'>kWh Meter</Badge>
 <Badge colorName='hw-purple' icon='mdi:check' subtext='Supported in v1'>Watermeter</Badge>
@@ -24,21 +24,23 @@ The `/api/system` endpoint can be used to get and set some system information, l
 
 ## Parameters.
 
-| Data                                                | Type             | Access     | Description                                                                                     | Availability                                                                                                                                                                                                         |
-| --------------------------------------------------- | ---------------- | ---------- | ----------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| wifi_ssid                                           | String           | Read-only  | The SSID of the Wi-Fi network.                                                                  | <Badge colorName='hw-green' icon="mdi:check">P1 Meter</Badge> <Badge colorName='hw-green' icon="mdi:check">kWh Meter</Badge> <Badge colorName='hw-green' icon="mdi:check">Plug-In Battery</Badge>                    |
-| wifi_rssi_db                                        | Number           | Read-only  | The signal strength of the Wi-Fi network.                                                       | <Badge colorName='hw-green' icon="mdi:check">P1 Meter</Badge> <Badge colorName='hw-green' icon="mdi:check">kWh Meter</Badge> <Badge colorName='hw-green' icon="mdi:check">Plug-In Battery</Badge>                    |
-| uptime_s                                            | Number           | Read-only  | The uptime of the device in seconds.                                                            | <Badge colorName='hw-green' icon="mdi:check">P1 Meter</Badge> <Badge colorName='hw-green' icon="mdi:check">kWh Meter</Badge> <Badge colorName='hw-green' icon="mdi:check">Plug-In Battery</Badge>                    |
-| [cloud_enabled](#cloud-communication)               | Boolean          | Read/Write | The state of the cloud communication.                                                           | <Badge colorName='hw-green' icon="mdi:check">P1 Meter</Badge> <Badge colorName='hw-green' icon="mdi:check">kWh Meter</Badge> <Badge colorName='hw-green' icon="mdi:check" detail='read-only'>Plug-In Battery</Badge> |
-| [status_led_brightness_pct](#status-led-brightness) | Number           | Read/Write | The brightness of the status LED in percent.                                                    | <Badge colorName='hw-green' icon="mdi:check">P1 Meter</Badge> <Badge colorName='hw-grey' icon="mdi:close">kWh Meter</Badge> <Badge colorName='hw-green' icon="mdi:check">Plug-In Battery</Badge>                     |
-| [api_v1_enabled](#enable-or-disable-the-v1-api)     | Optional Boolean | Read/Write | The state of the v1 API, will be removed when API v1 is removed, so this parameter is optional. | <Badge colorName='hw-green' icon="mdi:check">P1 Meter</Badge> <Badge colorName='hw-green' icon="mdi:check">kWh Meter</Badge> <Badge colorName='hw-grey' icon="mdi:close">Plug-In Battery</Badge>                     |
+| Data                                                | Type             | Access     | Description                                                                                     | Availability                                                                                                                                                                                                                                                                            |
+| --------------------------------------------------- | ---------------- | ---------- | ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| wifi_ssid                                           | String           | Read-only  | The SSID of the Wi-Fi network.                                                                  | <Badge colorName='hw-green' icon="mdi:check">P1 Meter</Badge> <Badge colorName='hw-green' icon="mdi:check">kWh Meter</Badge> <Badge colorName='hw-green' icon="mdi:check"                   >Plug-In Battery</Badge> <Badge colorName='hw-green' icon="mdi:check">Energy Socket</Badge> |
+| wifi_rssi_db                                        | Number           | Read-only  | The signal strength of the Wi-Fi network.                                                       | <Badge colorName='hw-green' icon="mdi:check">P1 Meter</Badge> <Badge colorName='hw-green' icon="mdi:check">kWh Meter</Badge> <Badge colorName='hw-green' icon="mdi:check"                   >Plug-In Battery</Badge> <Badge colorName='hw-green' icon="mdi:check">Energy Socket</Badge> |
+| uptime_s                                            | Number           | Read-only  | The uptime of the device in seconds.                                                            | <Badge colorName='hw-green' icon="mdi:check">P1 Meter</Badge> <Badge colorName='hw-green' icon="mdi:check">kWh Meter</Badge> <Badge colorName='hw-green' icon="mdi:check"                   >Plug-In Battery</Badge> <Badge colorName='hw-green' icon="mdi:check">Energy Socket</Badge> |
+| [cloud_enabled](#cloud-communication)               | Boolean          | Read/Write | The state of the cloud communication.                                                           | <Badge colorName='hw-green' icon="mdi:check">P1 Meter</Badge> <Badge colorName='hw-green' icon="mdi:check">kWh Meter</Badge> <Badge colorName='hw-green' icon="mdi:check" detail='read-only'>Plug-In Battery</Badge> <Badge colorName='hw-green' icon="mdi:check">Energy Socket</Badge> |
+| [status_led_brightness_pct](#status-led-brightness) | Number           | Read/Write | The brightness of the status LED in percent.                                                    | <Badge colorName='hw-green' icon="mdi:check">P1 Meter</Badge> <Badge colorName='hw-grey'  icon="mdi:close">kWh Meter</Badge> <Badge colorName='hw-green' icon="mdi:check"                   >Plug-In Battery</Badge> <Badge colorName='hw-green' icon="mdi:check">Energy Socket</Badge> |
+| [api_v1_enabled](#enable-or-disable-the-v1-api)     | Optional Boolean | Read/Write | The state of the v1 API, will be removed when API v1 is removed, so this parameter is optional. | <Badge colorName='hw-green' icon="mdi:check">P1 Meter</Badge> <Badge colorName='hw-green' icon="mdi:check">kWh Meter</Badge> <Badge colorName='hw-grey'  icon="mdi:close"                   >Plug-In Battery</Badge> <Badge colorName='hw-green' icon="mdi:check">Energy Socket</Badge> |
+| [switch_lock](#energy-socket-power-and-switch-lock) | Boolean          | Read/Write | The state of the switch lock. When enabled, the socket power cannot be disabled.                | <Badge colorName='hw-grey'  icon="mdi:close">P1 Meter</Badge> <Badge colorName='hw-grey'  icon="mdi:close">kWh Meter</Badge> <Badge colorName='hw-grey'  icon="mdi:close"                   >Plug-In Battery</Badge> <Badge colorName='hw-green' icon="mdi:check">Energy Socket</Badge> |
+| [power_on](#energy-socket-power-and-switch-lock)    | Boolean          | Read/Write | The power state of the socket.                                                                  | <Badge colorName='hw-grey'  icon="mdi:close">P1 Meter</Badge> <Badge colorName='hw-grey'  icon="mdi:close">kWh Meter</Badge> <Badge colorName='hw-grey'  icon="mdi:close"                   >Plug-In Battery</Badge> <Badge colorName='hw-green' icon="mdi:check">Energy Socket</Badge> |
 
 ## Actions.
 
-| Action                | Description                                               | Availability                                                                                                                                                                                     |
-| --------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [Reboot](#reboot)     | Reboot the device                                         | <Badge colorName='hw-green' icon="mdi:check">P1 Meter</Badge> <Badge colorName='hw-green' icon="mdi:check">kWh Meter</Badge> <Badge colorName='hw-grey' icon="mdi:close">Plug-In Battery</Badge> |
-| [Identify](#identify) | Let the device identify itself by blinking the status LED | <Badge colorName='hw-green' icon="mdi:check">P1 Meter</Badge> <Badge colorName='hw-grey' icon="mdi:close">kWh Meter</Badge> <Badge colorName='hw-green' icon="mdi:check">Plug-In Battery</Badge> |
+| Action                | Description                                               | Availability                                                                                                                                                                                                                                                         |
+| --------------------- | --------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Reboot](#reboot)     | Reboot the device                                         | <Badge colorName='hw-green' icon="mdi:check">P1 Meter</Badge> <Badge colorName='hw-green' icon="mdi:check">kWh Meter</Badge> <Badge colorName='hw-grey'  icon="mdi:close">Plug-In Battery</Badge> <Badge colorName='hw-green' icon="mdi:check">Energy Socket</Badge> |
+| [Identify](#identify) | Let the device identify itself by blinking the status LED | <Badge colorName='hw-green' icon="mdi:check">P1 Meter</Badge> <Badge colorName='hw-grey'  icon="mdi:close">kWh Meter</Badge> <Badge colorName='hw-green' icon="mdi:check">Plug-In Battery</Badge> <Badge colorName='hw-green' icon="mdi:check">Energy Socket</Badge> |
 
 ## Plug-In Battery exceptions.
 
@@ -153,6 +155,123 @@ Content-Type: application/json
 ## Enable or Disable the v1 API.
 
 To protect the device from unauthorized access, the v1 API can be disabled. When the v1 API is disabled, the device will only allow authorized request via the v2 API.
+
+## Energy Socket Power and Switch Lock.
+
+The Energy Socket can be controlled with the `power_on` and `switch_lock` parameters. In API v1 these parameters were part of the [state endpoint](/docs/v1/state); in API v2 they are part of the system endpoint.
+
+- `power_on` returns `true` when the relay is in the 'on' state. Set it to `true` or `false` to turn the socket on or off.
+- `switch_lock` keeps the socket turned on. When `switch_lock` is enabled, the socket is turned on and cannot be turned off until `switch_lock` is disabled again.
+
+While `switch_lock` is enabled, a request that sets `power_on` without also setting `switch_lock` is refused with `400 Bad Request` and the error `request:switch-lock-enabled`, see [error handling](/docs/v2/error-handling). This applies to both `true` and `false`.
+
+When a request contains both parameters, `switch_lock` is always applied before `power_on`, so the order of the parameters does not matter:
+
+- If `switch_lock` was enabled, sending `{"power_on": false, "switch_lock": false}` disables the switch lock and turns the socket off.
+- Sending `{"power_on": false, "switch_lock": true}` is accepted, but the switch lock takes precedence: the socket is turned on.
+
+### Examples
+
+#### Turn on Socket
+
+```http title="Request"
+curl https://<IP ADDRESS>/api/system --insecure \
+  -X PUT \
+  -H "Authorization: Bearer <TOKEN>" \
+  -H "X-Api-Version: 2" \
+  -d '{"power_on": true}'
+```
+
+```http title="Response"
+https/1.1 200 OK
+Content-Type: application/json
+
+{
+    "wifi_ssid": "My Wi-Fi",
+    "wifi_rssi_db": -77,
+    "cloud_enabled": true,
+    "uptime_s": 356,
+    "status_led_brightness_pct": 100,
+    "api_v1_enabled": true,
+    "switch_lock": false,
+    "power_on": true
+}
+```
+
+#### Enable Switch Lock
+
+After enabling `switch_lock`, the socket is 'on' and cannot be turned off until `switch_lock` is disabled.
+
+```http title="Request"
+curl https://<IP ADDRESS>/api/system --insecure \
+  -X PUT \
+  -H "Authorization: Bearer <TOKEN>" \
+  -H "X-Api-Version: 2" \
+  -d '{"switch_lock": true}'
+```
+
+```http title="Response"
+https/1.1 200 OK
+Content-Type: application/json
+
+{
+    "wifi_ssid": "My Wi-Fi",
+    "wifi_rssi_db": -77,
+    "cloud_enabled": true,
+    "uptime_s": 356,
+    "status_led_brightness_pct": 100,
+    "api_v1_enabled": true,
+    "switch_lock": true,
+    "power_on": true
+}
+```
+
+#### Turn off Socket when Switch Lock is Enabled
+
+```http title="Request"
+curl https://<IP ADDRESS>/api/system --insecure \
+  -X PUT \
+  -H "Authorization: Bearer <TOKEN>" \
+  -H "X-Api-Version: 2" \
+  -d '{"power_on": false}'
+```
+
+```http title="Response"
+https/1.1 400 Bad Request
+Content-Type: application/json
+
+{
+    "error": "request:switch-lock-enabled"
+}
+```
+
+#### Disable Switch Lock and Turn off Socket
+
+Both parameters can be set in a single request. The order does not matter: the socket turns off even though `switch_lock` was enabled.
+
+```http title="Request"
+curl https://<IP ADDRESS>/api/system --insecure \
+  -X PUT \
+  -H "Authorization: Bearer <TOKEN>" \
+  -H "X-Api-Version: 2" \
+  -d '{"power_on": false, "switch_lock": false}'
+```
+
+```http title="Response"
+https/1.1 200 OK
+Content-Type: application/json
+
+{
+    "wifi_ssid": "My Wi-Fi",
+    "wifi_rssi_db": -77,
+    "cloud_enabled": true,
+    "uptime_s": 356,
+    "status_led_brightness_pct": 100,
+    "api_v1_enabled": true,
+    "switch_lock": false,
+    "power_on": false
+}
+```
 
 ### Example
 
