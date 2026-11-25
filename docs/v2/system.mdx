@@ -160,15 +160,11 @@ To protect the device from unauthorized access, the v1 API can be disabled. When
 
 The Energy Socket can be controlled with the `power_on` and `switch_lock` parameters. In API v1 these parameters were part of the [state endpoint](/docs/v1/state); in API v2 they are part of the system endpoint.
 
-- `power_on` returns `true` when the relay is in the 'on' state. Set it to `true` or `false` to turn the socket on or off.
+- `power_on` returns `true` when power is allowed to flow through the socket. Set it to `true` or `false` to turn the socket on or off.
 - `switch_lock` keeps the socket turned on. When `switch_lock` is enabled, the socket is turned on and cannot be turned off until `switch_lock` is disabled again.
 
-While `switch_lock` is enabled, a request that sets `power_on` without also setting `switch_lock` is refused with `400 Bad Request` and the error `request:switch-lock-enabled`, see [error handling](/docs/v2/error-handling). This applies to both `true` and `false`.
-
-When a request contains both parameters, `switch_lock` is always applied before `power_on`, so the order of the parameters does not matter:
-
-- If `switch_lock` was enabled, sending `{"power_on": false, "switch_lock": false}` disables the switch lock and turns the socket off.
-- Sending `{"power_on": false, "switch_lock": true}` is accepted, but the switch lock takes precedence: the socket is turned on.
+While `switch_lock` is enabled, a request that disables `power_on` without also disabling `switch_lock` is refused with `400 Bad Request` and the error `request:switch-lock-enabled`, see [error handling](/docs/v2/error-handling).
+Similarly, any request that enables both `switch_lock` and disables `power_on` is also refused with the same error. In these case, any changes to the `power_on` and `switch_lock` are ignored and the socket remains in its previous state.
 
 ### Examples
 
