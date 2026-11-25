@@ -11,7 +11,7 @@ import Badge from '@site/src/components/Badge.js'
 
 {/* prettier-ignore */}
 <Badge colorName='hw-green' icon='mdi:check' subtext='Supported'>P1 Meter</Badge>
-<Badge colorName='hw-purple' icon='mdi:check' subtext='Supported in v1'>Energy Socket</Badge>
+<Badge colorName='hw-green' icon='mdi:check' subtext='Supported' detail="In beta">Energy Socket</Badge>
 <Badge colorName='hw-grey' icon='mdi:wrench' subtext='In development'>Energy Display</Badge>
 <Badge colorName='hw-green' icon='mdi:check' subtext='Supported'>kWh Meter</Badge>
 <Badge colorName='hw-purple' icon='mdi:check' subtext='Supported in v1'>Watermeter</Badge>
@@ -165,6 +165,22 @@ Belgian users may be charged for the peak usage per month (see <Link to="https:/
 | frequency_hz        | Number | Line frequency in hertz.                 |
 | state_of_charge_pct | Number | The current state of charge in percent.  |
 | cycles              | Number | Number of battery cycles.                |
+
+## Energy Socket (HWE-SKT)
+
+### Parameters
+
+| Data               | Type            | Description                                        |
+| ------------------ | --------------- | -------------------------------------------------- |
+| energy_import_kwh  | Optional Number | The energy usage meter reading in kWh.             |
+| energy_export_kwh  | Optional Number | The energy feed-in meter reading in kWh.           |
+| power_w            | Number          | The total active usage in watt.                    |
+| voltage_v          | Number          | The active voltage in volt.                        |
+| current_a          | Number          | The active current in ampere.                      |
+| frequency_hz       | Number          | Line frequency in hertz.                           |
+| reactive_power_var | Number          | The active reactive power in volt-ampere reactive. |
+| apparent_power_va  | Number          | The active apparent power in volt-ampere.          |
+| power_factor       | Number          | The active power factor.                           |
 
 ## Examples
 
@@ -356,4 +372,29 @@ Content-Type: application/json
    "state_of_charge_pct": 50,
    "cycles": 123
 }
+```
+
+### HWE-SKT
+
+```http title="Request"
+curl https://<IP ADDRESS>/api/measurement --insecure \
+  -H "Authorization: Bearer <TOKEN>" \
+  -H "X-Api-Version: 2"
+```
+
+```http title="Response"
+https/1.1 200 OK
+Content-Type: application/json
+
+{
+    "energy_import_kwh": 123.456,
+    "energy_export_kwh": 78.910,
+    "power_w": 123,
+    "voltage_v": 230,
+    "current_a": 1.5,
+    "frequency_hz": 50,
+    "reactive_power_var": 67,
+    "apparent_power_va": 345,
+    "power_factor": 0.95
+    }
 ```
